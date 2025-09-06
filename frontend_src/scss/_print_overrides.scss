@@ -1,0 +1,47 @@
+@media print {
+
+	@page {
+		//size: A4 landscape !important;
+		margin: 5mm;
+	}
+
+
+	body {
+		break-inside: avoid;
+	}
+
+	.karfu {
+		content-visibility: visible;
+		padding-left: 2mm !important;
+		padding-right: 2mm !important;
+		transform: scale(.99) !important;
+
+		#print-logo {
+			display: flex;
+			height: 150px;
+		}
+
+		* {
+			background-color: initial !important;
+			color: #000 !important;
+			transition: 0s !important;
+			transition-delay: 0s !important;
+		}
+
+		section {
+			break-inside: avoid;
+		}
+
+
+		.print-only {
+			display: block !important;
+		}
+
+
+		.print-image {
+	        border-radius: 8px;
+	        margin-top: 24px;
+	    }
+
+	}
+}
