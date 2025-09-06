@@ -325,14 +325,6 @@ input:-webkit-autofill:active {
     transition: transform 0.6s;
 }
 
-.bg--green { 
-    background: $greenBright;
-}
-
-.bg--green-tint { 
-    background: $greenShd25;
-}
-
 .svg-to-bright-green { 
     filter: invert(1) brightness(55%) sepia(140%) hue-rotate(85deg) saturate(347%);
 }

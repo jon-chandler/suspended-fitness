@@ -130,6 +130,10 @@ textarea {
 .susfit .uc {
   text-transform: uppercase;
 }
+.susfit .is-header {
+  font-size: 48px;
+  color: white;
+}
 .susfit .haptik {
   font-family: "Haptik", sans-serif;
 }
@@ -629,14 +633,6 @@ input:-webkit-autofill:active {
 
 .transition-transform {
   transition: transform 0.6s;
-}
-
-.bg--green {
-  background: #2bda5c;
-}
-
-.bg--green-tint {
-  background: #cbf6d6;
 }
 
 .svg-to-bright-green {
@@ -13449,7 +13445,7 @@ body, p, input, label, a, div, placeholder {
 }
 
 .content {
-  padding-top: 56px;
+  padding-top: 96px;
 }
 .susfit {
   padding-left: 92px;
