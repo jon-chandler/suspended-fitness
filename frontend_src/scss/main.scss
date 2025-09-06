@@ -6,7 +6,7 @@
 @forward "./core/typography";
 @forward "./core/utils";
 
-$grid-columns: 16 !default;
+$grid-columns: 12 !default;
 $enable-negative-margins: true;
 
 $grid-breakpoints: (
@@ -20,11 +20,58 @@ $grid-breakpoints: (
 @import "bootstrap/scss/bootstrap";
 @import "./print_overrides";
 
+@import "./core/header";
+
 body, p, input, label, a, div, placeholder {
     font-family: 'HaptikBold', sans-serif;
-    color: pink;
 }
 
 body {
     @extend .gradient-blue;
 }
+
+.content { 
+
+    padding-top: 56px;
+
+    @include media-breakpoint-up(lg) { 
+        
+    }
+
+    @include media-breakpoint-down(md) { 
+        
+    }
+
+ }
+
+ .susfit {
+    padding-left: 92px;
+    padding-right:  92px;
+    padding-top: 46px;
+
+    @include media-breakpoint-down(xl) { 
+        padding-left: 46px;
+        padding-right: 46px;
+
+    }
+
+    @include media-breakpoint-down(md) { 
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    overscroll-behavior-y: none;
+    overflow-x: clip;
+    position:relative;
+    overflow-wrap: break-word;
+    text-rendering: optimizeLegibility;
+
+    & > * { 
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    @include media-breakpoint-down(sm) {
+        overflow-wrap: normal;
+    }
+ }

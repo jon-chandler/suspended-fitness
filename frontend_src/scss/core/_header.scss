@@ -1,0 +1,37 @@
+.header {
+
+
+	.logo {
+		
+		a{
+			display: block;
+			width: 200px;
+			height: 148px !important;
+		}
+
+		@include media-breakpoint-down(md) { 
+			img {
+				width: 140px;
+				height: 102px;	
+			}
+		}
+		
+	}
+
+	.menu {
+		display: block;
+		width: 32px;
+		height: 40px;
+		background: url('/images/menu_icon.svg');
+		background-size: contain;
+    	background-repeat: no-repeat;
+    	background-position: top center;
+		transition: .4s;
+		cursor: pointer;
+
+		&:hover {
+			transform: rotateY(180deg);
+		}
+	}
+
+}
