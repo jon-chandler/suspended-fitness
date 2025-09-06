@@ -1,0 +1,65 @@
+body { 
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-style: normal;
+  font-weight: normal !important;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a,
+button,
+select {
+  color: inherit;
+  outline: none;
+}
+
+
+*:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
+/*  all: unset;
+  display: revert;*/
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+
+ol, ul {
+  list-style: none;
+}
+
+ul { 
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+  padding-inline-start: 0 !important;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Removes spacing between cells in tables */
+table {
+  
+}
+
+textarea {
+  white-space: revert;
+}
