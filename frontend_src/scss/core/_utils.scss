@@ -33,7 +33,7 @@ input:-webkit-autofill:active {
 
     /* Handle */
     &::-webkit-scrollbar-thumb {
-        background-color: $greenDarkTint;
+        background-color: purple;
         border-radius: 24px;
         background-clip: padding-box;
     }
@@ -241,23 +241,6 @@ input:-webkit-autofill:active {
 /* Text color utils - most typography styles (sizes, weights) are defined in typography.scss */
 .text-white { 
     color: white;
-}
-
-.text-bright { 
-    color: $greenBright;
-}
-
-.text-tint { 
-    color: $greenDarkTint;
-}
-
-.px-4 { 
-    padding-left: 4px;
-    padding-right: 4px;
-}
-
-.pb-24 {
-    padding-bottom: 24px;
 }
 
 /* Margin utilities */
