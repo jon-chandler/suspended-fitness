@@ -2,28 +2,8 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./scss/main.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
-.gradient--lightgreen-green {
-  background: linear-gradient(45deg, #e3fcea 0%, #2bda5c 100%);
-}
-
-.gradient--green-blue {
-  background: linear-gradient(44.58deg, #2bda5c 20.41%, #2b96da 100%);
-}
-
-.gradient--darkblue-blue {
-  background: linear-gradient(44.12deg, #020c50 0%, #2b96da 65.35%);
-}
-
-.gradient--green-yellow {
-  background: linear-gradient(45deg, #2bda5c 0%, #ffe15c 100%);
-}
-
-.gradient--darkgreen-green {
-  background: linear-gradient(44.12deg, #020c50 0%, #2bda5c 65.35%);
-}
-
-.gradient--lightblue-blue {
-  background: linear-gradient(45.25deg, #e5f3fa 0%, #2b96da 95.59%);
+.gradient-blue, body {
+  background: linear-gradient(90deg, #467FFF 0%, #2367FF 28.13%, #0A56FF 58.26%, #004EFC 80.56%, #0048EA 100%);
 }
 
 body {
@@ -95,12 +75,12 @@ textarea {
   font-weight: bold;
 }
 @font-face {
-  font-family: "HapticMed";
+  font-family: "HaptikMed";
   font-weight: 400;
   src: url(../compiled_assets/b80f7c1adcd8b32fda80.ttf) format("ttf"), url(../compiled_assets/dd7a31df45649af83ef4.woff2) format("woff2"), url(../compiled_assets/6f104ca1c058c93e0d8d.woff) format("woff");
 }
 @font-face {
-  font-family: "Haptic";
+  font-family: "Haptik";
   src: url(../compiled_assets/4f9377524a6fdf673720.woff2) format("woff2"), url(../compiled_assets/52dc3047faf1ddff8f73.woff) format("woff");
   font-weight: 500;
 }
@@ -396,7 +376,7 @@ input:-webkit-autofill:active {
   margin-bottom: 22px;
 }
 .styled-scroll::-webkit-scrollbar-thumb {
-  background-color: #547d5f;
+  background-color: purple;
   border-radius: 24px;
   background-clip: padding-box;
 }
@@ -601,23 +581,6 @@ input:-webkit-autofill:active {
 /* Text color utils - most typography styles (sizes, weights) are defined in typography.scss */
 .text-white {
   color: white;
-}
-
-.text-bright {
-  color: #2bda5c;
-}
-
-.text-tint {
-  color: #547d5f;
-}
-
-.px-4 {
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-.pb-24 {
-  padding-bottom: 24px;
 }
 
 /* Margin utilities */
@@ -13674,6 +13637,10 @@ textarea.form-control-lg {
     border-radius: 8px;
     margin-top: 24px;
   }
+}
+body, p, input, label, a, div, placeholder {
+  font-family: "HaptikBold", sans-serif;
+  color: pink;
 }
 
 /*# sourceMappingURL=main.css.map*/

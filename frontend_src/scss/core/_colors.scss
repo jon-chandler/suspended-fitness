@@ -10,53 +10,13 @@ $greenCoreDarkTint25: hsl(138, 15%, 78%);
 $greenCoreDarkTint10: hsl(130, 14%, 91%);
 
 
-$tableGreenFlip: hsl(135, 40%, 96%);
-$overlayGreen: hsl(136, 71%, 96%);
 
 $greyMute: hsl(0, 0%, 60%);
-
-$yellowLabel: hsl(49, 100%, 68%);
-$yellowResultsTint25: hsl(48, 100%, 92%);
-
-
-// Colours added in Tom's new design
-$blueInfoDark: hsl(232, 95%, 16%);
-$blueInfoDarkTint: hsl(232, 18%, 49%);
-$blueInfoTint25: hsl(202, 69%, 94%);
-$blueInfoTint50: hsl(203, 70%, 75%);
-
-
-$blueInfo: hsl(203, 70%, 51%);
-$textDarkBlue: hsl(203, 91%, 25%);
-
-
-$greenDarkTint: hsl(137, 20%, 41%);
-
 $greenMuteBorder: #daf1df;
 $paleGrey: #f7f9f8;
 
 
 
-.gradient--lightgreen-green { 
-    background: linear-gradient(45deg, hsl(136, 82%, 94%) 0%, hsl(137, 70%, 51%) 100%);
-}
-
-.gradient--green-blue { 
-    background: linear-gradient(44.58deg, hsl(137, 70%, 51%) 20.41%, hsl(203, 70%, 51%) 100%);
-}
-
-.gradient--darkblue-blue { 
-    background: linear-gradient(44.12deg, hsl(232, 95%, 16%) 0%, hsl(203, 70%, 51%) 65.35%);
-}
-
-.gradient--green-yellow { 
-    background: linear-gradient(45deg, hsl(137, 70%, 51%) 0%, hsl(49, 100%, 68%) 100%);
-}
-
-.gradient--darkgreen-green { 
-    background: linear-gradient(44.12deg, hsl(232, 95%, 16%) 0%, hsl(137, 70%, 51%) 65.35%);
-}
-
-.gradient--lightblue-blue { 
-    background: linear-gradient(45.25deg, hsl(202, 69%, 94%) 0%, hsl(203, 70%, 51%) 95.59%);
+.gradient-blue { 
+    background: linear-gradient(90deg, #467FFF 0%, #2367FF 28.13%, #0A56FF 58.26%, #004EFC 80.56%, #0048EA 100%);
 }
