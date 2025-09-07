@@ -9,6 +9,104 @@
 
 console.log('component init');
 
+/***/ }),
+
+/***/ "./js/utils/parallax.js":
+/*!******************************!*\
+  !*** ./js/utils/parallax.js ***!
+  \******************************/
+/***/ (() => {
+
+var setListener = [];
+var settings = [];
+var resizeID;
+var winH = window.innerHeight;
+var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+var scrollBottom = scrollTop + winH;
+var parallax = function parallax() {
+  var targetClass = '.parallax-elem';
+  var childClass = '.js-parallax-elem';
+  var targets = Array.prototype.slice.call(document.querySelectorAll(targetClass), 0);
+  if (targets.length === 0) {
+    return;
+  }
+  targets.forEach(function (target, index) {
+    target.setAttribute('data-index', index);
+    var child = target.querySelector(childClass);
+    if (!child) {
+      return;
+    }
+    settings.push({
+      child: child,
+      scrollRatio: (child.clientHeight - target.clientHeight) / (winH + target.clientHeight)
+    });
+    setListener.push({
+      target: target,
+      handleEvent: function handleEvent() {
+        observer.observe(target);
+      }
+    });
+    bindThem(target);
+  });
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeID);
+    resizeID = setTimeout(function () {
+      winH = window.innerHeight;
+      targets.forEach(function (target, index) {
+        if (!settings[index].child) {
+          return;
+        }
+        settings[index].scrollRatio = (settings[index].child.clientHeight - target.clientHeight) / (winH + target.clientHeight);
+      });
+    }, 200);
+  });
+  window.addEventListener('scroll', function () {
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    scrollBottom = scrollTop + winH;
+  }, {
+    passive: true
+  });
+};
+var observerFunc = function observerFunc(entries) {
+  entries.forEach(function (entry) {
+    var target = entry.target;
+    var listener = setListener[target.getAttribute('data-index')];
+    if (entry.isIntersecting) {
+      target.style.willChange = 'transform';
+      window.addEventListener('scroll', listener, {
+        passive: true
+      });
+    } else {
+      target.style.willChange = '';
+      window.removeEventListener('scroll', listener, {
+        passive: true
+      });
+    }
+  });
+};
+var parallaxFunc = function parallaxFunc() {
+  var index = Number(this.getAttribute('data-index'));
+  var targetPosi = this.getBoundingClientRect().top + scrollTop;
+  var setVal = ((scrollBottom - targetPosi) * settings[index].scrollRatio).toFixed(1);
+  settings[index].child.style.transform = 'translate3d(0,' + setVal * -1 + 'px,0)';
+};
+var observer = new IntersectionObserver(observerFunc, {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0
+});
+var bindThem = function bindThem(elem) {
+  observer.observe(elem);
+  requestAnimationFrame(parallaxFunc.bind(elem));
+};
+window.addEventListener('DOMContentLoaded', function () {
+  var bgAmin = document.getElementById('background-animation');
+  if (!bgAmin) {
+    return;
+  }
+  parallax();
+});
+
 /***/ })
 
 /******/ 	});
@@ -90,6 +188,9 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/navigation */ "./js/components/navigation.js");
 /* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_navigation__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/parallax */ "./js/utils/parallax.js");
+/* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_utils_parallax__WEBPACK_IMPORTED_MODULE_1__);
+
 
 console.log('init......');
 })();

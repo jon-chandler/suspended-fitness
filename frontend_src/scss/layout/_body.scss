@@ -3,14 +3,18 @@
     padding-top: 96px;
     min-height: calc(100vh - $footerMin);
 
-    @include media-breakpoint-up(lg) { 
-        
+    @include media-breakpoint-between(xl, 2xl) { 
+    	
+    	.col-xl-3 {
+    		width: 33%;
+    	}
     }
 
-    @include media-breakpoint-down(md) { 
-        
-    }
+ }
 
+ .over-anim {
+ 	position: relative;
+ 	z-index: 2;
  }
 
  .generalPadding {
@@ -47,4 +51,36 @@
     position:relative;
     overflow-wrap: break-word;
     text-rendering: optimizeLegibility;
+ }
+
+
+ #background-animation {
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	width: 100vw;
+	height: 900px;
+ 	z-index: 1;
+
+ 	.parallax-elem {
+		position: absolute;
+		width: 200px;
+	}
+	.parallax-area-01 {
+	  	right: 440px;
+	  	height: 150px;
+	  	margin-top: 300px;
+	}
+	.parallax-area-02 {
+	  	right: 330px;
+	  	height: 250px;
+	  	margin-top: 399px;
+	}
+	.parallax-area-03 {
+	  	right: 150px;
+	  	height: 350px;
+	  	margin-top: 410px;
+	}
+
+
  }

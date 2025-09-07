@@ -13552,6 +13552,17 @@ footer {
   padding-top: 96px;
   min-height: calc(100vh - 380px);
 }
+@media (min-width: 1024px) {
+  .content .col-xl-3 {
+    width: 33%;
+  }
+}
+
+.over-anim {
+  position: relative;
+  z-index: 2;
+}
+
 .generalPadding, .susfit, footer {
   padding-left: 92px;
   padding-right: 92px;
@@ -13587,8 +13598,128 @@ footer {
   text-rendering: optimizeLegibility;
 }
 
+#background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 900px;
+  z-index: 1;
+}
+#background-animation .parallax-elem {
+  position: absolute;
+  width: 200px;
+}
+#background-animation .parallax-area-01 {
+  right: 440px;
+  height: 150px;
+  margin-top: 300px;
+}
+#background-animation .parallax-area-02 {
+  right: 330px;
+  height: 250px;
+  margin-top: 399px;
+}
+#background-animation .parallax-area-03 {
+  right: 150px;
+  height: 350px;
+  margin-top: 410px;
+}
+
+.button {
+  text-align: center;
+  border-radius: 40px;
+  height: 40px;
+  background: #f5a6ff;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  padding: 0 24px 0 32px;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  -moz-column-gap: 4px;
+       column-gap: 4px;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+}
+.button--pink {
+  background: #f5a6ff;
+}
+.button--pink:hover, .button--pink :focus {
+  background: rgba(245, 166, 255, 0.5);
+}
+.button--blue {
+  background: #004fff;
+}
+.button--blue:hover, .button--blue :focus {
+  background: rgba(0, 79, 255, 0.5);
+}
+.button--altBlue {
+  background: aqua;
+}
+.button--altBlue:hover, .button--altBlue :focus {
+  background: rgba(0, 255, 255, 0.5);
+}
+.button--altYellow {
+  background: #f3ff00;
+}
+.button--altYellow:hover, .button--altYellow :focus {
+  background: rgba(243, 255, 0, 0.5);
+}
+.button--grey {
+  background: #e7dfd9;
+}
+.button--grey:hover, .button--grey :focus {
+  background: rgba(231, 223, 217, 0.5);
+}
+.button--jumbo {
+  background: #f3ff00;
+}
+.button--yellow {
+  background: #f3ff00;
+}
+.button--shake {
+  animation: shakeX 0.4s linear;
+}
+.button:active {
+  background: initial;
+}
+.button--disabled {
+  transition: 0.3s 0.2s;
+  filter: grayscale(0.9);
+  opacity: 0.8;
+  pointer-events: none;
+  cursor: not-allowed !important;
+}
+.button--disabled.pointer-evs {
+  pointer-events: visibleStroke;
+  cursor: not-allowed !important;
+}
+
+@keyframes shakeX {
+  0% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(15px);
+  }
+  50% {
+    transform: translateX(-15px);
+  }
+  75% {
+    transform: translateX(15px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 body, p, input, label, a, div, placeholder {
   font-family: "HaptikBold", sans-serif;
+}
+
+.dev-border {
+  border: 2px solid red;
 }
 
 /*# sourceMappingURL=main.css.map*/

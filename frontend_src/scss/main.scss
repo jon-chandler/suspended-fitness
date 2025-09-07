@@ -26,10 +26,16 @@ $footerMin: 380px;
 @import "./layout/footer";
 @import "./layout/body";
 
+@import "./components/buttons";
+
 body, p, input, label, a, div, placeholder {
     font-family: 'HaptikBold', sans-serif;
 }
 
 body {
     @extend .gradient-blue;
+}
+
+.dev-border {
+    border: 2px solid red;
 }
