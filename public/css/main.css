@@ -101,6 +101,9 @@ a {
   font-family: "Haptik", sans-serif;
   text-decoration: none !important;
 }
+a.email {
+  color: #f5a6ff;
+}
 
 p, a, input, label {
   font-size: 1em;
@@ -13505,6 +13508,10 @@ footer {
     grid-template-rows: repeat(1, 1fr);
   }
 }
+.footer__container a[href^="tel:"] {
+  color: white;
+}
+
 .footer-logo {
   background: url(../compiled_assets/c89bbb482f5955b8746f.svg);
   background-size: contain;
@@ -13524,9 +13531,15 @@ footer {
 .footer-links li {
   text-decoration: underline;
   color: #f5a6ff;
+  line-height: 40px;
 }
 .footer-links li a {
   color: white;
+}
+
+.venue-list {
+  margin-top: 16px;
+  line-height: 30px;
 }
 
 .content {

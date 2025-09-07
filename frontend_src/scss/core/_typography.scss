@@ -17,6 +17,10 @@ h1, .is-header {
 a {
 	font-family: 'Haptik', sans-serif;
 	text-decoration: none !important;
+
+	&.email {
+		color: $corePink;
+	}
 }
 
 p, a, input, label {
