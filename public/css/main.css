@@ -84,232 +84,268 @@ textarea {
   src: url(../compiled_assets/4f9377524a6fdf673720.woff2) format("woff2"), url(../compiled_assets/52dc3047faf1ddff8f73.woff) format("woff");
   font-weight: 500;
 }
-.susfit body, .susfit p, .susfit input, .susfit label, .susfit a, .susfit div, .susfit placeholder {
+body, p, input, label, a, div, placeholder {
   font-family: "Haptik", sans-serif;
 }
-.susfit h1, .susfit .h1, .susfit .is-header {
+
+h1, .h1, .is-header {
   font-family: "HaptikBold", sans-serif;
 }
-.susfit .med {
+
+.med {
   font-family: "HaptikMed", sans-serif;
   font-size: 0.8em;
 }
-.susfit a {
+
+a {
   font-family: "Haptik", sans-serif;
-  text-decoration: none;
+  text-decoration: none !important;
 }
-.susfit p, .susfit a, .susfit input, .susfit label {
+
+p, a, input, label {
   font-size: 1em;
 }
-.susfit ul {
+
+ul {
   list-style-type: none;
 }
-.susfit sub {
-  font-size: 0.7em;
-  color: #999999;
+
+sub {
+  font-size: 0.9em;
+  color: rgba(231, 223, 217, 0.75);
 }
-.susfit sup {
+
+sup {
   top: -0.33em;
 }
-.susfit blockquote {
+
+blockquote {
   position: relative;
   quotes: "“" "”" "‘" "’";
 }
-.susfit .bq, .susfit blockquote::after, .susfit blockquote::before {
+
+.bq, blockquote::after, blockquote::before {
   position: absolute;
   font-size: 3em;
 }
-.susfit blockquote::before {
+
+blockquote::before {
   content: open-quote;
   top: -15px;
   left: -25px;
 }
-.susfit blockquote::after {
+
+blockquote::after {
   content: close-quote;
 }
-.susfit .uc {
+
+.uc {
   text-transform: uppercase;
 }
-.susfit .is-header {
+
+.is-header {
   font-size: 48px;
   color: white;
 }
-.susfit .haptik {
+
+.haptik {
   font-family: "Haptik", sans-serif;
 }
-.susfit .haptik--article-headline {
+.haptik--article-headline {
   font-size: 48px;
   line-height: 56px;
   font-weight: 400;
 }
-.susfit .haptik--feature-headline {
+.haptik--feature-headline {
   font-size: 32px;
   font-weight: 500;
   line-height: 40px;
 }
-.susfit .haptik--blurb-regular {
+.haptik--blurb-regular {
   font-size: 18px;
   line-height: 26px;
 }
 @media (max-width: 424.98px) {
-  .susfit .haptik--blurb-regular {
+  .haptik--blurb-regular {
     font-weight: 400;
     line-height: 24px;
     font-size: 16px;
   }
 }
-.susfit .haptik--headline-semibold {
+.haptik--headline-semibold {
   font-weight: 700;
   font-size: 20px;
   line-height: 28px;
 }
-.susfit .haptik--sub-title-regular {
+.haptik--sub-title-regular {
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
 }
-.susfit .haptik--button-link-caps-lg {
+.haptik--button-link-caps-lg {
   text-transform: uppercase;
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0.02em;
 }
-.susfit .haptik--button-link-caps {
+.haptik--button-link-caps {
   text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.02em;
 }
-.susfit .haptik--button-link-medium {
+.haptik--button-link-medium {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
 }
-.susfit .haptik--body-regular {
+.haptik--body-regular {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
 }
-.susfit .haptik--title-semibold {
+.haptik--title-semibold {
   font-weight: 600;
   font-size: 18px;
   line-height: 24px;
 }
-.susfit .haptik--footer-links {
+.haptik--footer-links {
   font-weight: 400;
   font-size: 16px;
   line-height: 44px;
 }
-.susfit .haptik--article-body-regular {
+.haptik--article-body-regular {
   font-weight: 400;
   font-size: 16px;
   line-height: 32px;
 }
-.susfit .haptik--label-regular {
+.haptik--label-regular {
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
 }
-.susfit .haptik--label-semibold-caps {
+.haptik--label-semibold-caps {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 12px;
   line-height: 24px;
 }
-.susfit .haptik--label-small-regular {
+.haptik--label-small-regular {
   font-weight: 400;
   font-size: 12px;
   line-height: 24px;
 }
-.susfit .arrow-link, .susfit .more-link, .susfit .back-link {
+
+.arrow-link, .more-link, .back-link {
   display: flex;
 }
-.susfit .arrow-link span, .susfit .more-link span, .susfit .back-link span, .susfit .arrow-link img, .susfit .more-link img, .susfit .back-link img {
+.arrow-link span, .more-link span, .back-link span, .arrow-link img, .more-link img, .back-link img {
   transition: 0.3s;
   margin-right: 4px;
 }
-.susfit .arrow-link span, .susfit .more-link span, .susfit .back-link span {
+.arrow-link span, .more-link span, .back-link span {
   margin-left: 4px;
 }
-.susfit .arrow-link:hover, .susfit .more-link:hover, .susfit .back-link:hover {
+.arrow-link:hover, .more-link:hover, .back-link:hover {
   opacity: 0.6;
 }
-.susfit .arrow-link:hover span, .susfit .more-link:hover span, .susfit .back-link:hover span, .susfit .arrow-link:hover img, .susfit .more-link:hover img, .susfit .back-link:hover img {
+.arrow-link:hover span, .more-link:hover span, .back-link:hover span, .arrow-link:hover img, .more-link:hover img, .back-link:hover img {
   margin-left: 6px;
 }
-.susfit .back-link img {
+
+.back-link img {
   margin-right: 0px;
 }
-.susfit .back-link span {
+.back-link span {
   margin-left: 0px;
 }
-.susfit .back-link:hover img {
+.back-link:hover img {
   margin-right: 2px;
   margin-left: -4px;
 }
-.susfit .back-link:hover span {
+.back-link:hover span {
   margin-left: 0;
 }
-.susfit .fs-2 {
+
+.fs-2 {
   font-size: 2px !important;
 }
-.susfit .fs-4 {
+
+.fs-4 {
   font-size: 4px !important;
 }
-.susfit .fs-6 {
+
+.fs-6 {
   font-size: 6px !important;
 }
-.susfit .fs-8 {
+
+.fs-8 {
   font-size: 8px !important;
 }
-.susfit .fs-10 {
+
+.fs-10 {
   font-size: 10px !important;
 }
-.susfit .fs-12 {
+
+.fs-12 {
   font-size: 12px !important;
 }
-.susfit .fs-14 {
+
+.fs-14 {
   font-size: 14px !important;
 }
-.susfit .fs-16 {
+
+.fs-16 {
   font-size: 16px !important;
 }
-.susfit .fs-18 {
+
+.fs-18 {
   font-size: 18px !important;
 }
-.susfit .fs-20 {
+
+.fs-20 {
   font-size: 20px !important;
 }
-.susfit .fs-22 {
+
+.fs-22 {
   font-size: 22px !important;
 }
-.susfit .fs-24 {
+
+.fs-24 {
   font-size: 24px !important;
 }
-.susfit .fs-26 {
+
+.fs-26 {
   font-size: 26px !important;
 }
-.susfit .fs-28 {
+
+.fs-28 {
   font-size: 28px !important;
 }
-.susfit .fs-30 {
+
+.fs-30 {
   font-size: 30px !important;
 }
-.susfit .fs-32 {
+
+.fs-32 {
   font-size: 32px !important;
 }
-.susfit .fs-34 {
+
+.fs-34 {
   font-size: 34px !important;
 }
-.susfit .fs-36 {
+
+.fs-36 {
   font-size: 36px !important;
 }
-.susfit .fs-38 {
+
+.fs-38 {
   font-size: 38px !important;
 }
-.susfit .fs-40 {
+
+.fs-40 {
   font-size: 40px !important;
 }
 
@@ -452,7 +488,7 @@ input:-webkit-autofill:active {
 }
 
 .text-dark {
-  color: #004213;
+  color: black;
 }
 
 /* Grid utils */
@@ -590,6 +626,10 @@ input:-webkit-autofill:active {
 
 .mb-32 {
   margin-bottom: 32px;
+}
+
+.pt-50 {
+  padding-top: 50px;
 }
 
 /* Overflow utils */
@@ -13440,43 +13480,96 @@ textarea.form-control-lg {
   transform: rotateY(180deg);
 }
 
-body, p, input, label, a, div, placeholder {
-  font-family: "HaptikBold", sans-serif;
+footer {
+  background: black;
+  color: white;
+  min-height: 380px;
+  padding-bottom: 46px;
+}
+
+.footer__container {
+  position: relative;
+}
+.footer__container__columns {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto-fit, 1fr);
+  grid-row-gap: 3em;
+  grid-column-gap: 1em;
+}
+@media (max-width: 767.98px) {
+  .footer__container__columns {
+    margin-top: 20px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+}
+.footer-logo {
+  background: url(../compiled_assets/c89bbb482f5955b8746f.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+  width: 314px;
+  height: 35px;
+  display: block;
+}
+@media (max-width: 767.98px) {
+  .footer-logo {
+    width: 214px;
+    order: 2;
+  }
+}
+
+.footer-links li {
+  text-decoration: underline;
+  color: #f5a6ff;
+}
+.footer-links li a {
+  color: white;
 }
 
 .content {
   padding-top: 96px;
+  min-height: calc(100vh - 380px);
 }
-.susfit {
+.generalPadding, .susfit, footer {
   padding-left: 92px;
   padding-right: 92px;
   padding-top: 46px;
+}
+@media (max-width: 1023.98px) {
+  .generalPadding, .susfit, footer {
+    padding-left: 46px;
+    padding-right: 46px;
+  }
+}
+@media (max-width: 767.98px) {
+  .generalPadding, .susfit, footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+.generalPadding > *, .susfit > *, footer > * {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+@media (max-width: 424.98px) {
+  .generalPadding, .susfit, footer {
+    overflow-wrap: normal;
+  }
+}
+
+.susfit {
   overscroll-behavior-y: none;
   overflow-x: clip;
   position: relative;
   overflow-wrap: break-word;
   text-rendering: optimizeLegibility;
 }
-@media (max-width: 1023.98px) {
-  .susfit {
-    padding-left: 46px;
-    padding-right: 46px;
-  }
-}
-@media (max-width: 767.98px) {
-  .susfit {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-}
-.susfit > * {
-  max-width: 1440px;
-  margin: 0 auto;
-}
-@media (max-width: 424.98px) {
-  .susfit {
-    overflow-wrap: normal;
-  }
+
+body, p, input, label, a, div, placeholder {
+  font-family: "HaptikBold", sans-serif;
 }
 
 /*# sourceMappingURL=main.css.map*/

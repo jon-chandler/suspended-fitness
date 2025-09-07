@@ -1,0 +1,50 @@
+.content { 
+
+    padding-top: 96px;
+    min-height: calc(100vh - $footerMin);
+
+    @include media-breakpoint-up(lg) { 
+        
+    }
+
+    @include media-breakpoint-down(md) { 
+        
+    }
+
+ }
+
+ .generalPadding {
+ 	padding-left: 92px;
+    padding-right:  92px;
+    padding-top: 46px;
+
+    @include media-breakpoint-down(xl) { 
+        padding-left: 46px;
+        padding-right: 46px;
+
+    }
+
+    @include media-breakpoint-down(md) { 
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    & > * { 
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    @include media-breakpoint-down(sm) {
+        overflow-wrap: normal;
+    }
+ }
+
+ .susfit {
+ 	@extend .generalPadding;
+
+    overscroll-behavior-y: none;
+    overflow-x: clip;
+    position:relative;
+    overflow-wrap: break-word;
+    text-rendering: optimizeLegibility;
+ }

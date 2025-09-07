@@ -150,7 +150,7 @@ input:-webkit-autofill:active {
 }
 
 .text-dark { 
-    color: $greenDark;
+    color: black;
 }
 
 
@@ -281,6 +281,9 @@ input:-webkit-autofill:active {
     margin-bottom: 32px;
 }
 
+.pt-50 {
+    padding-top: 50px;
+}
 
 /* Overflow utils */
 .no-scroll { 

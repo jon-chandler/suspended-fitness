@@ -1,22 +1,29 @@
-$greenDark: hsl(137, 100%, 13%);
-$greenBright: hsl(137, 70%, 51%);
-$greenCoreTint: hsl(136, 82%, 94%);
-$greenCoreTint10: hsl(136, 82%, 94%);
-$greenShd75: hsl(137, 70%, 63%);
-$greenShd50: hsl(137, 70%, 75%);
-$greenShd25: hsl(136, 71%, 88%);
-$greenBorder: hsl(137, 28%, 35%);
-$greenCoreDarkTint25: hsl(138, 15%, 78%);
-$greenCoreDarkTint10: hsl(130, 14%, 91%);
+$corePink: rgba(245, 166, 255, 1);
+$corePink75: rgba(245, 166, 255, .75);
+$corePink50: rgba(245, 166, 255, .5);
+$corePink25: rgba(245, 166, 255, .25);
 
+$coreBlue: rgba(0, 79, 255, 1);
+$coreBlue75: rgba(0, 79, 255, .75);
+$coreBlue50: rgba(0, 79, 255, .5);
+$coreBlue25: rgba(0, 79, 255, .25);
 
+$altBlue: rgba(0, 255, 255, 1);
+$altBlue75: rgba(0, 255, 255, .75);
+$altBlue50: rgba(0, 255, 255, .5);
+$altBlue25: rgba(0, 255, 255, .25);
 
-$greyMute: hsl(0, 0%, 60%);
-$greenMuteBorder: #daf1df;
-$paleGrey: #f7f9f8;
+$altYellow: rgba(243, 255, 0, 1);
+$altYellow75: rgba(243, 255, 0, .75);
+$altYellow50: rgba(243, 255, 0, .5);
+$altYellow25: rgba(243, 255, 0, .25);
+
+$nGrey: rgba(231, 223, 217, 1);
+$nGrey75: rgba(231, 223, 217, .75);
+$nGrey50: rgba(231, 223, 217, .5);
+$nGrey25: rgba(231, 223, 217, .25);
 
 $nWhite: #e3e3e3; 
-
 
 
 .gradient-blue { 

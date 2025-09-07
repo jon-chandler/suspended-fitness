@@ -1,216 +1,215 @@
 @use "colors.scss" as *;
 @use 'breakpoints.scss' as *;
 
-.susfit {
 
-	body, p, input, label, a, div, placeholder {
-		font-family: 'Haptik', sans-serif;
-	}
-
-	h1, .is-header {
-		font-family: 'HaptikBold', sans-serif;
-	}
-	.med {
-		font-family: 'HaptikMed', sans-serif;
-		font-size: .8em;
-	}
-
-	a {
-		font-family: 'Haptik', sans-serif;
-		text-decoration: none;
-	}
-
-	p, a, input, label {
-		font-size: 1em;
-	}
-
-	ul {
-		list-style-type: none;
-	}
-
-	sub {
-		font-size: .7em;
-		color: $greyMute;
-	}
-
-	sup {
-		$three3: .33em;
-		top: -$three3;
-	}
-
-	blockquote {
-		position: relative;
-  		quotes: "“" "”" "‘" "’";
-	}
-
-	.bq {
-		position: absolute;
-		font-size: 3em;
-	}
-
-	blockquote::before {
-		@extend .bq;
-  		content: open-quote;
-  		top: -15px;
-  		left: -25px; 
-	}
-	blockquote::after {
-		@extend .bq;
-  		content: close-quote;
-	}
-
-	.uc {
-		text-transform: uppercase;
-	}
-
-	.is-header {
-		font-size: 48px;
-		color: white;
-	}
-	
-
-	.haptik {
-		font-family: 'Haptik', sans-serif; 
-			&--article-headline { 
-				font-size: 48px;
-				line-height: 56px;
-				font-weight: 400;
-			}
-			&--feature-headline { 
-				font-size: 32px;
-				font-weight: 500;
-				line-height: 40px;
-			}
-			&--blurb-regular { 
-				font-size: 18px;
-				line-height: 26px;
-
-				@include media-breakpoint-down(sm) { 
-					font-weight: 400;
-					line-height: 24px;
-					font-size: 16px;
-				}
-			}
-			&--headline-semibold { 
-				font-weight: 700;
-				font-size: 20px;
-				line-height: 28px;
-			}
-			&--sub-title-regular { 
-				font-weight: 400;
-				font-size: 24px;
-				line-height: 32px;
-			}
-			&--button-link-caps-lg { 
-				text-transform: uppercase;
-				font-weight: 500;
-				font-size: 20px;
-				line-height: 24px;
-				letter-spacing: 0.02em;
-			}
-			&--button-link-caps { 
-				text-transform: uppercase;
-				font-weight: 500;
-				font-size: 16px;
-				line-height: 20px;
-				letter-spacing: 0.02em;
-			}
-			&--button-link-medium { 
-				font-weight: 500;
-				font-size: 16px;
-				line-height: 24px;
-			}
-			&--body-regular { 
-				font-weight: 400;
-				font-size: 16px;
-				line-height: 24px;
-			}
-			&--title-semibold { 
-				font-weight: 600;
-				font-size: 18px;
-				line-height: 24px;
-			}
-			&--footer-links { 
-				font-weight: 400;
-				font-size: 16px;
-				line-height: 44px;
-			}
-			&--article-body-regular { 
-				font-weight: 400;
-				font-size: 16px;
-				line-height: 32px;
-			}
-			&--label-regular { 
-				font-weight: 400;
-				font-size: 14px;
-				line-height: 24px;
-			}
-			&--label-semibold-caps { 
-				text-transform: uppercase;
-				font-weight: 600;
-				font-size: 12px;
-				line-height: 24px;
-			}
-			&--label-small-regular { 
-				font-weight: 400;
-				font-size: 12px;
-				line-height: 24px;
-			}
-
-		}
-
-	.arrow-link {
-		display: flex;
-
-        span, img { 
-            transition: .3s;
-            margin-right: 4px;
-        }
-        span {
-        	margin-left: 4px;
-        }
-
-        &:hover {
-            opacity: .6;
-            span, img { 
-                margin-left: 6px;
-            }
-        }
-	}
-
-	.more-link, .back-link {
-		@extend .arrow-link;
-	}
-
-	.back-link {
-		img {
-			margin-right: 0px;
-		}
-		span {
-        	margin-left: 0px;
-        }
-		&:hover {        
-	    	img {
-	    		margin-right: 2px;
-	    		margin-left: -4px;
-	    	}
-	    	span {
-	    		margin-left: 0;
-	    	}
-		}
-	}
-
-	$size: 2;
-	@while $size <= 40 {
-
-	  .fs-#{$size} {
-	    font-size: #{$size}px !important;
-	  }
-
-	  $size: $size + 2;
-	}
-
+body, p, input, label, a, div, placeholder {
+	font-family: 'Haptik', sans-serif;
 }
+
+h1, .is-header {
+	font-family: 'HaptikBold', sans-serif;
+}
+.med {
+	font-family: 'HaptikMed', sans-serif;
+	font-size: .8em;
+}
+
+a {
+	font-family: 'Haptik', sans-serif;
+	text-decoration: none !important;
+}
+
+p, a, input, label {
+	font-size: 1em;
+}
+
+ul {
+	list-style-type: none;
+}
+
+sub {
+	font-size: .9em;
+	color: $nGrey75;
+}
+
+sup {
+	$three3: .33em;
+	top: -$three3;
+}
+
+blockquote {
+	position: relative;
+		quotes: "“" "”" "‘" "’";
+}
+
+.bq {
+	position: absolute;
+	font-size: 3em;
+}
+
+blockquote::before {
+	@extend .bq;
+		content: open-quote;
+		top: -15px;
+		left: -25px; 
+}
+blockquote::after {
+	@extend .bq;
+		content: close-quote;
+}
+
+.uc {
+	text-transform: uppercase;
+}
+
+.is-header {
+	font-size: 48px;
+	color: white;
+}
+
+
+.haptik {
+	font-family: 'Haptik', sans-serif; 
+		&--article-headline { 
+			font-size: 48px;
+			line-height: 56px;
+			font-weight: 400;
+		}
+		&--feature-headline { 
+			font-size: 32px;
+			font-weight: 500;
+			line-height: 40px;
+		}
+		&--blurb-regular { 
+			font-size: 18px;
+			line-height: 26px;
+
+			@include media-breakpoint-down(sm) { 
+				font-weight: 400;
+				line-height: 24px;
+				font-size: 16px;
+			}
+		}
+		&--headline-semibold { 
+			font-weight: 700;
+			font-size: 20px;
+			line-height: 28px;
+		}
+		&--sub-title-regular { 
+			font-weight: 400;
+			font-size: 24px;
+			line-height: 32px;
+		}
+		&--button-link-caps-lg { 
+			text-transform: uppercase;
+			font-weight: 500;
+			font-size: 20px;
+			line-height: 24px;
+			letter-spacing: 0.02em;
+		}
+		&--button-link-caps { 
+			text-transform: uppercase;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 20px;
+			letter-spacing: 0.02em;
+		}
+		&--button-link-medium { 
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 24px;
+		}
+		&--body-regular { 
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 24px;
+		}
+		&--title-semibold { 
+			font-weight: 600;
+			font-size: 18px;
+			line-height: 24px;
+		}
+		&--footer-links { 
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 44px;
+		}
+		&--article-body-regular { 
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 32px;
+		}
+		&--label-regular { 
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 24px;
+		}
+		&--label-semibold-caps { 
+			text-transform: uppercase;
+			font-weight: 600;
+			font-size: 12px;
+			line-height: 24px;
+		}
+		&--label-small-regular { 
+			font-weight: 400;
+			font-size: 12px;
+			line-height: 24px;
+		}
+
+	}
+
+.arrow-link {
+	display: flex;
+
+    span, img { 
+        transition: .3s;
+        margin-right: 4px;
+    }
+    span {
+    	margin-left: 4px;
+    }
+
+    &:hover {
+        opacity: .6;
+        span, img { 
+            margin-left: 6px;
+        }
+    }
+}
+
+.more-link, .back-link {
+	@extend .arrow-link;
+}
+
+.back-link {
+	img {
+		margin-right: 0px;
+	}
+	span {
+    	margin-left: 0px;
+    }
+	&:hover {        
+    	img {
+    		margin-right: 2px;
+    		margin-left: -4px;
+    	}
+    	span {
+    		margin-left: 0;
+    	}
+	}
+}
+
+$size: 2;
+@while $size <= 40 {
+
+  .fs-#{$size} {
+    font-size: #{$size}px !important;
+  }
+
+  $size: $size + 2;
+}
+
+
 
 
 
