@@ -281,8 +281,12 @@ input:-webkit-autofill:active {
     margin-bottom: 32px;
 }
 
-.pt-50 {
+.pt-footer {
     padding-top: 50px;
+
+    @include media-breakpoint-down(md) { 
+        padding-top: 20px;
+    }
 }
 
 /* Overflow utils */
