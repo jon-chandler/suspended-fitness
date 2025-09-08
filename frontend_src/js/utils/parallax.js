@@ -28,11 +28,15 @@ const parallax = ()=> {
 		if(!child) {
 			return
 		}
+
 		
 		settings.push({
 			child: child,
-			scrollRatio: (child.clientHeight - target.clientHeight) / (winH + target.clientHeight)
+			//scrollRatio: (child.clientHeight - target.clientHeight) / (winH + target.clientHeight)
+			scrollRatio: child.clientHeight / (winH + target.clientHeight)
 		})
+
+		console.log(settings)		
 
 		setListener.push(
 			{
@@ -71,8 +75,9 @@ const parallax = ()=> {
 
 const observerFunc = (entries)=> {
 	entries.forEach(entry => {
-  	const target = entry.target
+  		const target = entry.target
 		const listener =  setListener[target.getAttribute('data-index')]
+		
 		if(entry.isIntersecting) {
     		target.style.willChange = 'transform'
 			window.addEventListener('scroll', listener, {passive: true})
@@ -80,21 +85,27 @@ const observerFunc = (entries)=> {
     		target.style.willChange = ''
 			window.removeEventListener('scroll', listener, {passive: true})
 		}
+
+		requestAnimationFrame(parallaxFunc.bind(target))
 	})
 }
 
 const parallaxFunc = function() {
 	const index =  Number(this.getAttribute('data-index'))
-	const targetPosi =  this.getBoundingClientRect().top + scrollTop
-	const setVal = ((scrollBottom - targetPosi) * settings[index].scrollRatio).toFixed(1)
-	settings[index].child.style.transform = 'translate3d(0,'+ (setVal *-1) +'px,0)'
+	let targetPosi = scrollTop + 100
+
+	//const setVal = ((scrollBottom - targetPosi) * settings[index].scrollRatio).toFixed(1) * 1.1
+
+	let setVal = (targetPosi - settings[index].scrollRatio.toFixed(1))
+
+	settings[index].child.style.transform = 'translate3d(0,'+ (setVal) +'px,0)'
 }
 
 
 let observer = new IntersectionObserver(observerFunc, {
 	root: null,
 	rootMargin: '0px',
-	threshold: 0
+	threshold: .5
 })
 
 const bindThem = (elem) => {
@@ -102,6 +113,11 @@ const bindThem = (elem) => {
 	requestAnimationFrame(parallaxFunc.bind(elem))
 }
 
+const addObserver = (entries)=> {
+	entries.forEach(entry => {
+		requestAnimationFrame(parallaxFunc.bind(entry))
+	})
+}
 
 window.addEventListener('DOMContentLoaded', () => {
 	const bgAmin = document.getElementById('background-animation')

@@ -7,7 +7,7 @@
   \*************************************/
 /***/ (() => {
 
-console.log('component init');
+
 
 /***/ }),
 
@@ -38,8 +38,10 @@ var parallax = function parallax() {
     }
     settings.push({
       child: child,
-      scrollRatio: (child.clientHeight - target.clientHeight) / (winH + target.clientHeight)
+      //scrollRatio: (child.clientHeight - target.clientHeight) / (winH + target.clientHeight)
+      scrollRatio: child.clientHeight / (winH + target.clientHeight)
     });
+    console.log(settings);
     setListener.push({
       target: target,
       handleEvent: function handleEvent() {
@@ -82,22 +84,31 @@ var observerFunc = function observerFunc(entries) {
         passive: true
       });
     }
+    requestAnimationFrame(parallaxFunc.bind(target));
   });
 };
 var parallaxFunc = function parallaxFunc() {
   var index = Number(this.getAttribute('data-index'));
-  var targetPosi = this.getBoundingClientRect().top + scrollTop;
-  var setVal = ((scrollBottom - targetPosi) * settings[index].scrollRatio).toFixed(1);
-  settings[index].child.style.transform = 'translate3d(0,' + setVal * -1 + 'px,0)';
+  var targetPosi = scrollTop + 100;
+
+  //const setVal = ((scrollBottom - targetPosi) * settings[index].scrollRatio).toFixed(1) * 1.1
+
+  var setVal = targetPosi - settings[index].scrollRatio.toFixed(1);
+  settings[index].child.style.transform = 'translate3d(0,' + setVal + 'px,0)';
 };
 var observer = new IntersectionObserver(observerFunc, {
   root: null,
   rootMargin: '0px',
-  threshold: 0
+  threshold: .5
 });
 var bindThem = function bindThem(elem) {
   observer.observe(elem);
   requestAnimationFrame(parallaxFunc.bind(elem));
+};
+var addObserver = function addObserver(entries) {
+  entries.forEach(function (entry) {
+    requestAnimationFrame(parallaxFunc.bind(entry));
+  });
 };
 window.addEventListener('DOMContentLoaded', function () {
   var bgAmin = document.getElementById('background-animation');
@@ -192,7 +203,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_utils_parallax__WEBPACK_IMPORTED_MODULE_1__);
 
 
-console.log('init......');
 })();
 
 // This entry needs to be wrapped in an IIFE because it needs to be in strict mode.

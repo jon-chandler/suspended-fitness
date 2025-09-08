@@ -56,30 +56,27 @@
 
  #background-animation {
  	position: absolute;
- 	top: 0;
+ 	top: 0px;
  	left: 0;
  	width: 100vw;
-	height: 900px;
+	height: 800px;
  	z-index: 1;
+ 	
+	.js-parallax-elem {
+		transition: .4s;
+	}
 
  	.parallax-elem {
 		position: absolute;
-		width: 200px;
 	}
 	.parallax-area-01 {
 	  	right: 440px;
-	  	height: 150px;
-	  	margin-top: 300px;
 	}
 	.parallax-area-02 {
 	  	right: 330px;
-	  	height: 250px;
-	  	margin-top: 399px;
 	}
 	.parallax-area-03 {
 	  	right: 150px;
-	  	height: 350px;
-	  	margin-top: 410px;
 	}
 
 
