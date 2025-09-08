@@ -31,6 +31,8 @@ $footerMin: 380px;
 @import "./components/buttons";
 @import "./components/parallax";
 
+@import "./helpers/filters";
+
 body, p, input, label, a, div, placeholder {
     font-family: 'HaptikBold', sans-serif;
 }

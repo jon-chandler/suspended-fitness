@@ -13604,6 +13604,7 @@ footer {
 
 .card {
   border-radius: 0;
+  padding: 4em;
   min-height: 400px;
 }
 .card:nth-of-type(2) {
@@ -13615,7 +13616,7 @@ footer {
 }
 
 .pull-left-30 {
-  margin-left: -30px;
+  margin-left: -4em;
 }
 
 .button {
@@ -13728,11 +13729,10 @@ footer {
   max-width: 1600px;
 }
 #background-animation .js-parallax-elem {
-  transition: 0.4s;
+  transition: 0.2s;
 }
 #background-animation .parallax-elem {
   position: absolute;
-  transition: 0.4s;
 }
 #background-animation .parallax-elem img {
   min-width: -moz-max-content;
@@ -13773,6 +13773,10 @@ footer {
   #background-animation .parallax-area-03 {
     opacity: 0;
   }
+}
+
+.filter--pink {
+  filter: sepia(90%) saturate(100%) hue-rotate(245deg) brightness(100%);
 }
 
 body, p, input, label, a, div, placeholder {

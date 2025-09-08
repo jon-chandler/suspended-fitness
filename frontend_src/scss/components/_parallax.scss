@@ -26,12 +26,12 @@ $container-w: 1600px;
  	max-width: $container-w;
  	
 	.js-parallax-elem {
-		transition: .4s;
+		transition: .2s;
 	}
 
  	.parallax-elem {
 		position: absolute;
-		transition: .4s;
+		
 
 		img {
 			min-width: max-content;
