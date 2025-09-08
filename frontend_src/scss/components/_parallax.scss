@@ -1,0 +1,53 @@
+.pole {
+ 	content: '';
+	width: 10px;
+	height: 200vh;
+	background: white;
+	display: block;
+	position: absolute;
+ }
+
+ #background-animation {
+ 	position: absolute;
+ 	top: 0px;
+ 	left: 0;
+ 	width: 100vw;
+	height: calc(100% - $footerMin/2);
+ 	z-index: 1;
+ 	overflow: hidden;
+ 	
+	.js-parallax-elem {
+		transition: .4s;
+	}
+
+ 	.parallax-elem {
+		position: absolute;
+	}
+	.parallax-area-01 {
+	  	left: 670px;
+	  	margin-top: -290px;
+
+	  	&:before {
+	  		@extend .pole;
+	  		left: 44px;
+	  	}
+	}
+	.parallax-area-02 {
+	  	left: 918px;
+	  	margin-top: -230px;
+
+	  	&:before {
+	  		@extend .pole;
+	  		left: 24px;
+	  	}
+	}
+	.parallax-area-03 {
+	  	left: 1123px;
+	  	margin-top: -180px;
+
+	  	&:before {
+	  		@extend .pole;
+	  		left: 44px;
+	  	}
+	}
+ }

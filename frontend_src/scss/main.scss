@@ -27,6 +27,7 @@ $footerMin: 380px;
 @import "./layout/body";
 
 @import "./components/buttons";
+@import "./components/parallax";
 
 body, p, input, label, a, div, placeholder {
     font-family: 'HaptikBold', sans-serif;

@@ -13598,30 +13598,6 @@ footer {
   text-rendering: optimizeLegibility;
 }
 
-#background-animation {
-  position: absolute;
-  top: 0px;
-  left: 0;
-  width: 100vw;
-  height: 800px;
-  z-index: 1;
-}
-#background-animation .js-parallax-elem {
-  transition: 0.4s;
-}
-#background-animation .parallax-elem {
-  position: absolute;
-}
-#background-animation .parallax-area-01 {
-  right: 440px;
-}
-#background-animation .parallax-area-02 {
-  right: 330px;
-}
-#background-animation .parallax-area-03 {
-  right: 150px;
-}
-
 .button {
   text-align: center;
   border-radius: 40px;
@@ -13710,6 +13686,52 @@ footer {
     transform: translateX(0);
   }
 }
+.pole, #background-animation .parallax-area-03:before, #background-animation .parallax-area-02:before, #background-animation .parallax-area-01:before {
+  content: "";
+  width: 10px;
+  height: 200vh;
+  background: white;
+  display: block;
+  position: absolute;
+}
+
+#background-animation {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100vw;
+  height: calc(100% - 190px);
+  z-index: 1;
+  overflow: hidden;
+}
+#background-animation .js-parallax-elem {
+  transition: 0.4s;
+}
+#background-animation .parallax-elem {
+  position: absolute;
+}
+#background-animation .parallax-area-01 {
+  left: 670px;
+  margin-top: -290px;
+}
+#background-animation .parallax-area-01:before {
+  left: 44px;
+}
+#background-animation .parallax-area-02 {
+  left: 918px;
+  margin-top: -230px;
+}
+#background-animation .parallax-area-02:before {
+  left: 24px;
+}
+#background-animation .parallax-area-03 {
+  left: 1123px;
+  margin-top: -180px;
+}
+#background-animation .parallax-area-03:before {
+  left: 44px;
+}
+
 body, p, input, label, a, div, placeholder {
   font-family: "HaptikBold", sans-serif;
 }

@@ -52,32 +52,3 @@
     overflow-wrap: break-word;
     text-rendering: optimizeLegibility;
  }
-
-
- #background-animation {
- 	position: absolute;
- 	top: 0px;
- 	left: 0;
- 	width: 100vw;
-	height: 800px;
- 	z-index: 1;
- 	
-	.js-parallax-elem {
-		transition: .4s;
-	}
-
- 	.parallax-elem {
-		position: absolute;
-	}
-	.parallax-area-01 {
-	  	right: 440px;
-	}
-	.parallax-area-02 {
-	  	right: 330px;
-	}
-	.parallax-area-03 {
-	  	right: 150px;
-	}
-
-
- }
