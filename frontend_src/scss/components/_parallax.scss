@@ -20,10 +20,10 @@ $container-w: 1600px;
  	transform: translateX(-50%);
  	width: 100vw;
 	height: calc(100% - $footerMin/2);
+	min-height: 1000px;
  	z-index: 1;
  	overflow: hidden;
  	max-width: $container-w;
-
  	
 	.js-parallax-elem {
 		transition: .4s;

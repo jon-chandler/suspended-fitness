@@ -1,0 +1,23 @@
+.card-container {
+	padding-bottom: 92px;
+}
+
+
+.card {
+	border-radius: 0;
+	min-height: 400px; // demo
+
+
+	&:nth-of-type(2) {
+		margin-top: 130px;
+		min-height: 650px; //demo
+	}	
+
+	&--pink {
+		background: $corePink;
+	}
+}
+
+.pull-left-30 {
+	margin-left: -30px;
+}
