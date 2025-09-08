@@ -3,6 +3,7 @@ $media-m: 767.98px;
 $media-l: 879.98px;
 $media-xl: 1023.98px;
 $media-xl2: 1123.98px;
+$media-xxl: 1623.98px;
 
 $grid-breakpoints: (
     xs: 0,
@@ -10,7 +11,8 @@ $grid-breakpoints: (
     md: 767.98px,
     lg: 879.98px,
     xl: 1023px,
-    xl2: 1224px
+    xl2: 1224px,
+    xxl: 1624px
 ) !default;
 
 
@@ -18,9 +20,9 @@ $grid-breakpoints: (
 //
 //    >> breakpoint-next(sm)
 //    md
-//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1600px))
 //    md
-//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl xxl))
 //    md
 @function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
   $n: index($breakpoint-names, $name);
@@ -33,7 +35,7 @@ $grid-breakpoints: (
 
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
 //
-//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, zl2: 1300px))
+//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xl2: 1300px))
 //    576px
 @function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
   $min: map-get($breakpoints, $name);
