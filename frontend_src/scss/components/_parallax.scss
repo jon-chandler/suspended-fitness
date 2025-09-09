@@ -1,4 +1,5 @@
-$max-w-01: 600px;
+$max-w-01-s: 600px;
+$max-w-01: 779px;
 $max-w-02: 1400px;
 $max-w-03: 1600px;
 
@@ -22,8 +23,13 @@ $container-w: 1600px;
 	height: auto;
 	min-height: 200vh;
  	z-index: 1;
- 	//overflow: hidden;
+ 	overflow: hidden;
  	max-width: $container-w;
+
+ 	@include media-breakpoint-down(md) { 
+ 		//min-height: 100vh;
+ 		border: 2px solid red;
+ 	}
  	
 	.js-parallax-elem {
 		opacity: 0;
@@ -45,15 +51,24 @@ $container-w: 1600px;
 	.parallax-area-01 {
 	  	left: 670px;
 	  	margin-top: -320px;
+	  	margin-left: 0;
 
 	  	&:before {
 	  		@extend .pole;
 	  		left: 44px;
 	  	}
 
+
+
 	  	@media (max-width: $max-w-01) {
+	  		margin-left: -140px;
+	  	}
+
+	  	
+	  	@media (max-width: $max-w-01-s) {
 	  		margin-left: -340px;
 	  	}
+
 	}
 	.parallax-area-02 {
 	  	left: 918px;
@@ -85,7 +100,7 @@ $container-w: 1600px;
 
 	.parallax-area-04 {
 	  	left: 230px;
-	  	padding-top: 800px;
+	  	padding-top: 850px;
 	  	
 	  	&:before {
 	  		@extend .pole;
@@ -93,7 +108,7 @@ $container-w: 1600px;
 	  	}
 
 	  	img {
-	  		margin-top: -100px;
+	  		margin-top: -80px;
 	  	}
 
 	  	@media (max-width: $max-w-02) {

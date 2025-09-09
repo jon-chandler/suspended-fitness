@@ -49,7 +49,8 @@ const parallax = ()=> {
 
 		setTimeout(()=> {
 			child.classList.add('add-trans')
-		}, 500)
+			window.scrollTo(0,1)
+		}, 100)
 		
 	})
 
@@ -97,6 +98,12 @@ const parallaxFunc = function() {
 	let targetPosi = scrollTop + 100
 
 	let setVal = (targetPosi - settings[index].scrollRatio.toFixed(1))
+
+	//console.log('>', settings[index].child, 'SCROLL', setVal, 'TOP', scrollTop, 'BOTTOM', scrollBottom)
+
+	if(scrollBottom - scrollTop < setVal) {
+		setVal = 0
+	}
 
 	settings[index].child.style.transform = 'translate3d(0,'+ (setVal) +'px,0)'
 }

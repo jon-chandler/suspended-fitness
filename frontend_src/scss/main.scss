@@ -35,10 +35,15 @@ $footerMin: 380px;
 
 body, p, input, label, a, div, placeholder {
     font-family: 'HaptikBold', sans-serif;
+    overscroll-behavior: none;
 }
 
 body {
     @extend .gradient-blue;
+}
+
+html, body {
+
 }
 
 .dev-border {

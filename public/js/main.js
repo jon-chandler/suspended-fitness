@@ -50,7 +50,8 @@ var parallax = function parallax() {
     bindThem(target);
     setTimeout(function () {
       child.classList.add('add-trans');
-    }, 500);
+      window.scrollTo(0, 1);
+    }, 100);
   });
   window.addEventListener('resize', function () {
     clearTimeout(resizeID);
@@ -93,6 +94,12 @@ var parallaxFunc = function parallaxFunc() {
   var index = Number(this.getAttribute('data-index'));
   var targetPosi = scrollTop + 100;
   var setVal = targetPosi - settings[index].scrollRatio.toFixed(1);
+
+  //console.log('>', settings[index].child, 'SCROLL', setVal, 'TOP', scrollTop, 'BOTTOM', scrollBottom)
+
+  if (scrollBottom - scrollTop < setVal) {
+    setVal = 0;
+  }
   settings[index].child.style.transform = 'translate3d(0,' + setVal + 'px,0)';
 };
 var observer = new IntersectionObserver(observerFunc, {

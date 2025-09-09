@@ -13770,7 +13770,13 @@ footer {
   height: auto;
   min-height: 200vh;
   z-index: 1;
+  overflow: hidden;
   max-width: 1600px;
+}
+@media (max-width: 767.98px) {
+  #background-animation {
+    border: 2px solid red;
+  }
 }
 #background-animation .js-parallax-elem {
   opacity: 0;
@@ -13789,9 +13795,15 @@ footer {
 #background-animation .parallax-area-01 {
   left: 670px;
   margin-top: -320px;
+  margin-left: 0;
 }
 #background-animation .parallax-area-01:before {
   left: 44px;
+}
+@media (max-width: 779px) {
+  #background-animation .parallax-area-01 {
+    margin-left: -140px;
+  }
 }
 @media (max-width: 600px) {
   #background-animation .parallax-area-01 {
@@ -13824,13 +13836,13 @@ footer {
 }
 #background-animation .parallax-area-04 {
   left: 230px;
-  padding-top: 800px;
+  padding-top: 850px;
 }
 #background-animation .parallax-area-04:before {
   left: 136px;
 }
 #background-animation .parallax-area-04 img {
-  margin-top: -100px;
+  margin-top: -80px;
 }
 @media (max-width: 1400px) {
   #background-animation .parallax-area-04 {
@@ -13844,6 +13856,7 @@ footer {
 
 body, p, input, label, a, div, placeholder {
   font-family: "HaptikBold", sans-serif;
+  overscroll-behavior: none;
 }
 
 .dev-border {
