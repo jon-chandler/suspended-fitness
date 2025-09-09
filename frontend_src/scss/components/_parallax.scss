@@ -6,8 +6,8 @@ $container-w: 1600px;
 
 .pole {
  	content: '';
-	width: 10px;
-	height: 200vh;
+	width: 12px;
+	height: 120vh;
 	background: white;
 	display: block;
 	position: absolute;
@@ -19,14 +19,19 @@ $container-w: 1600px;
  	left: 50%;
  	transform: translateX(-50%);
  	width: 100vw;
-	height: calc(100% - $footerMin/2);
-	min-height: 1000px;
+	height: auto;
+	min-height: 200vh;
  	z-index: 1;
- 	overflow: hidden;
+ 	//overflow: hidden;
  	max-width: $container-w;
  	
 	.js-parallax-elem {
-		transition: .2s;
+		opacity: 0;
+	}
+
+	.add-trans {
+		transition: .6s;
+		opacity: 1;
 	}
 
  	.parallax-elem {
@@ -39,7 +44,7 @@ $container-w: 1600px;
 	}
 	.parallax-area-01 {
 	  	left: 670px;
-	  	margin-top: -290px;
+	  	margin-top: -320px;
 
 	  	&:before {
 	  		@extend .pole;
@@ -52,7 +57,7 @@ $container-w: 1600px;
 	}
 	.parallax-area-02 {
 	  	left: 918px;
-	  	margin-top: -230px;
+	  	margin-top: -180px;
 
 	  	&:before {
 	  		@extend .pole;
@@ -74,6 +79,24 @@ $container-w: 1600px;
 	  	}
 
 	  	@media (max-width: $max-w-03) {
+	  		opacity: 0;
+	  	}
+	}
+
+	.parallax-area-04 {
+	  	left: 230px;
+	  	padding-top: 800px;
+	  	
+	  	&:before {
+	  		@extend .pole;
+	  		left: 136px;
+	  	}
+
+	  	img {
+	  		margin-top: -100px;
+	  	}
+
+	  	@media (max-width: $max-w-02) {
 	  		opacity: 0;
 	  	}
 	}

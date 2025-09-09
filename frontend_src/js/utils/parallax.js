@@ -7,6 +7,8 @@ let winH = window.innerHeight
 let scrollTop = window.pageYOffset || document.documentElement.scrollTop
 let scrollBottom = scrollTop + winH
 
+const bgContainer = document.getElementById('background-animation')
+
 
 const parallax = ()=> {
 
@@ -29,14 +31,10 @@ const parallax = ()=> {
 			return
 		}
 
-		
 		settings.push({
 			child: child,
-			//scrollRatio: (child.clientHeight - target.clientHeight) / (winH + target.clientHeight)
-			scrollRatio: child.clientHeight / (winH + target.clientHeight)
+			scrollRatio: (child.clientHeight - target.clientHeight) / (winH + target.clientHeight)
 		})
-
-		console.log(settings)		
 
 		setListener.push(
 			{
@@ -49,6 +47,10 @@ const parallax = ()=> {
 
 		bindThem(target)
 
+		setTimeout(()=> {
+			child.classList.add('add-trans')
+		}, 500)
+		
 	})
 
 
@@ -94,8 +96,6 @@ const parallaxFunc = function() {
 	const index =  Number(this.getAttribute('data-index'))
 	let targetPosi = scrollTop + 100
 
-	//const setVal = ((scrollBottom - targetPosi) * settings[index].scrollRatio).toFixed(1) * 1.1
-
 	let setVal = (targetPosi - settings[index].scrollRatio.toFixed(1))
 
 	settings[index].child.style.transform = 'translate3d(0,'+ (setVal) +'px,0)'
@@ -126,5 +126,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		return
 	}
 
+
 	parallax()
+	bgContainer.scrollTo(0, window.innerHeight)
 })

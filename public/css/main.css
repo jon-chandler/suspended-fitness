@@ -6,6 +6,10 @@
   background: linear-gradient(90deg, #467FFF 0%, #2367FF 28.13%, #0A56FF 58.26%, #004EFC 80.56%, #0048EA 100%);
 }
 
+.transp {
+  background: none;
+}
+
 body {
   margin: 0;
   scroll-behavior: smooth;
@@ -103,6 +107,10 @@ a {
 }
 a.email {
   color: #f5a6ff;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+  margin-bottom: 24px !important;
 }
 
 p, a, input, label {
@@ -605,6 +613,10 @@ input:-webkit-autofill:active {
 
 .mt-48 {
   margin-top: 48px !important;
+}
+
+.mt-60 {
+  margin-top: 60px !important;
 }
 
 .mt-16 {
@@ -13550,7 +13562,7 @@ footer {
 
 .content {
   padding-top: 96px;
-  min-height: calc(100vh - 380px);
+  min-height: 600px;
 }
 @media (min-width: 1024px) {
   .content .col-xl-3 {
@@ -13605,18 +13617,51 @@ footer {
 .card {
   border-radius: 0;
   padding: 4em;
-  min-height: 400px;
+  align-self: baseline;
+}
+@media (max-width: 879.98px) {
+  .card {
+    margin-left: 0;
+  }
 }
 .card:nth-of-type(2) {
   margin-top: 130px;
-  min-height: 650px;
+  align-self: self-start;
+}
+@media (max-width: 879.98px) {
+  .card:nth-of-type(2) {
+    margin-top: 16px;
+  }
+}
+.card--white {
+  background: #e3e3e3;
 }
 .card--pink {
   background: #f5a6ff;
 }
+.card--blue {
+  background: #004fff;
+}
+.card--altBlue {
+  background: aqua;
+}
+.card--grey {
+  background: #e7dfd9;
+}
+.card--yellow {
+  background: #f3ff00;
+}
+.card img {
+  min-width: 100%;
+}
 
 .pull-left-30 {
   margin-left: -4em;
+}
+@media (max-width: 879.98px) {
+  .pull-left-30 {
+    margin-left: 0;
+  }
 }
 
 .button {
@@ -13707,10 +13752,10 @@ footer {
     transform: translateX(0);
   }
 }
-.pole, #background-animation .parallax-area-03:before, #background-animation .parallax-area-02:before, #background-animation .parallax-area-01:before {
+.pole, #background-animation .parallax-area-04:before, #background-animation .parallax-area-03:before, #background-animation .parallax-area-02:before, #background-animation .parallax-area-01:before {
   content: "";
-  width: 10px;
-  height: 200vh;
+  width: 12px;
+  height: 120vh;
   background: white;
   display: block;
   position: absolute;
@@ -13722,14 +13767,17 @@ footer {
   left: 50%;
   transform: translateX(-50%);
   width: 100vw;
-  height: calc(100% - 190px);
-  min-height: 1000px;
+  height: auto;
+  min-height: 200vh;
   z-index: 1;
-  overflow: hidden;
   max-width: 1600px;
 }
 #background-animation .js-parallax-elem {
-  transition: 0.2s;
+  opacity: 0;
+}
+#background-animation .add-trans {
+  transition: 0.6s;
+  opacity: 1;
 }
 #background-animation .parallax-elem {
   position: absolute;
@@ -13740,7 +13788,7 @@ footer {
 }
 #background-animation .parallax-area-01 {
   left: 670px;
-  margin-top: -290px;
+  margin-top: -320px;
 }
 #background-animation .parallax-area-01:before {
   left: 44px;
@@ -13752,7 +13800,7 @@ footer {
 }
 #background-animation .parallax-area-02 {
   left: 918px;
-  margin-top: -230px;
+  margin-top: -180px;
 }
 #background-animation .parallax-area-02:before {
   left: 24px;
@@ -13771,6 +13819,21 @@ footer {
 }
 @media (max-width: 1600px) {
   #background-animation .parallax-area-03 {
+    opacity: 0;
+  }
+}
+#background-animation .parallax-area-04 {
+  left: 230px;
+  padding-top: 800px;
+}
+#background-animation .parallax-area-04:before {
+  left: 136px;
+}
+#background-animation .parallax-area-04 img {
+  margin-top: -100px;
+}
+@media (max-width: 1400px) {
+  #background-animation .parallax-area-04 {
     opacity: 0;
   }
 }

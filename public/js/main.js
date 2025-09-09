@@ -23,6 +23,7 @@ var resizeID;
 var winH = window.innerHeight;
 var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 var scrollBottom = scrollTop + winH;
+var bgContainer = document.getElementById('background-animation');
 var parallax = function parallax() {
   var targetClass = '.parallax-elem';
   var childClass = '.js-parallax-elem';
@@ -38,10 +39,8 @@ var parallax = function parallax() {
     }
     settings.push({
       child: child,
-      //scrollRatio: (child.clientHeight - target.clientHeight) / (winH + target.clientHeight)
-      scrollRatio: child.clientHeight / (winH + target.clientHeight)
+      scrollRatio: (child.clientHeight - target.clientHeight) / (winH + target.clientHeight)
     });
-    console.log(settings);
     setListener.push({
       target: target,
       handleEvent: function handleEvent() {
@@ -49,6 +48,9 @@ var parallax = function parallax() {
       }
     });
     bindThem(target);
+    setTimeout(function () {
+      child.classList.add('add-trans');
+    }, 500);
   });
   window.addEventListener('resize', function () {
     clearTimeout(resizeID);
@@ -90,9 +92,6 @@ var observerFunc = function observerFunc(entries) {
 var parallaxFunc = function parallaxFunc() {
   var index = Number(this.getAttribute('data-index'));
   var targetPosi = scrollTop + 100;
-
-  //const setVal = ((scrollBottom - targetPosi) * settings[index].scrollRatio).toFixed(1) * 1.1
-
   var setVal = targetPosi - settings[index].scrollRatio.toFixed(1);
   settings[index].child.style.transform = 'translate3d(0,' + setVal + 'px,0)';
 };
@@ -116,6 +115,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return;
   }
   parallax();
+  bgContainer.scrollTo(0, window.innerHeight);
 });
 
 /***/ })
