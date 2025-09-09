@@ -13773,11 +13773,6 @@ footer {
   overflow: hidden;
   max-width: 1600px;
 }
-@media (max-width: 767.98px) {
-  #background-animation {
-    border: 2px solid red;
-  }
-}
 #background-animation .js-parallax-elem {
   opacity: 0;
 }
@@ -13787,6 +13782,7 @@ footer {
 }
 #background-animation .parallax-elem {
   position: absolute;
+  transition: 0.3s;
 }
 #background-animation .parallax-elem img {
   min-width: -moz-max-content;
@@ -13839,7 +13835,8 @@ footer {
   padding-top: 850px;
 }
 #background-animation .parallax-area-04:before {
-  left: 136px;
+  left: 135px;
+  width: 15px;
 }
 #background-animation .parallax-area-04 img {
   margin-top: -80px;

@@ -11,6 +11,23 @@
 
 /***/ }),
 
+/***/ "./js/main.js":
+/*!********************!*\
+  !*** ./js/main.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/navigation */ "./js/components/navigation.js");
+/* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_navigation__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/parallax */ "./js/utils/parallax.js");
+/* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_utils_parallax__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+/***/ }),
+
 /***/ "./js/utils/parallax.js":
 /*!******************************!*\
   !*** ./js/utils/parallax.js ***!
@@ -125,6 +142,16 @@ window.addEventListener('DOMContentLoaded', function () {
   bgContainer.scrollTo(0, window.innerHeight);
 });
 
+/***/ }),
+
+/***/ "./scss/main.scss":
+/*!************************!*\
+  !*** ./scss/main.scss ***!
+  \************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nHookWebpackError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Undefined variable.\n    ╷\n173 │         transition: $transition-f;\n    │                     ^^^^^^^^^^^^^\n    ╵\n  scss/core/_typography.scss 173:21  @forward\n  scss/main.scss 6:1                 root stylesheet\n    at tryRunOrWebpackError (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/HookWebpackError.js:87:9)\n    at __webpack_require_module__ (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5515:12)\n    at __webpack_require__ (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5462:18)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5550:20\n    at symbolIterator (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3485:9)\n    at done (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3527:9)\n    at Hook.eval [as callAsync] (eval at create (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:15:1)\n    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/tapable/lib/Hook.js:21:14)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5437:43\n    at symbolIterator (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3482:9)\n    at timesSync (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:2297:7)\n    at Object.eachLimit (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3463:5)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5399:16\n    at symbolIterator (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3485:9)\n    at timesSync (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:2297:7)\n    at Object.eachLimit (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3463:5)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5367:15\n    at symbolIterator (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3485:9)\n    at done (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3527:9)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5313:8\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:3713:6\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/HookWebpackError.js:68:2\n    at Hook.eval [as callAsync] (eval at create (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:15:1)\n    at Cache.store (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Cache.js:113:20)\n    at ItemCacheFacade.store (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/CacheFacade.js:142:15)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:3712:11\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Cache.js:99:5\n    at Hook.eval [as callAsync] (eval at create (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:16:1)\n    at Cache.get (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Cache.js:81:18)\n    at ItemCacheFacade.get (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/CacheFacade.js:116:15)\n    at Compilation._codeGenerationModule (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:3680:9)\n    at codeGen (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5301:11)\n    at symbolIterator (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3482:9)\n    at timesSync (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:2297:7)\n    at Object.eachLimit (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3463:5)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5331:14\n    at processQueue (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/util/processAsyncTree.js:61:4)\n    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)\n-- inner error --\nError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Undefined variable.\n    ╷\n173 │         transition: $transition-f;\n    │                     ^^^^^^^^^^^^^\n    ╵\n  scss/core/_typography.scss 173:21  @forward\n  scss/main.scss 6:1                 root stylesheet\n    at Object.<anonymous> (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/scss/main.scss:1:7)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/javascript/JavascriptModulesPlugin.js:544:10\n    at Hook.eval [as call] (eval at create (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/tapable/lib/HookCodeFactory.js:19:10), <anonymous>:7:1)\n    at Hook.CALL_DELEGATE [as _call] (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/tapable/lib/Hook.js:16:14)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5517:39\n    at tryRunOrWebpackError (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/HookWebpackError.js:82:7)\n    at __webpack_require_module__ (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5515:12)\n    at __webpack_require__ (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5462:18)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5550:20\n    at symbolIterator (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3485:9)\n    at done (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3527:9)\n    at Hook.eval [as callAsync] (eval at create (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:15:1)\n    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/tapable/lib/Hook.js:21:14)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5437:43\n    at symbolIterator (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3482:9)\n    at timesSync (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:2297:7)\n    at Object.eachLimit (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3463:5)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5399:16\n    at symbolIterator (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3485:9)\n    at timesSync (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:2297:7)\n    at Object.eachLimit (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3463:5)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5367:15\n    at symbolIterator (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3485:9)\n    at done (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3527:9)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5313:8\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:3713:6\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/HookWebpackError.js:68:2\n    at Hook.eval [as callAsync] (eval at create (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:15:1)\n    at Cache.store (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Cache.js:113:20)\n    at ItemCacheFacade.store (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/CacheFacade.js:142:15)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:3712:11\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Cache.js:99:5\n    at Hook.eval [as callAsync] (eval at create (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:16:1)\n    at Cache.get (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Cache.js:81:18)\n    at ItemCacheFacade.get (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/CacheFacade.js:116:15)\n    at Compilation._codeGenerationModule (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:3680:9)\n    at codeGen (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5301:11)\n    at symbolIterator (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3482:9)\n    at timesSync (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:2297:7)\n    at Object.eachLimit (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/neo-async/async.js:3463:5)\n    at /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/Compilation.js:5331:14\n    at processQueue (/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/webpack/lib/util/processAsyncTree.js:61:4)\n    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)\n\nGenerated code for /Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!/Users/me/Sites/SUSPENDED-FITNESS/frontend_src/scss/main.scss\n1 | throw new Error(\"Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\\nSassError: Undefined variable.\\n    ╷\\n173 │         transition: $transition-f;\\n    │                     ^^^^^^^^^^^^^\\n    ╵\\n  scss/core/_typography.scss 173:21  @forward\\n  scss/main.scss 6:1                 root stylesheet\");");
+
 /***/ })
 
 /******/ 	});
@@ -195,34 +222,13 @@ window.addEventListener('DOMContentLoaded', function () {
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
-(() => {
-"use strict";
-var __webpack_exports__ = {};
-/*!********************!*\
-  !*** ./js/main.js ***!
-  \********************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/navigation */ "./js/components/navigation.js");
-/* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_navigation__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/parallax */ "./js/utils/parallax.js");
-/* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_utils_parallax__WEBPACK_IMPORTED_MODULE_1__);
-
-
-})();
-
-// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
-(() => {
-"use strict";
-/*!************************!*\
-  !*** ./scss/main.scss ***!
-  \************************/
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-})();
-
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	__webpack_require__("./js/main.js");
+/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./scss/main.scss");
+/******/ 	
 /******/ })()
 ;
 //# sourceMappingURL=main.js.map

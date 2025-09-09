@@ -28,7 +28,6 @@ $container-w: 1600px;
 
  	@include media-breakpoint-down(md) { 
  		//min-height: 100vh;
- 		border: 2px solid red;
  	}
  	
 	.js-parallax-elem {
@@ -36,13 +35,13 @@ $container-w: 1600px;
 	}
 
 	.add-trans {
-		transition: .6s;
+		transition: $transition-m;
 		opacity: 1;
 	}
 
  	.parallax-elem {
 		position: absolute;
-		
+		transition: $transition-f;
 
 		img {
 			min-width: max-content;
@@ -104,7 +103,8 @@ $container-w: 1600px;
 	  	
 	  	&:before {
 	  		@extend .pole;
-	  		left: 136px;
+	  		left: 135px;
+    		width: 15px;
 	  	}
 
 	  	img {

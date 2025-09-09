@@ -170,7 +170,7 @@ blockquote::after {
 	display: flex;
 
     span, img { 
-        transition: .3s;
+        transition: $transition-f;
         margin-right: 4px;
     }
     span {
