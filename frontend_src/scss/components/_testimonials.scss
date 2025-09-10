@@ -1,0 +1,55 @@
+.testimonial-container {
+	color: white;
+	background: $coreBlue;
+	padding: 4em 4em;
+
+	.testimonials {
+		color: $altYellow;
+		padding-bottom: 100px;
+
+		@include media-breakpoint-down(md) { 
+			padding-top: 42px;
+		}
+
+		.swiper {
+	      width: 100%;
+	      height: 100%;
+	      display: block;
+	    }
+
+		.swiper-slide {
+			text-align: left;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+	}
+
+
+	@include media-breakpoint-down(md) { 
+		padding: 2em;
+	}
+
+
+}
+
+.swiper-pagination-bullet {
+
+	width: 16px;
+	height: 16px;
+
+
+	&-active {
+		background-color: $altYellow;
+	}
+}
+
+
+.swiper-pagination {
+	text-align: unset;
+
+	@include media-breakpoint-down(md) { 
+		margin-top: 32px !important;
+	}
+}

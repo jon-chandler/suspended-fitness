@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Suspended Fitness</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
@@ -19,16 +20,16 @@
 		</header>
 
 		<section class="content section row self-center items-center">
-			<div class="col-xl-3 col-md-5 col-sm-10">
+			<div class="col-xl-6 col-md-8 col-sm-10">
 				<button class="button col-3 button--pink mb-32">Book Now</button>
-				<h1 class="is-header">Strength and confidence through pole and aerial - no experience needed</h1>
+				<h1 class="is-header">Strength and confidence through pole and aerial - no experience needed.</h1>
 			</div>
 		</section>
 
 		<section class="section col-12 row card-container">
 			<div class="card col-lg-7 row col-md-12 transp">
 				<div>
-					<p class="mb-32">We've been teaching pole dance fitness for over 20 years, which means we've learnt exactly how to get the best out of you, so you will gain a huge amount of strength and technique in a relaxed and safe environment.</p>
+					<p class="mb-32 haptik--sub-title-regular">We've been teaching pole dance fitness for over 20 years, which means we've learnt exactly how to get the best out of you, so you will gain a huge amount of strength and technique in a relaxed and safe environment.</p>
 					<div class="mt-60">
 						<h4>What We Offer</h4>
 						<ul>
@@ -55,8 +56,32 @@
 				</div>
 			</div>
 		</section>
-
 	</div>
+
+	<section class="susfit over-anim section testimonial-container col-12 row">
+		<div class="col-lg-4 col-md-12">
+			<h3>Testimonials</h3>
+			<p>We've said this a lot over the years. We are everyday people who found pole and aerial and want to share this fantastic sport and art form to everyone, because if we can do it, so can you.</p>
+			<p>You'll be blown away with what you can achieve with us in such a short amount of time. Whether you are 14 or 64. Whether you’re a Total Beginner or an Advanced student.</p>
+			<button class="button button--pink col-1 mt-32">Book Now</button>
+		</div>
+		<div class="col-lg-4 col-md-12 testimonials">
+			<div class="swiper testimonial-carousel">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<p>“Etiam mus morbi netus mollis. Elit amet gravida ac nibh ut mi sit elementum egestas. Morbi cras pharetra sit sed amet nec. Ultricies non lacus nisi duis. Massa massa odio tristique rhoncus erat in porta consectetur. Aliquam aliquet duis eget quis orci lacinia gravida pretium diam.”</p>
+					</div>
+					<div class="swiper-slide">
+						<p>“Elit amet gravida ac nibh ut mi sit elementum egestas. Morbi cras pharetra sit sed amet nec. Ultricies non lacus nisi duis. Massa massa odio tristique rhoncus erat in porta consectetur. Aliquam aliquet duis eget quis orci lacinia gravida pretium diam.”</p>
+					</div>
+					<div class="swiper-slide">
+						<p>“Massa massa odio tristique rhoncus erat in porta consectetur. Aliquam aliquet duis eget quis orci lacinia gravida pretium diam.”</p>
+					</div>
+				</div>
+				<div class="swiper-pagination testimonial-pagination"></div>
+			</div>
+		</div>
+	</section>
 
 	<footer class="flex-row over-anim">
 		<div class="footer__container container-fluid">
@@ -124,6 +149,22 @@
 
 
 	<script type="text/javascript" src="/js/main.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+	<script>
+		var swiper = new Swiper(".testimonial-carousel", {
+				spaceBetween: 30,
+				centeredSlides: true,
+				autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+			},
+	  		pagination: {
+	    		el: ".testimonial-pagination",
+	    		clickable: true,
+	  		},
+		})
+	</script>
 </body>
 </html>
 

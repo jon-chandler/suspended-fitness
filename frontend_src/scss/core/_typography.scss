@@ -4,10 +4,18 @@
 
 body, p, input, label, a, div, placeholder {
 	font-family: 'Haptik', sans-serif;
+	font-weight: 100;
+	font-size: 20px;
+	line-height: 30px;
 }
 
 h1, .is-header {
 	font-family: 'HaptikBold', sans-serif;
+	font-size: 94px;
+
+	@include media-breakpoint-down(lg) { 
+		font-size: 4rem;
+	}
 }
 .med {
 	font-family: 'HaptikMed', sans-serif;
@@ -71,7 +79,6 @@ blockquote::after {
 }
 
 .is-header {
-	font-size: 46px;
 	color: white;
 }
 
@@ -105,32 +112,14 @@ blockquote::after {
 		}
 		&--sub-title-regular { 
 			font-weight: 400;
-			font-size: 24px;
-			line-height: 32px;
+			font-size: 32px;
+			line-height: 40px;
 		}
-		&--button-link-caps-lg { 
-			text-transform: uppercase;
-			font-weight: 500;
+
+		&--body-regular {
+			font-weight: 100;
 			font-size: 20px;
-			line-height: 24px;
-			letter-spacing: 0.02em;
-		}
-		&--button-link-caps { 
-			text-transform: uppercase;
-			font-weight: 500;
-			font-size: 16px;
-			line-height: 20px;
-			letter-spacing: 0.02em;
-		}
-		&--button-link-medium { 
-			font-weight: 500;
-			font-size: 16px;
-			line-height: 24px;
-		}
-		&--body-regular { 
-			font-weight: 400;
-			font-size: 16px;
-			line-height: 24px;
+			line-height: 30px;
 		}
 		&--title-semibold { 
 			font-weight: 600;
@@ -142,27 +131,6 @@ blockquote::after {
 			font-size: 16px;
 			line-height: 44px;
 		}
-		&--article-body-regular { 
-			font-weight: 400;
-			font-size: 16px;
-			line-height: 32px;
-		}
-		&--label-regular { 
-			font-weight: 400;
-			font-size: 14px;
-			line-height: 24px;
-		}
-		&--label-semibold-caps { 
-			text-transform: uppercase;
-			font-weight: 600;
-			font-size: 12px;
-			line-height: 24px;
-		}
-		&--label-small-regular { 
-			font-weight: 400;
-			font-size: 12px;
-			line-height: 24px;
-		}
 
 	}
 
@@ -170,7 +138,7 @@ blockquote::after {
 	display: flex;
 
     span, img { 
-        transition: $transition-f;
+        transition: .3s;
         margin-right: 4px;
     }
     span {

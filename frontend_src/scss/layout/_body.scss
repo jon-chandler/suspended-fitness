@@ -1,6 +1,7 @@
 .content { 
 
-    padding-top: 96px;
+    padding-top: 126px;
+    padding-bottom: 126px;
     min-height: 600px;
 
     @include media-breakpoint-between(xl, 2xl) { 

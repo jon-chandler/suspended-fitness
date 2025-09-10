@@ -33,11 +33,12 @@ $footerMin: 380px;
 
 @import "./components/buttons";
 @import "./components/parallax";
+@import "./components/testimonials";
 
 @import "./helpers/filters";
 
 body, p, input, label, a, div, placeholder {
-    font-family: 'HaptikBold', sans-serif;
+    font-family: 'Haptik', sans-serif;
     overscroll-behavior: none;
 }
 

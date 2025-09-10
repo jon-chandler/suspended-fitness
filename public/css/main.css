@@ -76,24 +76,32 @@ textarea {
 @font-face {
   font-family: "HaptikBold";
   src: url(../compiled_assets/4dd6d4acdaf90d6ac008.woff2) format("woff2"), url(../compiled_assets/ec2ff4731291664a1521.woff) format("woff");
-  font-weight: bold;
 }
 @font-face {
   font-family: "HaptikMed";
-  font-weight: 400;
   src: url(../compiled_assets/b80f7c1adcd8b32fda80.ttf) format("ttf"), url(../compiled_assets/dd7a31df45649af83ef4.woff2) format("woff2"), url(../compiled_assets/6f104ca1c058c93e0d8d.woff) format("woff");
+  font-weight: 200;
 }
 @font-face {
   font-family: "Haptik";
   src: url(../compiled_assets/4f9377524a6fdf673720.woff2) format("woff2"), url(../compiled_assets/52dc3047faf1ddff8f73.woff) format("woff");
-  font-weight: 500;
+  font-weight: 100;
 }
 body, p, input, label, a, div, placeholder {
   font-family: "Haptik", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 h1, .h1, .is-header {
   font-family: "HaptikBold", sans-serif;
+  font-size: 94px;
+}
+@media (max-width: 879.98px) {
+  h1, .h1, .is-header {
+    font-size: 4rem;
+  }
 }
 
 .med {
@@ -155,7 +163,6 @@ blockquote::after {
 }
 
 .is-header {
-  font-size: 46px;
   color: white;
 }
 
@@ -190,32 +197,13 @@ blockquote::after {
 }
 .haptik--sub-title-regular {
   font-weight: 400;
-  font-size: 24px;
-  line-height: 32px;
-}
-.haptik--button-link-caps-lg {
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
-  letter-spacing: 0.02em;
-}
-.haptik--button-link-caps {
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 0.02em;
-}
-.haptik--button-link-medium {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 32px;
+  line-height: 40px;
 }
 .haptik--body-regular {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-weight: 100;
+  font-size: 20px;
+  line-height: 30px;
 }
 .haptik--title-semibold {
   font-weight: 600;
@@ -226,27 +214,6 @@ blockquote::after {
   font-weight: 400;
   font-size: 16px;
   line-height: 44px;
-}
-.haptik--article-body-regular {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 32px;
-}
-.haptik--label-regular {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-}
-.haptik--label-semibold-caps {
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 24px;
-}
-.haptik--label-small-regular {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 24px;
 }
 
 .arrow-link, .more-link, .back-link {
@@ -13561,7 +13528,8 @@ footer {
 }
 
 .content {
-  padding-top: 96px;
+  padding-top: 126px;
+  padding-bottom: 126px;
   min-height: 600px;
 }
 @media (min-width: 1024px) {
@@ -13624,6 +13592,11 @@ footer {
     margin-left: 0;
   }
 }
+@media (max-width: 767.98px) {
+  .card {
+    padding: 4em 2em;
+  }
+}
 .card:nth-of-type(2) {
   margin-top: 130px;
   align-self: self-start;
@@ -13680,6 +13653,7 @@ footer {
   align-items: center;
   cursor: pointer;
   border: none;
+  color: black;
 }
 .button--pink {
   background: #f5a6ff;
@@ -13755,7 +13729,7 @@ footer {
 .pole, #background-animation .parallax-area-04:before, #background-animation .parallax-area-03:before, #background-animation .parallax-area-02:before, #background-animation .parallax-area-01:before {
   content: "";
   width: 12px;
-  height: 120vh;
+  height: 180vh;
   background: white;
   display: block;
   position: absolute;
@@ -13768,7 +13742,7 @@ footer {
   transform: translateX(-50%);
   width: 100vw;
   height: auto;
-  min-height: 200vh;
+  min-height: 300vh;
   z-index: 1;
   overflow: hidden;
   max-width: 1600px;
@@ -13789,7 +13763,7 @@ footer {
   min-width: max-content;
 }
 #background-animation .parallax-area-01 {
-  left: 670px;
+  left: 720px;
   margin-top: -320px;
   margin-left: 0;
 }
@@ -13807,7 +13781,7 @@ footer {
   }
 }
 #background-animation .parallax-area-02 {
-  left: 918px;
+  left: 988px;
   margin-top: -180px;
 }
 #background-animation .parallax-area-02:before {
@@ -13819,7 +13793,7 @@ footer {
   }
 }
 #background-animation .parallax-area-03 {
-  left: 1123px;
+  left: 1183px;
   margin-top: -180px;
 }
 #background-animation .parallax-area-03:before {
@@ -13832,7 +13806,7 @@ footer {
 }
 #background-animation .parallax-area-04 {
   left: 230px;
-  padding-top: 850px;
+  padding-top: 1400px;
 }
 #background-animation .parallax-area-04:before {
   left: 135px;
@@ -13847,12 +13821,60 @@ footer {
   }
 }
 
+.testimonial-container {
+  color: white;
+  background: #004fff;
+  padding: 4em 4em;
+}
+.testimonial-container .testimonials {
+  color: #f3ff00;
+  padding-bottom: 100px;
+}
+@media (max-width: 767.98px) {
+  .testimonial-container .testimonials {
+    padding-top: 42px;
+  }
+}
+.testimonial-container .testimonials .swiper {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.testimonial-container .testimonials .swiper-slide {
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 767.98px) {
+  .testimonial-container {
+    padding: 2em;
+  }
+}
+
+.swiper-pagination-bullet {
+  width: 16px;
+  height: 16px;
+}
+.swiper-pagination-bullet-active {
+  background-color: #f3ff00;
+}
+
+.swiper-pagination {
+  text-align: unset;
+}
+@media (max-width: 767.98px) {
+  .swiper-pagination {
+    margin-top: 32px !important;
+  }
+}
+
 .filter--pink {
   filter: sepia(90%) saturate(100%) hue-rotate(245deg) brightness(100%);
 }
 
 body, p, input, label, a, div, placeholder {
-  font-family: "HaptikBold", sans-serif;
+  font-family: "Haptik", sans-serif;
   overscroll-behavior: none;
 }
 
