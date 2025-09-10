@@ -61,11 +61,15 @@ $container-w: 1600px;
 
 	  	@media (max-width: $max-w-01) {
 	  		margin-left: -140px;
+	  		margin-top: -30px;
 	  	}
 
 	  	
 	  	@media (max-width: $max-w-01-s) {
-	  		margin-left: -340px;
+	  		left: 56vw;
+	  		margin-left: unset;
+	  		margin-top: -230px;
+	  		opacity: .6;
 	  	}
 
 	}
@@ -99,7 +103,7 @@ $container-w: 1600px;
 
 	.parallax-area-04 {
 	  	left: 230px;
-	  	padding-top: 1400px;
+	  	padding-top: 1250px;
 	  	
 	  	&:before {
 	  		@extend .pole;
@@ -108,7 +112,7 @@ $container-w: 1600px;
 	  	}
 
 	  	img {
-	  		margin-top: -80px;
+	  		margin-top: -120px;
 	  	}
 
 	  	@media (max-width: $max-w-02) {

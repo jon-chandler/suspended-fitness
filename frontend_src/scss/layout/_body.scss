@@ -46,10 +46,7 @@
 
  .susfit {
  	@extend .generalPadding;
-
     overscroll-behavior-y: none;
     overflow-x: clip;
     position:relative;
-    overflow-wrap: break-word;
-    text-rendering: optimizeLegibility;
  }

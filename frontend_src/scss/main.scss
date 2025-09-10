@@ -44,6 +44,7 @@ body, p, input, label, a, div, placeholder {
 
 body {
     @extend .gradient-blue;
+    text-rendering: optimizeLegibility;
 }
 
 html, body {

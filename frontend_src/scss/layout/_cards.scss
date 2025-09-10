@@ -55,9 +55,10 @@
 }
 
 .pull-left-30 {
-	margin-left: -4em;
+	margin-left: 0;
+	transform: translateX(-4em);
 
 	@include media-breakpoint-down(lg) { 
-        margin-left: 0;
+        transform: translateX(0);
     }
 }

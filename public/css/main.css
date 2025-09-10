@@ -100,7 +100,7 @@ h1, .h1, .is-header {
 }
 @media (max-width: 879.98px) {
   h1, .h1, .is-header {
-    font-size: 4rem;
+    font-size: 2.4em;
   }
 }
 
@@ -13574,8 +13574,6 @@ footer {
   overscroll-behavior-y: none;
   overflow-x: clip;
   position: relative;
-  overflow-wrap: break-word;
-  text-rendering: optimizeLegibility;
 }
 
 .card-container {
@@ -13629,11 +13627,12 @@ footer {
 }
 
 .pull-left-30 {
-  margin-left: -4em;
+  margin-left: 0;
+  transform: translateX(-4em);
 }
 @media (max-width: 879.98px) {
   .pull-left-30 {
-    margin-left: 0;
+    transform: translateX(0);
   }
 }
 
@@ -13773,11 +13772,15 @@ footer {
 @media (max-width: 779px) {
   #background-animation .parallax-area-01 {
     margin-left: -140px;
+    margin-top: -30px;
   }
 }
 @media (max-width: 600px) {
   #background-animation .parallax-area-01 {
-    margin-left: -340px;
+    left: 56vw;
+    margin-left: unset;
+    margin-top: -230px;
+    opacity: 0.6;
   }
 }
 #background-animation .parallax-area-02 {
@@ -13806,14 +13809,14 @@ footer {
 }
 #background-animation .parallax-area-04 {
   left: 230px;
-  padding-top: 1400px;
+  padding-top: 1250px;
 }
 #background-animation .parallax-area-04:before {
   left: 135px;
   width: 15px;
 }
 #background-animation .parallax-area-04 img {
-  margin-top: -80px;
+  margin-top: -120px;
 }
 @media (max-width: 1400px) {
   #background-animation .parallax-area-04 {
@@ -13877,6 +13880,10 @@ footer {
 body, p, input, label, a, div, placeholder {
   font-family: "Haptik", sans-serif;
   overscroll-behavior: none;
+}
+
+body {
+  text-rendering: optimizeLegibility;
 }
 
 .dev-border {

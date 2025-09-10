@@ -71,6 +71,10 @@ module.exports = function(env, argv) {
                             }
                         }
                     ]
+            },
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
