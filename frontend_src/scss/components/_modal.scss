@@ -1,15 +1,32 @@
 .modal { 
     display: block;
     isolation: isolate;
-    z-index:2;
-    transition: all .6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    z-index: 2;
+    transition: all $transition-m cubic-bezier(0.645, 0.045, 0.355, 1);
     background: $nGrey;
-    transform: translateX(-100%);
+    transform: translateX(100%);
+
+
+    &.is-open {
+        transform: translateX(0);
+    }
+
 
     &__overlay { 
         position: fixed;
         top: 0;
         left: 0;
+    }
+
+    &__loader {
+        background: rgba($nGrey, .5);
+        transform: translateY(100%);
+        transition: all $transition-m cubic-bezier(0.645, 0.045, 0.355, 1);;
+
+        &.is-open {
+            transform: translateY(0%);
+        }
+
     }
 
     &__content { 
@@ -71,8 +88,4 @@
         font-size: 16px;
         line-height: 24px;
     }
-}
-
-.is-open { 
-    transform: translateX(0%);
 }

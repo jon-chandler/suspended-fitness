@@ -6,7 +6,7 @@
 	<title>Suspended Fitness</title>
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
-<body>
+<body class="scroll-lock">
 	<div class="susfit over-anim">
 		<header class="header flex-row">
 			<div class="logo col-11">
@@ -149,7 +149,7 @@
 		</div>
 	</section>
 
-	<div id="nav-overlay" class="modal modal__overlay">
+	<div id="nav-overlay" class="modal modal__overlay animate-left">
 		<div class="modal__close"><span class="only-lg">Close &nbsp;</span>X</div>
 
 		<nav class="modal__content">
@@ -168,6 +168,12 @@
 				</li>
 			</ul>
 		</nav>
+	</div>
+
+	<div class="modal modal__overlay modal__loader is-open">
+		<div class="modal__content">
+			<div class="overlay-loader"></div>
+		</div>
 	</div>
 
 

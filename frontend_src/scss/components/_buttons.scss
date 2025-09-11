@@ -13,14 +13,14 @@
     align-items: center;
     cursor:pointer;
 
-    border: none;
+    border: 1px solid transparent;
     color: black;
 
     &--pink {
         background: $corePink;
 
         &:hover,:focus {
-            background: $corePink50;
+            background: white;
         }
     }
 

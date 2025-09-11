@@ -359,6 +359,31 @@ input:-webkit-autofill:active {
   background-clip: padding-box;
 }
 
+.scroll-lock {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.overlay-loader {
+  background: url(../compiled_assets/45e5603c0a8d489af8dd.svg) no-repeat;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  animation: loadSpin 5.1s ease-in-out infinite;
+}
+
+@keyframes loadSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(3600deg);
+  }
+}
 .hidden {
   visibility: hidden;
   height: 0;
@@ -13464,11 +13489,11 @@ header .menu {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top center;
-  transition: 0.4s;
+  transition: 0.3s;
   cursor: pointer;
 }
 header .menu:hover {
-  transform: rotateY(180deg);
+  transform: skew(-0.2rad) rotate(-11deg);
 }
 
 footer {
@@ -13646,12 +13671,23 @@ footer {
   z-index: 2;
   transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
   background: #e7dfd9;
-  transform: translateX(-100%);
+  transform: translateX(100%);
+}
+.modal.is-open {
+  transform: translateX(0);
 }
 .modal__overlay {
   position: fixed;
   top: 0;
   left: 0;
+}
+.modal__loader {
+  background: rgba(231, 223, 217, 0.5);
+  transform: translateY(100%);
+  transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.modal__loader.is-open {
+  transform: translateY(0%);
 }
 .modal__content {
   display: flex;
@@ -13708,10 +13744,6 @@ footer {
   line-height: 24px;
 }
 
-.is-open {
-  transform: translateX(0%);
-}
-
 .button {
   text-align: center;
   border-radius: 40px;
@@ -13727,14 +13759,14 @@ footer {
        column-gap: 4px;
   align-items: center;
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   color: black;
 }
 .button--pink {
   background: #f5a6ff;
 }
 .button--pink:hover, .button--pink :focus {
-  background: rgba(245, 166, 255, 0.5);
+  background: white;
 }
 .button--blue {
   background: #004fff;
@@ -13946,9 +13978,16 @@ footer {
 .testimonial-container .testimonials .swiper-pagination-bullet {
   width: 16px;
   height: 16px;
+  background-color: white;
+  opacity: 0.25;
 }
 .testimonial-container .testimonials .swiper-pagination-bullet-active {
   background-color: #f3ff00;
+  opacity: 1;
+}
+.testimonial-container .testimonials .swiper-pagination-bullet:hover {
+  background-color: white;
+  opacity: 1;
 }
 @media (max-width: 767.98px) {
   .testimonial-container {

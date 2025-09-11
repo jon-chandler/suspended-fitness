@@ -22,15 +22,15 @@ header {
 		display: block;
 		width: 32px;
 		height: 40px;
-		background: url('/images/menu_icon.svg');
+		background: url('/images/menu_icon_on.svg');
 		background-size: contain;
     	background-repeat: no-repeat;
     	background-position: top center;
-		transition: .4s;
+		transition: $transition-f;
 		cursor: pointer;
 
 		&:hover {
-			transform: rotateY(180deg);
+			transform: skew(-0.2rad) rotate(-11deg);
 		}
 	}
 
