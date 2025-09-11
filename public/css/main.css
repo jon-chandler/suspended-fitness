@@ -13848,20 +13848,22 @@ footer {
 @media (min-width: 779px) and (max-width: 1400px) {
   #background-animation .parallax-area-01 {
     left: 52%;
+    margin-top: -310px;
   }
 }
 @media (max-width: 1400px) {
   #background-animation .parallax-area-01 {
     left: 70%;
   }
+  #background-animation .parallax-area-01:before {
+    min-height: 250vh;
+  }
 }
 @media (max-width: 600px) {
   #background-animation .parallax-area-01 {
     left: 52%;
+    margin-top: -30px;
     opacity: 0.6;
-  }
-  #background-animation .parallax-area-01:before {
-    min-height: 250vh;
   }
 }
 #background-animation .parallax-area-02 {
