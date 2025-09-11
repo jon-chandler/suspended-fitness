@@ -237,6 +237,9 @@ input:-webkit-autofill:active {
     row-gap: 32px;
 }
 
+.pointer {
+    cursor: pointer;
+}
 
 /* Text color utils - most typography styles (sizes, weights) are defined in typography.scss */
 .text-white { 

@@ -7,7 +7,15 @@
   \*************************************/
 /***/ (() => {
 
-
+var menuBtn = document.querySelector('.menu-btn');
+var navModal = document.getElementById('nav-overlay');
+var clsModal = document.querySelector('.modal__close');
+menuBtn.addEventListener('click', function () {
+  navModal.classList.toggle('is-open');
+});
+clsModal.addEventListener('click', function () {
+  navModal.classList.remove('is-open');
+});
 
 /***/ }),
 
@@ -94,9 +102,6 @@ var parallaxFunc = function parallaxFunc() {
   var index = Number(this.getAttribute('data-index'));
   var targetPosi = scrollTop + 100;
   var setVal = targetPosi - settings[index].scrollRatio.toFixed(1);
-
-  //console.log('>', settings[index].child, 'SCROLL', setVal, 'TOP', scrollTop, 'BOTTOM', scrollBottom)
-
   if (scrollBottom - scrollTop < setVal) {
     setVal = 0;
   }

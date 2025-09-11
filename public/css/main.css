@@ -94,12 +94,12 @@ body, p, input, label, a, div, placeholder {
   line-height: 30px;
 }
 
-h1, .h1, .is-header {
+h1, .h1, .is-header, .lg-links, .modal__content {
   font-family: "HaptikBold", sans-serif;
   font-size: 94px;
 }
 @media (max-width: 879.98px) {
-  h1, .h1, .is-header {
+  h1, .h1, .is-header, .lg-links, .modal__content {
     font-size: 2.4em;
   }
 }
@@ -554,6 +554,10 @@ input:-webkit-autofill:active {
 
 .row-gap-32 {
   row-gap: 32px;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 /* Text color utils - most typography styles (sizes, weights) are defined in typography.scss */
@@ -13413,32 +13417,32 @@ textarea.form-control-lg {
          break-inside: avoid;
   }
 
-  .karfu {
+  .susfit {
     content-visibility: visible;
     padding-left: 2mm !important;
     padding-right: 2mm !important;
     transform: scale(0.99) !important;
   }
-  .karfu #print-logo {
-    display: flex;
-    height: 150px;
-  }
-  .karfu * {
+  .susfit * {
     background-color: initial !important;
     color: #000 !important;
     transition: 0s !important;
     transition-delay: 0s !important;
   }
-  .karfu section {
+  .susfit section {
     -moz-column-break-inside: avoid;
          break-inside: avoid;
   }
-  .karfu .print-only {
+  .susfit .print-only {
     display: block !important;
   }
-  .karfu .print-image {
+  .susfit .print-image {
     border-radius: 8px;
     margin-top: 24px;
+  }
+
+  footer {
+    display: none;
   }
 }
 header .logo a {
@@ -13636,6 +13640,78 @@ footer {
   }
 }
 
+.modal {
+  display: block;
+  isolation: isolate;
+  z-index: 2;
+  transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background: #e7dfd9;
+  transform: translateX(-100%);
+}
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  line-height: 112px;
+  text-align: center;
+}
+.modal__content a {
+  display: inline-block;
+  color: black;
+}
+.modal__content a:after {
+  content: "";
+  width: auto;
+  height: 6px;
+  display: block;
+  background: #f5a6ff;
+  position: relative;
+  z-index: -1;
+  bottom: -30px;
+}
+@media (max-width: 767.98px) {
+  .modal__content {
+    line-height: 74px;
+  }
+  .modal__content a:after {
+    bottom: -12px;
+  }
+}
+.modal__close {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  top: 60px;
+  right: 60px;
+  cursor: pointer;
+  font-family: "HaptikBold";
+}
+.modal__headline {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+  margin-top: 72px;
+}
+.modal__copy {
+  margin-top: 16px;
+  margin-bottom: 32px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.is-open {
+  transform: translateX(0%);
+}
+
 .button {
   text-align: center;
   border-radius: 40px;
@@ -13762,7 +13838,7 @@ footer {
   min-width: max-content;
 }
 #background-animation .parallax-area-01 {
-  left: 720px;
+  left: 45%;
   margin-top: -320px;
   margin-left: 0;
 }
@@ -13779,12 +13855,15 @@ footer {
   #background-animation .parallax-area-01 {
     left: 56vw;
     margin-left: unset;
-    margin-top: -230px;
+    margin-top: -30px;
     opacity: 0.6;
+  }
+  #background-animation .parallax-area-01:before {
+    min-height: 250vh;
   }
 }
 #background-animation .parallax-area-02 {
-  left: 988px;
+  left: 60%;
   margin-top: -180px;
 }
 #background-animation .parallax-area-02:before {
@@ -13796,7 +13875,7 @@ footer {
   }
 }
 #background-animation .parallax-area-03 {
-  left: 1183px;
+  left: 72.5%;
   margin-top: -180px;
 }
 #background-animation .parallax-area-03:before {
@@ -13808,7 +13887,7 @@ footer {
   }
 }
 #background-animation .parallax-area-04 {
-  left: 230px;
+  left: 10%;
   padding-top: 1250px;
 }
 #background-animation .parallax-area-04:before {

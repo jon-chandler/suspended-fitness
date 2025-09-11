@@ -10,16 +10,11 @@
 		break-inside: avoid;
 	}
 
-	.karfu {
+	.susfit {
 		content-visibility: visible;
 		padding-left: 2mm !important;
 		padding-right: 2mm !important;
 		transform: scale(.99) !important;
-
-		#print-logo {
-			display: flex;
-			height: 150px;
-		}
 
 		* {
 			background-color: initial !important;
@@ -43,5 +38,9 @@
 	        margin-top: 24px;
 	    }
 
+	}
+
+	footer {
+		display: none;
 	}
 }

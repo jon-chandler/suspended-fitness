@@ -28,9 +28,10 @@ $footerMin: 380px;
 @import "./layout/header";
 @import "./layout/footer";
 @import "./layout/body";
+@import "./layout/nav";
 @import "./layout/cards";
 
-
+@import "./components/modal";
 @import "./components/buttons";
 @import "./components/parallax";
 @import "./components/testimonials";

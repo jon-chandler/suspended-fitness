@@ -48,16 +48,15 @@ $container-w: 1600px;
 		}
 	}
 	.parallax-area-01 {
-	  	left: 720px;
+	  	left: 45%;
 	  	margin-top: -320px;
 	  	margin-left: 0;
+
 
 	  	&:before {
 	  		@extend .pole;
 	  		left: 44px;
 	  	}
-
-
 
 	  	@media (max-width: $max-w-01) {
 	  		margin-left: -140px;
@@ -68,13 +67,17 @@ $container-w: 1600px;
 	  	@media (max-width: $max-w-01-s) {
 	  		left: 56vw;
 	  		margin-left: unset;
-	  		margin-top: -230px;
+	  		margin-top: -30px;
 	  		opacity: .6;
+	  		
+	  		&:before {
+	  			min-height: 250vh;
+	  		}
 	  	}
 
 	}
 	.parallax-area-02 {
-	  	left: 988px;
+	  	left: 60%;
 	  	margin-top: -180px;
 
 	  	&:before {
@@ -88,7 +91,7 @@ $container-w: 1600px;
 
 	}
 	.parallax-area-03 {
-	  	left: 1183px;
+	  	left: 72.5%;
 	  	margin-top: -180px;
 
 	  	&:before {
@@ -102,7 +105,7 @@ $container-w: 1600px;
 	}
 
 	.parallax-area-04 {
-	  	left: 230px;
+	  	left: 10%;
 	  	padding-top: 1250px;
 	  	
 	  	&:before {

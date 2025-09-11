@@ -99,8 +99,6 @@ const parallaxFunc = function() {
 
 	let setVal = (targetPosi - settings[index].scrollRatio.toFixed(1))
 
-	//console.log('>', settings[index].child, 'SCROLL', setVal, 'TOP', scrollTop, 'BOTTOM', scrollBottom)
-
 	if(scrollBottom - scrollTop < setVal) {
 		setVal = 0
 	}
