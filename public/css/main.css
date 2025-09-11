@@ -13838,24 +13838,26 @@ footer {
   min-width: max-content;
 }
 #background-animation .parallax-area-01 {
-  left: 45%;
+  left: 46%;
   margin-top: -320px;
   margin-left: 0;
 }
 #background-animation .parallax-area-01:before {
   left: 44px;
 }
-@media (max-width: 779px) {
+@media (min-width: 779px) and (max-width: 1400px) {
   #background-animation .parallax-area-01 {
-    margin-left: -140px;
-    margin-top: -30px;
+    left: 52%;
+  }
+}
+@media (max-width: 1400px) {
+  #background-animation .parallax-area-01 {
+    left: 70%;
   }
 }
 @media (max-width: 600px) {
   #background-animation .parallax-area-01 {
-    left: 56vw;
-    margin-left: unset;
-    margin-top: -30px;
+    left: 52%;
     opacity: 0.6;
   }
   #background-animation .parallax-area-01:before {
@@ -13863,7 +13865,7 @@ footer {
   }
 }
 #background-animation .parallax-area-02 {
-  left: 60%;
+  left: 61%;
   margin-top: -180px;
 }
 #background-animation .parallax-area-02:before {
@@ -13875,7 +13877,7 @@ footer {
   }
 }
 #background-animation .parallax-area-03 {
-  left: 72.5%;
+  left: 73%;
   margin-top: -180px;
 }
 #background-animation .parallax-area-03:before {
