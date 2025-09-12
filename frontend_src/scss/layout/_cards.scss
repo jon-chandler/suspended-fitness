@@ -43,7 +43,7 @@
 	}
 
 	&--pink {
-		background: $corePink;
+		background: $cardPink;
 	}
 
 	&--blue {
@@ -60,6 +60,10 @@
 
 	&--yellow {
 		background: $altYellow;
+	}
+
+	&--green {
+		background: $offerGreen;
 	}
 
 	img {
