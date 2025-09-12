@@ -24,6 +24,10 @@
 
 		.swiper-wrapper {
 			min-height: 300px;
+
+			@include media-breakpoint-down(sm) { 
+				min-height: 400px;
+			}
 		}
 
 		.swiper {
