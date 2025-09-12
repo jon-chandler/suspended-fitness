@@ -48,6 +48,8 @@ body {
     text-rendering: optimizeLegibility;
 }
 
-.dev-border {
-    border: 2px solid red;
+img {
+    height: auto;
+    width: 100%;
+    aspect-ratio: auto;
 }
