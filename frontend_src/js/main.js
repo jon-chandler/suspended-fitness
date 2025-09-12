@@ -25,10 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		return
 	}
 
-
-	setTimeout(() => {
-		contentLoader.classList.remove('is-open')
-		body.classList.remove('scroll-lock')
-	}, 3000)
+	contentLoader.classList.remove('is-open')
+	body.classList.remove('scroll-lock')
 	
 })

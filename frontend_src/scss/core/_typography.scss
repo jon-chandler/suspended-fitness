@@ -28,6 +28,18 @@ a {
 
 	&.email {
 		color: $corePink;
+
+		&:hover {
+			color: white;
+		}
+	}
+
+	&.phone {
+		color: white;
+
+		&:hover {
+			color: $corePink;
+		}
 	}
 }
 

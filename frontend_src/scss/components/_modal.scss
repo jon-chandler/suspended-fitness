@@ -19,9 +19,9 @@
     }
 
     &__loader {
-        background: rgba($nGrey, .5);
+        background: none;
         transform: translateY(100%);
-        transition: all $transition-m cubic-bezier(0.645, 0.045, 0.355, 1);;
+        transition: all $transition-m cubic-bezier(0.645, 0.045, 0.355, 1);
 
         &.is-open {
             transform: translateY(0%);
@@ -52,6 +52,10 @@
                 position: relative;
                 z-index: -1;
                 bottom: -30px;
+            }
+
+             &:hover:after {
+                background: black;
             }
         }
 

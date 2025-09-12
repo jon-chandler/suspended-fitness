@@ -27,10 +27,6 @@ footer {
 
     }
 
-    a[href^="tel:"] {
- 		color: white;
- 	}
-
 }
 
 .footer-logo {
@@ -50,12 +46,26 @@ footer {
 
 
 .footer-links li {
-	text-decoration: underline;
-	color: $corePink;
 	line-height: 40px;
 
 	a{
 		color: white;
+		display: inline-block;
+
+	    &:after {
+            content: '';
+            width: auto;
+            height: 1px;
+            display: block;
+            background: $corePink;
+            position: relative;
+            bottom: 4px;
+        }
+
+        &:hover:after {
+        	background: white;
+        }
+
 	}
 }
 

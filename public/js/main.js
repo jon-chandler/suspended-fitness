@@ -12117,10 +12117,8 @@ window.addEventListener('DOMContentLoaded', function () {
   if (!contentLoader) {
     return;
   }
-  setTimeout(function () {
-    contentLoader.classList.remove('is-open');
-    body.classList.remove('scroll-lock');
-  }, 3000);
+  contentLoader.classList.remove('is-open');
+  body.classList.remove('scroll-lock');
 });
 })();
 
