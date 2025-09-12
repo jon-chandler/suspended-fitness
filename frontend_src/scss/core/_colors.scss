@@ -39,6 +39,10 @@ $offerGreen: #BFFFFF;
 
 
 .gradient-blue { 
+    background: linear-gradient(-90deg, #467FFF 0%, #2367FF 28.13%, #0A56FF 58.26%, #004EFC 80.56%, #0048EA 100%);
+}
+
+.gradient-blue-rev { 
     background: linear-gradient(90deg, #467FFF 0%, #2367FF 28.13%, #0A56FF 58.26%, #004EFC 80.56%, #0048EA 100%);
 }
 

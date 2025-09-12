@@ -1,10 +1,10 @@
 .button { 
     text-align: center;
-    border-radius: 40px;
-    height: 40px;
+    border-radius: 46px;
+    height: 46px;
     background: $corePink;
     min-width: fit-content;
-    padding: 0 24px 0 32px;
+    padding: 0 30px 0 30px;
 
     display: inline-flex;
     flex-direction: row;
@@ -17,6 +17,8 @@
     color: black;
 
     transition: $transition-f;
+
+    font-family: 'HaptikMed', sans-serif;
 
     &--pink {
         background: $corePink;

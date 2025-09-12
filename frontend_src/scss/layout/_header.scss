@@ -5,6 +5,7 @@ header {
     }
 
 	.logo {
+		transition: $transition-m;
 		
 		a{
 			display: block;
@@ -22,19 +23,30 @@ header {
 	}
 
 	.menu {
-		display: block;
-		width: 32px;
-		height: 40px;
-		background: url('/images/menu_icon_on.svg');
-		background-size: contain;
-    	background-repeat: no-repeat;
-    	background-position: top center;
-		transition: $transition-f;
 		cursor: pointer;
+		color: white;
+		height: 40px;
 
-		&:hover {
+		span {
+			padding: .05em .8em;
+		}
+
+		&:after {
+			content: '';
+			display: block;
+			width: 32px;
+			height: 40px;
+			background: url('/images/menu_icon_on.svg');
+			background-size: contain;
+	    	background-repeat: no-repeat;
+	    	background-position: top center;
+			transition: $transition-f;
+		}
+
+		&:hover:after {
 			transform: skew(-0.2rad) rotate(-11deg);
 		}
+
 	}
 
 }

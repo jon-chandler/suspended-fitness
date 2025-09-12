@@ -3,6 +3,10 @@
   \***************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 .gradient-blue, body {
+  background: linear-gradient(-90deg, #467FFF 0%, #2367FF 28.13%, #0A56FF 58.26%, #004EFC 80.56%, #0048EA 100%);
+}
+
+.gradient-blue-rev {
   background: linear-gradient(90deg, #467FFF 0%, #2367FF 28.13%, #0A56FF 58.26%, #004EFC 80.56%, #0048EA 100%);
 }
 
@@ -96,11 +100,15 @@ body, p, input, label, a, div, placeholder {
 
 h1, .h1, .is-header, .lg-links, .modal__content {
   font-family: "HaptikBold", sans-serif;
-  font-size: 94px;
+  font-size: 98px;
+  line-height: 98px;
+  letter-spacing: -3px;
 }
 @media (max-width: 879.98px) {
   h1, .h1, .is-header, .lg-links, .modal__content {
     font-size: 2.4em;
+    line-height: 1.1em;
+    letter-spacing: revert;
   }
 }
 
@@ -13519,6 +13527,9 @@ textarea.form-control-lg {
     padding: 0 2em;
   }
 }
+header .logo {
+  transition: 0.6s;
+}
 header .logo a {
   display: block;
   width: 200px;
@@ -13531,6 +13542,15 @@ header .logo a {
   }
 }
 header .menu {
+  cursor: pointer;
+  color: white;
+  height: 40px;
+}
+header .menu span {
+  padding: 0.05em 0.8em;
+}
+header .menu:after {
+  content: "";
   display: block;
   width: 32px;
   height: 40px;
@@ -13539,9 +13559,8 @@ header .menu {
   background-repeat: no-repeat;
   background-position: top center;
   transition: 0.3s;
-  cursor: pointer;
 }
-header .menu:hover {
+header .menu:hover:after {
   transform: skew(-0.2rad) rotate(-11deg);
 }
 
@@ -13636,8 +13655,8 @@ footer {
 }
 
 .content {
-  padding-top: 126px;
-  padding-bottom: 126px;
+  padding-top: 170px;
+  padding-bottom: 220px;
   min-height: 600px;
 }
 @media (min-width: 1024px) {
@@ -13702,6 +13721,7 @@ footer {
 
 .card {
   border-radius: 0;
+  border: none;
   padding: 4em;
   align-self: baseline;
 }
@@ -13855,12 +13875,12 @@ footer {
 
 .button {
   text-align: center;
-  border-radius: 40px;
-  height: 40px;
+  border-radius: 46px;
+  height: 46px;
   background: #f5a6ff;
   min-width: -moz-fit-content;
   min-width: fit-content;
-  padding: 0 24px 0 32px;
+  padding: 0 30px 0 30px;
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
@@ -13871,6 +13891,7 @@ footer {
   border: 1px solid transparent;
   color: black;
   transition: 0.3s;
+  font-family: "HaptikMed", sans-serif;
 }
 .button--pink {
   background: #f5a6ff;
@@ -13975,7 +13996,7 @@ footer {
   transform: translateX(-50%);
   width: 100vw;
   height: auto;
-  min-height: 300vh;
+  min-height: 350vh;
   z-index: 1;
   overflow: hidden;
   max-width: 1600px;
@@ -14071,7 +14092,8 @@ footer {
 }
 #background-animation .parallax-area-04 {
   left: 10%;
-  padding-top: 1250px;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 #background-animation .parallax-area-04:before {
   left: 135px;
@@ -14079,6 +14101,7 @@ footer {
 }
 #background-animation .parallax-area-04 img {
   margin-top: -120px;
+  height: auto;
 }
 @media (max-width: 1400px) {
   #background-animation .parallax-area-04 {
