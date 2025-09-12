@@ -3,6 +3,17 @@
 	background: $coreBlue;
 	padding: 4em 4em;
 
+	.container {
+		position: relative;
+	}
+	
+	&--intro {
+
+		@include media-breakpoint-up(md) { 
+			padding-left: 4em;
+		}
+	}
+
 	.testimonials {
 		color: $altYellow;
 		padding-bottom: 100px;

@@ -19,18 +19,25 @@ footer {
     }
 
 	&__columns  {
+		padding: 0 4rem;
         margin-top: 50px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(auto-fit, 1fr);
         grid-row-gap: 3em;
-        grid-column-gap: 1em;
+        grid-column-gap: 4em;
+        width: 100%;
+
+        @include media-breakpoint-down(lg) { 
+        	padding: 0;
+        }
 
         @include media-breakpoint-down(md) { 
         	margin-top: 20px;
         	grid-row-gap: 1em;
             grid-template-columns: repeat(1, 1fr);
     		grid-template-rows: repeat(1, 1fr);
+    		padding: 0;
         }
     }
 

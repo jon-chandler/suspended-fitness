@@ -25,6 +25,19 @@
 		}
 	}
 
+	&--pull-left {
+		margin-left: 0;
+		transform: translateX(-2em);
+
+		@include media-breakpoint-down(lg) { 
+	        transform: translateX(0);
+	    }
+	}
+
+	&--top {
+		z-index: 2;
+	}
+
 	&--white {
 		background: $whiteIsh;
 	}
@@ -52,13 +65,4 @@
 	img {
 		min-width: 100%;
 	}
-}
-
-.pull-left-30 {
-	margin-left: 0;
-	transform: translateX(-4em);
-
-	@include media-breakpoint-down(lg) { 
-        transform: translateX(0);
-    }
 }

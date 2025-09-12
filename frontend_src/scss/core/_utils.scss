@@ -201,6 +201,11 @@ input:-webkit-autofill:active {
     position: relative;
 }
 
+.tranX-50 {
+    left: 33%;
+    transform: translateX(-33%);
+}
+
 /* utils */
 .flex-row { 
     display: flex;
