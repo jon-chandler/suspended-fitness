@@ -109,7 +109,11 @@ $container-w: 1600px;
 	  		left: 24px;
 	  	}
 
-	  	@media (max-width: $max-w-02) {
+	  	@media (min-width: $max-w-01) and (max-width: $max-w-02)  {
+	  		left: 80%;
+	  	}
+
+	  	@media (max-width: $max-w-01) {
 	  		opacity: 0;
 	  	}
 
