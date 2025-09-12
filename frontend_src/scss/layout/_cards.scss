@@ -65,4 +65,18 @@
 	img {
 		min-width: 100%;
 	}
+
+	li {
+		line-height: 50px;
+	}
+
+	a {
+		display: inline-block;
+		color: black;
+		@extend .pseudo-ul;
+
+		&:hover:after {
+			background: black;
+		}
+	}
 }

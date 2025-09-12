@@ -22,6 +22,22 @@ h1, .is-header, .lg-links {
 	font-size: .8em;
 }
 
+.pseudo-ul {
+    &:after {
+    	content: '';
+    	width: auto;
+    	height: 2px;
+    	display: block;
+    	background: $corePink;
+    	position: relative;
+    	bottom: 3px;
+	}
+
+	&:hover:after {
+		background: white;
+	}
+}
+
 a {
 	font-family: 'Haptik', sans-serif;
 	text-decoration: none !important;
@@ -40,6 +56,22 @@ a {
 		&:hover {
 			color: $corePink;
 		}
+	}
+}
+
+.pseudo-ul {
+    &:after {
+    	content: '';
+    	width: auto;
+    	height: 2px;
+    	display: block;
+    	background: $corePink;
+    	position: relative;
+    	bottom: 3px;
+	}
+
+	&:hover:after {
+		background: white;
 	}
 }
 
@@ -111,7 +143,6 @@ blockquote::after {
 		}
 		&--feature-headline { 
 			font-size: 32px;
-			font-weight: 500;
 			line-height: 40px;
 		}
 		&--blurb-regular { 

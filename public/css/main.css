@@ -109,6 +109,19 @@ h1, .h1, .is-header, .lg-links, .modal__content {
   font-size: 0.8em;
 }
 
+.pseudo-ul:after, .footer-links li a:after, .card a:after {
+  content: "";
+  width: auto;
+  height: 2px;
+  display: block;
+  background: #f5a6ff;
+  position: relative;
+  bottom: 3px;
+}
+.pseudo-ul:hover:after, .footer-links li a:hover:after, .card a:hover:after {
+  background: white;
+}
+
 a {
   font-family: "Haptik", sans-serif;
   text-decoration: none !important;
@@ -124,6 +137,19 @@ a.phone {
 }
 a.phone:hover {
   color: #f5a6ff;
+}
+
+.pseudo-ul:after, .footer-links li a:after, .card a:after {
+  content: "";
+  width: auto;
+  height: 2px;
+  display: block;
+  background: #f5a6ff;
+  position: relative;
+  bottom: 3px;
+}
+.pseudo-ul:hover:after, .footer-links li a:hover:after, .card a:hover:after {
+  background: white;
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
@@ -190,7 +216,6 @@ blockquote::after {
 }
 .haptik--feature-headline {
   font-size: 32px;
-  font-weight: 500;
   line-height: 40px;
 }
 .haptik--blurb-regular {
@@ -13593,18 +13618,6 @@ footer {
   color: white;
   display: inline-block;
 }
-.footer-links li a:after {
-  content: "";
-  width: auto;
-  height: 2px;
-  display: block;
-  background: #f5a6ff;
-  position: relative;
-  bottom: 3px;
-}
-.footer-links li a:hover:after {
-  background: white;
-}
 
 @media (max-width: 767.98px) {
   .contact-venues {
@@ -13743,6 +13756,16 @@ footer {
 }
 .card img {
   min-width: 100%;
+}
+.card li {
+  line-height: 50px;
+}
+.card a {
+  display: inline-block;
+  color: black;
+}
+.card a:hover:after {
+  background: black;
 }
 
 .modal {
