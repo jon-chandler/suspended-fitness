@@ -23,13 +23,14 @@ $nGrey75: rgba(231, 223, 217, .75);
 $nGrey50: rgba(231, 223, 217, .5);
 $nGrey25: rgba(231, 223, 217, .25);
 
+$charcoal: #4A4645;
+
 $whiteIsh: #e3e3e3;
 
 
 .gradient-blue { 
     background: linear-gradient(90deg, #467FFF 0%, #2367FF 28.13%, #0A56FF 58.26%, #004EFC 80.56%, #0048EA 100%);
 }
-
 
 .transp {
     background: none;

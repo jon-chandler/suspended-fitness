@@ -13479,6 +13479,11 @@ textarea.form-control-lg {
     display: none;
   }
 }
+@media (max-width: 767.98px) {
+  header {
+    padding: 0 2em;
+  }
+}
 header .logo a {
   display: block;
   width: 200px;
@@ -13583,6 +13588,12 @@ footer {
     width: 33%;
   }
 }
+@media (max-width: 767.98px) {
+  .content {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
 
 .over-anim {
   position: relative;
@@ -13621,6 +13632,12 @@ footer {
   overflow-x: clip;
   position: relative;
 }
+@media (max-width: 767.98px) {
+  .susfit {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 
 .card-container {
   padding-bottom: 92px;
@@ -13647,7 +13664,7 @@ footer {
 }
 @media (max-width: 879.98px) {
   .card:nth-of-type(2) {
-    margin-top: 16px;
+    margin-top: 0px;
   }
 }
 .card--white {
@@ -13781,12 +13798,29 @@ footer {
   cursor: pointer;
   border: 1px solid transparent;
   color: black;
+  transition: 0.3s;
 }
 .button--pink {
   background: #f5a6ff;
 }
 .button--pink:hover, .button--pink :focus {
   background: white;
+}
+.button--black {
+  color: white;
+  background: black;
+}
+.button--black:hover, .button--black :focus {
+  background: #4A4645;
+}
+.button--white {
+  color: black;
+  background: white;
+  border: 1px solid black;
+}
+.button--white:hover, .button--white :focus {
+  border: 1px solid #4A4645;
+  color: #4A4645;
 }
 .button--blue {
   background: #004fff;

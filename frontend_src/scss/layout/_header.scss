@@ -1,5 +1,8 @@
 header {
 
+	@include media-breakpoint-down(md) {
+        padding: 0 2em;
+    }
 
 	.logo {
 		

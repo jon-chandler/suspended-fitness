@@ -16,11 +16,33 @@
     border: 1px solid transparent;
     color: black;
 
+    transition: $transition-f;
+
     &--pink {
         background: $corePink;
 
         &:hover,:focus {
             background: white;
+        }
+    }
+
+    &--black {
+        color: white;
+        background: black;
+
+        &:hover,:focus {
+            background: $charcoal;
+        }
+    }
+
+    &--white {
+        color: black;
+        background: white;
+        border: 1px solid black;
+
+        &:hover,:focus {
+            border: 1px solid $charcoal;
+            color: $charcoal;
         }
     }
 

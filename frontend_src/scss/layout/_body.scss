@@ -5,10 +5,14 @@
     min-height: 600px;
 
     @include media-breakpoint-between(xl, 2xl) { 
-    	
     	.col-xl-3 {
     		width: 33%;
     	}
+    }
+
+    @include media-breakpoint-down(md) {
+        padding-left: 24px;
+        padding-right: 24px;
     }
 
  }
@@ -49,4 +53,9 @@
     overscroll-behavior-y: none;
     overflow-x: clip;
     position:relative;
+
+    @include media-breakpoint-down(md) {
+        padding-left: 0;
+        padding-right: 0;
+    }
  }
