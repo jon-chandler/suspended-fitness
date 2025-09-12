@@ -97,6 +97,13 @@ blockquote::after {
 
 .haptik {
 	font-family: 'Haptik', sans-serif; 
+
+		&--sub-title {
+			font-weight: 100;
+			font-size: 20px;
+			line-height: 30px;
+		}
+
 		&--article-headline { 
 			font-size: 48px;
 			line-height: 56px;

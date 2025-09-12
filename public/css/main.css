@@ -178,6 +178,11 @@ blockquote::after {
 .haptik {
   font-family: "Haptik", sans-serif;
 }
+.haptik--sub-title, .footer-links li a {
+  font-weight: 100;
+  font-size: 20px;
+  line-height: 30px;
+}
 .haptik--article-headline {
   font-size: 48px;
   line-height: 56px;
@@ -13520,6 +13525,16 @@ footer {
 .footer__container {
   position: relative;
 }
+@media (max-width: 879.98px) {
+  .footer__container {
+    padding: 1em;
+  }
+}
+@media (min-width: 768px) and (max-width: 879.98px) {
+  .footer__container {
+    padding: 0;
+  }
+}
 .footer__container__columns {
   margin-top: 50px;
   display: grid;
@@ -13541,20 +13556,25 @@ footer {
   background: url(../compiled_assets/c89bbb482f5955b8746f.svg);
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: top left;
   width: 314px;
   height: 35px;
   display: block;
 }
 @media (max-width: 767.98px) {
   .footer-logo {
-    width: 214px;
-    order: 2;
+    width: 90%;
+    margin: 0.8em 0;
   }
 }
 
+@media (max-width: 767.98px) {
+  .footer-links {
+    padding-bottom: 100px;
+  }
+}
 .footer-links li {
-  line-height: 40px;
+  line-height: 50px;
 }
 .footer-links li a {
   color: white;
@@ -13563,19 +13583,30 @@ footer {
 .footer-links li a:after {
   content: "";
   width: auto;
-  height: 1px;
+  height: 2px;
   display: block;
   background: #f5a6ff;
   position: relative;
-  bottom: 4px;
+  bottom: 3px;
 }
 .footer-links li a:hover:after {
   background: white;
 }
 
+@media (max-width: 767.98px) {
+  .contact-venues {
+    padding-bottom: 100px;
+  }
+}
+
 .venue-list {
   margin-top: 16px;
   line-height: 30px;
+}
+@media (max-width: 767.98px) {
+  .venue-list {
+    margin-top: 60px;
+  }
 }
 
 .content {
@@ -13655,7 +13686,7 @@ footer {
 }
 @media (max-width: 767.98px) {
   .card {
-    padding: 4em 2em;
+    padding: 4em 1.5em;
   }
 }
 .card:nth-of-type(2) {
@@ -13948,7 +13979,7 @@ footer {
 @media (max-width: 600px) {
   #background-animation .parallax-area-01 {
     left: 52%;
-    margin-top: -30px;
+    margin-top: -230px;
     opacity: 0.6;
   }
 }

@@ -9,6 +9,14 @@ footer {
 
 .footer__container {
 	position: relative;
+	
+    @include media-breakpoint-down(lg) {
+        padding: 1em;
+    }
+
+    @include media-breakpoint-between(md, lg) {
+    	padding: 0;
+    }
 
 	&__columns  {
         margin-top: 50px;
@@ -24,7 +32,6 @@ footer {
             grid-template-columns: repeat(1, 1fr);
     		grid-template-rows: repeat(1, 1fr);
         }
-
     }
 
 }
@@ -33,43 +40,63 @@ footer {
 	background: url('/images/logo_footer.svg');
 	background-size: contain;
     background-repeat: no-repeat;
-    background-position: top center;
+    background-position: top left;
     width: 314px;
     height: 35px;
     display: block;
 
     @include media-breakpoint-down(md) { 
-    	width: 214px;
-    	order: 2;
+    	width: 90%;
+    	margin: .8em 0;
     }
 }
 
 
-.footer-links li {
-	line-height: 40px;
+.footer-links {
 
-	a{
-		color: white;
-		display: inline-block;
+	@include media-breakpoint-down(md) {
+		padding-bottom: 100px;
+	}
 
-	    &:after {
-            content: '';
-            width: auto;
-            height: 1px;
-            display: block;
-            background: $corePink;
-            position: relative;
-            bottom: 4px;
-        }
+	li {
 
-        &:hover:after {
-        	background: white;
-        }
+		line-height: 50px;
 
+		a{
+			color: white;
+			display: inline-block;
+			@extend .haptik--sub-title;
+
+		    &:after {
+	            content: '';
+	            width: auto;
+	            height: 2px;
+	            display: block;
+	            background: $corePink;
+	            position: relative;
+	            bottom: 3px;
+	        }
+
+	        &:hover:after {
+	        	background: white;
+	        }
+
+		}
+
+	}
+}
+
+.contact-venues {
+	@include media-breakpoint-down(md) {
+		padding-bottom: 100px;
 	}
 }
 
 .venue-list {
 	margin-top: 16px;
 	line-height: 30px;
+
+	@include media-breakpoint-down(md) {
+		margin-top: 60px;
+	}
 }
