@@ -107,7 +107,6 @@ var parallaxFunc = function parallaxFunc() {
   if (setVal > 800) {
     setVal = 800;
   }
-  console.log(setVal);
   settings[index].child.style.transform = 'translate3d(0,' + setVal + 'px,0)';
 };
 var observer = new IntersectionObserver(observerFunc, {

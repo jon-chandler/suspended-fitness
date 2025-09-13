@@ -104,8 +104,6 @@ const parallaxFunc = function() {
 		setVal = 800
 	}
 
-	console.log(setVal)
-
 	settings[index].child.style.transform = 'translate3d(0,'+ (setVal) +'px,0)'
 }
 
