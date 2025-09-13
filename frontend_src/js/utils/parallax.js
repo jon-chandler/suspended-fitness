@@ -99,9 +99,12 @@ const parallaxFunc = function() {
 
 	let setVal = (targetPosi - settings[index].scrollRatio.toFixed(1))
 
-	if(scrollBottom - scrollTop < setVal) {
-		setVal = 0
+	//Ahem... Artificial limit
+	if(setVal > 800) {
+		setVal = 800
 	}
+
+	console.log(setVal)
 
 	settings[index].child.style.transform = 'translate3d(0,'+ (setVal) +'px,0)'
 }

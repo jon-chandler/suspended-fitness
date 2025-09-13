@@ -8,7 +8,7 @@ $container-w: 1600px;
 .pole {
  	content: '';
 	width: 12px;
-	height: 180vh;
+	height: 200vh;
 	background: white;
 	display: block;
 	position: absolute;
@@ -21,15 +21,12 @@ $container-w: 1600px;
  	transform: translateX(-50%);
  	width: 100vw;
 	height: auto;
-	min-height: 350vh;
+	min-height: 260vh;
  	z-index: 1;
  	overflow: hidden;
  	max-width: $container-w;
 
- 	@include media-breakpoint-down(sm) { 
- 		//overflow: visible;
- 	}
- 	
+
 	.js-parallax-elem {
 		opacity: 0;
 	}
@@ -42,6 +39,7 @@ $container-w: 1600px;
  	.parallax-elem {
 		position: absolute;
 		transition: $transition-f;
+		transform: translateY(70%);
 
 		img {
 			min-width: max-content;
@@ -50,7 +48,6 @@ $container-w: 1600px;
 
 	.parallax-area-01 {
 	  	left: 46%;
-	  	margin-top: -320px;
 	  	margin-left: 0;
 
 	  	&:before {
@@ -60,51 +57,30 @@ $container-w: 1600px;
 
 		@media (max-width: $max-w-02) {
 	  		left: 70%;
-	  		margin-top: -130px;
-	  		
-	  		&:before {
-	  			min-height: 250vh;
-	  		}
 	  	}
 
 	  	@media (max-width: $max-w-01) {
 	  		left: 70%;
-	  		margin-top: 0px;
-	  		
-	  		img {
-	  			margin-top: -20vh;
-	  		}
-	  		
-	  		&:before {
-	  			min-height: 280vh;
-	  		}
 	  	}
 
 		@media (min-width: $max-w-01) and (max-width: $max-w-02)  {
 	  		left: 52%;
-	  		margin-top: -310px;
 	  	}
 	  	
 	  	@media (max-width: $max-w-01-s) {
 	  		left: 52%;
-	  		margin-top: 0px;
 	  		opacity: .6;
-
-	  		img {
-	  			margin-top: -180px;
-	  		}
-	  		
-	  		&:before {
-	  			//min-height: 250vh;
-	  		}
 	  	}
 
 
 	}
 	.parallax-area-02 {
 	  	left: 61%;
-	  	margin-top: -180px;
 
+	  	img {
+	  		margin-top: 200px;
+	  	}
+	  	
 	  	&:before {
 	  		@extend .pole;
 	  		left: 24px;
@@ -121,7 +97,10 @@ $container-w: 1600px;
 	}
 	.parallax-area-03 {
 	  	left: 73%;
-	  	margin-top: -180px;
+
+	  	img {
+	  		transform: translateY(30%);
+	  	}
 
 	  	&:before {
 	  		@extend .pole;
@@ -134,19 +113,15 @@ $container-w: 1600px;
 	}
 
 	.parallax-area-04 {
+		//position: absolute;
+		bottom: 100px;
 	  	left: 10%;
-	    height: fit-content;
-	    //margin-top: 150%;
-	  	
+
+
 	  	&:before {
 	  		@extend .pole;
 	  		left: 135px;
     		width: 15px;
-	  	}
-
-	  	img {
-	  		margin-top: -120px;
-	  		height: auto;
 	  	}
 
 	  	@media (max-width: $max-w-02) {

@@ -13983,7 +13983,7 @@ footer {
 .pole, #background-animation .parallax-area-04:before, #background-animation .parallax-area-03:before, #background-animation .parallax-area-02:before, #background-animation .parallax-area-01:before {
   content: "";
   width: 12px;
-  height: 180vh;
+  height: 200vh;
   background: white;
   display: block;
   position: absolute;
@@ -13996,7 +13996,7 @@ footer {
   transform: translateX(-50%);
   width: 100vw;
   height: auto;
-  min-height: 350vh;
+  min-height: 260vh;
   z-index: 1;
   overflow: hidden;
   max-width: 1600px;
@@ -14011,6 +14011,7 @@ footer {
 #background-animation .parallax-elem {
   position: absolute;
   transition: 0.3s;
+  transform: translateY(70%);
 }
 #background-animation .parallax-elem img {
   min-width: -moz-max-content;
@@ -14018,7 +14019,6 @@ footer {
 }
 #background-animation .parallax-area-01 {
   left: 46%;
-  margin-top: -320px;
   margin-left: 0;
 }
 #background-animation .parallax-area-01:before {
@@ -14027,43 +14027,29 @@ footer {
 @media (max-width: 1400px) {
   #background-animation .parallax-area-01 {
     left: 70%;
-    margin-top: -130px;
-  }
-  #background-animation .parallax-area-01:before {
-    min-height: 250vh;
   }
 }
 @media (max-width: 860px) {
   #background-animation .parallax-area-01 {
     left: 70%;
-    margin-top: 0px;
-  }
-  #background-animation .parallax-area-01 img {
-    margin-top: -20vh;
-  }
-  #background-animation .parallax-area-01:before {
-    min-height: 280vh;
   }
 }
 @media (min-width: 860px) and (max-width: 1400px) {
   #background-animation .parallax-area-01 {
     left: 52%;
-    margin-top: -310px;
   }
 }
 @media (max-width: 600px) {
   #background-animation .parallax-area-01 {
     left: 52%;
-    margin-top: 0px;
     opacity: 0.6;
-  }
-  #background-animation .parallax-area-01 img {
-    margin-top: -180px;
   }
 }
 #background-animation .parallax-area-02 {
   left: 61%;
-  margin-top: -180px;
+}
+#background-animation .parallax-area-02 img {
+  margin-top: 200px;
 }
 #background-animation .parallax-area-02:before {
   left: 24px;
@@ -14080,7 +14066,9 @@ footer {
 }
 #background-animation .parallax-area-03 {
   left: 73%;
-  margin-top: -180px;
+}
+#background-animation .parallax-area-03 img {
+  transform: translateY(30%);
 }
 #background-animation .parallax-area-03:before {
   left: 44px;
@@ -14091,17 +14079,12 @@ footer {
   }
 }
 #background-animation .parallax-area-04 {
+  bottom: 100px;
   left: 10%;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 #background-animation .parallax-area-04:before {
   left: 135px;
   width: 15px;
-}
-#background-animation .parallax-area-04 img {
-  margin-top: -120px;
-  height: auto;
 }
 @media (max-width: 1400px) {
   #background-animation .parallax-area-04 {
