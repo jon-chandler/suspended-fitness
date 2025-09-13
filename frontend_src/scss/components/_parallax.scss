@@ -39,7 +39,7 @@ $container-w: 1600px;
  	.parallax-elem {
 		position: absolute;
 		transition: $transition-f;
-		transform: translateY(70%);
+		transform: translateY(80%);
 
 		img {
 			min-width: max-content;
@@ -113,8 +113,7 @@ $container-w: 1600px;
 	}
 
 	.parallax-area-04 {
-		//position: absolute;
-		bottom: 100px;
+		bottom: 350px;
 	  	left: 10%;
 
 

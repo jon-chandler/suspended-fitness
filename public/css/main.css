@@ -14011,7 +14011,7 @@ footer {
 #background-animation .parallax-elem {
   position: absolute;
   transition: 0.3s;
-  transform: translateY(70%);
+  transform: translateY(80%);
 }
 #background-animation .parallax-elem img {
   min-width: -moz-max-content;
@@ -14079,7 +14079,7 @@ footer {
   }
 }
 #background-animation .parallax-area-04 {
-  bottom: 100px;
+  bottom: 350px;
   left: 10%;
 }
 #background-animation .parallax-area-04:before {
