@@ -8,6 +8,7 @@
 	border: none;
 	padding: 4em;
 	align-self: baseline;
+	filter: drop-shadow(3px 3px 1px $nGrey25);
 	
 	@include media-breakpoint-down(lg) { 
 		margin-left: 0;

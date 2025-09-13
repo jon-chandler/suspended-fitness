@@ -23,8 +23,8 @@ $container-w: 1600px;
 	height: auto;
 	min-height: 260vh;
  	z-index: 1;
- 	overflow: hidden;
  	max-width: $container-w;
+ 	overflow: hidden;
 
 
 	.js-parallax-elem {
@@ -57,11 +57,6 @@ $container-w: 1600px;
 
 		@media (max-width: $max-w-02) {
 	  		left: 70%;
-	  	}
-
-	  	@media (max-width: $max-w-01) {
-	  		left: 70%;
-	  		transform: translateY(35%);
 	  	}
 
 		@media (min-width: $max-w-01) and (max-width: $max-w-02)  {
@@ -129,5 +124,11 @@ $container-w: 1600px;
 	  	@media (max-width: $max-w-02) {
 	  		opacity: 0;
 	  	}
+
+	  	/*@media (max-width: $max-w-01) {
+	  		top: 90%;
+	  		opacity: 1;
+	  		transform: scale(.75);
+	  	}*/
 	}
  }

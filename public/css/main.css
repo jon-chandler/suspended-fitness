@@ -759,6 +759,102 @@ input:-webkit-autofill:active {
   filter: hue-rotate(106deg) brightness(0.6) saturate(1.5);
 }
 
+.hr-padd--6 {
+  padding-top: 6px;
+  margin-top: 6px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--12 {
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--18 {
+  padding-top: 18px;
+  margin-top: 18px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--24 {
+  padding-top: 24px;
+  margin-top: 24px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--30 {
+  padding-top: 30px;
+  margin-top: 30px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--36 {
+  padding-top: 36px;
+  margin-top: 36px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--42 {
+  padding-top: 42px;
+  margin-top: 42px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--48 {
+  padding-top: 48px;
+  margin-top: 48px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--54 {
+  padding-top: 54px;
+  margin-top: 54px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--60 {
+  padding-top: 60px;
+  margin-top: 60px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--66 {
+  padding-top: 66px;
+  margin-top: 66px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--72 {
+  padding-top: 72px;
+  margin-top: 72px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--78 {
+  padding-top: 78px;
+  margin-top: 78px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--84 {
+  padding-top: 84px;
+  margin-top: 84px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--90 {
+  padding-top: 90px;
+  margin-top: 90px;
+  border-top: 1px solid #e7dfd9;
+}
+
+.hr-padd--96 {
+  padding-top: 96px;
+  margin-top: 96px;
+  border-top: 1px solid #e7dfd9;
+}
+
 /*!
  * Bootstrap  v5.3.8 (https://getbootstrap.com/)
  * Copyright 2011-2025 The Bootstrap Authors
@@ -13724,6 +13820,7 @@ footer {
   border: none;
   padding: 4em;
   align-self: baseline;
+  filter: drop-shadow(3px 3px 1px rgba(231, 223, 217, 0.25));
 }
 @media (max-width: 879.98px) {
   .card {
@@ -14026,8 +14123,8 @@ footer {
   height: auto;
   min-height: 260vh;
   z-index: 1;
-  overflow: hidden;
   max-width: 1600px;
+  overflow: hidden;
 }
 #background-animation .js-parallax-elem {
   opacity: 0;
@@ -14055,12 +14152,6 @@ footer {
 @media (max-width: 1400px) {
   #background-animation .parallax-area-01 {
     left: 70%;
-  }
-}
-@media (max-width: 860px) {
-  #background-animation .parallax-area-01 {
-    left: 70%;
-    transform: translateY(35%);
   }
 }
 @media (min-width: 860px) and (max-width: 1400px) {
@@ -14111,6 +14202,11 @@ footer {
 #background-animation .parallax-area-04 {
   bottom: 300px;
   left: 10%;
+  /*@media (max-width: $max-w-01) {
+  	top: 90%;
+  	opacity: 1;
+  	transform: scale(.75);
+  }*/
 }
 #background-animation .parallax-area-04:before {
   left: 135px;
@@ -14126,6 +14222,11 @@ footer {
   color: white;
   background: #004fff;
   padding: 4em 4em;
+}
+@media (max-width: 767.98px) {
+  .testimonial-container {
+    margin-top: 400px;
+  }
 }
 .testimonial-container .container {
   position: relative;

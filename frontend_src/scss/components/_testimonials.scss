@@ -3,6 +3,10 @@
 	background: $coreBlue;
 	padding: 4em 4em;
 
+	@include media-breakpoint-down(md) { 
+		margin-top: 400px;
+	}
+
 	.container {
 		position: relative;
 	}

@@ -138,12 +138,19 @@ window.addEventListener('DOMContentLoaded', function () {
 /*!***************************!*\
   !*** ./js/utils/utils.js ***!
   \***************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   shuffleCards: () => (/* binding */ shuffleCards)
+/* harmony export */ });
 var cardContainer = document.querySelector('.card-container');
 var cards = document.querySelectorAll('.card');
-var shuffleCards = function shuffleCards(topCard) {
-  if (!cards) {
+var minWidth = 800;
+var topCard = 'left';
+function shuffleCards(topCard) {
+  if (!cards || window.innerWidth < minWidth) {
     return;
   }
   cards.forEach(function (card) {
@@ -155,18 +162,30 @@ var shuffleCards = function shuffleCards(topCard) {
   setTimeout(function () {
     topCard === 'left' ? cards[0].classList.add('card--top') : cards[1].classList.add('card--top');
   }, 500);
-};
-var dir = 'left';
+}
 var cardCheck = function cardCheck(els) {
   els.forEach(function (el) {
     if (el.isIntersecting) {
-      shuffleCards(dir);
+      shuffleCards(topCard);
       observer.unobserve(cardContainer);
     }
   });
 };
-var observer = new IntersectionObserver(cardCheck);
+var observer = new IntersectionObserver(cardCheck, {
+  root: null,
+  rootMargin: '100px',
+  threshold: .2
+});
 observer.observe(cardContainer);
+document.addEventListener('DOMContentLoaded', function () {
+  var susChannel = new BroadcastChannel('susChannel');
+  susChannel.onmessage = function (ev) {
+    var evData = ev.data;
+    if (evData.newContenttMsg) {
+      console.log('>>>>>>> ', evData);
+    }
+  };
+});
 
 /***/ }),
 
@@ -12129,10 +12148,9 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/navigation */ "./js/components/navigation.js");
 /* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_navigation__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/utils */ "./js/utils/utils.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_utils_utils__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/parallax */ "./js/utils/parallax.js");
-/* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_utils_parallax__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/parallax */ "./js/utils/parallax.js");
+/* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_utils_parallax__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/utils */ "./js/utils/utils.js");
 /* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.mjs");
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
 
@@ -12142,9 +12160,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var body = document.getElementsByTagName('body')[0];
 var contentLoader = document.querySelector('.modal__loader');
-var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_3__["default"](".testimonial-carousel", {
-  spaceBetween: 30,
+var susChannel = new BroadcastChannel('susChannel');
+var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_3__["default"]('.testimonial-carousel', {
+  spaceBetween: 300,
   centeredSlides: true,
+  speed: 800,
   autoplay: {
     delay: 5000,
     disableOnInteraction: false
@@ -12160,6 +12180,9 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   contentLoader.classList.remove('is-open');
   body.classList.remove('scroll-lock');
+  susChannel.postMessage({
+    'newContentMsg': 'hot Damn'
+  });
 });
 })();
 

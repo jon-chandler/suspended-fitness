@@ -1,8 +1,12 @@
 const cardContainer = document.querySelector('.card-container')
 const cards = document.querySelectorAll('.card')
+const minWidth = 800
 
-const shuffleCards = (topCard) => {
-	if(!cards) {
+let topCard = 'left'
+
+export function shuffleCards(topCard) {
+
+	if(!cards || window.innerWidth < minWidth) {
 		return
 	}
 
@@ -17,16 +21,36 @@ const shuffleCards = (topCard) => {
 	}, 500)
 }
 
-let dir = 'left'
 
 const cardCheck = (els) => {
 	els.forEach((el) => {
 		if (el.isIntersecting) {
-			shuffleCards(dir)
+			shuffleCards(topCard)
 			observer.unobserve(cardContainer)
 		}
 	})
 }
 
-const observer = new IntersectionObserver(cardCheck)
+const observer = new IntersectionObserver(cardCheck, {
+	root: null,
+	rootMargin: '100px',
+	threshold: .2
+})
+
 observer.observe(cardContainer)
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const susChannel = new BroadcastChannel('susChannel')
+
+    susChannel.onmessage = (ev) => {
+
+        let evData = ev.data
+
+        if(evData.newContenttMsg) {
+            console.log('>>>>>>> ' , evData)
+        }
+    }
+
+})

@@ -389,3 +389,16 @@ input:-webkit-autofill:active {
     filter: hue-rotate(106deg) brightness(0.6) saturate(1.5);
 }
 
+
+$padd: 6;
+
+@while $padd <= 96 {
+
+    .hr-padd--#{$padd} {
+        padding-top: #{$padd}px;
+        margin-top: #{$padd}px;
+        border-top: 1px solid $nGrey;
+    }
+
+    $padd: $padd + 6;
+}
