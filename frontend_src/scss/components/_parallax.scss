@@ -61,15 +61,18 @@ $container-w: 1600px;
 
 	  	@media (max-width: $max-w-01) {
 	  		left: 70%;
+	  		transform: translateY(35%);
 	  	}
 
 		@media (min-width: $max-w-01) and (max-width: $max-w-02)  {
 	  		left: 52%;
 	  	}
+
 	  	
 	  	@media (max-width: $max-w-01-s) {
 	  		left: 52%;
 	  		opacity: .6;
+	  		transform: translateY(35%);
 	  	}
 
 
@@ -99,7 +102,7 @@ $container-w: 1600px;
 	  	left: 73%;
 
 	  	img {
-	  		transform: translateY(30%);
+	  		transform: translateY(20%);
 	  	}
 
 	  	&:before {
