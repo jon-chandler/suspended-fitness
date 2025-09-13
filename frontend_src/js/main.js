@@ -1,4 +1,5 @@
 import "./components/navigation"
+import "./utils/utils"
 import "./utils/parallax"
 
 import Swiper from 'swiper/bundle';

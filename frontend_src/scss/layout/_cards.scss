@@ -17,9 +17,17 @@
 		padding: 4em 1.5em;
 	}
 
+	&.shuffle {
+		animation: shuffle-l $transition-m ease-in-out;
+	}
+
 	&:nth-of-type(2) {
 		margin-top: 130px;
 		align-self: self-start;
+
+		&.shuffle {
+			animation: shuffle-r $transition-m ease-in-out;
+		}
 		
 		@include media-breakpoint-down(lg) { 
 			margin-top: 0px;
@@ -83,5 +91,30 @@
 		&:hover:after {
 			background: black;
 		}
+	}
+
+}
+
+@keyframes shuffle-r {
+	0% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(8%);
+	}
+	1000% {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes shuffle-l {
+	0% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(-8%);
+	}
+	1000% {
+		transform: translateX(0%);
 	}
 }
