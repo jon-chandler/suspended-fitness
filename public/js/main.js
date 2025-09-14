@@ -31,6 +31,7 @@ var resizeID;
 var winH = window.innerHeight;
 var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 var scrollBottom = scrollTop + winH;
+var minWidth = 800;
 var bgContainer = document.getElementById('background-animation');
 var footer = document.getElementsByTagName('footer')[0];
 var parallax = function parallax() {
@@ -57,10 +58,6 @@ var parallax = function parallax() {
       }
     });
     bindThem(target);
-    setTimeout(function () {
-      child.classList.add('add-trans');
-      window.scrollTo(0, 1);
-    }, 100);
   });
   window.addEventListener('resize', function () {
     setAnimationSize();
@@ -80,6 +77,9 @@ var parallax = function parallax() {
     scrollBottom = scrollTop + winH;
   }, {
     passive: true
+  });
+  window.addEventListener('deviceorientation', function () {
+    window.dispatchEvent(new Event('resize'));
   });
 };
 var observerFunc = function observerFunc(entries) {
@@ -101,6 +101,9 @@ var observerFunc = function observerFunc(entries) {
   });
 };
 var parallaxFunc = function parallaxFunc() {
+  if (screen.width < minWidth) {
+    return;
+  }
   var index = Number(this.getAttribute('data-index'));
   var targetPosi = scrollTop + 100;
   var setVal = targetPosi - settings[index].scrollRatio.toFixed(1);
@@ -188,8 +191,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var susChannel = new BroadcastChannel('susChannel');
   susChannel.onmessage = function (ev) {
     var evData = ev.data;
-    if (evData.newContenttMsg) {
-      console.log('>>>>>>> ', evData);
+    if (evData.newContentMsg) {
+      console.log(evData);
     }
   };
 });
@@ -12188,7 +12191,7 @@ window.addEventListener('DOMContentLoaded', function () {
   contentLoader.classList.remove('is-open');
   body.classList.remove('scroll-lock');
   susChannel.postMessage({
-    'newContentMsg': 'hot Damn'
+    'newContentMsg': 'Messages bound to channel'
   });
 });
 })();

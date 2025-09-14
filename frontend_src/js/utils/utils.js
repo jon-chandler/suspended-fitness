@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let evData = ev.data
 
-        if(evData.newContenttMsg) {
-            console.log('>>>>>>> ' , evData)
+        if(evData.newContentMsg) {
+            console.log(evData)
         }
     }
 

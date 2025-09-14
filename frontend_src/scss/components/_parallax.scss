@@ -27,12 +27,7 @@ $container-w: 1600px;
  	overflow: hidden;
 
 	.js-parallax-elem {
-		opacity: 0;
-	}
-
-	.add-trans {
 		transition: $transition-m;
-		opacity: 1;
 	}
 
  	.parallax-elem {
@@ -42,6 +37,10 @@ $container-w: 1600px;
 
 		img {
 			min-width: max-content;
+		}
+
+		@include media-breakpoint-down(md) {
+			transform: translateY(0%);
 		}
 	}
 
@@ -63,10 +62,9 @@ $container-w: 1600px;
 	  	}
 
 	  	
-	  	@media (max-width: $max-w-01-s) {
+	  	@media (max-width: $max-w-01) {
 	  		left: 52%;
 	  		opacity: .6;
-	  		transform: translateY(35%);
 	  	}
 
 
@@ -124,14 +122,27 @@ $container-w: 1600px;
 	  		margin-top: -30%;
 	  	}
 
-	  	@media (max-width: $max-w-01) {
-	  		left: 5%;
+/*
+	  	@include media-breakpoint-down($max-w-01) {
+	  		left: -15%;
+	  		bottom: 25%;
+
+	  		left: -10%;
+        	bottom: 22%;
+	  		transform: scale(.7);
 
 	  		img {
-	  			margin-top: -40%;
+	  			margin-top: 0;
 	  		}
 	  	}
 
+	  	@media (max-width: $max-w-01-s) {
+	  		bottom: 25%;
+
+	  		img {
+	  			margin-top: -50%;
+	  		}
+	  	}*/
 
 	}
  }

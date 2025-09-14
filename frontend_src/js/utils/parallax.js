@@ -7,6 +7,8 @@ let winH = window.innerHeight
 let scrollTop = window.pageYOffset || document.documentElement.scrollTop
 let scrollBottom = scrollTop + winH
 
+const minWidth = 800
+
 const bgContainer = document.getElementById('background-animation')
 const footer = document.getElementsByTagName('footer')[0]
 
@@ -46,11 +48,6 @@ const parallax = ()=> {
 		)
 
 		bindThem(target)
-
-		setTimeout(()=> {
-			child.classList.add('add-trans')
-			window.scrollTo(0,1)
-		}, 100)
 		
 	})
 
@@ -74,6 +71,11 @@ const parallax = ()=> {
 		scrollBottom = scrollTop + winH
 	}, {passive: true})
 
+
+	window.addEventListener('deviceorientation', () => { 
+		window.dispatchEvent(new Event('resize'))
+	})
+
 	
 }
 
@@ -95,13 +97,18 @@ const observerFunc = (entries)=> {
 }
 
 const parallaxFunc = function() {
+
+	if(screen.width < minWidth) {
+		return
+	}
+
 	const index =  Number(this.getAttribute('data-index'))
 	let targetPosi = scrollTop + 100
 
 	let setVal = (targetPosi - settings[index].scrollRatio.toFixed(1))
 
 	//Ahem... Artificial limit
-	if(setVal > 800) {
+	if(setVal > 800 ) {
 		setVal = 800
 	}
 

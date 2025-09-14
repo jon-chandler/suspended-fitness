@@ -33,6 +33,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	contentLoader.classList.remove('is-open')
 	body.classList.remove('scroll-lock')
 
-	susChannel.postMessage({'newContentMsg' : 'hot Damn'})
+	susChannel.postMessage({'newContentMsg' : 'Messages bound to channel'})
 	
 })
