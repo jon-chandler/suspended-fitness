@@ -26,6 +26,7 @@ $container-w: 1600px;
  	max-width: $container-w;
  	overflow: hidden;
 
+	
 	.js-parallax-elem {
 		transition: $transition-m;
 	}
@@ -120,6 +121,17 @@ $container-w: 1600px;
 
 	  	img {
 	  		margin-top: -30%;
+	  	}
+
+
+	  	@include media-breakpoint-down(sm) {
+	  		left: -15%;
+	  		bottom: 25%;
+	  		transform: scale(.7);
+
+	  		img {
+	  			margin-top: 0;
+	  		}
 	  	}
 
 /*
