@@ -32,6 +32,7 @@ var winH = window.innerHeight;
 var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 var scrollBottom = scrollTop + winH;
 var bgContainer = document.getElementById('background-animation');
+var footer = document.getElementsByTagName('footer')[0];
 var parallax = function parallax() {
   var targetClass = '.parallax-elem';
   var childClass = '.js-parallax-elem';
@@ -62,6 +63,7 @@ var parallax = function parallax() {
     }, 100);
   });
   window.addEventListener('resize', function () {
+    setAnimationSize();
     clearTimeout(resizeID);
     resizeID = setTimeout(function () {
       winH = window.innerHeight;
@@ -123,6 +125,10 @@ var addObserver = function addObserver(entries) {
     requestAnimationFrame(parallaxFunc.bind(entry));
   });
 };
+var setAnimationSize = function setAnimationSize() {
+  var sz = footer.getBoundingClientRect().top + window.scrollY;
+  bgContainer.style.minHeight = "".concat(sz, "px");
+};
 window.addEventListener('DOMContentLoaded', function () {
   var bgAmin = document.getElementById('background-animation');
   if (!bgAmin) {
@@ -130,6 +136,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   parallax();
   bgContainer.scrollTo(0, window.innerHeight);
+  setAnimationSize();
 });
 
 /***/ }),

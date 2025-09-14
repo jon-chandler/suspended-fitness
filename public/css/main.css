@@ -14121,7 +14121,7 @@ footer {
   transform: translateX(-50%);
   width: 100vw;
   height: auto;
-  min-height: 260vh;
+  min-height: 500vh;
   z-index: 1;
   max-width: 1600px;
   overflow: hidden;
@@ -14200,21 +14200,22 @@ footer {
   }
 }
 #background-animation .parallax-area-04 {
-  bottom: 300px;
+  bottom: 20%;
   left: 10%;
-  /*@media (max-width: $max-w-01) {
-  	top: 90%;
-  	opacity: 1;
-  	transform: scale(.75);
-  }*/
 }
 #background-animation .parallax-area-04:before {
   left: 135px;
   width: 15px;
 }
-@media (max-width: 1400px) {
+#background-animation .parallax-area-04 img {
+  margin-top: -30%;
+}
+@media (max-width: 860px) {
   #background-animation .parallax-area-04 {
-    opacity: 0;
+    left: 5%;
+  }
+  #background-animation .parallax-area-04 img {
+    margin-top: -40%;
   }
 }
 
@@ -14223,7 +14224,7 @@ footer {
   background: #004fff;
   padding: 4em 4em;
 }
-@media (max-width: 767.98px) {
+@media (max-width: 879.98px) {
   .testimonial-container {
     margin-top: 400px;
   }

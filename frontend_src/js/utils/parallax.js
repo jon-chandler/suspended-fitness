@@ -8,7 +8,7 @@ let scrollTop = window.pageYOffset || document.documentElement.scrollTop
 let scrollBottom = scrollTop + winH
 
 const bgContainer = document.getElementById('background-animation')
-
+const footer = document.getElementsByTagName('footer')[0]
 
 const parallax = ()=> {
 
@@ -56,6 +56,7 @@ const parallax = ()=> {
 
 
 	window.addEventListener('resize', ()=> {
+		setAnimationSize()
 		clearTimeout(resizeID)
 		resizeID = setTimeout(() => {
 			winH = window.innerHeight
@@ -125,6 +126,11 @@ const addObserver = (entries)=> {
 	})
 }
 
+const setAnimationSize = () => {
+	let sz = footer.getBoundingClientRect().top + window.scrollY
+	bgContainer.style.minHeight = `${sz}px`
+}
+
 window.addEventListener('DOMContentLoaded', () => {
 	const bgAmin = document.getElementById('background-animation')
 
@@ -132,7 +138,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		return
 	}
 
-
 	parallax()
 	bgContainer.scrollTo(0, window.innerHeight)
+	setAnimationSize()
 })
