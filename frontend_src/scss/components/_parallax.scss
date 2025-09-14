@@ -66,6 +66,10 @@ $container-w: 1600px;
 	  	@media (max-width: $max-w-01) {
 	  		left: 52%;
 	  		opacity: .6;
+
+	  		img {
+	  			transform: translateY(-20%);
+	  		}
 	  	}
 
 
@@ -129,8 +133,8 @@ $container-w: 1600px;
 	  		bottom: 25%;
 	  		transform: scale(.7);
 
-	  		img {
-	  			margin-top: 0;
+	  		&:before {
+	  			transform: translateY(-50%);
 	  		}
 	  	}
 
