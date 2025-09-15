@@ -5,13 +5,17 @@ $max-w-03: 1600px;
 
 $container-w: 1600px;
 
+
 .pole {
  	content: '';
 	width: 12px;
-	height: 200vh;
+	height: var(--defHeight, 200vh);
 	background: white;
 	display: block;
 	position: absolute;
+	transform: translateY(-50%);
+	overflow: hidden;
+
  }
 
  #background-animation {
@@ -34,20 +38,15 @@ $container-w: 1600px;
  	.parallax-elem {
 		position: absolute;
 		transition: $transition-f;
-		transform: translateY(80%);
 
 		img {
 			min-width: max-content;
 		}
-
-		@include media-breakpoint-down(md) {
-			transform: translateY(0%);
-		}
 	}
 
 	.parallax-area-01 {
-	  	left: 46%;
-	  	margin-left: 0;
+		left: 46%;
+		top: 2%;
 
 	  	&:before {
 	  		@extend .pole;
@@ -79,10 +78,6 @@ $container-w: 1600px;
 	}
 	.parallax-area-02 {
 	  	left: 61%;
-
-	  	img {
-	  		margin-top: 80%;
-	  	}
 	  	
 	  	&:before {
 	  		@extend .pole;
@@ -101,11 +96,7 @@ $container-w: 1600px;
 
 	.parallax-area-03 {
 	  	left: 73%;
-
-	  	img {
-	  		position: relative;
-	  		top: 10%;
-	  	}
+	  	top: 9%;
 
 	  	&:before {
 	  		@extend .pole;
@@ -118,39 +109,37 @@ $container-w: 1600px;
 	}
 
 	.parallax-area-04 {
-		bottom: 20%;
+		top: 50%;
 		left: 10%;
-
 
 	  	&:before {
 	  		@extend .pole;
 	  		left: 135px;
     		width: 15px;
+    		max-height: 150vh;
+    		transform: translateY(-20%);
 	  	}
 
 	  	img {
-	  		margin-top: -30%;
+	  		margin-top: -50%;
+	  	}
+
+	  	@include media-breakpoint-down(lg) {
+	  		top: 60%;
+	  	}
+
+
+	  	@include media-breakpoint-between(sm, md) {
+	  		transform: scale(.9);
+	  		top: unset;
+	  		bottom: 23%;
 	  	}
 
 
 	  	@include media-breakpoint-down(sm) {
 	  		left: -15%;
-	  		bottom: 25%;
+	  		top: 65%;
 	  		transform: scale(.7);
-
-	  		&:before {
-	  			transform: translateY(-50%);
-	  		}
-	  	}
-
-	  	@include media-breakpoint-between(sm, md) {
-	  		bottom: 23%;
-	  		transform: scale(.8);
-
-	  		img {
-	  			margin-top: 0;
-	  		}
-
 	  	}
 
 	}

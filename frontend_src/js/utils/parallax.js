@@ -6,6 +6,7 @@ let resizeID
 let winH = window.innerHeight
 let scrollTop = window.pageYOffset || document.documentElement.scrollTop
 let scrollBottom = scrollTop + winH
+let targets
 
 const listeners = ['deviceorientation', 'visibilitychange', 'load', '...']
 
@@ -19,7 +20,7 @@ const parallax = ()=> {
 	const targetClass = '.parallax-elem'
 	const childClass = '.js-parallax-elem'
 
-	const targets = Array.prototype.slice.call(document.querySelectorAll(targetClass),0)
+	targets = Array.prototype.slice.call(document.querySelectorAll(targetClass),0)
 
 	if(targets.length === 0) {
 		return
@@ -109,8 +110,8 @@ const parallaxFunc = function() {
 	//Ahem... Artificial limit
 	if(setVal > 800 && screen.width < minWidth) {
 		setVal = 200
-	} else if (setVal > 800) {
-		setVal = 800
+	} else if (setVal > 900) {
+		setVal = 900
 	}
 
 	settings[index].child.style.transform = 'translateY('+ (setVal) +'px)'
@@ -137,6 +138,10 @@ const addObserver = (entries)=> {
 const setAnimationSize = () => {
 	let sz = footer.getBoundingClientRect().top + window.scrollY
 	bgContainer.style.minHeight = `${sz}px`
+
+	targets.forEach((target) => {
+		target.style.setProperty('--defHeight', `${sz}px`)
+	})
 }
 
 window.addEventListener('DOMContentLoaded', () => {

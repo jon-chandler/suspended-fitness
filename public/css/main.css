@@ -14109,10 +14109,12 @@ footer {
 .pole, #background-animation .parallax-area-04:before, #background-animation .parallax-area-03:before, #background-animation .parallax-area-02:before, #background-animation .parallax-area-01:before {
   content: "";
   width: 12px;
-  height: 200vh;
+  height: var(--defHeight, 200vh);
   background: white;
   display: block;
   position: absolute;
+  transform: translateY(-50%);
+  overflow: hidden;
 }
 
 #background-animation {
@@ -14133,20 +14135,14 @@ footer {
 #background-animation .parallax-elem {
   position: absolute;
   transition: 0.3s;
-  transform: translateY(80%);
 }
 #background-animation .parallax-elem img {
   min-width: -moz-max-content;
   min-width: max-content;
 }
-@media (max-width: 767.98px) {
-  #background-animation .parallax-elem {
-    transform: translateY(0%);
-  }
-}
 #background-animation .parallax-area-01 {
   left: 46%;
-  margin-left: 0;
+  top: 2%;
 }
 #background-animation .parallax-area-01:before {
   left: 44px;
@@ -14176,9 +14172,6 @@ footer {
 #background-animation .parallax-area-02 {
   left: 61%;
 }
-#background-animation .parallax-area-02 img {
-  margin-top: 80%;
-}
 #background-animation .parallax-area-02:before {
   left: 24px;
 }
@@ -14194,10 +14187,7 @@ footer {
 }
 #background-animation .parallax-area-03 {
   left: 73%;
-}
-#background-animation .parallax-area-03 img {
-  position: relative;
-  top: 10%;
+  top: 9%;
 }
 #background-animation .parallax-area-03:before {
   left: 44px;
@@ -14208,33 +14198,35 @@ footer {
   }
 }
 #background-animation .parallax-area-04 {
-  bottom: 20%;
+  top: 50%;
   left: 10%;
 }
 #background-animation .parallax-area-04:before {
   left: 135px;
   width: 15px;
+  max-height: 150vh;
+  transform: translateY(-20%);
 }
 #background-animation .parallax-area-04 img {
-  margin-top: -30%;
+  margin-top: -50%;
 }
-@media (max-width: 424.98px) {
+@media (max-width: 879.98px) {
   #background-animation .parallax-area-04 {
-    left: -15%;
-    bottom: 25%;
-    transform: scale(0.7);
-  }
-  #background-animation .parallax-area-04:before {
-    transform: translateY(-50%);
+    top: 60%;
   }
 }
 @media (min-width: 425px) and (max-width: 767.98px) {
   #background-animation .parallax-area-04 {
+    transform: scale(0.9);
+    top: unset;
     bottom: 23%;
-    transform: scale(0.8);
   }
-  #background-animation .parallax-area-04 img {
-    margin-top: 0;
+}
+@media (max-width: 424.98px) {
+  #background-animation .parallax-area-04 {
+    left: -15%;
+    top: 65%;
+    transform: scale(0.7);
   }
 }
 
