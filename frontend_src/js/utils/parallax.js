@@ -48,7 +48,6 @@ const parallax = ()=> {
 		)
 
 		bindThem(target)
-		
 	})
 
 
@@ -112,7 +111,7 @@ const parallaxFunc = function() {
 		setVal = 800
 	}
 
-	settings[index].child.style.transform = 'translate3d(0,'+ (setVal) +'px,0)'
+	settings[index].child.style.transform = 'translateY('+ (setVal) +'px)'
 }
 
 

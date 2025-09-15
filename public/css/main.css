@@ -14163,18 +14163,22 @@ footer {
 }
 @media (max-width: 860px) {
   #background-animation .parallax-area-01 {
-    left: 52%;
-    opacity: 0.6;
+    left: 46%;
+    opacity: 0.8;
+  }
+  #background-animation .parallax-area-01:before {
+    left: 64px;
+    transform: translateY(30%);
   }
   #background-animation .parallax-area-01 img {
-    transform: translateY(-20%);
+    transform: translateY(-18%) scale(0.7);
   }
 }
 #background-animation .parallax-area-02 {
   left: 61%;
 }
 #background-animation .parallax-area-02 img {
-  margin-top: 200px;
+  margin-top: 45%;
 }
 #background-animation .parallax-area-02:before {
   left: 24px;
@@ -14193,7 +14197,8 @@ footer {
   left: 73%;
 }
 #background-animation .parallax-area-03 img {
-  transform: translateY(20%);
+  position: relative;
+  top: 10%;
 }
 #background-animation .parallax-area-03:before {
   left: 44px;
@@ -14206,27 +14211,6 @@ footer {
 #background-animation .parallax-area-04 {
   bottom: 20%;
   left: 10%;
-  /*
-  	  	@include media-breakpoint-down($max-w-01) {
-  	  		left: -15%;
-  	  		bottom: 25%;
-
-  	  		left: -10%;
-          	bottom: 22%;
-  	  		transform: scale(.7);
-
-  	  		img {
-  	  			margin-top: 0;
-  	  		}
-  	  	}
-
-  	  	@media (max-width: $max-w-01-s) {
-  	  		bottom: 25%;
-
-  	  		img {
-  	  			margin-top: -50%;
-  	  		}
-  	  	}*/
 }
 #background-animation .parallax-area-04:before {
   left: 135px;
@@ -14250,6 +14234,7 @@ footer {
   color: white;
   background: #004fff;
   padding: 4em 4em;
+  width: auto;
 }
 @media (max-width: 879.98px) {
   .testimonial-container {

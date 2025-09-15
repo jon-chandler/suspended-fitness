@@ -64,21 +64,25 @@ $container-w: 1600px;
 
 	  	
 	  	@media (max-width: $max-w-01) {
-	  		left: 52%;
-	  		opacity: .6;
+	  		left: 46%;
+	  		opacity: .8;
+
+	  		&:before {
+	  			left: 64px;
+	  			transform: translateY(30%);
+	  		}
 
 	  		img {
-	  			transform: translateY(-20%);
+	  			transform: translateY(-18%) scale(.7);
 	  		}
 	  	}
-
 
 	}
 	.parallax-area-02 {
 	  	left: 61%;
 
 	  	img {
-	  		margin-top: 200px;
+	  		margin-top: 45%;
 	  	}
 	  	
 	  	&:before {
@@ -99,7 +103,8 @@ $container-w: 1600px;
 	  	left: 73%;
 
 	  	img {
-	  		transform: translateY(20%);
+	  		position: relative;
+	  		top: 10%;
 	  	}
 
 	  	&:before {
@@ -137,28 +142,6 @@ $container-w: 1600px;
 	  			transform: translateY(-50%);
 	  		}
 	  	}
-
-/*
-	  	@include media-breakpoint-down($max-w-01) {
-	  		left: -15%;
-	  		bottom: 25%;
-
-	  		left: -10%;
-        	bottom: 22%;
-	  		transform: scale(.7);
-
-	  		img {
-	  			margin-top: 0;
-	  		}
-	  	}
-
-	  	@media (max-width: $max-w-01-s) {
-	  		bottom: 25%;
-
-	  		img {
-	  			margin-top: -50%;
-	  		}
-	  	}*/
 
 	}
  }

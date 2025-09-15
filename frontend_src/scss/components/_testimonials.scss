@@ -2,6 +2,7 @@
 	color: white;
 	background: $coreBlue;
 	padding: 4em 4em;
+	width: auto;
 
 	@include media-breakpoint-down(lg) { 
 		margin-top: 400px;
