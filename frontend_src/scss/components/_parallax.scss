@@ -69,11 +69,10 @@ $container-w: 1600px;
 
 	  		&:before {
 	  			left: 64px;
-	  			transform: translateY(30%);
 	  		}
 
 	  		img {
-	  			transform: translateY(-18%) scale(.7);
+	  			transform: translateY(-50%) scale(.7);
 	  		}
 	  	}
 
@@ -82,7 +81,7 @@ $container-w: 1600px;
 	  	left: 61%;
 
 	  	img {
-	  		margin-top: 45%;
+	  		margin-top: 80%;
 	  	}
 	  	
 	  	&:before {
@@ -112,7 +111,7 @@ $container-w: 1600px;
 	  		left: 44px;
 	  	}
 
-	  	@media (max-width: $max-w-03) {
+	  	@media (max-width: $max-w-02) {
 	  		opacity: 0;
 	  	}
 	}
@@ -141,6 +140,7 @@ $container-w: 1600px;
 	  		&:before {
 	  			transform: translateY(-50%);
 	  		}
+
 	  	}
 
 	}

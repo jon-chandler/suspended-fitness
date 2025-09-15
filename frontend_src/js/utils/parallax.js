@@ -7,6 +7,8 @@ let winH = window.innerHeight
 let scrollTop = window.pageYOffset || document.documentElement.scrollTop
 let scrollBottom = scrollTop + winH
 
+const listeners = ['deviceorientation', 'visibilitychange', '...']
+
 const minWidth = 800
 
 const bgContainer = document.getElementById('background-animation')
@@ -62,18 +64,20 @@ const parallax = ()=> {
 				}
 				settings[index].scrollRatio = (settings[index].child.clientHeight - target.clientHeight) / (winH + target.clientHeight)
 			})
-		}, 200)
+		}, 10)
 	})
 
 	window.addEventListener('scroll', ()=> {
 		scrollTop = window.pageYOffset || document.documentElement.scrollTop
 		scrollBottom = scrollTop + winH
-	}, {passive: true})
+	}, {passive: false})
 
-
-	window.addEventListener('deviceorientation', () => { 
-		window.dispatchEvent(new Event('resize'))
-	})
+	
+	for(event of listeners) {
+	    window.addEventListener(event, function() {
+	        window.dispatchEvent(new Event('resize'))
+	    })
+	}
 
 	
 }
@@ -85,10 +89,10 @@ const observerFunc = (entries)=> {
 		
 		if(entry.isIntersecting) {
     		target.style.willChange = 'transform'
-			window.addEventListener('scroll', listener, {passive: true})
+			window.addEventListener('scroll', listener, {passive: false})
 		} else {
     		target.style.willChange = ''
-			window.removeEventListener('scroll', listener, {passive: true})
+			window.removeEventListener('scroll', listener, {passive: false})
 		}
 
 		requestAnimationFrame(parallaxFunc.bind(target))
@@ -97,17 +101,15 @@ const observerFunc = (entries)=> {
 
 const parallaxFunc = function() {
 
-	if(screen.width < minWidth) {
-		return
-	}
-
 	const index =  Number(this.getAttribute('data-index'))
-	let targetPosi = scrollTop + 100
+	let targetPosi = scrollTop
 
 	let setVal = (targetPosi - settings[index].scrollRatio.toFixed(1))
 
 	//Ahem... Artificial limit
-	if(setVal > 800 ) {
+	if(setVal > 800 && screen.width < minWidth) {
+		setVal = 200
+	} else if (setVal > 800) {
 		setVal = 800
 	}
 

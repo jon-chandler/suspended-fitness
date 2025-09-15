@@ -53,7 +53,7 @@
  	@extend .generalPadding;
     overscroll-behavior-y: none;
     overflow-x: clip;
-    position:relative;
+    position: relative;
 
     @include media-breakpoint-down(md) {
         padding-left: 0;

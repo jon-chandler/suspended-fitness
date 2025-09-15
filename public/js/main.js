@@ -31,6 +31,7 @@ var resizeID;
 var winH = window.innerHeight;
 var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 var scrollBottom = scrollTop + winH;
+var listeners = ['deviceorientation', 'visibilitychange', '...'];
 var minWidth = 800;
 var bgContainer = document.getElementById('background-animation');
 var footer = document.getElementsByTagName('footer')[0];
@@ -70,17 +71,20 @@ var parallax = function parallax() {
         }
         settings[index].scrollRatio = (settings[index].child.clientHeight - target.clientHeight) / (winH + target.clientHeight);
       });
-    }, 200);
+    }, 10);
   });
   window.addEventListener('scroll', function () {
     scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     scrollBottom = scrollTop + winH;
   }, {
-    passive: true
+    passive: false
   });
-  window.addEventListener('deviceorientation', function () {
-    window.dispatchEvent(new Event('resize'));
-  });
+  for (var _i = 0, _listeners = listeners; _i < _listeners.length; _i++) {
+    event = _listeners[_i];
+    window.addEventListener(event, function () {
+      window.dispatchEvent(new Event('resize'));
+    });
+  }
 };
 var observerFunc = function observerFunc(entries) {
   entries.forEach(function (entry) {
@@ -89,27 +93,26 @@ var observerFunc = function observerFunc(entries) {
     if (entry.isIntersecting) {
       target.style.willChange = 'transform';
       window.addEventListener('scroll', listener, {
-        passive: true
+        passive: false
       });
     } else {
       target.style.willChange = '';
       window.removeEventListener('scroll', listener, {
-        passive: true
+        passive: false
       });
     }
     requestAnimationFrame(parallaxFunc.bind(target));
   });
 };
 var parallaxFunc = function parallaxFunc() {
-  if (screen.width < minWidth) {
-    return;
-  }
   var index = Number(this.getAttribute('data-index'));
-  var targetPosi = scrollTop + 100;
+  var targetPosi = scrollTop;
   var setVal = targetPosi - settings[index].scrollRatio.toFixed(1);
 
   //Ahem... Artificial limit
-  if (setVal > 800) {
+  if (setVal > 800 && screen.width < minWidth) {
+    setVal = 200;
+  } else if (setVal > 800) {
     setVal = 800;
   }
   settings[index].child.style.transform = 'translateY(' + setVal + 'px)';
