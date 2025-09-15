@@ -98,6 +98,7 @@ $container-w: 1600px;
 	  	}
 
 	}
+
 	.parallax-area-03 {
 	  	left: 73%;
 
@@ -139,6 +140,15 @@ $container-w: 1600px;
 
 	  		&:before {
 	  			transform: translateY(-50%);
+	  		}
+	  	}
+
+	  	@include media-breakpoint-between(sm, md) {
+	  		bottom: 23%;
+	  		transform: scale(.8);
+
+	  		img {
+	  			margin-top: 0;
 	  		}
 
 	  	}

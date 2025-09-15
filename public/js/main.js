@@ -31,7 +31,7 @@ var resizeID;
 var winH = window.innerHeight;
 var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 var scrollBottom = scrollTop + winH;
-var listeners = ['deviceorientation', 'visibilitychange', '...'];
+var listeners = ['deviceorientation', 'visibilitychange', 'load', '...'];
 var minWidth = 800;
 var bgContainer = document.getElementById('background-animation');
 var footer = document.getElementsByTagName('footer')[0];

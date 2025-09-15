@@ -7,7 +7,7 @@ let winH = window.innerHeight
 let scrollTop = window.pageYOffset || document.documentElement.scrollTop
 let scrollBottom = scrollTop + winH
 
-const listeners = ['deviceorientation', 'visibilitychange', '...']
+const listeners = ['deviceorientation', 'visibilitychange', 'load', '...']
 
 const minWidth = 800
 
