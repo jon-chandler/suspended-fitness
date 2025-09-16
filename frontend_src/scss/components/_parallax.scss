@@ -47,6 +47,16 @@ $container-w: 1600px;
 		img {
 			min-width: max-content;
 		}
+
+		&--sticky-bottom {
+			top: 55%;
+
+			img {
+	  			margin-top: -90%;
+	  		}
+
+
+		}
 	}
 
 	.parallax-area-01 {
@@ -114,7 +124,6 @@ $container-w: 1600px;
 	}
 
 	.parallax-area-04 {
-		top: 50%;
 		left: 10%;
 
 		&:before {
@@ -125,19 +134,30 @@ $container-w: 1600px;
     		transform: translateY(-20%);
 	  	}
 
-	  	img {
-	  		margin-top: -55%;
+
+	  	@include media-breakpoint-down(lg) {
+	  		img {
+	  			margin-top: -50%;
+	  		}
 	  	}
 
+	  	
 	  	@include media-breakpoint-between(sm, md) {
-	  		transform: scale(.9) translateY(60%);
+	  		transform: scale(.8);
 	  		min-height: 300px;
+	  		top: 52%;
 	  	}
 
 
 	  	@include media-breakpoint-down(sm) {
 	  		left: -15%;
-	  		transform: scale(.7) translateY(30%);
+	  		transform: scale(.7);
+	  		top: 62%;
+
+		  	&:before {
+		  		max-height: 100%;
+	    		transform: translateY(-50%);
+		  	}
 	  	}
 
 	}
