@@ -1,7 +1,7 @@
 $max-w-01-s: 600px;
 $max-w-01: 860px;
-$max-w-02: 1400px;
-$max-w-03: 1600px;
+$max-w-02: 1365px;
+$max-w-03: 1599px;
 
 $container-w: 1600px;
 
@@ -38,6 +38,11 @@ $container-w: 1600px;
  	.parallax-elem {
 		position: absolute;
 		transition: $transition-f;
+
+
+		&:last-of-type {
+			bottom: 0;
+		}
 
 		img {
 			min-width: max-content;
@@ -112,7 +117,7 @@ $container-w: 1600px;
 		top: 50%;
 		left: 10%;
 
-	  	&:before {
+		&:before {
 	  		@extend .pole;
 	  		left: 135px;
     		width: 15px;
@@ -124,22 +129,15 @@ $container-w: 1600px;
 	  		margin-top: -50%;
 	  	}
 
-	  	@include media-breakpoint-down(lg) {
-	  		top: 60%;
-	  	}
-
-
 	  	@include media-breakpoint-between(sm, md) {
-	  		transform: scale(.9);
-	  		top: unset;
-	  		bottom: 23%;
+	  		transform: scale(.9) translateY(60%);
+	  		min-height: 300px;
 	  	}
 
 
 	  	@include media-breakpoint-down(sm) {
 	  		left: -15%;
-	  		top: 65%;
-	  		transform: scale(.7);
+	  		transform: scale(.7) translateY(30%);
 	  	}
 
 	}

@@ -14136,6 +14136,9 @@ footer {
   position: absolute;
   transition: 0.3s;
 }
+#background-animation .parallax-elem:last-of-type {
+  bottom: 0;
+}
 #background-animation .parallax-elem img {
   min-width: -moz-max-content;
   min-width: max-content;
@@ -14147,12 +14150,12 @@ footer {
 #background-animation .parallax-area-01:before {
   left: 44px;
 }
-@media (max-width: 1400px) {
+@media (max-width: 1365px) {
   #background-animation .parallax-area-01 {
     left: 70%;
   }
 }
-@media (min-width: 860px) and (max-width: 1400px) {
+@media (min-width: 860px) and (max-width: 1365px) {
   #background-animation .parallax-area-01 {
     left: 52%;
   }
@@ -14175,7 +14178,7 @@ footer {
 #background-animation .parallax-area-02:before {
   left: 24px;
 }
-@media (min-width: 860px) and (max-width: 1400px) {
+@media (min-width: 860px) and (max-width: 1365px) {
   #background-animation .parallax-area-02 {
     left: 80%;
   }
@@ -14192,7 +14195,7 @@ footer {
 #background-animation .parallax-area-03:before {
   left: 44px;
 }
-@media (max-width: 1400px) {
+@media (max-width: 1365px) {
   #background-animation .parallax-area-03 {
     opacity: 0;
   }
@@ -14210,23 +14213,16 @@ footer {
 #background-animation .parallax-area-04 img {
   margin-top: -50%;
 }
-@media (max-width: 879.98px) {
-  #background-animation .parallax-area-04 {
-    top: 60%;
-  }
-}
 @media (min-width: 425px) and (max-width: 767.98px) {
   #background-animation .parallax-area-04 {
-    transform: scale(0.9);
-    top: unset;
-    bottom: 23%;
+    transform: scale(0.9) translateY(60%);
+    min-height: 300px;
   }
 }
 @media (max-width: 424.98px) {
   #background-animation .parallax-area-04 {
     left: -15%;
-    top: 65%;
-    transform: scale(0.7);
+    transform: scale(0.7) translateY(30%);
   }
 }
 
