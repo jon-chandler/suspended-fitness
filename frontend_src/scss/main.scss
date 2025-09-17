@@ -38,6 +38,7 @@ $footerMin: 380px;
 
 @import "./helpers/filters";
 
+
 body, p, input, label, a, div, placeholder {
     font-family: 'Haptik', sans-serif;
     overscroll-behavior: none;
@@ -46,7 +47,9 @@ body, p, input, label, a, div, placeholder {
 body {
     @extend .gradient-blue;
     text-rendering: optimizeLegibility;
+    overscroll-behavior: none;
     overflow-x: hidden;
+    touch-action: pan-y;
 }
 
 img {
