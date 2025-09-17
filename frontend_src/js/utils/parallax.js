@@ -4,16 +4,21 @@ let resizeID
 
 
 let winH = window.innerHeight
+let winW = window.innerWidth
 let scrollTop = window.pageYOffset || document.documentElement.scrollTop
 let scrollBottom = scrollTop + winH
 let targets
 
-const listeners = ['deviceorientation', 'visibilitychange', 'load', '...']
-
 const minWidth = 800
+
+const listeners = ['deviceorientation', 'visibilitychange', 'load', '...']
 
 const bgContainer = document.getElementById('background-animation')
 const footer = document.getElementsByTagName('footer')[0]
+const cardContainer = document.querySelector('.card-container')
+
+let bottomMin = 800 
+
 
 const parallax = ()=> {
 
@@ -59,6 +64,7 @@ const parallax = ()=> {
 		clearTimeout(resizeID)
 		resizeID = setTimeout(() => {
 			winH = window.innerHeight
+			winW = window.innerWidth
 			targets.forEach((target,index) => {
 				if(!settings[index].child) {
 					return
@@ -110,18 +116,20 @@ const parallaxFunc = function() {
 	//Ahem... Artificial limit
 	if(setVal > 800 && screen.width < minWidth) {
 		setVal = 200
-	} else if (setVal > 900) {
-		setVal = 900
+	} else if (setVal > 1000) {
+		setVal = 1000
 	}
 
 	settings[index].child.style.transform = 'translateY('+ (setVal) +'px)'
 }
 
+let threshold = (!!navigator.maxTouchPoints && screen.height < screen.width) ? .1 : .5
+
 
 let observer = new IntersectionObserver(observerFunc, {
 	root: null,
 	rootMargin: '0px',
-	threshold: .5
+	threshold: threshold
 })
 
 const bindThem = (elem) => {
@@ -136,7 +144,7 @@ const addObserver = (entries)=> {
 }
 
 const setAnimationSize = () => {
-	let sz = footer.getBoundingClientRect().top + window.scrollY
+	let sz = (footer.getBoundingClientRect().top + window.scrollY).toFixed(1)
 	bgContainer.style.minHeight = `${sz}px`
 
 	targets.forEach((target) => {

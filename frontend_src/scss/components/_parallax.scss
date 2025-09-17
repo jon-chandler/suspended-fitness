@@ -28,6 +28,11 @@ $container-w: 1600px;
  	z-index: 1;
  	max-width: $container-w;
  	overflow: hidden;
+ 	pointer-events: none;
+
+ 	& > * {
+ 		pointer-events: none;
+ 	}
 
 	
 	.js-parallax-elem {
@@ -168,10 +173,11 @@ $container-w: 1600px;
 
 
 	  	@media (orientation: landscape) AND  (max-width: $max-w-02) {
-	  		margin-top: 15%;
+	  		margin-top: 10%;
+
 	  		
 	  		&:before {
-		  		max-height: 120%;
+		  		max-height: 130%;
 		  	}
 	  	}
 
