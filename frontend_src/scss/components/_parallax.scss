@@ -15,7 +15,6 @@ $container-w: 1600px;
 	position: absolute;
 	transform: translateY(-50%);
 	overflow: hidden;
-
  }
 
  #background-animation {
@@ -130,7 +129,7 @@ $container-w: 1600px;
 	  		@extend .pole;
 	  		left: 135px;
     		width: 15px;
-    		max-height: 150vh;
+    		max-height: 200vh;
     		transform: translateY(-20%);
 	  	}
 
@@ -145,18 +144,34 @@ $container-w: 1600px;
 	  	@include media-breakpoint-between(sm, md) {
 	  		transform: scale(.8);
 	  		min-height: 300px;
-	  		top: 52%;
+	  		top: 67%;
+
+	  		img {
+	  			margin-top: -50%;
+	  		}
 	  	}
 
 
-	  	@include media-breakpoint-down(sm) {
-	  		left: -15%;
+	  	@include media-breakpoint-down(md) {
 	  		transform: scale(.7);
 	  		top: 62%;
 
 		  	&:before {
 		  		max-height: 100%;
 	    		transform: translateY(-50%);
+		  	}
+	  	}
+
+	  	@include media-breakpoint-down(sm) {
+	  		left: -15%;
+	  	}
+
+
+	  	@media (orientation: landscape) AND  (max-width: $max-w-02) {
+	  		margin-top: 15%;
+	  		
+	  		&:before {
+		  		max-height: 120%;
 		  	}
 	  	}
 
