@@ -38,6 +38,9 @@ $footerMin: 380px;
 
 @import "./helpers/filters";
 
+html {
+    background: $coreBlue75;
+}
 
 body, p, input, label, a, div, placeholder {
     font-family: 'Haptik', sans-serif;

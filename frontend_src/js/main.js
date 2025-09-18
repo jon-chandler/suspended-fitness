@@ -1,5 +1,6 @@
 import "./components/navigation"
 import "./utils/parallax"
+import "./utils/stripe"
 
 import {shuffleCards, broadcaster} from "./utils/utils"
 

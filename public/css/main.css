@@ -14353,6 +14353,10 @@ footer {
   filter: sepia(95%) saturate(140%) brightness(90%) hue-rotate(108deg);
 }
 
+html {
+  background: rgba(0, 79, 255, 0.75);
+}
+
 body, p, input, label, a, div, placeholder {
   font-family: "Haptik", sans-serif;
   overscroll-behavior: none;
