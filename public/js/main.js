@@ -228,9 +228,7 @@ function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { 
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 
-var sKey = 'sk_test_51S8QxnEad35pCFHl5R84H90f7wjn9fvdtzXxFO70JgDGUkDZxtDQLki782UyBEkopRv2IXty5Ql3XJPXUpWVztdk008GEDDzRQ';
 var pKey = 'pk_test_51S8QxnEad35pCFHl7T75TJYFhaaS1LJCcvFkhpd6thynfJcdbiotB0qf7P2P2tfJo0YqXQYYYtTDF5GPnylglvcC00CDb6lDHp';
-var sessKey = 'rk_test_51S8QxnEad35pCFHlWDHzulHvOvw6BFXeYJZUxGlqdNrZ4pnmKd9hk2Og0ndgmbPufHz0miYtBBrWo2vnTRIWA3Ja00lpTg6Amp';
 var stripe = await (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_0__.loadStripe)(pKey);
 function initializeStripe() {
   return _initializeStripe.apply(this, arguments);
