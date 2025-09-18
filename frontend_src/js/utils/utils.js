@@ -2,6 +2,9 @@ const cardContainer = document.querySelector('.card-container')
 const cards = document.querySelectorAll('.card')
 const minWidth = 800
 
+const body = document.getElementsByTagName('body')[0]
+const contentLoader = document.querySelector('.modal__loader')
+
 let topCard = 'left'
 
 export function shuffleCards(topCard) {
@@ -42,8 +45,8 @@ observer.observe(cardContainer)
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    const susChannel = new BroadcastChannel('susChannel')
-
+	const susChannel = new BroadcastChannel('susChannel')
+	
     susChannel.onmessage = (ev) => {
 
         let evData = ev.data
@@ -54,3 +57,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 })
+
+export function showLoader(shouldShow) {
+	if(!contentLoader) {
+		return
+	}
+
+	if(!shouldShow) {
+		contentLoader.classList.remove('is-open')
+		body.classList.remove('scroll-lock')
+	} else {
+		contentLoader.classList.add('is-open')
+		body.classList.add('scroll-lock')
+	}
+}

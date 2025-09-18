@@ -1,28 +1,44 @@
 import { loadStripe } from '@stripe/stripe-js'
-import { shuffleCards } from './utils'
+import { shuffleCards, showLoader } from './utils'
 
 const pKey = 'pk_test_51S8QxnEad35pCFHl7T75TJYFhaaS1LJCcvFkhpd6thynfJcdbiotB0qf7P2P2tfJo0YqXQYYYtTDF5GPnylglvcC00CDb6lDHp'
+const stripe = await loadStripe(pKey);
 
-// add back in.......
-//const stripe = await loadStripe(pKey);
-////////////////////
+const userForm = document.getElementById('user-details')
+const susChannel = new BroadcastChannel('susChannel')
 
-async function initializeStripe() {
-  const fetchClientSecret = async () => {
-    const response = await fetch('http://localhost/session.php', {
-      method: "POST",
-    })
-    const { clientSecret } = await response.json()
-    return clientSecret
-  };
 
-  const checkout = await stripe.initEmbeddedCheckout({
-    fetchClientSecret
-  })
+async function initializeStripe(e) {
+	let checkout
+	let data = new URLSearchParams([...new FormData(e.target).entries()])
 
-  checkout.mount('#payment-form')
+	const handleComplete = (result) => {
+		susChannel.postMessage({'newContentMsg' : 'Payment received'})
+		checkout.unmount()
+	}
+
+	const fetchClientSecret = async () => {
+	const response = await fetch('http://localhost/session.php', {
+		method: "POST",
+		body: data
+	})
+	const { clientSecret } = await response.json()
+		return clientSecret
+	}
+
+	checkout = await stripe.initEmbeddedCheckout({
+		fetchClientSecret, 
+		onComplete: handleComplete
+	}).then(function (checkout) {
+		checkout.mount('#payment-form')
+	})
+
+  	showLoader(false)
 }
 
-// add back in.......
-//initializeStripe()
-/////////////////////
+userForm.addEventListener('submit', (e)=> {
+	showLoader(true)
+	e.preventDefault()
+	shuffleCards('right')
+	initializeStripe(e)
+})

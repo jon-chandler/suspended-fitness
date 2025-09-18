@@ -2,15 +2,13 @@ import "./components/navigation"
 import "./utils/parallax"
 
 
-import {shuffleCards, broadcaster} from "./utils/utils"
+import {shuffleCards, broadcaster, showLoader} from "./utils/utils"
 
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 
 import "./utils/stripe"
 
-const body = document.getElementsByTagName('body')[0]
-const contentLoader = document.querySelector('.modal__loader')
 
 const susChannel = new BroadcastChannel('susChannel')
 
@@ -28,14 +26,9 @@ const swiper = new Swiper('.testimonial-carousel', {
 	},
 })
 
-window.addEventListener('DOMContentLoaded', () => {
-	if(!contentLoader) {
-		return
-	}
-
-	contentLoader.classList.remove('is-open')
-	body.classList.remove('scroll-lock')
-
+window.addEventListener('load', () => {
+	setTimeout(() => {
+		showLoader(false)
+	}, 500)
 	susChannel.postMessage({'newContentMsg' : 'Messages bound to channel'})
-	
 })
