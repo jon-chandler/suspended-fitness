@@ -81,7 +81,11 @@
     }
 
     &--jumbo { 
-        background: $altYellow;
+        width: 100%;
+
+        &--50 {
+          width: 50%;  
+        }
     }
 
     &--yellow { 

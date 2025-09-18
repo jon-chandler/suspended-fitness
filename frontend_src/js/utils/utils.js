@@ -20,7 +20,13 @@ export function shuffleCards(topCard) {
 		}, 1000)
 	})
 	setTimeout(() => {
-		topCard === 'left' ? cards[0].classList.add('card--top') : cards[1].classList.add('card--top')
+		if(topCard === 'left') {
+			cards[0].classList.add('card--top')
+			cards[1].classList.remove('card--top')
+		} else {
+			cards[1].classList.add('card--top')
+			cards[0].classList.remove('card--top')
+		}
 	}, 500)
 }
 

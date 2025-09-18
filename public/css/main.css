@@ -112,9 +112,8 @@ h1, .h1, .is-header, .lg-links, .modal__content {
   }
 }
 
-.med {
+.med, .susfit label {
   font-family: "HaptikMed", sans-serif;
-  font-size: 0.8em;
 }
 
 .pseudo-ul:after, .footer-links li a:after, .card a:after {
@@ -261,6 +260,11 @@ blockquote::after {
   font-weight: 400;
   font-size: 16px;
   line-height: 44px;
+}
+.haptik--small {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
 }
 
 .arrow-link, .more-link, .back-link {
@@ -597,6 +601,10 @@ input:-webkit-autofill:active {
 
 .justify-end {
   justify-content: end;
+}
+
+.align-center {
+  align-content: center;
 }
 
 .items-center {
@@ -13628,13 +13636,13 @@ header .logo {
 }
 header .logo a {
   display: block;
-  width: 200px;
+  width: 201px;
   height: 148px !important;
 }
 @media (max-width: 767.98px) {
   header .logo img {
-    width: 140px;
-    height: 102px;
+    width: 201px;
+    height: 148px;
   }
 }
 header .menu {
@@ -13767,6 +13775,11 @@ footer {
     padding-top: 40px;
   }
 }
+.content--align-top {
+  padding-top: 240px;
+  padding-bottom: 60px;
+  min-height: unset;
+}
 
 .over-anim {
   position: relative;
@@ -13810,6 +13823,10 @@ footer {
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+:root {
+  --bs-gutter-x: 0;
 }
 
 .card-container {
@@ -14066,7 +14083,10 @@ footer {
   background: rgba(231, 223, 217, 0.5);
 }
 .button--jumbo {
-  background: #f3ff00;
+  width: 100%;
+}
+.button--jumbo--50 {
+  width: 50%;
 }
 .button--yellow {
   background: #f3ff00;
@@ -14106,6 +14126,107 @@ footer {
     transform: translateX(0);
   }
 }
+.susfit #user-details {
+  color: #4A4645;
+  padding-top: 32px;
+}
+.susfit #user-details.read-only {
+  opacity: 0.7;
+}
+.susfit #user-details.read-only * {
+  pointer-events: none;
+}
+.susfit .pink {
+  background: pink;
+}
+.susfit label {
+  width: 100%;
+}
+.susfit label.in-line {
+  width: auto;
+  padding-left: 24px;
+}
+.susfit label .grey {
+  color: #4A4645;
+}
+.susfit input {
+  width: 100%;
+  border: 1px solid #B6B6B6;
+  border-radius: 8px;
+  padding: 24px;
+  margin: 8px 0 24px 0;
+  background: transparent;
+  transition: 0.6s;
+}
+.susfit input:focus {
+  background: rgba(255, 255, 255, 0.25);
+}
+.susfit input:focus-within {
+  border: none;
+}
+.susfit input::-moz-placeholder {
+  font-size: 18px;
+  line-height: 26px;
+  color: #858585;
+}
+.susfit input::placeholder {
+  font-size: 18px;
+  line-height: 26px;
+  color: #858585;
+}
+.susfit input[type=checkbox] {
+  display: grid;
+  place-content: center;
+  width: 24px;
+  height: 24px;
+}
+.susfit input[type=checkbox]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+}
+.susfit input[type=checkbox]:checked::before {
+  transform: scale(1);
+}
+.susfit .input-inline {
+  display: flex;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  align-items: baseline;
+}
+
+#pre-form-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  align-content: center;
+  min-height: 400px;
+  color: #B6B6B6;
+  transition: 0.6s;
+}
+#pre-form-content .card-placeholder {
+  background-image: url(../compiled_assets/4bdd85e7a0ada84f276f.svg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 56px;
+  display: block;
+  transition: 0.3s;
+}
+#pre-form-content.hide-it {
+  height: 0;
+  min-height: 0;
+}
+#pre-form-content.hide-it > * {
+  height: 0;
+}
+
 .pole, #background-animation .parallax-area-04:before, #background-animation .parallax-area-03:before, #background-animation .parallax-area-02:before, #background-animation .parallax-area-01:before {
   content: "";
   width: 12px;

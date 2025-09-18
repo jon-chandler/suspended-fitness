@@ -19,15 +19,16 @@
 			<div class="menu menu-btn flex-row col-2 justify-end"><span class="only-lg">Menu</span></div>
 		</header>
 
+
 		<section class="content section row self-center items-center">
 			<div class="col-xl-6 col-md-8 col-sm-10">
-				<button class="button col-1 button--pink mb-32">Book Now</button>
+				<a href="/booking.html"><button class="button col-1 button--pink mb-32">Book Now</button></a>
 				<h1 class="is-header">Strength and confidence through pole and aerial - no experience needed.</h1>
 			</div>
 		</section>
 
-		<section class="section col-12 row card-container">
-			<div class="card col-lg-7 row col-md-12 transp">
+ 		<section class="section col-12 row g-0 card-container">
+			<div class="card col-lg-7 row g-0 col-md-12 transp">
 				<div>
 					<p class="mb-32 haptik--sub-title-regular">We've been teaching pole dance fitness for over 20 years, which means we've learnt exactly how to get the best out of you, so you will gain a huge amount of strength and technique in a relaxed and safe environment.</p>
 					<div class="hr-padd--72">
@@ -43,8 +44,10 @@
 						</ul>
 
 						<form id="user-details" method="POST">
-							<input type="text" name="user-name" placeholder="Name" required>
-							<input type="email" name="user-email" placeholder="Email" required>
+							<label for="user-name">Name</label>
+							<input type="text" name="user-name" id="user-name" placeholder="Name" required>
+							<label for="user-email">Email address</label>
+							<input type="email" name="user-email" id="user-email" placeholder="Email" required>
 							<input type="hidden" name="courseID" value="1234">
 							<input type="hidden" name="price" value="6500">
 							<input type="hidden" name="course-title" value="6 week beginner course. Herne Hill">
@@ -69,6 +72,7 @@
 				</div>
 			</div>
 		</section>
+
 	</div>
 
 	<section class="susfit over-anim section testimonial-container col-12 row container-fluid">

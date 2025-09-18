@@ -23,7 +23,6 @@ h1, .is-header, .lg-links {
 }
 .med {
 	font-family: 'HaptikMed', sans-serif;
-	font-size: .8em;
 }
 
 .pseudo-ul {
@@ -184,6 +183,12 @@ blockquote::after {
 			font-weight: 400;
 			font-size: 16px;
 			line-height: 44px;
+		}
+
+		&--small { 
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 18px;
 		}
 
 	}

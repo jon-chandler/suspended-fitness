@@ -9,14 +9,14 @@ header {
 		
 		a{
 			display: block;
-			width: 200px;
+			width: 201px;
 			height: 148px !important;
 		}
 
 		@include media-breakpoint-down(md) { 
 			img {
-				width: 140px;
-				height: 102px;	
+				width: 201px;
+				height: 148px;	
 			}
 		}
 		

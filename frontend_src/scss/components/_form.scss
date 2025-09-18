@@ -1,0 +1,115 @@
+.susfit {
+
+	#user-details {
+		color: $charcoal;
+		padding-top: 32px;
+
+		&.read-only {
+			opacity: .7;
+			* {
+				pointer-events: none;
+			}
+		}
+	}
+
+	.pink {
+		background: pink;
+	}
+
+	label {
+		@extend .med;
+		width: 100%;
+
+		&.in-line {
+			width: auto;
+			padding-left: 24px;
+		}
+
+		.grey {
+			color: $charcoal;
+		}
+	}
+	input {
+		width: 100%;
+		border: 1px solid $brownLight;
+        border-radius: 8px;
+        padding: 24px;
+        margin: 8px 0 24px 0;
+        background: transparent;
+        transition: $transition-m;
+
+        &:focus {
+        	background: rgba(white, .25);
+        }
+
+         &:focus-within {
+         	border: none;
+         }
+
+         &::placeholder { 
+            font-size: 18px;
+            line-height: 26px;
+            color: $brownMed;
+		}
+
+	}
+
+	input[type="checkbox"] {
+		display: grid;
+		place-content: center;
+		width: 24px;
+		height: 24px;
+	}
+
+	input[type="checkbox"]::before {
+		content: "";
+		width: 0.65em;
+		height: 0.65em;
+		transform: scale(0);
+		transition: 120ms transform ease-in-out;
+		box-shadow: inset 1em 1em var(--form-control-color);
+	}
+
+	input[type="checkbox"]:checked::before {
+		transform: scale(1);
+	}
+
+
+	.input-inline {
+		display: flex;
+  		position: relative;
+  		user-select: none;
+  		align-items: baseline;
+	}
+
+}
+
+#pre-form-content {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	align-content: center;
+	min-height: 400px;
+	color: $charcoalLight;
+	transition: $transition-m;
+
+	.card-placeholder {
+		background-image: url(../images/credit_card.svg);
+		background-position: 50%;
+		background-repeat: no-repeat;
+		width: 100%;
+		height: 56px;
+		display: block;
+		transition: $transition-f;
+	}
+
+	&.hide-it {
+		height: 0;
+		min-height: 0;
+
+		> * {
+			height: 0;
+		}
+	}
+}

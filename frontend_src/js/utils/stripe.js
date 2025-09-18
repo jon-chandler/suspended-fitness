@@ -5,6 +5,9 @@ const pKey = 'pk_test_51S8QxnEad35pCFHl7T75TJYFhaaS1LJCcvFkhpd6thynfJcdbiotB0qf7
 const stripe = await loadStripe(pKey);
 
 const userForm = document.getElementById('user-details')
+const formLoaderInfo = document.getElementById('pre-form-content')
+const paymentForm = document.getElementById('payment-form')
+
 const susChannel = new BroadcastChannel('susChannel')
 
 
@@ -12,9 +15,12 @@ async function initializeStripe(e) {
 	let checkout
 	let data = new URLSearchParams([...new FormData(e.target).entries()])
 
-	const handleComplete = (result) => {
+	const handleComplete = () => {
+		toggleLoaderInfo(false)
+		shuffleCards('left')
 		susChannel.postMessage({'newContentMsg' : 'Payment received'})
-		checkout.unmount()
+		checkout.destroy()
+		paymentForm.innerHtml = ''
 	}
 
 	const fetchClientSecret = async () => {
@@ -41,4 +47,15 @@ userForm.addEventListener('submit', (e)=> {
 	e.preventDefault()
 	shuffleCards('right')
 	initializeStripe(e)
+	toggleLoaderInfo(true)
 })
+
+const toggleLoaderInfo = (vis) => {
+	if(vis == true) {
+		userForm.classList.add('read-only')
+		formLoaderInfo.classList.add('hide-it')
+	} else {
+		userForm.classList.remove('read-only')
+		formLoaderInfo.classList.remove('hide-it') 
+	}
+}

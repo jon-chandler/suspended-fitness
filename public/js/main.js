@@ -235,6 +235,8 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
 var pKey = 'pk_test_51S8QxnEad35pCFHl7T75TJYFhaaS1LJCcvFkhpd6thynfJcdbiotB0qf7P2P2tfJo0YqXQYYYtTDF5GPnylglvcC00CDb6lDHp';
 var stripe = await (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_0__.loadStripe)(pKey);
 var userForm = document.getElementById('user-details');
+var formLoaderInfo = document.getElementById('pre-form-content');
+var paymentForm = document.getElementById('payment-form');
 var susChannel = new BroadcastChannel('susChannel');
 function initializeStripe(_x) {
   return _initializeStripe.apply(this, arguments);
@@ -246,11 +248,14 @@ function _initializeStripe() {
       while (1) switch (_context2.n) {
         case 0:
           data = new URLSearchParams(_toConsumableArray(new FormData(e.target).entries()));
-          handleComplete = function handleComplete(result) {
+          handleComplete = function handleComplete() {
+            toggleLoaderInfo(false);
+            (0,_utils__WEBPACK_IMPORTED_MODULE_1__.shuffleCards)('left');
             susChannel.postMessage({
               'newContentMsg': 'Payment received'
             });
-            checkout.unmount();
+            checkout.destroy();
+            paymentForm.innerHtml = '';
           };
           fetchClientSecret = /*#__PURE__*/function () {
             var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
@@ -300,7 +305,17 @@ userForm.addEventListener('submit', function (e) {
   e.preventDefault();
   (0,_utils__WEBPACK_IMPORTED_MODULE_1__.shuffleCards)('right');
   initializeStripe(e);
+  toggleLoaderInfo(true);
 });
+var toggleLoaderInfo = function toggleLoaderInfo(vis) {
+  if (vis == true) {
+    userForm.classList.add('read-only');
+    formLoaderInfo.classList.add('hide-it');
+  } else {
+    userForm.classList.remove('read-only');
+    formLoaderInfo.classList.remove('hide-it');
+  }
+};
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } }, 1);
 
@@ -335,7 +350,13 @@ function shuffleCards(topCard) {
     }, 1000);
   });
   setTimeout(function () {
-    topCard === 'left' ? cards[0].classList.add('card--top') : cards[1].classList.add('card--top');
+    if (topCard === 'left') {
+      cards[0].classList.add('card--top');
+      cards[1].classList.remove('card--top');
+    } else {
+      cards[1].classList.add('card--top');
+      cards[0].classList.remove('card--top');
+    }
   }, 500);
 }
 var cardCheck = function cardCheck(els) {
