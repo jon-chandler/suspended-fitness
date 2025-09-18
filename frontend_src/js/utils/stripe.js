@@ -1,8 +1,11 @@
 import { loadStripe } from '@stripe/stripe-js'
+import { shuffleCards } from './utils'
 
 const pKey = 'pk_test_51S8QxnEad35pCFHl7T75TJYFhaaS1LJCcvFkhpd6thynfJcdbiotB0qf7P2P2tfJo0YqXQYYYtTDF5GPnylglvcC00CDb6lDHp'
 
-const stripe = await loadStripe(pKey);
+// add back in.......
+//const stripe = await loadStripe(pKey);
+////////////////////
 
 async function initializeStripe() {
   const fetchClientSecret = async () => {
@@ -20,5 +23,6 @@ async function initializeStripe() {
   checkout.mount('#payment-form')
 }
 
-
-initializeStripe()
+// add back in.......
+//initializeStripe()
+/////////////////////

@@ -1,11 +1,13 @@
 import "./components/navigation"
 import "./utils/parallax"
-import "./utils/stripe"
+
 
 import {shuffleCards, broadcaster} from "./utils/utils"
 
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
+
+import "./utils/stripe"
 
 const body = document.getElementsByTagName('body')[0]
 const contentLoader = document.querySelector('.modal__loader')
