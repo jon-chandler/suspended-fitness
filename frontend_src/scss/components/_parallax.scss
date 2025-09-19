@@ -127,6 +127,22 @@ $container-w: 1600px;
 	  	}
 	}
 
+
+	.parallax-area-05 {
+	  	left: 64%;
+
+	  	&:before {
+	  		@extend .pole;
+	  		left: 61px;
+	  	}
+
+	  	@include media-breakpoint-down(md) {
+	  		transform: scale(.7);
+	  		left: 58%;
+	  		top: -2%;
+	  	}
+	}
+
 	.parallax-area-04 {
 		left: 10%;
 

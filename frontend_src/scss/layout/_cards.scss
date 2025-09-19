@@ -3,6 +3,10 @@
 }
 .card-container {
 	padding-bottom: 160px;
+
+	&--fill-bottom {
+		padding-bottom: 650px;
+	}
 }
 
 

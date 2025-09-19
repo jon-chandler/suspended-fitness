@@ -13832,6 +13832,9 @@ footer {
 .card-container {
   padding-bottom: 160px;
 }
+.card-container--fill-bottom {
+  padding-bottom: 650px;
+}
 
 .card {
   border-radius: 0;
@@ -14227,7 +14230,7 @@ footer {
   height: 0;
 }
 
-.pole, #background-animation .parallax-area-04:before, #background-animation .parallax-area-03:before, #background-animation .parallax-area-02:before, #background-animation .parallax-area-01:before {
+.pole, #background-animation .parallax-area-04:before, #background-animation .parallax-area-05:before, #background-animation .parallax-area-03:before, #background-animation .parallax-area-02:before, #background-animation .parallax-area-01:before {
   content: "";
   width: 12px;
   height: var(--defHeight, 200vh);
@@ -14329,6 +14332,19 @@ footer {
 @media (max-width: 1365px) {
   #background-animation .parallax-area-03 {
     opacity: 0;
+  }
+}
+#background-animation .parallax-area-05 {
+  left: 64%;
+}
+#background-animation .parallax-area-05:before {
+  left: 61px;
+}
+@media (max-width: 767.98px) {
+  #background-animation .parallax-area-05 {
+    transform: scale(0.7);
+    left: 58%;
+    top: -2%;
   }
 }
 #background-animation .parallax-area-04 {
