@@ -25,7 +25,7 @@ async function initializeStripe(e) {
 	}
 
 	const fetchClientSecret = async () => {
-	const response = await fetch('http://localhost/session.php', {
+	const response = await fetch('http://192.168.0.113/session.php', {
 		method: "POST",
 		body: data
 	})
