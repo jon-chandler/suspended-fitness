@@ -154,11 +154,14 @@ $container-w: 1600px;
 
 	.parallax-area-05 {
 	  	left: 60%;
-	  	transform: translateY(2%);
 
 	  	&:before {
 	  		@extend .pole;
 	  		left: 61px;
+	  	}
+
+	  	img {
+	  		margin-top: -20%;
 	  	}
 
 	  	@include media-breakpoint-down(md) {
@@ -180,7 +183,7 @@ $container-w: 1600px;
 
 
 	  	&.booking-page{
-	  		left: 40%;
+	  		left: 35%;
 
 	  		&:before{
 	  			left: 41px;

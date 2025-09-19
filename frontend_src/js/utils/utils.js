@@ -46,7 +46,9 @@ const observer = new IntersectionObserver(cardCheck, {
 	threshold: .2
 })
 
+/*
 observer.observe(cardContainer)
+*/
 
 
 document.addEventListener('DOMContentLoaded', function () {

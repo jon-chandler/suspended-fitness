@@ -3,6 +3,7 @@
 }
 .card-container {
 	padding-bottom: 160px;
+	isolation: isolate;
 
 	&--fill-bottom {
 		padding-bottom: 650px;
