@@ -37,13 +37,14 @@
         margin: 8px 0 24px 0;
         background: transparent;
         transition: $transition-m;
+        font-size: 18px;
 
-        &:focus {
+        &:focus, &:hover {
         	background: rgba(white, .25);
         }
 
          &:focus-within {
-         	border: none;
+         	outline: none;
          }
 
          &::placeholder { 
@@ -72,6 +73,37 @@
 
 	input[type="checkbox"]:checked::before {
 		transform: scale(1);
+	}
+
+	.select { 
+	    display: block;
+	    border: 1px solid $brownLight;
+	    border-radius: 8px;
+	    margin: 8px 0 24px 0;
+	    padding: 24px;  
+	    width: 100%; 
+
+	    &--disabled { 
+	        opacity: 0.25;
+	        pointer-events: none;
+	    }
+	   
+	}
+
+
+	select { 
+	    background: url('../images/chevron.svg') transparent no-repeat calc(100% - 10px) !important;
+	    appearance: none;
+	    transition: transition-s;
+
+	    &:not(:invalid) { 
+	        color: $brownMed;
+
+	    }
+
+	    &:hover {
+	    	background: url('../images/chevron_up.svg') rgba(white, .25) no-repeat calc(100% - 10px) !important;
+	    }
 	}
 
 

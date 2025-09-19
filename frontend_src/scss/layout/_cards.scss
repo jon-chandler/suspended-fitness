@@ -6,6 +6,10 @@
 
 	&--fill-bottom {
 		padding-bottom: 650px;
+
+		@include media-breakpoint-down(md) { 
+			padding-bottom: 500px;
+		}
 	}
 }
 

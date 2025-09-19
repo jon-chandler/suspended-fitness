@@ -12,6 +12,7 @@ const susChannel = new BroadcastChannel('susChannel')
 
 async function initializeStripe(e) {
 	let checkout
+	let chkOut
 	let data = new URLSearchParams([...new FormData(e.target).entries()])
 
 	const handleComplete = () => {
@@ -19,8 +20,8 @@ async function initializeStripe(e) {
 		shuffleCards('left')
 		susChannel.postMessage({'newContentMsg' : 'Payment received'})
 		setTimeout(() => {
-			checkout.destroy()
-		}, 1000)
+			chkOut.destroy()
+		}, 100)
 	}
 
 	const fetchClientSecret = async () => {
@@ -28,6 +29,7 @@ async function initializeStripe(e) {
 		method: "POST",
 		body: data
 	})
+
 	const { clientSecret } = await response.json()
 		return clientSecret
 	}
@@ -37,9 +39,11 @@ async function initializeStripe(e) {
 		onComplete: handleComplete
 	}).then(function (checkout) {
 		checkout.mount('#payment-form')
+		chkOut = checkout
 	})
 
   	showLoader(false)
+  	window.dispatchEvent(new Event('resize'))
 }
 
 if(userForm) {

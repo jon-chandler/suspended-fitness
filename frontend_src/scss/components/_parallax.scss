@@ -181,10 +181,21 @@ $container-w: 1600px;
 		  		max-height: 100%;
 	    		transform: translateY(-50%);
 		  	}
+
+		  	&.booking-page {
+		  		&:before {
+		  			max-height: 350%;
+	    			transform: translateY(-50%);
+		  		}
+		  	}
 	  	}
 
 	  	@include media-breakpoint-down(sm) {
 	  		left: -15%;
+
+	  		&.booking-page {
+	  			top: 82%;
+	  		}
 	  	}
 
 

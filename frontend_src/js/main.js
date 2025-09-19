@@ -29,6 +29,5 @@ const swiper = new Swiper('.testimonial-carousel', {
 window.addEventListener('load', () => {
 	setTimeout(() => {
 		showLoader(false)
-	}, 500)
-	susChannel.postMessage({'newContentMsg' : 'Messages bound to channel'})
+	}, 100)
 })
