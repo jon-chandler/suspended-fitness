@@ -10,7 +10,6 @@ const paymentForm = document.getElementById('payment-form')
 
 const susChannel = new BroadcastChannel('susChannel')
 
-
 async function initializeStripe(e) {
 	let checkout
 	let data = new URLSearchParams([...new FormData(e.target).entries()])
@@ -19,8 +18,9 @@ async function initializeStripe(e) {
 		toggleLoaderInfo(false)
 		shuffleCards('left')
 		susChannel.postMessage({'newContentMsg' : 'Payment received'})
-		checkout.destroy()
-		paymentForm.innerHtml = ''
+		setTimeout(() => {
+			checkout.destroy()
+		}, 1000)
 	}
 
 	const fetchClientSecret = async () => {
