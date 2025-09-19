@@ -108,7 +108,7 @@
 		transform: translateX(0);
 	}
 	50% {
-		transform: translateX(8%);
+		transform: translateX(8%) scale(1.04);
 	}
 	1000% {
 		transform: translateX(0%);
@@ -120,7 +120,7 @@
 		transform: translateX(0);
 	}
 	50% {
-		transform: translateX(-8%);
+		transform: translateX(-8%) scale(1.04);
 	}
 	1000% {
 		transform: translateX(0%);
