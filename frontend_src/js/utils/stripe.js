@@ -42,13 +42,15 @@ async function initializeStripe(e) {
   	showLoader(false)
 }
 
-userForm.addEventListener('submit', (e)=> {
-	showLoader(true)
-	e.preventDefault()
-	shuffleCards('right')
-	initializeStripe(e)
-	toggleLoaderInfo(true)
-})
+if(userForm) {
+	userForm.addEventListener('submit', (e)=> {
+		showLoader(true)
+		e.preventDefault()
+		shuffleCards('right')
+		initializeStripe(e)
+		toggleLoaderInfo(true)
+	})
+}
 
 const toggleLoaderInfo = (vis) => {
 	if(vis == true) {
