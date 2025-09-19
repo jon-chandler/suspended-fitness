@@ -63,6 +63,30 @@ $container-w: 1600px;
 		}
 	}
 
+
+	.empty-pole {
+		left: 10%;
+
+	  	&:before {
+	  		@extend .pole;
+	  		min-height: 300%;
+	  	}
+
+	  	@include media-breakpoint-down(lg) {
+	  		display: none;
+	  	}
+	}
+
+	$lPos: 0;
+	@while $lPos <= 100 {
+
+	  .empty-pole--#{$lPos} {
+	    left: #{$lPos}#{'%'};
+	  }
+
+	  $lPos: $lPos + 5;
+	}
+
 	.parallax-area-01 {
 		left: 46%;
 		top: 2%;
@@ -129,7 +153,8 @@ $container-w: 1600px;
 
 
 	.parallax-area-05 {
-	  	left: 64%;
+	  	left: 60%;
+	  	transform: translateY(2%);
 
 	  	&:before {
 	  		@extend .pole;
@@ -139,7 +164,6 @@ $container-w: 1600px;
 	  	@include media-breakpoint-down(md) {
 	  		transform: scale(.7);
 	  		left: 58%;
-	  		top: -2%;
 	  	}
 	}
 
@@ -152,6 +176,16 @@ $container-w: 1600px;
     		width: 15px;
     		max-height: 200vh;
     		transform: translateY(-20%);
+	  	}
+
+
+	  	&.booking-page{
+	  		left: 40%;
+
+	  		&:before{
+	  			left: 41px;
+	  		}
+	  		
 	  	}
 
 
@@ -195,6 +229,7 @@ $container-w: 1600px;
 
 	  		&.booking-page {
 	  			top: 82%;
+	  			left: 5%;
 	  		}
 	  	}
 

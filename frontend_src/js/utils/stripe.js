@@ -16,12 +16,12 @@ async function initializeStripe(e) {
 	let data = new URLSearchParams([...new FormData(e.target).entries()])
 
 	const handleComplete = () => {
-		toggleLoaderInfo(false)
 		shuffleCards('left')
 		susChannel.postMessage({'newContentMsg' : 'Payment received'})
 		setTimeout(() => {
 			chkOut.destroy()
-		}, 100)
+			toggleLoaderInfo(false)
+		}, 1500)
 	}
 
 	const fetchClientSecret = async () => {
@@ -65,3 +65,12 @@ const toggleLoaderInfo = (vis) => {
 		formLoaderInfo.classList.remove('hide-it') 
 	}
 }
+
+const resize_ob = new ResizeObserver(() => {
+	window.dispatchEvent(new Event('resize'))
+})
+
+if(paymentForm) {
+	resize_ob.observe(paymentForm)
+}
+

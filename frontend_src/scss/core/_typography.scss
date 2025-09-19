@@ -20,6 +20,12 @@ h1, .is-header, .lg-links {
 		line-height: 1.1em;
 		letter-spacing: revert;
 	}
+
+	@include media-breakpoint-down(sm) { 
+		font-size: 40px;
+		line-height: 1.1em;
+		letter-spacing: revert;
+	}
 }
 .med {
 	font-family: 'HaptikMed', sans-serif;
