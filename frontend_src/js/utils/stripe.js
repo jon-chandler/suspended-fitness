@@ -1,12 +1,15 @@
 import { loadStripe } from '@stripe/stripe-js'
-import { shuffleCards, showLoader } from './utils'
+import { shuffleCards, showLoader, scrollToPos } from './utils'
 
 const pKey = 'pk_test_51S8QxnEad35pCFHl7T75TJYFhaaS1LJCcvFkhpd6thynfJcdbiotB0qf7P2P2tfJo0YqXQYYYtTDF5GPnylglvcC00CDb6lDHp'
 const stripe = await loadStripe(pKey);
 
 const userForm = document.getElementById('user-details')
 const formLoaderInfo = document.getElementById('pre-form-content')
+const formSuccessInfo = document.getElementById('post-form-content')
 const paymentForm = document.getElementById('payment-form')
+
+const minWidth = 800
 
 const susChannel = new BroadcastChannel('susChannel')
 
@@ -19,9 +22,11 @@ async function initializeStripe(e) {
 		shuffleCards('left')
 		susChannel.postMessage({'newContentMsg' : 'Payment received'})
 		setTimeout(() => {
+			formSuccessInfo.classList.remove('hide-it')
 			chkOut.destroy()
-			toggleLoaderInfo(false)
-		}, 1500)
+			//toggleLoaderInfo(false)
+			window.location = '/confirmation.html'
+		}, 2000)
 	}
 
 	const fetchClientSecret = async () => {
@@ -48,11 +53,18 @@ async function initializeStripe(e) {
 
 if(userForm) {
 	userForm.addEventListener('submit', (e)=> {
-		showLoader(true)
 		e.preventDefault()
+		showLoader(true)
 		shuffleCards('right')
 		initializeStripe(e)
 		toggleLoaderInfo(true)
+
+		if(window.innerWidth < minWidth) {
+			let elBounds = paymentForm.getBoundingClientRect()
+			let yScroll = elBounds.top + elBounds.height/2
+			scrollToPos(0, yScroll)
+		}
+
 	})
 }
 
@@ -64,6 +76,7 @@ const toggleLoaderInfo = (vis) => {
 		userForm.classList.remove('read-only')
 		formLoaderInfo.classList.remove('hide-it') 
 	}
+	window.dispatchEvent(new Event('resize'))
 }
 
 const resize_ob = new ResizeObserver(() => {

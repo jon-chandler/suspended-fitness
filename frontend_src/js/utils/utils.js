@@ -31,6 +31,7 @@ export function shuffleCards(topCard) {
 }
 
 
+// Do we want to restack the 'cards' on initial load and intersection scroll? Looks quite nice
 const cardCheck = (els) => {
 	els.forEach((el) => {
 		if (el.isIntersecting) {
@@ -78,4 +79,12 @@ export function showLoader(shouldShow) {
 		contentLoader.classList.add('is-open')
 		body.classList.add('scroll-lock')
 	}
+}
+
+export function scrollToPos(x, y) {
+	if(!y) {
+		return
+	}
+
+	window.scrollTo(x, y)
 }

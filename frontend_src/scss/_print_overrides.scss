@@ -5,6 +5,10 @@
 		margin: 5mm;
 	}
 
+	.logo {
+		filter: brightness(1%);
+	}
+
 
 	body {
 		break-inside: avoid;
@@ -23,10 +27,14 @@
 			transition-delay: 0s !important;
 		}
 
-		section {
-			break-inside: avoid;
-		}
+		section:first-of-type {
+			padding: 1em 2em 0 2em !important;
+			transform: scale(.8);
 
+			> div {
+				width: 100% !important;
+			}
+		}
 
 		.print-only {
 			display: block !important;
@@ -40,7 +48,8 @@
 
 	}
 
-	footer {
-		display: none;
+	.footer-links, #background-animation, .button {
+		display: none !important;
 	}
+
 }

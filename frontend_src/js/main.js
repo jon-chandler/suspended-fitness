@@ -31,3 +31,10 @@ window.addEventListener('load', () => {
 		showLoader(false)
 	}, 100)
 })
+
+const saveContentBtn = document.querySelectorAll('.print-dialog')
+Array.from(saveContentBtn).forEach(btn => { 
+	btn.addEventListener('click', ()=> {
+		window.print()
+	})
+})
