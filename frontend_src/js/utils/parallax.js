@@ -31,7 +31,7 @@ const parallax = ()=> {
 		return
 	}
 
-	targets.forEach((target,index) => {
+	targets.forEach((target, index) => {
 		
 		target.setAttribute('data-index',index)
 		
@@ -54,6 +54,10 @@ const parallax = ()=> {
 				}
 			}
 		)
+
+		setTimeout(() => {
+			child.classList.add('show')
+		}, index * 250)
 
 		bindThem(target)
 	})
