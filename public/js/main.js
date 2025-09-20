@@ -135,6 +135,15 @@ window.addEventListener('load', function () {
   setTimeout(function () {
     (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.showLoader)(false);
   }, 100);
+
+  // const sse = new EventSource('http://192.168.0.113/broadcast.php')
+
+  // sse.onmessage = function(event) {
+  // 	console.log('event', event)
+  // }
+});
+window.addEventListener('beforeunload', function (e) {
+  (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.showLoader)(true);
 });
 var saveContentBtn = document.querySelectorAll('.open-print-dialog');
 Array.from(saveContentBtn).forEach(function (btn) {
