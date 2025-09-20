@@ -5,7 +5,9 @@ const minWidth = 800
 const body = document.getElementsByTagName('body')[0]
 const contentLoader = document.querySelector('.modal__loader')
 
-let topCard = 'left'
+const animateCardsOnload = document.querySelector('.animate-cards-on-load')
+
+let topCard = 'right'
 
 export function shuffleCards(topCard) {
 
@@ -47,9 +49,10 @@ const observer = new IntersectionObserver(cardCheck, {
 	threshold: .2
 })
 
-/*
-observer.observe(cardContainer)
-*/
+
+if(animateCardsOnload) {
+	observer.observe(cardContainer)
+}
 
 
 document.addEventListener('DOMContentLoaded', function () {
