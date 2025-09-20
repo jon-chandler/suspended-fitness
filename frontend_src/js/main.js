@@ -1,4 +1,5 @@
 import "./components/navigation"
+import "./components/maps"
 import "./utils/parallax"
 
 
@@ -32,7 +33,7 @@ window.addEventListener('load', () => {
 	}, 100)
 })
 
-const saveContentBtn = document.querySelectorAll('.print-dialog')
+const saveContentBtn = document.querySelectorAll('.open-print-dialog')
 Array.from(saveContentBtn).forEach(btn => { 
 	btn.addEventListener('click', ()=> {
 		window.print()

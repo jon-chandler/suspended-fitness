@@ -66,3 +66,21 @@
         padding-right: 0;
     }
  }
+
+ .map-container {
+    width: 100%;
+    height: auto;
+    min-height: 360px;
+    margin: 2em 0;
+    position: relative;
+
+    &:after {
+        content: url(../images/zoom.svg);
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        z-index: 3;
+        width: 32px;
+        height: 32px;
+    }
+ }

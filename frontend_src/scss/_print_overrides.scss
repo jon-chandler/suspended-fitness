@@ -48,8 +48,15 @@
 
 	}
 
-	.footer-links, #background-animation, .button {
+	.footer-links, #background-animation, .button, .open-print-dialog {
 		display: none !important;
+	}
+
+	.map-container {
+		width: 100%;
+		&:after {
+			display: none;
+		}
 	}
 
 }
