@@ -1,8 +1,7 @@
 import "./components/navigation"
-import "./components/maps"
 import "./utils/parallax"
 
-
+import { makeMap } from "./components/maps"
 import {shuffleCards, broadcaster, showLoader} from "./utils/utils"
 
 import Swiper from 'swiper/bundle';
@@ -39,3 +38,13 @@ Array.from(saveContentBtn).forEach(btn => {
 		window.print()
 	})
 })
+
+
+const locationMap = document.getElementById('location-map')
+
+if(locationMap) {
+	let lat = 51.4533431
+	let lng = -0.1087879
+
+	makeMap(lat, lng)
+}

@@ -71,16 +71,22 @@
     width: 100%;
     height: auto;
     min-height: 360px;
-    margin: 2em 0;
+    margin-bottom: 2em;
     position: relative;
-
-    &:after {
-        content: url(../images/zoom.svg);
-        position: absolute;
-        bottom: 8px;
-        right: 8px;
-        z-index: 3;
-        width: 32px;
-        height: 32px;
-    }
  }
+
+#map-launch{
+    background: url(../images/zoom.svg);
+    position: relative;
+    top: 350px;
+    left: 88%;
+    z-index: 1;
+    width: 34px;
+    height: 34px;
+    display: block;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .6;
+    }
+}

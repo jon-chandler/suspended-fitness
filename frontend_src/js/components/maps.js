@@ -1,15 +1,22 @@
 import { Loader } from "@googlemaps/js-api-loader"
 
 const locationMap = document.getElementById('location-map')
+const launchGoogle = document.getElementById('map-launch')
 
-if(locationMap) {
+export function makeMap(lat, lng) {
+
+	if(!locationMap || !lat || !lng) {
+		return
+	}
+
+	const mapLink = `https://maps.google.com/?q=${lat},${lng}`
 
 	const loader = new Loader({
 		apiKey: 'AIzaSyCSQTqTijoj0_tBVlrvU4WIJ2-WIYRpSKM',
 		version: 'weekly'
 	})
 
-	let pos = { lat: 51.4533431, lng: -0.1087879 }
+	let pos = { lat: lat, lng: lng }
 
 	loader.load().then(async () => {
 		const { Map } = await google.maps.importLibrary('maps')
@@ -29,4 +36,11 @@ if(locationMap) {
   		})
 	})
 
+
+	launchGoogle.addEventListener('click', _=> {
+		window.open(mapLink)
+	})
+
 }
+
+
