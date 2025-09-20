@@ -14462,18 +14462,25 @@ footer {
 @media (min-width: 860px) and (max-width: 1365px) {
   #background-animation .parallax-area-01 {
     left: 52%;
+    transform: scale(0.9);
   }
 }
-@media (max-width: 860px) {
+@media (min-width: 600px) and (max-width: 860px) {
   #background-animation .parallax-area-01 {
-    left: 58%;
-    transform: scale(0.7);
+    left: 52%;
+    transform: scale(0.9);
+  }
+}
+@media (max-width: 600px) {
+  #background-animation .parallax-area-01 {
+    left: 60%;
+    transform: scale(0.6);
   }
   #background-animation .parallax-area-01:before {
-    left: 64px;
+    left: 44px;
   }
   #background-animation .parallax-area-01 img {
-    transform: translateY(-50%) scale(0.7);
+    transform: translateY(-50%);
   }
 }
 #background-animation .parallax-area-02 {

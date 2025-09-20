@@ -108,23 +108,30 @@ $container-w: 1600px;
 
 		@media (min-width: $max-w-01) and (max-width: $max-w-02)  {
 	  		left: 52%;
+	  		transform: scale(.9);
 	  	}
 
+	  	@media (min-width: $max-w-01-s) and (max-width: $max-w-01)  {
+	  		left: 52%;
+	  		transform: scale(.9);
+	  	}
 	  	
-	  	@media (max-width: $max-w-01) {
-	  		left: 58%;
-	  		transform: scale(.7);
+
+	  	@media (max-width: $max-w-01-s) {
+	  		left: 60%;
+	  		transform: scale(.6);
 
 	  		&:before {
-	  			left: 64px;
+	  			left: 44px;
 	  		}
 
 	  		img {
-	  			transform: translateY(-50%) scale(.7);
+	  			transform: translateY(-50%);
 	  		}
 	  	}
 
 	}
+
 	.parallax-area-02 {
 	  	left: 61%;
 	  	
