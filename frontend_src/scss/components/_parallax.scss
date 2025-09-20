@@ -112,8 +112,8 @@ $container-w: 1600px;
 
 	  	
 	  	@media (max-width: $max-w-01) {
-	  		left: 60%;
-	  		//opacity: .8;
+	  		left: 58%;
+	  		transform: scale(.7);
 
 	  		&:before {
 	  			left: 64px;
@@ -171,7 +171,7 @@ $container-w: 1600px;
 	  	}
 
 	  	@include media-breakpoint-down(md) {
-	  		transform: scale(.7);
+	  		transform: scale(.6);
 	  		left: 58%;
 	  	}
 	}
