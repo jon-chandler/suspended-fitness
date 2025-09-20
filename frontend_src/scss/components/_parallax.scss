@@ -118,7 +118,7 @@ $container-w: 1600px;
 	  	
 
 	  	@media (max-width: $max-w-01-s) {
-	  		left: 60%;
+	  		left: 59%;
 	  		transform: scale(.6);
 
 	  		&:before {
@@ -151,7 +151,7 @@ $container-w: 1600px;
 	}
 
 	.parallax-area-03 {
-	  	left: 73%;
+	  	left: 73.5%;
 	  	top: 9%;
 
 	  	&:before {
@@ -179,7 +179,7 @@ $container-w: 1600px;
 
 	  	@include media-breakpoint-down(md) {
 	  		transform: scale(.6);
-	  		left: 58%;
+	  		left: 56.5%;
 	  	}
 	}
 

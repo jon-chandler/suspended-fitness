@@ -14473,7 +14473,7 @@ footer {
 }
 @media (max-width: 600px) {
   #background-animation .parallax-area-01 {
-    left: 60%;
+    left: 59%;
     transform: scale(0.6);
   }
   #background-animation .parallax-area-01:before {
@@ -14500,7 +14500,7 @@ footer {
   }
 }
 #background-animation .parallax-area-03 {
-  left: 73%;
+  left: 73.5%;
   top: 9%;
 }
 #background-animation .parallax-area-03:before {
@@ -14523,7 +14523,7 @@ footer {
 @media (max-width: 767.98px) {
   #background-animation .parallax-area-05 {
     transform: scale(0.6);
-    left: 58%;
+    left: 56.5%;
   }
 }
 #background-animation .parallax-area-04 {
