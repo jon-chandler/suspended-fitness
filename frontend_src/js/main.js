@@ -11,7 +11,9 @@ import "./utils/stripe"
 
 const DEVMODE = false
 const isLocal = (location.hostname === 'localhost') ? 1 : 0
-const backendDomain = (isLocal) ? 'http://localhost/' : 'http://192.168.0.113/'
+//const backendDomain = (isLocal) ? 'http://localhost' : 'http://192.168.0.113'
+
+const backendDomain = 'http://localhost:80'
 
 
 const susChannel = new BroadcastChannel('susChannel')
@@ -37,13 +39,20 @@ window.addEventListener('load', () => {
 
 
 	if(!DEVMODE) {
-		const sse = new EventSource(`${backendDomain}broadcast.php`)
+		const sse = new EventSource(`${backendDomain}/broadcast.php`)
 
-		sse.addEventListener('contentChange', function(e){
-			let data = e.data.data
-			console.log(e, data)
-			susChannel.postMessage({'newContentMsg' : `MSG from backend: ${data.msg}`})
+		sse.addEventListener('contentChange', (e)=> {
+			console.log('>>>>>>>>>> ', e)
+			susChannel.postMessage({'newContentMsg' : `MSG from backend: ${e}`})
 		})
+
+		window.addEventListener('beforeunload', () => {
+			sse.close()
+		})
+
+		// window.onbeforeunload = (e) => {
+		// 	sse.close()
+		// }
 	}
 
 })
