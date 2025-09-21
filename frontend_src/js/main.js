@@ -9,8 +9,10 @@ import 'swiper/css/bundle'
 
 import "./utils/stripe"
 
-const isDev = 0
-const backendDomain = (isDev) ? 'http://localhost' : 'http://192.168.0.113'
+const DEVMODE = false
+const isLocal = (location.hostname === 'localhost') ? 1 : 0
+const backendDomain = (isLocal) ? 'http://localhost/' : 'http://192.168.0.113/'
+
 
 const susChannel = new BroadcastChannel('susChannel')
 
@@ -34,8 +36,8 @@ window.addEventListener('load', () => {
 	}, 100)
 
 
-	if(!isDev) {
-		const sse = new EventSource(`${backendDomain}/broadcast.php`)
+	if(!DEVMODE) {
+		const sse = new EventSource(`${backendDomain}broadcast.php`)
 
 		sse.addEventListener('contentChange', function(e){
 			let data = e.data.data
