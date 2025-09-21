@@ -117,6 +117,8 @@ _utils_stripe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_async_dependencies_result
 
 
 
+var isDev = 0;
+var backendDomain = isDev ? 'http://localhost' : 'http://192.168.0.113';
 var susChannel = new BroadcastChannel('susChannel');
 var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_4__["default"]('.testimonial-carousel', {
   spaceBetween: 300,
@@ -135,12 +137,16 @@ window.addEventListener('load', function () {
   setTimeout(function () {
     (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.showLoader)(false);
   }, 100);
-
-  // const sse = new EventSource('http://192.168.0.113/broadcast.php')
-
-  // sse.onmessage = function(event) {
-  // 	console.log('event', event)
-  // }
+  if (!isDev) {
+    var sse = new EventSource("".concat(backendDomain, "/broadcast.php"));
+    sse.addEventListener('contentChange', function (e) {
+      var data = e.data.data;
+      console.log(e, data);
+      susChannel.postMessage({
+        'newContentMsg': "MSG from backend: ".concat(data.msg)
+      });
+    });
+  }
 });
 window.addEventListener('beforeunload', function (e) {
   (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.showLoader)(true);
