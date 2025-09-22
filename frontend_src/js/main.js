@@ -39,7 +39,6 @@ window.addEventListener('load', () => {
 		showLoader(false)
 	}, 100)
 
-
 	if(!DEVMODE) {
 		const sse = new EventSource(`${backendDomain}/broadcast.php`)
 
