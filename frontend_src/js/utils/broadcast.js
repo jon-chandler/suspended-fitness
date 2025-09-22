@@ -12,13 +12,15 @@ export function handleMessages() {
 		switch(message.event) {
 			case 'contentChange':
 				console.log(`NEW CONTENT.... ALERT USER ${message.msg}`)
-				console.log(' ->> ', message)
+				console.log('->> ', message)
 			break;
 			case 'paymentReceived':
-				console.log(`Course booked ${message}`)
+				console.log('Course booked')
+				console.log('-- ', message)
 			break;
 			default:
-				console.log(message)
+				console.log('GENERIC MESSAGE')
+				console.log('++ ', message)
 			break; 
 		}
 
