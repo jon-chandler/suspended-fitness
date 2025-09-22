@@ -1,6 +1,41 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./js/components/announcer.js":
+/*!************************************!*\
+  !*** ./js/components/announcer.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   hideAnnouncement: () => (/* binding */ hideAnnouncement),
+/* harmony export */   showAnnouncement: () => (/* binding */ showAnnouncement)
+/* harmony export */ });
+var announceEl = document.getElementById('announce');
+var announceContainer = announceEl.querySelector('.response');
+function showAnnouncement(type, msg) {
+  var extra = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  if (!announceEl) {
+    return;
+  }
+  console.log(msg);
+  announceEl.classList.add('active');
+  announceContainer.innerHTML = msg;
+  setTimeout(function () {
+    hideAnnouncement();
+  }, 5000);
+}
+function hideAnnouncement() {
+  if (!announceEl) {
+    return;
+  }
+  announceEl.classList.remove('active');
+}
+
+/***/ }),
+
 /***/ "./js/components/maps.js":
 /*!*******************************!*\
   !*** ./js/components/maps.js ***!
@@ -104,13 +139,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_utils_parallax__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_maps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/maps */ "./js/components/maps.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/utils */ "./js/utils/utils.js");
-/* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.mjs");
-/* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
-/* harmony import */ var _utils_stripe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/stripe */ "./js/utils/stripe.js");
-/* harmony import */ var _utils_broadcast__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/broadcast */ "./js/utils/broadcast.js");
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_stripe__WEBPACK_IMPORTED_MODULE_6__]);
+/* harmony import */ var _components_announcer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/announcer */ "./js/components/announcer.js");
+/* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.mjs");
+/* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
+/* harmony import */ var _utils_stripe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/stripe */ "./js/utils/stripe.js");
+/* harmony import */ var _utils_broadcast__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/broadcast */ "./js/utils/broadcast.js");
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_stripe__WEBPACK_IMPORTED_MODULE_7__]);
 var __webpack_async_dependencies_result__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
-_utils_stripe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_async_dependencies_result__[0];
+_utils_stripe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_async_dependencies_result__[0];
+
 
 
 
@@ -123,8 +160,8 @@ var DEVMODE = false;
 var isLocal = location.hostname === 'localhost' ? 1 : 0;
 var backendDomain = isLocal ? 'http://localhost' : 'http://192.168.0.113';
 var susChannel = new BroadcastChannel('susChannel');
-(0,_utils_broadcast__WEBPACK_IMPORTED_MODULE_7__.handleMessages)();
-var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_4__["default"]('.testimonial-carousel', {
+(0,_utils_broadcast__WEBPACK_IMPORTED_MODULE_8__.handleMessages)();
+var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_5__["default"]('.testimonial-carousel', {
   spaceBetween: 300,
   centeredSlides: true,
   speed: 800,
@@ -146,8 +183,9 @@ window.addEventListener('load', function () {
     sse.addEventListener('contentChange', function (e) {
       var _data = JSON.parse(e.data);
       susChannel.postMessage({
-        'newContentMsg': "MSG from backend: ".concat(_data.msg),
-        'fullMessage': _data
+        'event': 'contentChange',
+        'msg': _data.msg,
+        'completeResponse': _data
       });
     });
     window.addEventListener('beforeunload', function () {
@@ -186,25 +224,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   handleMessages: () => (/* binding */ handleMessages)
 /* harmony export */ });
+/* harmony import */ var _components_announcer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/announcer */ "./js/components/announcer.js");
+
 var susChannel = new BroadcastChannel('susChannel');
 function handleMessages() {
   susChannel.onmessage = function (ev) {
     var evData = ev.data;
     whatToDo(evData);
+    console.log('<><><><><><><> ', evData);
   };
   var whatToDo = function whatToDo(message) {
+    console.log('EVENT: ', message.event);
     switch (message.event) {
       case 'contentChange':
-        console.log("NEW CONTENT.... ALERT USER ".concat(message.msg));
-        console.log('->> ', message);
+        console.log('----- contentChange');
+        (0,_components_announcer__WEBPACK_IMPORTED_MODULE_0__.showAnnouncement)('info', message.msg);
         break;
       case 'paymentReceived':
-        console.log('Course booked');
-        console.log('-- ', message);
+        console.log('----- payment');
+        (0,_components_announcer__WEBPACK_IMPORTED_MODULE_0__.showAnnouncement)('booking', message.msg);
         break;
-      default:
-        console.log('GENERIC MESSAGE');
-        console.log('++ ', message);
+        console.log('----- generic');
+        defashowAnnouncement('general', message.msg);
         break;
     }
   };
@@ -396,7 +437,8 @@ function _initializeStripe() {
           handleComplete = function handleComplete() {
             (0,_utils__WEBPACK_IMPORTED_MODULE_1__.shuffleCards)('left');
             susChannel.postMessage({
-              'paymentReceived': 'Yee-haw!'
+              'event': 'paymentReceived',
+              'msg': 'Yee-haw!'
             });
             setTimeout(function () {
               formSuccessInfo.classList.remove('hide-it');

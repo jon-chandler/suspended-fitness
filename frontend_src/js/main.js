@@ -1,8 +1,11 @@
 import "./components/navigation"
 import "./utils/parallax"
 
+
 import { makeMap } from "./components/maps"
+
 import {shuffleCards, broadcaster, showLoader} from "./utils/utils"
+import { showAnnouncement, hideAnnouncement} from "./components/announcer"
 
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
@@ -44,7 +47,7 @@ window.addEventListener('load', () => {
 
 		sse.addEventListener('contentChange', (e)=> {
 			let _data = JSON.parse(e.data)
-			susChannel.postMessage({'newContentMsg' : `MSG from backend: ${_data.msg}`, 'fullMessage' : _data})
+			susChannel.postMessage({'event' : 'contentChange', 'msg': _data.msg, 'completeResponse' : _data})
 		})
 
 		window.addEventListener('beforeunload', () => {

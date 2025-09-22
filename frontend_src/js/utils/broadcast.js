@@ -1,3 +1,5 @@
+import { showAnnouncement, hideAnnouncement} from "../components/announcer"
+
 const susChannel = new BroadcastChannel('susChannel')
 
 export function handleMessages() {
@@ -5,22 +7,26 @@ export function handleMessages() {
 	susChannel.onmessage = (ev) => {
 		let evData = ev.data
 		whatToDo(evData)
+
+		console.log('<><><><><><><> ', evData)
 	}
 
 
 	const whatToDo = (message) => {
+
+		console.log('EVENT: ', message.event)
+
 		switch(message.event) {
 			case 'contentChange':
-				console.log(`NEW CONTENT.... ALERT USER ${message.msg}`)
-				console.log('->> ', message)
+				console.log('----- contentChange')
+				showAnnouncement('info', message.msg)
 			break;
 			case 'paymentReceived':
-				console.log('Course booked')
-				console.log('-- ', message)
+				console.log('----- payment')
+				showAnnouncement('booking', message.msg)
 			break;
-			default:
-				console.log('GENERIC MESSAGE')
-				console.log('++ ', message)
+				console.log('----- generic')
+				defashowAnnouncement('general', message.msg)
 			break; 
 		}
 
