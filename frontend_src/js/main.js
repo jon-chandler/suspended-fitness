@@ -8,24 +8,26 @@ import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
 
 import "./utils/stripe"
+import { handleMessages } from "./utils/broadcast"
+
 
 const DEVMODE = false
 const isLocal = (location.hostname === 'localhost') ? 1 : 0
-//const backendDomain = (isLocal) ? 'http://localhost' : 'http://192.168.0.113'
-
-const backendDomain = 'http://localhost:80'
+const backendDomain = (isLocal) ? 'http://localhost' : 'http://192.168.0.113'
 
 
 const susChannel = new BroadcastChannel('susChannel')
 
+handleMessages()
+
 const swiper = new Swiper('.testimonial-carousel', {
-		spaceBetween: 300,
-		centeredSlides: true,
-		speed: 800,
-		autoplay: {
-			delay: 5000,
-			disableOnInteraction: false,
-		},
+	spaceBetween: 300,
+	centeredSlides: true,
+	speed: 800,
+	autoplay: {
+		delay: 5000,
+		disableOnInteraction: false,
+	},
 	pagination: {
 		el: ".testimonial-pagination",
 		clickable: true,
@@ -42,17 +44,14 @@ window.addEventListener('load', () => {
 		const sse = new EventSource(`${backendDomain}/broadcast.php`)
 
 		sse.addEventListener('contentChange', (e)=> {
-			console.log('>>>>>>>>>> ', e)
-			susChannel.postMessage({'newContentMsg' : `MSG from backend: ${e}`})
+			let _data = JSON.parse(e.data)
+			susChannel.postMessage({'newContentMsg' : `MSG from backend: ${_data.msg}`, 'fullMessage' : _data})
 		})
 
 		window.addEventListener('beforeunload', () => {
 			sse.close()
 		})
 
-		// window.onbeforeunload = (e) => {
-		// 	sse.close()
-		// }
 	}
 
 })

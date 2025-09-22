@@ -107,6 +107,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.mjs");
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
 /* harmony import */ var _utils_stripe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/stripe */ "./js/utils/stripe.js");
+/* harmony import */ var _utils_broadcast__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/broadcast */ "./js/utils/broadcast.js");
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_stripe__WEBPACK_IMPORTED_MODULE_6__]);
 var __webpack_async_dependencies_result__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 _utils_stripe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_async_dependencies_result__[0];
@@ -117,12 +118,12 @@ _utils_stripe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_async_dependencies_result
 
 
 
+
 var DEVMODE = false;
 var isLocal = location.hostname === 'localhost' ? 1 : 0;
-//const backendDomain = (isLocal) ? 'http://localhost' : 'http://192.168.0.113'
-
-var backendDomain = 'http://localhost:80';
+var backendDomain = isLocal ? 'http://localhost' : 'http://192.168.0.113';
 var susChannel = new BroadcastChannel('susChannel');
+(0,_utils_broadcast__WEBPACK_IMPORTED_MODULE_7__.handleMessages)();
 var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_4__["default"]('.testimonial-carousel', {
   spaceBetween: 300,
   centeredSlides: true,
@@ -143,18 +144,15 @@ window.addEventListener('load', function () {
   if (!DEVMODE) {
     var sse = new EventSource("".concat(backendDomain, "/broadcast.php"));
     sse.addEventListener('contentChange', function (e) {
-      console.log('>>>>>>>>>> ', e);
+      var _data = JSON.parse(e.data);
       susChannel.postMessage({
-        'newContentMsg': "MSG from backend: ".concat(e)
+        'newContentMsg': "MSG from backend: ".concat(_data.msg),
+        'fullMessage': _data
       });
     });
     window.addEventListener('beforeunload', function () {
       sse.close();
     });
-
-    // window.onbeforeunload = (e) => {
-    // 	sse.close()
-    // }
   }
 });
 window.addEventListener('beforeunload', function (e) {
@@ -174,6 +172,41 @@ if (locationMap) {
 }
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ "./js/utils/broadcast.js":
+/*!*******************************!*\
+  !*** ./js/utils/broadcast.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   handleMessages: () => (/* binding */ handleMessages)
+/* harmony export */ });
+var susChannel = new BroadcastChannel('susChannel');
+function handleMessages() {
+  susChannel.onmessage = function (ev) {
+    var evData = ev.data;
+    whatToDo(evData);
+  };
+  var whatToDo = function whatToDo(message) {
+    switch (message.event) {
+      case 'contentChange':
+        console.log("NEW CONTENT.... ALERT USER ".concat(message.msg));
+        console.log(' ->> ', message);
+        break;
+      case 'paymentReceived':
+        console.log("Course booked ".concat(message));
+        break;
+      default:
+        console.log(message);
+        break;
+    }
+  };
+}
 
 /***/ }),
 
@@ -361,7 +394,7 @@ function _initializeStripe() {
           handleComplete = function handleComplete() {
             (0,_utils__WEBPACK_IMPORTED_MODULE_1__.shuffleCards)('left');
             susChannel.postMessage({
-              'newContentMsg': 'Payment received'
+              'paymentReceived': 'Yee-haw!'
             });
             setTimeout(function () {
               formSuccessInfo.classList.remove('hide-it');
@@ -508,15 +541,6 @@ var observer = new IntersectionObserver(cardCheck, {
 if (animateCardsOnload) {
   observer.observe(cardContainer);
 }
-document.addEventListener('DOMContentLoaded', function () {
-  var susChannel = new BroadcastChannel('susChannel');
-  susChannel.onmessage = function (ev) {
-    var evData = ev.data;
-    if (evData.newContentMsg) {
-      console.log(evData);
-    }
-  };
-});
 function showLoader(shouldShow) {
   if (!contentLoader) {
     return;

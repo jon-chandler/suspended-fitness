@@ -55,21 +55,6 @@ if(animateCardsOnload) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
-
-	const susChannel = new BroadcastChannel('susChannel')
-	
-    susChannel.onmessage = (ev) => {
-
-        let evData = ev.data
-
-        if(evData.newContentMsg) {
-            console.log(evData)
-        }
-    }
-
-})
-
 export function showLoader(shouldShow) {
 	if(!contentLoader) {
 		return

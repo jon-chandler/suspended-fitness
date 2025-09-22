@@ -20,7 +20,7 @@ async function initializeStripe(e) {
 
 	const handleComplete = () => {
 		shuffleCards('left')
-		susChannel.postMessage({'newContentMsg' : 'Payment received'})
+		susChannel.postMessage({'paymentReceived' : 'Yee-haw!'})
 		setTimeout(() => {
 			formSuccessInfo.classList.remove('hide-it')
 			chkOut.destroy()
