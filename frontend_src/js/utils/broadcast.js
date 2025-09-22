@@ -7,26 +7,19 @@ export function handleMessages() {
 	susChannel.onmessage = (ev) => {
 		let evData = ev.data
 		whatToDo(evData)
-
-		console.log('<><><><><><><> ', evData)
 	}
 
 
 	const whatToDo = (message) => {
 
-		console.log('EVENT: ', message.event)
-
 		switch(message.event) {
 			case 'contentChange':
-				console.log('----- contentChange')
 				showAnnouncement('info', message.msg)
 			break;
 			case 'paymentReceived':
-				console.log('----- payment')
-				showAnnouncement('booking', message.msg)
+				showAnnouncement('success', message.msg)
 			break;
-				console.log('----- generic')
-				defashowAnnouncement('general', message.msg)
+				defashowAnnouncement('warning', message.msg)
 			break; 
 		}
 

@@ -7,9 +7,11 @@ export function showAnnouncement(type, msg, extra = null) {
 		return
 	}
 
-	console.log(msg)
+	const attr = 'data-type'
 
 	announceEl.classList.add('active')
+	announceEl.removeAttribute(attr)
+	announceEl.setAttribute(attr, type)
 	announceContainer.innerHTML = msg
 
 	setTimeout(() => {

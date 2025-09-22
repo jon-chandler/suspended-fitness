@@ -14674,7 +14674,7 @@ footer {
   position: absolute;
   top: 25px;
   right: 30px;
-  border-radius: 8px;
+  border-radius: 4px;
   background: #fff;
   padding: 20px 35px 20px 25px;
   box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.6);
@@ -14698,7 +14698,7 @@ footer {
 .announcement .announcement-content .message .response {
   font-size: 16px;
 }
-.announcement .check {
+.announcement .icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14743,6 +14743,18 @@ footer {
   100% {
     right: 100%;
   }
+}
+
+[data-type=info] .icon {
+  background: center/97% no-repeat url(../compiled_assets/4f65a78f9c606022971d.svg) #004fff;
+}
+
+[data-type=success] .icon {
+  background: center/97% no-repeat url(../compiled_assets/ff901fc8e37d6656dc3b.svg) #f3ff00;
+}
+
+[data-type=warning] .icon {
+  background-image: center/97% no-repeat url(../compiled_assets/a4d1a787463c39ac54fd.svg) #f5a6ff;
 }
 
 .filter--pink {

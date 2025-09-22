@@ -2,7 +2,7 @@
     position: absolute;
     top: 25px;
     right: 30px;
-    border-radius: 8px;
+    border-radius: 4px;
     background: #fff;
     padding: 20px 35px 20px 25px;
     box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.6);
@@ -30,7 +30,7 @@
         }
     }
 
-    .check {
+    .icon {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -85,4 +85,14 @@
         }
     }
 
+}
+
+[data-type='info'] .icon {
+    background: center / 97% no-repeat url(../images/info.svg) $coreBlue;
+}
+[data-type='success'] .icon {
+    background: center / 97% no-repeat url(../images/success.svg) $altYellow;
+}
+[data-type='warning'] .icon {
+    background-image: center / 97% no-repeat url(../images/warning.svg) $corePink;
 }

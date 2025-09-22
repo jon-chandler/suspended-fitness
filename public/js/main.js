@@ -20,8 +20,10 @@ function showAnnouncement(type, msg) {
   if (!announceEl) {
     return;
   }
-  console.log(msg);
+  var attr = 'data-type';
   announceEl.classList.add('active');
+  announceEl.removeAttribute(attr);
+  announceEl.setAttribute(attr, type);
   announceContainer.innerHTML = msg;
   setTimeout(function () {
     hideAnnouncement();
@@ -231,21 +233,16 @@ function handleMessages() {
   susChannel.onmessage = function (ev) {
     var evData = ev.data;
     whatToDo(evData);
-    console.log('<><><><><><><> ', evData);
   };
   var whatToDo = function whatToDo(message) {
-    console.log('EVENT: ', message.event);
     switch (message.event) {
       case 'contentChange':
-        console.log('----- contentChange');
         (0,_components_announcer__WEBPACK_IMPORTED_MODULE_0__.showAnnouncement)('info', message.msg);
         break;
       case 'paymentReceived':
-        console.log('----- payment');
-        (0,_components_announcer__WEBPACK_IMPORTED_MODULE_0__.showAnnouncement)('booking', message.msg);
+        (0,_components_announcer__WEBPACK_IMPORTED_MODULE_0__.showAnnouncement)('success', message.msg);
         break;
-        console.log('----- generic');
-        defashowAnnouncement('general', message.msg);
+        defashowAnnouncement('warning', message.msg);
         break;
     }
   };
