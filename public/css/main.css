@@ -14217,10 +14217,10 @@ footer {
   color: #4A4645;
   padding-top: 32px;
 }
-.susfit #user-details.read-only, .susform #user-details.read-only {
-  opacity: 0.7;
+.susfit #user-details.read-only, .susfit #user-details.disabled, .susform #user-details.read-only, .susform #user-details.disabled {
+  opacity: 0.5;
 }
-.susfit #user-details.read-only *, .susform #user-details.read-only * {
+.susfit #user-details.read-only *, .susfit #user-details.disabled *, .susform #user-details.read-only *, .susform #user-details.disabled * {
   pointer-events: none;
 }
 .susfit .pink, .susform .pink {
@@ -14263,21 +14263,34 @@ footer {
   color: #858585;
 }
 .susfit input[type=checkbox], .susform input[type=checkbox] {
+  border: 1px solid #4A4645;
+  position: relative;
   display: grid;
   place-content: center;
   width: 24px;
   height: 24px;
+  transition: 0.9s;
 }
-.susfit input[type=checkbox]::before, .susform input[type=checkbox]::before {
+.susfit input[type=checkbox]::after, .susform input[type=checkbox]::after {
+  position: absolute;
   content: "";
-  width: 0.65em;
-  height: 0.65em;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--form-control-color);
+  height: 32px;
+  width: 32px;
+  top: -8px;
+  right: -8px;
+  background: #e6dfda;
+  display: grid;
+  place-items: center;
+  opacity: 1;
+  padding-top: 3px;
+  outline: 1px solid #4A4645;
 }
-.susfit input[type=checkbox]:checked::before, .susform input[type=checkbox]:checked::before {
+.susfit input[type=checkbox]:hover::after, .susform input[type=checkbox]:hover::after {
+  background: #ece7e3;
+}
+.susfit input[type=checkbox]:checked::after, .susform input[type=checkbox]:checked::after {
   transform: scale(1);
+  content: url(../compiled_assets/8494ca51d81b86dfcbad.svg);
 }
 .susfit .select, .susform .select {
   display: block;
@@ -14313,7 +14326,6 @@ footer {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  align-items: baseline;
 }
 
 #pre-form-content, #post-form-content {

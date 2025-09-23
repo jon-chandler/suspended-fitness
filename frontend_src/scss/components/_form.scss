@@ -4,8 +4,8 @@
 		color: $charcoal;
 		padding-top: 32px;
 
-		&.read-only {
-			opacity: .7;
+		&.read-only, &.disabled {
+			opacity: .5;
 			* {
 				pointer-events: none;
 			}
@@ -32,48 +32,62 @@
 	input {
 		width: 100%;
 		border: 1px solid $brownLight;
-        border-radius: 8px;
-        padding: 24px;
-        margin: 8px 0 24px 0;
-        background: transparent;
-        transition: $transition-m;
-        font-size: 18px;
+		border-radius: 8px;
+		padding: 24px;
+		margin: 8px 0 24px 0;
+		background: transparent;
+		transition: $transition-m;
+		font-size: 18px;
 
-        &:focus, &:hover {
-        	background: rgba(white, .25);
-        }
+			&:focus, &:hover {
+				background: rgba(white, .25);
+			}
 
-         &:focus-within {
-         	outline: none;
-         }
+			&:focus-within {
+				outline: none;
+			}
 
-         &::placeholder { 
-            font-size: 18px;
-            line-height: 26px;
-            color: $brownMed;
-		}
-
+			&::placeholder { 
+				font-size: 18px;
+				line-height: 26px;
+				color: $brownMed;
+			}
 	}
 
 	input[type="checkbox"] {
+		border: 1px solid $brownBorder;
+		position: relative;
 		display: grid;
 		place-content: center;
 		width: 24px;
 		height: 24px;
+		transition: $transition-s;
+
+		&::after { 
+			position: absolute;
+			content: '';
+			height: 32px;
+			width: 32px;
+			top: -8px;
+			right: -8px;
+			background: $brownMedNoTrans;
+			display: grid;
+			place-items: center;
+			opacity: 1;
+			padding-top: 3px;
+			outline: 1px solid $brownBorder;
+		}
+
+		&:hover::after {
+			background: $brownPaleNoTrans;
+		}
 	}
 
-	input[type="checkbox"]::before {
-		content: "";
-		width: 0.65em;
-		height: 0.65em;
-		transform: scale(0);
-		transition: 120ms transform ease-in-out;
-		box-shadow: inset 1em 1em var(--form-control-color);
-	}
-
-	input[type="checkbox"]:checked::before {
+	input[type="checkbox"]:checked::after {
 		transform: scale(1);
+		content: url(../images/tick.svg);
 	}
+
 
 	.select { 
 	    display: block;
@@ -115,7 +129,6 @@
 		display: flex;
   		position: relative;
   		user-select: none;
-  		align-items: baseline;
 	}
 
 }
