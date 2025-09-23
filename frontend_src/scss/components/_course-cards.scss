@@ -7,7 +7,7 @@
 	}
 
 	&:last-of-type {
-		margin-bottom: 200px !important;
+		margin-bottom: 280px !important;
 	}
 
 	@include media-breakpoint-down(lg) { 
@@ -50,9 +50,18 @@
 
     &--action-container {
     	display: flex;
+    	margin-top: 1em;
     	
     	> button {
     		margin-right: 2em;
+    	}
+    }
+
+    .card-text {
+
+    	&--info {
+    		color: $charcoal;
+    		@extend .haptik--small;
     	}
     }
 

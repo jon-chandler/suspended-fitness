@@ -268,7 +268,7 @@ blockquote::after {
   font-size: 16px;
   line-height: 44px;
 }
-.haptik--small {
+.haptik--small, .card .card-text--info {
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;
@@ -14566,14 +14566,14 @@ footer {
   max-height: 500%;
 }
 #background-animation .parallax-area-04.offer-page {
-  left: 15%;
+  left: 32%;
 }
 #background-animation .parallax-area-04.offer-page:before {
   left: 44px;
   width: 10px;
 }
 #background-animation .parallax-area-04.offer-page img {
-  margin-top: 54%;
+  margin-top: 90%;
 }
 @media (max-width: 1023.98px) {
   #background-animation .parallax-area-04 img {
@@ -14803,7 +14803,7 @@ footer {
   border-radius: unset;
 }
 .card:last-of-type {
-  margin-bottom: 200px !important;
+  margin-bottom: 280px !important;
 }
 @media (max-width: 1023.98px) {
   .card {
@@ -14828,9 +14828,13 @@ footer {
 }
 .card--action-container {
   display: flex;
+  margin-top: 1em;
 }
 .card--action-container > button {
   margin-right: 2em;
+}
+.card .card-text--info {
+  color: #4A4645;
 }
 
 .filter--pink, .card:nth-child(4n-1) img {
