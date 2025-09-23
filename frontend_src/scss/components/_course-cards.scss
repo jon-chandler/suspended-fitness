@@ -10,21 +10,21 @@
 		margin-left: unset !important;
 	}
 
-	&:nth-child(1n-1) {
+	&:nth-child(4n-1) {
 	 	background: $offerPink;
 
 	 	img {
 	 		@extend .filter--pink;
 	 	}
     }
-    &:nth-child(2n-2) {
+    &:nth-child(4n-2) {
     	background: $offerYellow;
 
     	img {
 	 		@extend .filter--yellow;
 	 	}
     }
-    &:nth-child(3n-3) {
+    &:nth-child(4n-3) {
     	background: $offerBlue;
 
     	img {
