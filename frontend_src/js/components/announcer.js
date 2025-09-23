@@ -1,5 +1,6 @@
 const announceEl = document.getElementById('announce')
 const announceContainer = announceEl.querySelector('.response')
+const announceClose = announceEl.querySelector('.close')
 
 export function showAnnouncement(type, msg, extra = null) {
 
@@ -17,6 +18,10 @@ export function showAnnouncement(type, msg, extra = null) {
 	setTimeout(() => {
 		hideAnnouncement()
 	}, 5000)
+
+	announceClose.addEventListener('click', ()=> {
+		hideAnnouncement()
+	})
 
 }
 

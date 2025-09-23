@@ -13808,6 +13808,9 @@ footer {
   padding-bottom: 44px;
   min-height: unset;
 }
+.content--white {
+  color: white;
+}
 
 .over-anim {
   position: relative;
@@ -13891,6 +13894,10 @@ footer {
   .card-container--fill-bottom {
     padding-bottom: 500px;
   }
+}
+
+.blurb {
+  border: 2px solid red;
 }
 
 .card {
@@ -14673,13 +14680,13 @@ footer {
 .announcement {
   position: absolute;
   top: 25px;
-  right: 30px;
+  right: 35px;
   border-radius: 4px;
   background: #fff;
   padding: 20px 35px 20px 25px;
   box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.6);
   overflow: hidden;
-  transform: translateX(calc(100% + 30px));
+  transform: translateX(calc(100% + 35px));
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
   z-index: 100;
 }
@@ -14715,10 +14722,11 @@ footer {
   right: 15px;
   padding: 5px;
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 0.5;
+  background: 50% no-repeat url(../compiled_assets/1196ec14441180b79721.svg);
 }
 .announcement .close:hover {
-  opacity: 1;
+  opacity: 0.8;
 }
 .announcement .progress {
   position: absolute;
@@ -14755,6 +14763,10 @@ footer {
 
 [data-type=warning] .icon {
   background-image: center/97% no-repeat url(../compiled_assets/a4d1a787463c39ac54fd.svg) #f5a6ff;
+}
+
+.course-filter {
+  background: white;
 }
 
 .filter--pink {

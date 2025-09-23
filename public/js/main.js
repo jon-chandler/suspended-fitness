@@ -15,6 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var announceEl = document.getElementById('announce');
 var announceContainer = announceEl.querySelector('.response');
+var announceClose = announceEl.querySelector('.close');
 function showAnnouncement(type, msg) {
   var extra = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
   if (!announceEl) {
@@ -28,6 +29,9 @@ function showAnnouncement(type, msg) {
   setTimeout(function () {
     hideAnnouncement();
   }, 5000);
+  announceClose.addEventListener('click', function () {
+    hideAnnouncement();
+  });
 }
 function hideAnnouncement() {
   if (!announceEl) {
