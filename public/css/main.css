@@ -13991,6 +13991,14 @@ footer {
 .content-card li {
   line-height: 2.5em;
 }
+.content-card .info-list {
+  list-style-type: circle;
+  margin-left: 1.5em;
+  padding-bottom: 2em;
+}
+.content-card .info-list li {
+  line-height: unset;
+}
 .content-card a {
   display: inline-block;
   color: black;
