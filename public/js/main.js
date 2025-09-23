@@ -542,7 +542,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   shuffleCards: () => (/* binding */ shuffleCards)
 /* harmony export */ });
 var cardContainer = document.querySelector('.card-container');
-var cards = document.querySelectorAll('.card');
+var cards = document.querySelectorAll('.content-card');
 var minWidth = 800;
 var body = document.getElementsByTagName('body')[0];
 var contentLoader = document.querySelector('.modal__loader');
@@ -560,11 +560,11 @@ function shuffleCards(topCard) {
   });
   setTimeout(function () {
     if (topCard === 'left') {
-      cards[0].classList.add('card--top');
-      cards[1].classList.remove('card--top');
+      cards[0].classList.add('content-card--top');
+      cards[1].classList.remove('content-card--top');
     } else {
-      cards[1].classList.add('card--top');
-      cards[0].classList.remove('card--top');
+      cards[1].classList.add('content-card--top');
+      cards[0].classList.remove('content-card--top');
     }
   }, 500);
 }

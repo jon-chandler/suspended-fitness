@@ -1,0 +1,55 @@
+.card {
+	padding: 4em;
+	border-radius: unset;
+	
+	&:nth-child(even) {
+		@extend .offset-md-2;
+	}
+
+	@include media-breakpoint-down(lg) { 
+		margin-left: unset !important;
+	}
+
+	&:nth-child(1n-1) {
+	 	background: $offerPink;
+
+	 	img {
+	 		@extend .filter--pink;
+	 	}
+    }
+    &:nth-child(2n-2) {
+    	background: $offerYellow;
+
+    	img {
+	 		@extend .filter--yellow;
+	 	}
+    }
+    &:nth-child(3n-3) {
+    	background: $offerBlue;
+
+    	img {
+	 		@extend .filter--blue;
+	 	}
+    }
+    &:nth-child(4n-4) {
+    	background: $offerGreen;
+
+    	img {
+	 		@extend .filter--green;
+	 	}
+    }
+
+    img {
+    	max-height: 400px;
+    	aspect-ratio: auto;
+    }
+
+    &--action-container {
+    	display: flex;
+    	
+    	> button {
+    		margin-right: 2em;
+    	}
+    }
+
+}

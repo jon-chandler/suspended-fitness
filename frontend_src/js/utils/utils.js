@@ -1,5 +1,5 @@
 const cardContainer = document.querySelector('.card-container')
-const cards = document.querySelectorAll('.card')
+const cards = document.querySelectorAll('.content-card')
 const minWidth = 800
 
 const body = document.getElementsByTagName('body')[0]
@@ -23,11 +23,11 @@ export function shuffleCards(topCard) {
 	})
 	setTimeout(() => {
 		if(topCard === 'left') {
-			cards[0].classList.add('card--top')
-			cards[1].classList.remove('card--top')
+			cards[0].classList.add('content-card--top')
+			cards[1].classList.remove('content-card--top')
 		} else {
-			cards[1].classList.add('card--top')
-			cards[0].classList.remove('card--top')
+			cards[1].classList.add('content-card--top')
+			cards[0].classList.remove('content-card--top')
 		}
 	}, 500)
 }

@@ -39,7 +39,7 @@ $footerMin: 380px;
 @import "./layout/footer";
 @import "./layout/body";
 @import "./layout/nav";
-@import "./layout/cards";
+@import "./layout/content-cards";
 
 @import "./components/modal";
 @import "./components/buttons";
@@ -48,6 +48,7 @@ $footerMin: 380px;
 @import "./components/testimonials";
 @import "./components/announcement";
 @import "./components/course-filters";
+@import "./components/course-cards";
 
 @import "./helpers/filters";
 

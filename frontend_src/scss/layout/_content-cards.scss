@@ -18,7 +18,7 @@
 	border: 2px solid red;
 }
 
-.card {
+.content-card {
 	border-radius: 0;
 	border: none;
 	padding: 4em;
@@ -64,7 +64,7 @@
 	}
 
 	&--white {
-		background: $whiteIsh;
+		background: white;
 	}
 
 	&--pink {

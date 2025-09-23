@@ -1,4 +1,4 @@
-.susfit {
+.susfit, .susform {
 
 	#user-details {
 		color: $charcoal;
@@ -103,6 +103,10 @@
 
 	    &:hover {
 	    	background: url('../images/chevron_up.svg') rgba(white, .25) no-repeat calc(100% - 10px) !important;
+	    }
+
+	    &.max-w {
+	    	width: 100%;
 	    }
 	}
 
