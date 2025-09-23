@@ -3,7 +3,7 @@ $max-w-01: 860px;
 $max-w-02: 1365px;
 $max-w-03: 1599px;
 
-$container-w: 1600px;
+$container-w: 1680px;
 
 
 .pole {
@@ -133,7 +133,7 @@ $container-w: 1600px;
 	}
 
 	.parallax-area-02 {
-	  	left: 61%;
+	  	left: 63%;
 	  	
 	  	&:before {
 	  		@extend .pole;
@@ -151,7 +151,7 @@ $container-w: 1600px;
 	}
 
 	.parallax-area-03 {
-	  	left: 73.5%;
+	  	left: 74%;
 	  	top: 9%;
 
 	  	&:before {

@@ -14279,6 +14279,7 @@ footer {
   width: 24px;
   height: 24px;
   transition: 0.9s;
+  padding: 0;
 }
 .susfit input[type=checkbox]::after, .susform input[type=checkbox]::after {
   position: absolute;
@@ -14290,7 +14291,6 @@ footer {
   background: #e6dfda;
   display: grid;
   place-items: center;
-  opacity: 1;
   padding-top: 3px;
   outline: 1px solid #4A4645;
 }
@@ -14392,7 +14392,7 @@ footer {
   height: auto;
   min-height: 500vh;
   z-index: 1;
-  max-width: 1600px;
+  max-width: 1680px;
   overflow: hidden;
   pointer-events: none;
 }
@@ -14535,7 +14535,7 @@ footer {
   }
 }
 #background-animation .parallax-area-02 {
-  left: 61%;
+  left: 63%;
 }
 #background-animation .parallax-area-02:before {
   left: 24px;
@@ -14551,7 +14551,7 @@ footer {
   }
 }
 #background-animation .parallax-area-03 {
-  left: 73.5%;
+  left: 74%;
   top: 9%;
 }
 #background-animation .parallax-area-03:before {
