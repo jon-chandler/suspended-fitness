@@ -14516,6 +14516,13 @@ footer {
 #background-animation .parallax-area-03:before {
   left: 44px;
 }
+#background-animation .parallax-area-03.offer-page {
+  left: 80%;
+}
+#background-animation .parallax-area-03.offer-page:before {
+  left: 63px;
+  width: 10px;
+}
 @media (max-width: 1365px) {
   #background-animation .parallax-area-03 {
     opacity: 0;
@@ -14526,6 +14533,12 @@ footer {
 }
 #background-animation .parallax-area-05:before {
   left: 61px;
+}
+#background-animation .parallax-area-05.offer-page {
+  left: 65%;
+}
+#background-animation .parallax-area-05.offer-page:before {
+  left: 17px;
 }
 #background-animation .parallax-area-05 img {
   margin-top: -20%;
@@ -14545,11 +14558,22 @@ footer {
   max-height: 200vh;
   transform: translateY(-20%);
 }
-#background-animation .parallax-area-04.booking-page {
+#background-animation .parallax-area-04.v-long {
   left: 35%;
 }
-#background-animation .parallax-area-04.booking-page:before {
+#background-animation .parallax-area-04.v-long:before {
   left: 41px;
+  max-height: 500%;
+}
+#background-animation .parallax-area-04.offer-page {
+  left: 15%;
+}
+#background-animation .parallax-area-04.offer-page:before {
+  left: 44px;
+  width: 10px;
+}
+#background-animation .parallax-area-04.offer-page img {
+  margin-top: 54%;
 }
 @media (max-width: 1023.98px) {
   #background-animation .parallax-area-04 img {
@@ -14575,7 +14599,7 @@ footer {
     max-height: 100%;
     transform: translateY(-50%);
   }
-  #background-animation .parallax-area-04.booking-page:before {
+  #background-animation .parallax-area-04.v-long:before {
     max-height: 350%;
     transform: translateY(-50%);
   }
@@ -14584,7 +14608,7 @@ footer {
   #background-animation .parallax-area-04 {
     left: -15%;
   }
-  #background-animation .parallax-area-04.booking-page {
+  #background-animation .parallax-area-04.v-long {
     top: 82%;
     left: 5%;
   }
@@ -14777,6 +14801,9 @@ footer {
 .card {
   padding: 4em;
   border-radius: unset;
+}
+.card:last-of-type {
+  margin-bottom: 200px !important;
 }
 @media (max-width: 1023.98px) {
   .card {

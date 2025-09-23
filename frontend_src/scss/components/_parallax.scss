@@ -159,6 +159,15 @@ $container-w: 1600px;
 	  		left: 44px;
 	  	}
 
+	  	&.offer-page {
+	  		left: 80%;
+
+	  		&:before {
+	  			left: 63px;
+	  			width: 10px;
+	  		}
+	  	}
+
 	  	@media (max-width: $max-w-02) {
 	  		opacity: 0;
 	  	}
@@ -171,6 +180,14 @@ $container-w: 1600px;
 	  	&:before {
 	  		@extend .pole;
 	  		left: 61px;
+	  	}
+
+	  	&.offer-page {
+	  		left: 65%;
+
+	  		&:before {
+	  			left: 17px;
+	  		}
 	  	}
 
 	  	img {
@@ -195,13 +212,26 @@ $container-w: 1600px;
 	  	}
 
 
-	  	&.booking-page{
+	  	&.v-long{
 	  		left: 35%;
 
 	  		&:before{
 	  			left: 41px;
+	  			max-height: 500%;
 	  		}
-	  		
+	  	}
+
+	  	&.offer-page {
+	  		left: 15%;
+
+	  		&:before {
+	  			left: 44px;
+	  			width: 10px;
+	  		}
+
+	  		img {
+	  			margin-top: 54%;
+	  		}
 	  	}
 
 
@@ -232,7 +262,7 @@ $container-w: 1600px;
 	    		transform: translateY(-50%);
 		  	}
 
-		  	&.booking-page {
+		  	&.v-long {
 		  		&:before {
 		  			max-height: 350%;
 	    			transform: translateY(-50%);
@@ -243,7 +273,7 @@ $container-w: 1600px;
 	  	@include media-breakpoint-down(sm) {
 	  		left: -15%;
 
-	  		&.booking-page {
+	  		&.v-long {
 	  			top: 82%;
 	  			left: 5%;
 	  		}
