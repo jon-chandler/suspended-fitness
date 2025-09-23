@@ -42,6 +42,36 @@ function hideAnnouncement() {
 
 /***/ }),
 
+/***/ "./js/components/courses.js":
+/*!**********************************!*\
+  !*** ./js/components/courses.js ***!
+  \**********************************/
+/***/ (() => {
+
+var courseCards = document.querySelectorAll('.card');
+var cardContainer = document.getElementById('card-container');
+var stackCheck = function stackCheck(els) {
+  els.forEach(function (el) {
+    if (el.isIntersecting) {
+      Array.from(courseCards).forEach(function (card, i) {
+        setTimeout(function (_) {
+          card.classList.add('show');
+        }, 200 * i);
+      });
+    }
+  });
+};
+var observer = new IntersectionObserver(stackCheck, {
+  root: null,
+  rootMargin: '100px',
+  threshold: .2
+});
+if (cardContainer) {
+  observer.observe(cardContainer);
+}
+
+/***/ }),
+
 /***/ "./js/components/maps.js":
 /*!*******************************!*\
   !*** ./js/components/maps.js ***!
@@ -144,15 +174,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/parallax */ "./js/utils/parallax.js");
 /* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_utils_parallax__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_maps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/maps */ "./js/components/maps.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/utils */ "./js/utils/utils.js");
-/* harmony import */ var _components_announcer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/announcer */ "./js/components/announcer.js");
-/* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.mjs");
-/* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
-/* harmony import */ var _utils_stripe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/stripe */ "./js/utils/stripe.js");
-/* harmony import */ var _utils_broadcast__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/broadcast */ "./js/utils/broadcast.js");
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_stripe__WEBPACK_IMPORTED_MODULE_7__]);
+/* harmony import */ var _components_courses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/courses */ "./js/components/courses.js");
+/* harmony import */ var _components_courses__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_courses__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/utils */ "./js/utils/utils.js");
+/* harmony import */ var _components_announcer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/announcer */ "./js/components/announcer.js");
+/* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.mjs");
+/* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
+/* harmony import */ var _utils_stripe__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/stripe */ "./js/utils/stripe.js");
+/* harmony import */ var _utils_broadcast__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils/broadcast */ "./js/utils/broadcast.js");
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_stripe__WEBPACK_IMPORTED_MODULE_8__]);
 var __webpack_async_dependencies_result__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
-_utils_stripe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_async_dependencies_result__[0];
+_utils_stripe__WEBPACK_IMPORTED_MODULE_8__ = __webpack_async_dependencies_result__[0];
+
 
 
 
@@ -166,8 +199,8 @@ var DEVMODE = false;
 var isLocal = location.hostname === 'localhost' ? 1 : 0;
 var backendDomain = isLocal ? 'http://localhost' : 'http://192.168.0.113';
 var susChannel = new BroadcastChannel('susChannel');
-(0,_utils_broadcast__WEBPACK_IMPORTED_MODULE_8__.handleMessages)();
-var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_5__["default"]('.testimonial-carousel', {
+(0,_utils_broadcast__WEBPACK_IMPORTED_MODULE_9__.handleMessages)();
+var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_6__["default"]('.testimonial-carousel', {
   spaceBetween: 300,
   centeredSlides: true,
   speed: 800,
@@ -182,7 +215,7 @@ var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_5__["default"]('.testimo
 });
 window.addEventListener('load', function () {
   setTimeout(function () {
-    (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.showLoader)(false);
+    (0,_utils_utils__WEBPACK_IMPORTED_MODULE_4__.showLoader)(false);
   }, 100);
   if (!DEVMODE) {
     var sse = new EventSource("".concat(backendDomain, "/broadcast.php"));
@@ -200,7 +233,7 @@ window.addEventListener('load', function () {
   }
 });
 window.addEventListener('beforeunload', function (e) {
-  (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.showLoader)(true);
+  (0,_utils_utils__WEBPACK_IMPORTED_MODULE_4__.showLoader)(true);
 });
 var saveContentBtn = document.querySelectorAll('.open-print-dialog');
 Array.from(saveContentBtn).forEach(function (btn) {

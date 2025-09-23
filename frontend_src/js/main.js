@@ -1,8 +1,9 @@
 import "./components/navigation"
 import "./utils/parallax"
 
-
 import { makeMap } from "./components/maps"
+import "./components/courses"
+
 
 import {shuffleCards, broadcaster, showLoader} from "./utils/utils"
 import { showAnnouncement, hideAnnouncement} from "./components/announcer"

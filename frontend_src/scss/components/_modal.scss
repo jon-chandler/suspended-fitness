@@ -1,10 +1,12 @@
 .modal { 
     display: block;
     isolation: isolate;
-    z-index: 2;
+    z-index: 10;
     transition: all $transition-m cubic-bezier(0.645, 0.045, 0.355, 1);
     background: $nGrey;
     transform: translateX(100%);
+
+    position: fixed;
 
     &.is-open {
         transform: translateX(0);

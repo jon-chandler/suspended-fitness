@@ -101,7 +101,7 @@ body, p, input, label, a, div, placeholder {
 h1, .h1, .is-header, .lg-links, .modal__content {
   font-family: "HaptikBold", sans-serif;
   font-size: 98px;
-  line-height: 98px;
+  line-height: 104px;
   letter-spacing: -3px;
 }
 @media (max-width: 879.98px) {
@@ -121,6 +121,11 @@ h1, .h1, .is-header, .lg-links, .modal__content {
 
 .med, .susfit label, .susform label {
   font-family: "HaptikMed", sans-serif;
+}
+
+.content-intro {
+  font-size: 32px;
+  line-height: 40px;
 }
 
 .pseudo-ul:after, .footer-links li a:after, .content-card a:after {
@@ -172,6 +177,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 
 p, a, input, label {
   font-size: 1em;
+  line-height: 30px;
+}
+
+p {
+  margin-bottom: 2em !important;
 }
 
 ul {
@@ -218,6 +228,12 @@ blockquote::after {
 .haptik {
   font-family: "Haptik", sans-serif;
 }
+.haptik--med {
+  font-family: "HaptikMed", sans-serif;
+}
+.haptik--bold {
+  font-family: "HaptikBold", sans-serif;
+}
 .haptik--sub-title, .footer-links li a {
   font-weight: 100;
   font-size: 20px;
@@ -229,6 +245,7 @@ blockquote::after {
   font-weight: 400;
 }
 .haptik--feature-headline {
+  font-weight: 400;
   font-size: 32px;
   line-height: 40px;
 }
@@ -249,7 +266,6 @@ blockquote::after {
   line-height: 28px;
 }
 .haptik--sub-title-regular {
-  font-weight: 400;
   font-size: 32px;
   line-height: 40px;
 }
@@ -13786,30 +13802,33 @@ footer {
   }
 }
 
-.content {
+.content-header {
   padding-top: 170px;
   padding-bottom: 220px;
   min-height: 600px;
 }
 @media (min-width: 1200px) {
-  .content .col-xl-3 {
+  .content-header .col-xl-3 {
     width: 33%;
   }
 }
 @media (max-width: 767.98px) {
-  .content {
+  .content-header {
     padding-left: 24px;
     padding-right: 24px;
     padding-top: 40px;
   }
 }
-.content--align-top {
-  padding-top: 240px;
+.content-header--align-top {
+  padding-top: 252px;
   padding-bottom: 44px;
   min-height: unset;
 }
-.content--white {
+.content-header--white {
   color: white;
+}
+.content-header .content-max-margin {
+  margin: 140px 0 40px;
 }
 
 .over-anim {
@@ -13969,7 +13988,7 @@ footer {
   min-width: 100%;
 }
 .content-card li {
-  line-height: 50px;
+  line-height: 2.5em;
 }
 .content-card a {
   display: inline-block;
@@ -14004,10 +14023,11 @@ footer {
 .modal {
   display: block;
   isolation: isolate;
-  z-index: 2;
+  z-index: 10;
   transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
   background: #e7dfd9;
   transform: translateX(100%);
+  position: fixed;
 }
 .modal.is-open {
   transform: translateX(0);
@@ -14705,7 +14725,7 @@ footer {
 }
 
 .announcement {
-  position: absolute;
+  position: fixed;
   top: 25px;
   right: 35px;
   border-radius: 4px;
@@ -14796,11 +14816,18 @@ footer {
   display: flex;
   background: white;
   height: 120px;
+  z-index: 3;
 }
 
 .card {
   padding: 4em;
   border-radius: unset;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+  transform: translateY(100px);
+  position: relative;
+}
+.card.show {
+  transform: translateY(0);
 }
 .card:last-of-type {
   margin-bottom: 280px !important;

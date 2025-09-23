@@ -12,7 +12,7 @@ body, p, input, label, a, div, placeholder {
 h1, .is-header, .lg-links {
 	font-family: 'HaptikBold', sans-serif;
 	font-size: 98px;
-	line-height: 98px;
+	line-height: 104px;
 	letter-spacing: -3px;
 
 	@include media-breakpoint-down(lg) { 
@@ -29,6 +29,11 @@ h1, .is-header, .lg-links {
 }
 .med {
 	font-family: 'HaptikMed', sans-serif;
+}
+
+.content-intro {
+	font-size: 32px;
+	line-height: 40px;
 }
 
 .pseudo-ul {
@@ -90,6 +95,11 @@ h1, h2, h3, h4, h5 {
 
 p, a, input, label {
 	font-size: 1em;
+	line-height: 30px;
+}
+
+p {
+	margin-bottom: 2em !important;
 }
 
 ul {
@@ -139,6 +149,14 @@ blockquote::after {
 .haptik {
 	font-family: 'Haptik', sans-serif; 
 
+		&--med {
+			font-family: 'HaptikMed', sans-serif; 
+		}
+
+		&--bold {
+			font-family: 'HaptikBold', sans-serif; 
+		}
+
 		&--sub-title {
 			font-weight: 100;
 			font-size: 20px;
@@ -151,6 +169,7 @@ blockquote::after {
 			font-weight: 400;
 		}
 		&--feature-headline { 
+			font-weight: 400;
 			font-size: 32px;
 			line-height: 40px;
 		}
@@ -170,7 +189,6 @@ blockquote::after {
 			line-height: 28px;
 		}
 		&--sub-title-regular { 
-			font-weight: 400;
 			font-size: 32px;
 			line-height: 40px;
 		}
@@ -198,6 +216,7 @@ blockquote::after {
 		}
 
 	}
+
 
 .arrow-link {
 	display: flex;

@@ -1,4 +1,4 @@
-.content { 
+.content-header { 
 
     padding-top: 170px;
     padding-bottom: 220px;
@@ -17,13 +17,17 @@
     }
 
     &--align-top {
-        padding-top: 240px;
+        padding-top: 252px;
         padding-bottom: 44px;
         min-height: unset;
     }
 
     &--white {
         color: white;
+    }
+
+    .content-max-margin {
+        margin: 140px 0 40px;
     }
 
  }
