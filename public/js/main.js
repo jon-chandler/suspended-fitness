@@ -216,7 +216,7 @@ var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_6__["default"]('.testimo
 window.addEventListener('load', function () {
   setTimeout(function () {
     (0,_utils_utils__WEBPACK_IMPORTED_MODULE_4__.showLoader)(false);
-  }, 100);
+  }, 200);
   if (!DEVMODE) {
     var sse = new EventSource("".concat(backendDomain, "/broadcast.php"));
     sse.addEventListener('contentChange', function (e) {
@@ -231,9 +231,6 @@ window.addEventListener('load', function () {
       sse.close();
     });
   }
-});
-window.addEventListener('beforeunload', function (e) {
-  (0,_utils_utils__WEBPACK_IMPORTED_MODULE_4__.showLoader)(true);
 });
 var saveContentBtn = document.querySelectorAll('.open-print-dialog');
 Array.from(saveContentBtn).forEach(function (btn) {

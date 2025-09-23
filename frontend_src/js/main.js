@@ -41,7 +41,7 @@ const swiper = new Swiper('.testimonial-carousel', {
 window.addEventListener('load', () => {
 	setTimeout(() => {
 		showLoader(false)
-	}, 100)
+	}, 200)
 
 	if(!DEVMODE) {
 		const sse = new EventSource(`${backendDomain}/broadcast.php`)
@@ -59,9 +59,6 @@ window.addEventListener('load', () => {
 
 })
 
-window.addEventListener('beforeunload', (e) => {
-	showLoader(true)
-})
 
 
 const saveContentBtn = document.querySelectorAll('.open-print-dialog')
