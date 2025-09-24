@@ -25,4 +25,8 @@ $offerGreen: #BFFFFF;
 	&--grey {
 		filter: sepia(10%) saturate(0%) brightness(100%) hue-rotate(180deg);
 	}
+
+	&--fuschia {
+		filter: sepia(78%) saturate(70%) hue-rotate(276deg) brightness(100%) contrast(100%);
+	}
 }

@@ -14948,7 +14948,7 @@ footer {
   justify-content: space-between;
   align-items: baseline;
 }
-.filter--pink, #course-details .modal-content .map-container, .card:nth-child(4n-3) img {
+.filter--pink, .card:nth-child(4n-3) img {
   filter: sepia(80%) saturate(100%) hue-rotate(245deg) brightness(85%) contrast(100%);
 }
 .filter--blue, .card:nth-child(4n-2) img {
@@ -14962,6 +14962,9 @@ footer {
 }
 .filter--grey {
   filter: sepia(10%) saturate(0%) brightness(100%) hue-rotate(180deg);
+}
+.filter--fuschia, #course-details .modal-content .map-container {
+  filter: sepia(78%) saturate(70%) hue-rotate(276deg) brightness(100%) contrast(100%);
 }
 
 html {

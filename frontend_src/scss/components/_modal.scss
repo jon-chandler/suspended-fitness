@@ -2,7 +2,7 @@
     background: rgba($coreBlue75, .75);
 
     .modal-content {
-        background: $offerPink;
+        background: $overlayFuschia;
         border-radius: 0;
 
         .btn-close {
@@ -20,7 +20,7 @@
         }
 
         .map-container {
-            @extend .filter--pink;
+            @extend .filter--fuschia;
             position: relative;
             top: -34px;
 
