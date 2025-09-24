@@ -1,4 +1,5 @@
 import * as bootstrap from 'bootstrap'
+import { makeMap } from "./maps"
 
 const isOfferPage = document.querySelector('.offer-page')
 
@@ -57,6 +58,10 @@ Array.from(infoBtns).forEach((btn, i) => {
 		console.log(contentID)
 		courseModal.show()
 		document.querySelector('.modal-body').innerHTML = popInfoModal(data)
+		setTimeout(() => {
+			makeMap(data.courseLat, data.courseLng)
+		}, 500)
+		
 	})
 })
 
@@ -97,7 +102,8 @@ const popInfoModal = (data) => {
 							</div>
       					</div>
 						<div class="col-5">
-								<div class="location-map" data-lat="${data.courseLat}" data-lng="${data.courseLng}">
+								<div id="map-launch"></div>
+								<div class="map-container" id="location-map" data-lat="${data.courseLat}" data-lng="${data.courseLng}">
 						</div>
 					`
 	return template

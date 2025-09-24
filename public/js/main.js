@@ -51,6 +51,8 @@ function hideAnnouncement() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+/* harmony import */ var _maps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./maps */ "./js/components/maps.js");
+
 
 var isOfferPage = document.querySelector('.offer-page');
 var courseCards = document.querySelectorAll('.card');
@@ -100,6 +102,9 @@ Array.from(infoBtns).forEach(function (btn, i) {
     console.log(contentID);
     courseModal.show();
     document.querySelector('.modal-body').innerHTML = popInfoModal(data);
+    setTimeout(function () {
+      (0,_maps__WEBPACK_IMPORTED_MODULE_1__.makeMap)(data.courseLat, data.courseLng);
+    }, 500);
   });
 });
 Array.from(bookBtns).forEach(function (btn, i) {
@@ -109,7 +114,7 @@ Array.from(bookBtns).forEach(function (btn, i) {
   });
 });
 var popInfoModal = function popInfoModal(data) {
-  var template = "<div class=\"col-5\">\n        \t\t\t\t\t<h4>".concat(data.courseTitle, "</h4>\n        \t\t\t\t\t<p>").concat(data.courseInfo, "</p>\n\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\tlocation: <span class=\"pill\">").concat(data.courseLocation, "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\tNext available start date(s): <span class=\"pill\">").concat(data.courseDates, "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\tCourse duration: <span class=\"pill\">").concat(data.courseDuration, "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\tCompetency level: <span class=\"pill\">").concat(data.courseCompetency, "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\tCost: <span class=\"pill\">").concat(data.courseCost, "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\tAvailability: <span class=\"pill availability\">").concat(data.courseAvailability, "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"card--action-container\">\n\t\t\t\t\t\t\t\t<button class=\"button button--black\">Book now</button>\n\t\t\t\t\t\t\t\t<button class=\"button button--white\">Contact us</button>\n\t\t\t\t\t\t\t</div>\n      \t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"col-5\">\n\t\t\t\t\t\t\t\t<div class=\"location-map\" data-lat=\"").concat(data.courseLat, "\" data-lng=\"").concat(data.courseLng, "\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
+  var template = "<div class=\"col-5\">\n        \t\t\t\t\t<h4>".concat(data.courseTitle, "</h4>\n        \t\t\t\t\t<p>").concat(data.courseInfo, "</p>\n\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\tlocation: <span class=\"pill\">").concat(data.courseLocation, "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\tNext available start date(s): <span class=\"pill\">").concat(data.courseDates, "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\tCourse duration: <span class=\"pill\">").concat(data.courseDuration, "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\tCompetency level: <span class=\"pill\">").concat(data.courseCompetency, "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\tCost: <span class=\"pill\">").concat(data.courseCost, "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\tAvailability: <span class=\"pill availability\">").concat(data.courseAvailability, "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"card--action-container\">\n\t\t\t\t\t\t\t\t<button class=\"button button--black\">Book now</button>\n\t\t\t\t\t\t\t\t<button class=\"button button--white\">Contact us</button>\n\t\t\t\t\t\t\t</div>\n      \t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"col-5\">\n\t\t\t\t\t\t\t\t<div id=\"map-launch\"></div>\n\t\t\t\t\t\t\t\t<div class=\"map-container\" id=\"location-map\" data-lat=\"").concat(data.courseLat, "\" data-lng=\"").concat(data.courseLng, "\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
   return template;
 };
 
@@ -132,12 +137,12 @@ function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { 
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 
-var locationMap = document.getElementById('location-map');
-var launchGoogle = document.getElementById('map-launch');
 function makeMap(lat, lng) {
-  if (!locationMap || !lat || !lng) {
+  if (!lat || !lng) {
     return;
   }
+  var locationMap = document.getElementById('location-map');
+  var launchGoogle = document.getElementById('map-launch');
   var mapLink = "https://maps.google.com/?q=".concat(lat, ",").concat(lng);
   var loader = new _googlemaps_js_api_loader__WEBPACK_IMPORTED_MODULE_0__.Loader({
     apiKey: 'AIzaSyCSQTqTijoj0_tBVlrvU4WIJ2-WIYRpSKM',

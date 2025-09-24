@@ -14029,6 +14029,9 @@ footer {
     transform: translateX(0%);
   }
 }
+.modal .dynamic-modal-body {
+  padding: 3em;
+}
 .modal--susfit {
   transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
   background: #e7dfd9;

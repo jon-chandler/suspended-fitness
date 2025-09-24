@@ -1,13 +1,13 @@
 import { Loader } from "@googlemaps/js-api-loader"
 
-const locationMap = document.getElementById('location-map')
-const launchGoogle = document.getElementById('map-launch')
-
 export function makeMap(lat, lng) {
 
-	if(!locationMap || !lat || !lng) {
+	if(!lat || !lng) {
 		return
 	}
+
+	const locationMap = document.getElementById('location-map')
+	const launchGoogle = document.getElementById('map-launch')
 
 	const mapLink = `https://maps.google.com/?q=${lat},${lng}`
 
