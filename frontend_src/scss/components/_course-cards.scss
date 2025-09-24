@@ -67,6 +67,14 @@
     	> button {
     		margin-right: 2em;
     	}
+
+    	@include media-breakpoint-down(md) {
+    		justify-content: space-around;
+
+    		> button {
+    			margin: 0;
+    		}
+    	}
     }
 
     .card-text {
@@ -76,5 +84,17 @@
     		@extend .haptik--small;
     	}
     }
+}
 
+.course-row {
+	padding: .8em 0;
+	border-bottom: 1px solid $charcoal;
+	display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+
+    span {
+    	@extend .haptik--small; 
+    }
 }

@@ -75,36 +75,40 @@ Array.from(bookBtns).forEach((btn, i) => {
 
 const popInfoModal = (data) => {
 
-	const template = `<div class="col-5">
-        					<h4>${data.courseTitle}</h4>
-        					<p>${data.courseInfo}</p>
-							<div class="course-row">
-								location: <span class="pill">${data.courseLocation}</span>
+	const template = `<div class="container-fluid">
+    					<div class="row">
+							<div class="col-lg-6 col-md-12 col-sm-12">
+	        					<h4 class="course-header">${data.courseTitle}</h4>
+	        					<p>${data.courseInfo}</p>
+								<div class="course-row">
+									<span>location:</span> <span class="pill">${data.courseLocation}</span>
+								</div>
+								<div class="course-row">
+									<span>Next available start date(s):</span> <span class="pill">${data.courseDates}</span>
+								</div>
+								<div class="course-row">
+									<span>Course duration:</span> <span class="pill">${data.courseDuration}</span>
+								</div>
+								<div class="course-row">
+									<span>Competency level:</span> <span class="pill">${data.courseCompetency}</span>
+								</div>
+								<div class="course-row">
+									<span>Cost:</span> <span class="pill">${data.courseCost}</span>
+								</div>
+								<div class="course-row">
+									<span>Availability:</span> <span class="pill availability"><span>${data.courseAvailability}</span> spaces</span>
+								</div>
+								<div class="card--action-container">
+									<button class="button button--black">Book now</button>
+									<button class="button button--white">Contact us</button>
+								</div>
+      						</div>
+							<div class="col-lg-5 col-md-12 col-sm-12 ms-auto">
+									<div id="map-launch" class="map-launch"></div>
+									<div class="map-container" id="location-map" data-lat="${data.courseLat}" data-lng="${data.courseLng}">
 							</div>
-							<div class="course-row">
-								Next available start date(s): <span class="pill">${data.courseDates}</span>
-							</div>
-							<div class="course-row">
-								Course duration: <span class="pill">${data.courseDuration}</span>
-							</div>
-							<div class="course-row">
-								Competency level: <span class="pill">${data.courseCompetency}</span>
-							</div>
-							<div class="course-row">
-								Cost: <span class="pill">${data.courseCost}</span>
-							</div>
-							<div class="course-row">
-								Availability: <span class="pill availability">${data.courseAvailability}</span>
-							</div>
-							<div class="card--action-container">
-								<button class="button button--black">Book now</button>
-								<button class="button button--white">Contact us</button>
-							</div>
-      					</div>
-						<div class="col-5">
-								<div id="map-launch"></div>
-								<div class="map-container" id="location-map" data-lat="${data.courseLat}" data-lng="${data.courseLng}">
 						</div>
+					</div>
 					`
 	return template
 }
