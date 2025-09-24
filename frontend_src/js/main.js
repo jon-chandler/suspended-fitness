@@ -9,6 +9,7 @@ import {shuffleCards, broadcaster, showLoader} from "./utils/utils"
 import { showAnnouncement, hideAnnouncement} from "./components/announcer"
 
 import Swiper from 'swiper/bundle'
+
 import 'swiper/css/bundle'
 
 import "./utils/stripe"

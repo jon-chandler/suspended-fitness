@@ -1,12 +1,15 @@
 .modal { 
-    display: block;
-    isolation: isolate;
-    z-index: 10;
-    transition: all $transition-m cubic-bezier(0.645, 0.045, 0.355, 1);
-    background: $nGrey;
-    transform: translateX(100%);
-
-    position: fixed;
+   
+    
+    &--susfit{
+        transition: all $transition-m cubic-bezier(0.645, 0.045, 0.355, 1);
+        background: $nGrey;
+        transform: translateX(100%);
+        z-index: 10;
+        position: fixed;
+         display: block;
+        isolation: isolate;
+    }
 
     &.is-open {
         transform: translateX(0);
