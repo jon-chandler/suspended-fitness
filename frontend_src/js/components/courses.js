@@ -38,24 +38,13 @@ if(cardContainer) {
 	observer.observe(cardContainer)
 }
 
-
-let data = {
-		'courseTitle': 'Total Beginners Pole Course',
-		'courseInfo': 'This 5 week course is for complete and Total Beginners ie) You’ve never touched a pole in your life or for those of you who’ve literally had a couple of classes. Our five week programme will get you doing more than you would ever have believed. Just book, you won’t regret it.',
-		'courseLocation': 'Brockwell Lido',
-		'courseDates': '6PM: 10/12/26',
-		'courseDuration': '5 weeks',
-		'courseCompetency': 'Beginner',
-		'courseCost': '£100',
-		'courseAvailability': 6,
-		'courseLat' : 51.4533431,
-		'courseLng' : -0.1087879
-	}
-
 Array.from(infoBtns).forEach((btn, i) => {
 	btn.addEventListener('click', (e)=> {
-		let contentID = e.target.closest('[data-course-id]').dataset.courseId
-		console.log(contentID)
+
+		let contentData = e.target.closest('[data-course-id]')
+		let contentID = contentData.dataset.courseId
+		let data = JSON.parse(contentData.dataset.courseInfo)
+
 		courseModal.show()
 		document.querySelector('.modal-body').innerHTML = popInfoModal(data)
 		setTimeout(() => {
@@ -68,8 +57,27 @@ Array.from(infoBtns).forEach((btn, i) => {
 
 Array.from(bookBtns).forEach((btn, i) => {
 	btn.addEventListener('click', (e)=> {
-		let contentID = e.target.closest('[data-course-id]').dataset.courseId
-		window.location = `/booking.html?cID=${contentID}`
+		
+		let contentData = e.target.closest('[data-course-id]')
+		let contentID = contentData.dataset.courseId
+		let data = JSON.parse(contentData.dataset.courseInfo)
+
+		const url = '/booking.html'
+
+		const form = document.createElement('form')
+		form.method = 'GET'
+		form.action = url
+
+		Object.keys(data).forEach(key => {
+			const input = document.createElement('input')
+			input.type = 'hidden'
+			input.name = key
+			input.value = data[key]
+			form.appendChild(input)
+		})
+
+		document.body.appendChild(form)
+		form.submit()
 	})
 })
 

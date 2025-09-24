@@ -23,6 +23,7 @@
             @extend .filter--fuschia;
             position: relative;
             top: -34px;
+            min-height: 450px;
 
             @include media-breakpoint-down(md) { 
                 margin-top: 2em;
@@ -30,7 +31,7 @@
         }
 
         .map-launch {
-            top: 316px;
+            top: 390px;
         }
     }
 }   
