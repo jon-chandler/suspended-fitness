@@ -14029,6 +14029,21 @@ footer {
     transform: translateX(0%);
   }
 }
+#course-details {
+  background: rgba(0, 79, 255, 0.75);
+}
+#course-details .modal-content {
+  background: #FCE9FF;
+  border-radius: 0;
+}
+#course-details .modal-content .btn-close {
+  width: 0.2em;
+  height: 0.2em;
+  padding: 1em;
+}
+#course-details .modal-content .modal-header {
+  border-bottom: unset;
+}
 .modal .dynamic-modal-body {
   padding: 3em;
 }
@@ -14890,7 +14905,7 @@ footer {
   color: #4A4645;
 }
 
-.filter--pink, .card:nth-child(4n-3) img {
+.filter--pink, #course-details .modal-content .map-container, .card:nth-child(4n-3) img {
   filter: sepia(80%) saturate(100%) hue-rotate(245deg) brightness(85%) contrast(100%);
 }
 .filter--blue, .card:nth-child(4n-2) img {

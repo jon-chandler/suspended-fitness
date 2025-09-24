@@ -1,5 +1,29 @@
+
+#course-details {
+    background: rgba($coreBlue75, .75);
+
+    .modal-content {
+        background: $offerPink;
+        border-radius: 0;
+
+        .btn-close {
+            width: .2em;
+            height: .2em;
+            padding: 1em;
+        }
+
+        .modal-header {
+            border-bottom: unset;
+        }
+
+        .map-container {
+            @extend .filter--pink;
+        }
+    }
+}
+
 .modal { 
-   
+
    .dynamic-modal-body {
         padding: 3em;
    }
