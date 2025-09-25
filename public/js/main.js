@@ -58,7 +58,7 @@ var isOfferPage = document.querySelector('.offer-page');
 var courseCards = document.querySelectorAll('.card');
 var cardContainer = document.getElementById('card-container');
 var infoBtns = document.querySelectorAll('.info-btn');
-var bookBtns = document.querySelectorAll('.book-btn');
+var modalBody = document.querySelector('.modal-body');
 var courseModal;
 if (!!isOfferPage) {
   courseModal = new bootstrap__WEBPACK_IMPORTED_MODULE_0__.Modal(document.getElementById('course-details'), {
@@ -86,40 +86,54 @@ if (cardContainer) {
 }
 Array.from(infoBtns).forEach(function (btn, i) {
   btn.addEventListener('click', function (e) {
-    var contentData = e.target.closest('[data-course-id]');
-    var contentID = contentData.dataset.courseId;
+    modalBody.innerHTML = defaultInfoModalState();
+    var contentData = e.target.closest('[data-course-info]');
     var data = JSON.parse(contentData.dataset.courseInfo);
     courseModal.show();
-    setTimeout(function () {
-      document.querySelector('.modal-body').innerHTML = popInfoModal(data);
+    var contentTimer = setTimeout(function () {
+      modalBody.innerHTML = popInfoModal(data);
       (0,_maps__WEBPACK_IMPORTED_MODULE_1__.makeMap)(data.courseLat, data.courseLng);
+      bindBookingBtns();
+      clearTimeout(contentTimer);
     }, 1000);
   });
 });
-Array.from(bookBtns).forEach(function (btn, i) {
-  btn.addEventListener('click', function (e) {
-    var contentData = e.target.closest('[data-course-id]');
-    var contentID = contentData.dataset.courseId;
-    var data = JSON.parse(contentData.dataset.courseInfo);
-    var url = '/booking.html';
-    var form = document.createElement('form');
-    form.method = 'GET';
-    form.action = url;
-    Object.keys(data).forEach(function (key) {
-      var input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = data[key];
-      form.appendChild(input);
+var bindBookingBtns = function bindBookingBtns() {
+  var bookBtns = document.querySelectorAll('.book-btn');
+  Array.from(bookBtns).forEach(function (btn, i) {
+    btn.addEventListener('click', function (e) {
+      var contentData = e.target.closest('[data-course-info]');
+      var data = JSON.parse(contentData.dataset.courseInfo);
+      var courseId = data.courseId;
+      var url = "/booking.html?courseId=".concat(courseId);
+      window.location = url;
+
+      // const form = document.createElement('form')
+      // form.method = 'GET'
+      // form.action = url
+
+      // Object.keys(data).forEach(key => {
+      // 	const input = document.createElement('input')
+      // 	input.type = 'hidden'
+      // 	input.name = key
+      // 	input.value = data[key]
+      // 	form.appendChild(input)
+      // })
+
+      // document.body.appendChild(form)
+      // form.submit()
     });
-    document.body.appendChild(form);
-    form.submit();
   });
-});
-var popInfoModal = function popInfoModal(data) {
-  var template = "<div class=\"container-fluid\">\n    \t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t<div class=\"col-lg-6 col-md-12 col-sm-12\">\n\t        \t\t\t\t\t<h4 class=\"course-header\">".concat(data.courseTitle, "</h4>\n\t        \t\t\t\t\t<p>").concat(data.courseInfo, "</p>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>location:</span> <span class=\"pill\">").concat(data.courseLocation, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Next available start date(s):</span> <span class=\"pill\">").concat(data.courseDates, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Course duration:</span> <span class=\"pill\">").concat(data.courseDuration, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Competency level:</span> <span class=\"pill\">").concat(data.courseCompetency, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Cost:</span> <span class=\"pill\">").concat(data.courseCost, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Availability:</span> <span class=\"pill availability\"><span>").concat(data.courseAvailability, "</span> spaces</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"card--action-container\">\n\t\t\t\t\t\t\t\t\t<button class=\"button button--black\">Book now</button>\n\t\t\t\t\t\t\t\t\t<button class=\"button button--white\">Contact us</button>\n\t\t\t\t\t\t\t\t</div>\n      \t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-lg-5 col-md-12 col-sm-12 ms-auto\">\n\t\t\t\t\t\t\t\t\t<div id=\"map-launch\" class=\"map-launch\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"map-container\" id=\"location-map\" data-lat=\"").concat(data.courseLat, "\" data-lng=\"").concat(data.courseLng, "\">\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t");
+};
+var defaultInfoModalState = function defaultInfoModalState() {
+  var template = "<div class=\"ssc container-fluid col-12\">\n\t\t\t\t\t\t<div class=\"row col-12 g-0\">\n\t\t\t\t\t\t\t<div class=\"row col-12 d-flex\">\n\t\t\t\t\t\t\t\t<div class=\"col-12 col-xl-6\">\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-head-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-square ssc-square--rect mb-24\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-line mb-32\"></div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"col-12 col-xl-5 offset-xl-1\">\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-square mb only-lg\"></div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t";
   return template;
 };
+var popInfoModal = function popInfoModal(data) {
+  var template = "<div class=\"container-fluid\" data-course-info='".concat(JSON.stringify(data), "'>\n    \t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t<div class=\"col-lg-6 col-md-12 col-sm-12\">\n\t        \t\t\t\t\t<h4 class=\"course-header\">").concat(data.courseTitle, "</h4>\n\t        \t\t\t\t\t<p>").concat(data.courseInfo, "</p>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>location:</span> <span class=\"pill\">").concat(data.courseLocation, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Next available start date(s):</span> <span class=\"pill\">").concat(data.courseDates, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Course duration:</span> <span class=\"pill\">").concat(data.courseDuration, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Competency level:</span> <span class=\"pill\">").concat(data.courseCompetency, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Cost:</span> <span class=\"pill\">").concat(data.courseCost, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Availability:</span> <span class=\"pill availability\"><span>").concat(data.courseAvailability, "</span> spaces</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"card--action-container\">\n\t\t\t\t\t\t\t\t\t<button class=\"button button--black book-btn\">Book now</button>\n\t\t\t\t\t\t\t\t\t<button class=\"button button--white\">Contact us</button>\n\t\t\t\t\t\t\t\t</div>\n      \t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-lg-5 col-md-12 col-sm-12 ms-auto\">\n\t\t\t\t\t\t\t\t\t<div id=\"map-launch\" class=\"map-launch\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"map-container\" id=\"location-map\" data-lat=\"").concat(data.courseLat, "\" data-lng=\"").concat(data.courseLng, "\">\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t");
+  return template;
+};
+bindBookingBtns();
 
 /***/ }),
 
