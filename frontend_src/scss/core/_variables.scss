@@ -3,6 +3,8 @@ $transition-m: .6s;
 $transition-f: .3s;
 $transition-ss: .1s;
 
+$transition-bez: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+
 
 $skeleton-element-color: pink !important;
 $skeleton-loading-animation-time: 1.3s !default;

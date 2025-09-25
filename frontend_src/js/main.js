@@ -3,6 +3,7 @@ import "./utils/parallax"
 
 import { makeMap } from "./components/maps"
 import "./components/courses"
+import "./components/contact"
 
 
 import {shuffleCards, broadcaster, showLoader} from "./utils/utils"

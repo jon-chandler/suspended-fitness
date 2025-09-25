@@ -42,6 +42,39 @@ function hideAnnouncement() {
 
 /***/ }),
 
+/***/ "./js/components/contact.js":
+/*!**********************************!*\
+  !*** ./js/components/contact.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/utils */ "./js/utils/utils.js");
+
+var contactForm = document.getElementById('contact-us');
+var formHolder = document.querySelector('.contact-form-holder');
+var paramsString = window.location.search;
+var searchParams = new URLSearchParams(paramsString);
+var courseID = searchParams.get('courseId'); // Give Beccie some context regarding the question.
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.showLoader)(true);
+    (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.shuffleCards)('right');
+    setTimeout(function () {
+      (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.showLoader)(false);
+      setSuccess(formHolder, "MESSAGE SENT");
+    }, 2000);
+  });
+}
+var setSuccess = function setSuccess(el, msg) {
+  el.innerHTML = msg;
+};
+
+/***/ }),
+
 /***/ "./js/components/courses.js":
 /*!**********************************!*\
   !*** ./js/components/courses.js ***!
@@ -258,15 +291,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_parallax__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_utils_parallax__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_maps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/maps */ "./js/components/maps.js");
 /* harmony import */ var _components_courses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/courses */ "./js/components/courses.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/utils */ "./js/utils/utils.js");
-/* harmony import */ var _components_announcer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/announcer */ "./js/components/announcer.js");
-/* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.mjs");
-/* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
-/* harmony import */ var _utils_stripe__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/stripe */ "./js/utils/stripe.js");
-/* harmony import */ var _utils_broadcast__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils/broadcast */ "./js/utils/broadcast.js");
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_stripe__WEBPACK_IMPORTED_MODULE_8__]);
+/* harmony import */ var _components_contact__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/contact */ "./js/components/contact.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/utils */ "./js/utils/utils.js");
+/* harmony import */ var _components_announcer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/announcer */ "./js/components/announcer.js");
+/* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.mjs");
+/* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
+/* harmony import */ var _utils_stripe__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils/stripe */ "./js/utils/stripe.js");
+/* harmony import */ var _utils_broadcast__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./utils/broadcast */ "./js/utils/broadcast.js");
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_stripe__WEBPACK_IMPORTED_MODULE_9__]);
 var __webpack_async_dependencies_result__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
-_utils_stripe__WEBPACK_IMPORTED_MODULE_8__ = __webpack_async_dependencies_result__[0];
+_utils_stripe__WEBPACK_IMPORTED_MODULE_9__ = __webpack_async_dependencies_result__[0];
+
 
 
 
@@ -281,8 +316,8 @@ var DEVMODE = false;
 var isLocal = location.hostname === 'localhost' ? 1 : 0;
 var backendDomain = isLocal ? 'http://localhost' : 'http://192.168.0.113';
 var susChannel = new BroadcastChannel('susChannel');
-(0,_utils_broadcast__WEBPACK_IMPORTED_MODULE_9__.handleMessages)();
-var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_6__["default"]('.testimonial-carousel', {
+(0,_utils_broadcast__WEBPACK_IMPORTED_MODULE_10__.handleMessages)();
+var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_7__["default"]('.testimonial-carousel', {
   spaceBetween: 300,
   centeredSlides: true,
   speed: 800,
@@ -297,7 +332,7 @@ var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_6__["default"]('.testimo
 });
 window.addEventListener('load', function () {
   setTimeout(function () {
-    (0,_utils_utils__WEBPACK_IMPORTED_MODULE_4__.showLoader)(false);
+    (0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.showLoader)(false);
   }, 200);
   if (!DEVMODE) {
     var sse = new EventSource("".concat(backendDomain, "/broadcast.php"));

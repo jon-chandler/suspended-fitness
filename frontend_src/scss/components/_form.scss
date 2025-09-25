@@ -1,6 +1,6 @@
 .susfit, .susform {
 
-	#user-details {
+	#user-details, #contact-us {
 		color: $charcoal;
 		padding-top: 32px;
 
@@ -29,7 +29,7 @@
 			color: $charcoal;
 		}
 	}
-	input {
+	input, textarea {
 		width: 100%;
 		border: 1px solid $brownLight;
 		border-radius: 8px;

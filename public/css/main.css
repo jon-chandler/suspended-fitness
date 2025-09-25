@@ -14199,6 +14199,7 @@ footer {
   padding: 4em;
   align-self: baseline;
   filter: drop-shadow(3px 3px 1px rgba(231, 223, 217, 0.25));
+  transition: transition-bez;
 }
 @media (max-width: 1023.98px) {
   .content-card {
@@ -14254,6 +14255,9 @@ footer {
 }
 .content-card--yellow {
   background: #f3ff00;
+}
+.content-card--pale-yellow {
+  background: #FCFFBF;
 }
 .content-card--green {
   background: #BFFFFF;
@@ -14532,14 +14536,14 @@ footer {
     transform: translateX(0);
   }
 }
-.susfit #user-details, .susform #user-details {
+.susfit #user-details, .susfit #contact-us, .susform #user-details, .susform #contact-us {
   color: #4A4645;
   padding-top: 32px;
 }
-.susfit #user-details.read-only, .susfit #user-details.disabled, .susform #user-details.read-only, .susform #user-details.disabled {
+.susfit #user-details.read-only, .susfit #user-details.disabled, .susfit #contact-us.read-only, .susfit #contact-us.disabled, .susform #user-details.read-only, .susform #user-details.disabled, .susform #contact-us.read-only, .susform #contact-us.disabled {
   opacity: 0.5;
 }
-.susfit #user-details.read-only *, .susfit #user-details.disabled *, .susform #user-details.read-only *, .susform #user-details.disabled * {
+.susfit #user-details.read-only *, .susfit #user-details.disabled *, .susfit #contact-us.read-only *, .susfit #contact-us.disabled *, .susform #user-details.read-only *, .susform #user-details.disabled *, .susform #contact-us.read-only *, .susform #contact-us.disabled * {
   pointer-events: none;
 }
 .susfit .pink, .susform .pink {
@@ -14555,7 +14559,7 @@ footer {
 .susfit label .grey, .susform label .grey {
   color: #4A4645;
 }
-.susfit input, .susform input {
+.susfit input, .susfit textarea, .susform input, .susform textarea {
   width: 100%;
   border: 1px solid #B6B6B6;
   border-radius: 8px;
@@ -14565,18 +14569,18 @@ footer {
   transition: 0.6s;
   font-size: 18px;
 }
-.susfit input:focus, .susfit input:hover, .susform input:focus, .susform input:hover {
+.susfit input:focus, .susfit input:hover, .susfit textarea:focus, .susfit textarea:hover, .susform input:focus, .susform input:hover, .susform textarea:focus, .susform textarea:hover {
   background: rgba(255, 255, 255, 0.25);
 }
-.susfit input:focus-within, .susform input:focus-within {
+.susfit input:focus-within, .susfit textarea:focus-within, .susform input:focus-within, .susform textarea:focus-within {
   outline: none;
 }
-.susfit input::-moz-placeholder, .susform input::-moz-placeholder {
+.susfit input::-moz-placeholder, .susfit textarea::-moz-placeholder, .susform input::-moz-placeholder, .susform textarea::-moz-placeholder {
   font-size: 18px;
   line-height: 26px;
   color: #858585;
 }
-.susfit input::placeholder, .susform input::placeholder {
+.susfit input::placeholder, .susfit textarea::placeholder, .susform input::placeholder, .susform textarea::placeholder {
   font-size: 18px;
   line-height: 26px;
   color: #858585;
