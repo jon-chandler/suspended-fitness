@@ -34,7 +34,7 @@ $skeleton-square-height: 350px !default;
 }
 
 .ssc * {
-	border-radius: 0 !important;
+	border-radius: 0;
 }
 
 .ssc-card {
@@ -50,7 +50,10 @@ $skeleton-square-height: 350px !default;
 	}
 }
 
+.ssc-head-line {
+	height: 40px !important;
+}
+
 .ssc-line {
-	border-radius: 0 !important;
 	height: 24px;
 } 

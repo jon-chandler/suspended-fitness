@@ -104,6 +104,10 @@ const defaultInfoModalState = () => {
 									<div class="ssc-line mb-32"></div>
 									<div class="ssc-line mb-32"></div>
 									<div class="ssc-line mb-32"></div>
+									<div class="flex-row">
+										<div class="ssc-line w-30 mb-32 p-4 rounded"></div>
+										<div class="ssc-line w-30 mb-32 p-4 rounded ml-perc-20"></div>
+									</div>
 								</div>
 								<div class="col-12 col-xl-5 offset-xl-1">
 									<div class="ssc-square mb only-lg"></div>
