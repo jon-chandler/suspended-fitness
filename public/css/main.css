@@ -14168,6 +14168,10 @@ footer {
   opacity: 0.6;
 }
 
+#nav-overlay a {
+  font-family: "HaptikMed", sans-serif;
+}
+
 :root {
   --bs-gutter-x: 0;
 }

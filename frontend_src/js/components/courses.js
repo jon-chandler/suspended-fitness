@@ -39,35 +39,49 @@ if(cardContainer) {
 	observer.observe(cardContainer)
 }
 
+// in-page buttons bound on load
 Array.from(infoBtns).forEach((btn, i) => {
 	btn.addEventListener('click', (e)=> {
 
 		modalBody.innerHTML = defaultInfoModalState()
 
-		let contentData = e.target.closest('[data-course-info]')
-		let data = JSON.parse(contentData.dataset.courseInfo)
+		let data = getCourseInfoFromElementData(e)
 
 		courseModal.show()
 		let contentTimer = setTimeout(() => {
 			modalBody.innerHTML = popInfoModal(data)
 			makeMap(data.courseLat, data.courseLng)
-			bindBookingBtns()
+			bindBtns()
 			clearTimeout(contentTimer)
 		}, 1000)
 		
 	})
 })
 
-const bindBookingBtns = () => {
+// Modal buttons bound when the modal elements are created
+const bindBtns = () => {
+	const contactBtns = document.querySelectorAll('.contact-btn')
+
+	Array.from(contactBtns).forEach((btn, i) => {
+		btn.addEventListener('click', (e)=> {
+
+			let data = getCourseInfoFromElementData(e)
+			let courseId = data.courseId
+
+			// POST SOME COURSE DATA WHEN I GIVE IT A BACKEND. SAME AS BELOW.....
+			const url = `/contact.html?courseId=${courseId}`
+			window.location = url
+		})
+	})
+
 
 	const bookBtns = document.querySelectorAll('.book-btn')
 
 	Array.from(bookBtns).forEach((btn, i) => {
 		btn.addEventListener('click', (e)=> {
-			
-			let contentData = e.target.closest('[data-course-info]')
-			let data = JSON.parse(contentData.dataset.courseInfo)
 
+			let data = getCourseInfoFromElementData(e)
+			
 			let courseId = data.courseId
 
 			const url = `/booking.html?courseId=${courseId}`
@@ -88,7 +102,16 @@ const bindBookingBtns = () => {
 			// document.body.appendChild(form)
 			// form.submit()
 		})
+
+
 	})
+}
+
+const getCourseInfoFromElementData = (el) => {
+	let contentData = el.target.closest('[data-course-info]')
+	let data = JSON.parse(contentData.dataset.courseInfo)
+
+	return data
 }
 
 const defaultInfoModalState = () => {
@@ -146,7 +169,7 @@ const popInfoModal = (data) => {
 								</div>
 								<div class="card--action-container">
 									<button class="button button--black book-btn">Book now</button>
-									<button class="button button--white">Contact us</button>
+									<button class="button button--white contact-btn">Contact us</button>
 								</div>
       						</div>
 							<div class="col-lg-5 col-md-12 col-sm-12 ms-auto">
@@ -161,8 +184,7 @@ const popInfoModal = (data) => {
 
 
 
-bindBookingBtns()
-
+bindBtns()
 
 
 

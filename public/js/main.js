@@ -84,26 +84,39 @@ var observer = new IntersectionObserver(stackCheck, {
 if (cardContainer) {
   observer.observe(cardContainer);
 }
+
+// in-page buttons bound on load
 Array.from(infoBtns).forEach(function (btn, i) {
   btn.addEventListener('click', function (e) {
     modalBody.innerHTML = defaultInfoModalState();
-    var contentData = e.target.closest('[data-course-info]');
-    var data = JSON.parse(contentData.dataset.courseInfo);
+    var data = getCourseInfoFromElementData(e);
     courseModal.show();
     var contentTimer = setTimeout(function () {
       modalBody.innerHTML = popInfoModal(data);
       (0,_maps__WEBPACK_IMPORTED_MODULE_1__.makeMap)(data.courseLat, data.courseLng);
-      bindBookingBtns();
+      bindBtns();
       clearTimeout(contentTimer);
     }, 1000);
   });
 });
-var bindBookingBtns = function bindBookingBtns() {
+
+// Modal buttons bound when the modal elements are created
+var bindBtns = function bindBtns() {
+  var contactBtns = document.querySelectorAll('.contact-btn');
+  Array.from(contactBtns).forEach(function (btn, i) {
+    btn.addEventListener('click', function (e) {
+      var data = getCourseInfoFromElementData(e);
+      var courseId = data.courseId;
+
+      // POST SOME COURSE DATA WHEN I GIVE IT A BACKEND. SAME AS BELOW.....
+      var url = "/contact.html?courseId=".concat(courseId);
+      window.location = url;
+    });
+  });
   var bookBtns = document.querySelectorAll('.book-btn');
   Array.from(bookBtns).forEach(function (btn, i) {
     btn.addEventListener('click', function (e) {
-      var contentData = e.target.closest('[data-course-info]');
-      var data = JSON.parse(contentData.dataset.courseInfo);
+      var data = getCourseInfoFromElementData(e);
       var courseId = data.courseId;
       var url = "/booking.html?courseId=".concat(courseId);
       window.location = url;
@@ -125,15 +138,20 @@ var bindBookingBtns = function bindBookingBtns() {
     });
   });
 };
+var getCourseInfoFromElementData = function getCourseInfoFromElementData(el) {
+  var contentData = el.target.closest('[data-course-info]');
+  var data = JSON.parse(contentData.dataset.courseInfo);
+  return data;
+};
 var defaultInfoModalState = function defaultInfoModalState() {
   var template = "<div class=\"ssc container-fluid col-12\">\n\t\t\t\t\t\t<div class=\"row col-12 g-0\">\n\t\t\t\t\t\t\t<div class=\"row col-12 d-flex\">\n\t\t\t\t\t\t\t\t<div class=\"col-12 col-xl-6\">\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-head-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-square ssc-square--rect mb-24\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-line mb-32\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"flex-row\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"ssc-line w-30 mb-32 p-4 rounded\"></div>\n\t\t\t\t\t\t\t\t\t\t<div class=\"ssc-line w-30 mb-32 p-4 rounded ml-perc-20\"></div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"col-12 col-xl-5 offset-xl-1\">\n\t\t\t\t\t\t\t\t\t<div class=\"ssc-square mb only-lg\"></div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t";
   return template;
 };
 var popInfoModal = function popInfoModal(data) {
-  var template = "<div class=\"container-fluid\" data-course-info='".concat(JSON.stringify(data), "'>\n    \t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t<div class=\"col-lg-6 col-md-12 col-sm-12\">\n\t        \t\t\t\t\t<h4 class=\"course-header\">").concat(data.courseTitle, "</h4>\n\t        \t\t\t\t\t<p>").concat(data.courseInfo, "</p>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>location:</span> <span class=\"pill\">").concat(data.courseLocation, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Next available start date(s):</span> <span class=\"pill\">").concat(data.courseDates, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Course duration:</span> <span class=\"pill\">").concat(data.courseDuration, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Competency level:</span> <span class=\"pill\">").concat(data.courseCompetency, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Cost:</span> <span class=\"pill\">").concat(data.courseCost, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Availability:</span> <span class=\"pill availability\"><span>").concat(data.courseAvailability, "</span> spaces</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"card--action-container\">\n\t\t\t\t\t\t\t\t\t<button class=\"button button--black book-btn\">Book now</button>\n\t\t\t\t\t\t\t\t\t<button class=\"button button--white\">Contact us</button>\n\t\t\t\t\t\t\t\t</div>\n      \t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-lg-5 col-md-12 col-sm-12 ms-auto\">\n\t\t\t\t\t\t\t\t\t<div id=\"map-launch\" class=\"map-launch\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"map-container\" id=\"location-map\" data-lat=\"").concat(data.courseLat, "\" data-lng=\"").concat(data.courseLng, "\">\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t");
+  var template = "<div class=\"container-fluid\" data-course-info='".concat(JSON.stringify(data), "'>\n    \t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t<div class=\"col-lg-6 col-md-12 col-sm-12\">\n\t        \t\t\t\t\t<h4 class=\"course-header\">").concat(data.courseTitle, "</h4>\n\t        \t\t\t\t\t<p>").concat(data.courseInfo, "</p>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>location:</span> <span class=\"pill\">").concat(data.courseLocation, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Next available start date(s):</span> <span class=\"pill\">").concat(data.courseDates, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Course duration:</span> <span class=\"pill\">").concat(data.courseDuration, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Competency level:</span> <span class=\"pill\">").concat(data.courseCompetency, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Cost:</span> <span class=\"pill\">").concat(data.courseCost, "</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"course-row\">\n\t\t\t\t\t\t\t\t\t<span>Availability:</span> <span class=\"pill availability\"><span>").concat(data.courseAvailability, "</span> spaces</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"card--action-container\">\n\t\t\t\t\t\t\t\t\t<button class=\"button button--black book-btn\">Book now</button>\n\t\t\t\t\t\t\t\t\t<button class=\"button button--white contact-btn\">Contact us</button>\n\t\t\t\t\t\t\t\t</div>\n      \t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-lg-5 col-md-12 col-sm-12 ms-auto\">\n\t\t\t\t\t\t\t\t\t<div id=\"map-launch\" class=\"map-launch\"></div>\n\t\t\t\t\t\t\t\t\t<div class=\"map-container\" id=\"location-map\" data-lat=\"").concat(data.courseLat, "\" data-lng=\"").concat(data.courseLng, "\">\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t");
   return template;
 };
-bindBookingBtns();
+bindBtns();
 
 /***/ }),
 
