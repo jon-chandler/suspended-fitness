@@ -9,7 +9,7 @@
     overflow: hidden;
     transform: translateX(calc(100% + 35px));
     transition: $transition-bez;
-    z-index: 1001;
+    z-index: 1155;
 
     &.active {
         transform: translateX(0%);
