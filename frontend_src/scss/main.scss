@@ -22,6 +22,8 @@ $grid-breakpoints: (
 $footerMin: 380px;
 
 @import "bootstrap/scss/bootstrap";
+@import "skeleton-screen-css";
+
 @import "./print_overrides";
 
 @import "./core/variables";
@@ -42,6 +44,8 @@ $footerMin: 380px;
 @import "./components/course-cards";
 
 @import "./helpers/filters";
+
+
 
 html {
     background: $coreBlue75;

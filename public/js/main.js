@@ -90,10 +90,10 @@ Array.from(infoBtns).forEach(function (btn, i) {
     var contentID = contentData.dataset.courseId;
     var data = JSON.parse(contentData.dataset.courseInfo);
     courseModal.show();
-    document.querySelector('.modal-body').innerHTML = popInfoModal(data);
     setTimeout(function () {
+      document.querySelector('.modal-body').innerHTML = popInfoModal(data);
       (0,_maps__WEBPACK_IMPORTED_MODULE_1__.makeMap)(data.courseLat, data.courseLng);
-    }, 500);
+    }, 1000);
   });
 });
 Array.from(bookBtns).forEach(function (btn, i) {

@@ -46,10 +46,10 @@ Array.from(infoBtns).forEach((btn, i) => {
 		let data = JSON.parse(contentData.dataset.courseInfo)
 
 		courseModal.show()
-		document.querySelector('.modal-body').innerHTML = popInfoModal(data)
 		setTimeout(() => {
+			document.querySelector('.modal-body').innerHTML = popInfoModal(data)
 			makeMap(data.courseLat, data.courseLng)
-		}, 500)
+		}, 1000)
 		
 	})
 })
