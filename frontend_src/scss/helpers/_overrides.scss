@@ -1,0 +1,58 @@
+
+// skeleton overrides (the above do fuck all)
+
+$skeleton-element-color: pink !important;
+$skeleton-loading-animation-time: 1.3s !default;
+$skeleton-margin-standart: 16px !default;
+$skeleton-wrapper-padding: $skeleton-margin-standart !default;
+$skeleton-margin-small: calc($skeleton-margin-standart / 2) !default;
+$skeleton-card-box-shadow: none !important;
+$skeleton-card-background-color: none !important;
+$skeleton-card-border-radius: 5px !default;
+$skeleton-circle-size: 50px !default;
+$skeleton-hr-height: 2px !default;
+$skeleton-line-border-radius: 15px !default;
+$skeleton-line-height: 30px !default;
+$skeleton-headline-height: calc($skeleton-line-height * 2) !default;
+$skeleton-square-height: 350px !default;
+
+// FUGLY CRAP. SHOULD JUST WRITE MY OWN.
+
+.ssc {
+	cursor: initial;
+	min-height: 75vh;
+	transition: $transition-s;
+}
+
+.ssc-wrapper {
+	padding: 2em;
+}
+
+.ssc * {
+	border-radius: 8px;
+}
+
+.ssc-card {
+	background: none;
+	box-shadow: none;
+}
+
+.ssc-square {
+	height: 400px !important;
+
+	&--rect {
+		height: 50% !important;
+	}
+}
+
+.ssc-head-line {
+	height: 40px !important;
+}
+
+.ssc-line {
+	height: 30px;
+}
+
+.ssc-btn {
+	border-radius: 30px;
+}

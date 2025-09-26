@@ -34,7 +34,33 @@
             top: 390px;
         }
     }
-}   
+}
+
+#filter-modal {
+
+    .modal-content {
+        padding: 3em 1em 3em 1em;
+    }
+
+    .susform {
+        padding-top: 2em;
+    }
+
+
+    .btn-close {
+        width: .2em;
+        height: .2em;
+        padding: 1em;
+    }
+
+    .modal-header {
+        border-bottom: unset;
+    }
+
+    .course-header {
+        @extend .haptik--feature-headline;
+    }
+} 
 
 .modal { 
 

@@ -18,6 +18,7 @@ if(!!isOfferPage) {
 	})
 }
 
+
 const stackCheck = (els) => {
 	els.forEach(el => {
 		if (el.isIntersecting) {

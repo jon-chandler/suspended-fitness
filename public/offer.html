@@ -33,7 +33,10 @@
 	</div>
 
 	<div class="sticky sticky-top course-filter susform" id="course-filters">
-			<div class="col-10 flex-row space-between my-auto mx-auto">
+			<div class="col-12 hidden-lg my-auto course-filter--small">
+				<div class="haptik--sub-title my-auto course-filter--launch">Filter courses</div>
+			</div>	
+			<div class="col-10 flex-row space-between my-auto mx-auto only-lg">
 				<div class="haptik--sub-title my-auto">Filter courses by</div>
 				<div class="col-3" id="location-filter"></div>
 				<div class="col-3" id="date-filter"></div>
@@ -209,6 +212,28 @@
 		</nav>
 	</div>
 
+	<div class="modal modal-filter fade modal-fullscreen-md-down" id="filter-modal">
+		<div class="modal-dialog container-fluid filter-container">
+			<div class="modal-content row g-0">
+				<div class="modal-header">
+					<div class="haptik--feature-headline my-auto">Filter courses</div>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="col-12 mx-auto susform filter-container--form">
+					<div class="col-12">
+						<div class="col-12" id="location-filter-modal"></div>
+						<div class="col-12" id="date-filter-modal"></div>
+						<div class="col-12" id="competency-filter-modal"></div>
+					</div>
+					<div class="col-12 mx-auto susform">
+						<div id="course-count" class="text-center mb-24"></div>
+						<button class="col-12 button button--white" data-bs-dismiss="modal">Apply</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="modal modal__overlay modal__loader is-open modal--susfit">
 		<div class="modal__content">
 			<div class="overlay-loader"></div>
@@ -228,16 +253,15 @@
 
 	<div id="course-details" class="modal fade modal-xl modal-fullscreen-md-down">
 		<div class="modal-dialog container-fluid">
-    		<div class="modal-content row g-0">
-      			<div class="modal-header">
-      				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      			</div>
-      			<div class="modal-body dynamic-modal-body space-between">
-      				
-      			</div>
-      		</div>
-      	</div>
+			<div class="modal-content row g-0">
+				<div class="modal-header">
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body dynamic-modal-body space-between"></div>
+			</div>
+		</div>
 	</div>
+
 
 	<script type="text/javascript" src="/js/main.js"></script>
 	 

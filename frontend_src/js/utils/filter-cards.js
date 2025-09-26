@@ -1,5 +1,10 @@
+import * as bootstrap from 'bootstrap'
+
 const filterCards = document.querySelectorAll('.course-card')
 const containerEl = document.getElementById('card-container')
+const mobileFilterBtn = document.querySelector('.course-filter--launch')
+
+let filterModal
 
 function getUniqueValues(key, transformFn) {
 
@@ -65,6 +70,7 @@ function filterCourses() {
 	const locationFilter = document.getElementById('locationFilter').value
 	const competencyFilter = document.getElementById('competencyFilter').value
 	const monthFilter = document.getElementById('monthFilter').value
+	const courseCount = document.getElementById('course-count')
 
 	let count = 0
 
@@ -89,7 +95,12 @@ function filterCourses() {
 	    	card.style.display = 'none'
 	    }
 
+
 	    (count % 2 == 0) ? card.classList.add('offset-md-2') : ''
+
+	    let courseCountNum = (count == 1) ? `${count} Course available` : `${count} Courses available`
+
+	    courseCount.innerHTML = courseCountNum
 
 		window.dispatchEvent(new Event('resize'))
 
@@ -103,13 +114,11 @@ function filterCourses() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	const filtersDiv = document.getElementById('filters')
+	const filtersDiv = document.getElementById('course-filters')
 
-	const locationSelect = buildSelect('locationFilter', 'Location', getUniqueValues('courseLocation'))
-	locationSelect.addEventListener('change', filterCourses)
-
-	const competencySelect = buildSelect('competencyFilter', 'Competency level', getUniqueValues('courseCompetency'))
-	competencySelect.addEventListener('change', filterCourses)
+	if(!filtersDiv) {
+		return
+	}
 
 	const monthYearObjects = getUniqueValues('courseDates', parseMonthYear)
     	.filter(Boolean)
@@ -119,12 +128,35 @@ document.addEventListener('DOMContentLoaded', () => {
     		}, [])
     	.sort((a, b) => a.year === b.year ? a.index - b.index : a.year - b.year)
 
+    const locationSelect = buildSelect('locationFilter', 'Location', getUniqueValues('courseLocation'))
+	locationSelect.addEventListener('change', filterCourses)
+
+	const competencySelect = buildSelect('competencyFilter', 'Competency level', getUniqueValues('courseCompetency'))
+	competencySelect.addEventListener('change', filterCourses)
+
 	const monthSelect = buildSelect('monthFilter', 'Start date', monthYearObjects.map(m => m.name))
 	monthSelect.addEventListener('change', filterCourses)
+
 
 	document.getElementById('location-filter').appendChild(locationSelect)
 	document.getElementById('competency-filter').appendChild(competencySelect)
 	document.getElementById('date-filter').appendChild(monthSelect)
+
+
+	filterModal = new bootstrap.Modal(document.getElementById('filter-modal'), {
+		keyboard: false
+	})
+
+
+	mobileFilterBtn.addEventListener('click', ()=> {
+
+		filterModal.show()
+
+		document.getElementById('location-filter-modal').appendChild(locationSelect)
+		document.getElementById('date-filter-modal').appendChild(competencySelect)
+		document.getElementById('competency-filter-modal').appendChild(monthSelect)
+
+	})
 })
 
 
