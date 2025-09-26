@@ -65,7 +65,12 @@ function filterCourses() {
 	const competencyFilter = document.getElementById('competencyFilter').value
 	const monthFilter = document.getElementById('monthFilter').value
 
+	let count = 0
+
 	document.querySelectorAll('.course-card').forEach(card => {
+
+		card.classList.remove('offset-md-2')
+
 		const data = JSON.parse(card.dataset.courseInfo)
 
 	    const locationMatch = !locationFilter || data.courseLocation === locationFilter
@@ -77,6 +82,14 @@ function filterCourses() {
     	const monthMatch = !monthFilter || courseMonthYear === monthFilter
 
 	    card.style.display = (locationMatch && competencyMatch && monthMatch) ? '' : 'none'
+
+	    if(locationMatch && competencyMatch && monthMatch) {
+	    	count ++
+	    } else {
+	    	card.style.display = 'none'
+	    }
+
+	    (count % 2 == 0) ? card.classList.add('offset-md-2') : ''
 
 		window.dispatchEvent(new Event('resize'))
 
