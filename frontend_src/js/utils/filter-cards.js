@@ -61,6 +61,7 @@ function parseMonthYear(dateStr) {
 }
 
 function filterCourses() {
+
 	const locationFilter = document.getElementById('locationFilter').value
 	const competencyFilter = document.getElementById('competencyFilter').value
 	const monthFilter = document.getElementById('monthFilter').value
@@ -80,7 +81,7 @@ function filterCourses() {
     	const parsed = parseMonthYear(data.courseDates)
     	const courseMonthYear = parsed ? parsed.name : null
     	const monthMatch = !monthFilter || courseMonthYear === monthFilter
-    	
+
 	    if(locationMatch && competencyMatch && monthMatch) {
 	    	count ++
 	    	card.style.display = 'block'
@@ -98,6 +99,7 @@ function filterCourses() {
 		}, 200)
 
 	})
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -112,10 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	const monthYearObjects = getUniqueValues('courseDates', parseMonthYear)
     	.filter(Boolean)
     	.reduce((acc, m) => {
-    		if (!acc.some(existing => existing.name === m.name)) acc.push(m);
-    			return acc;
+    		if (!acc.some(existing => existing.name === m.name)) acc.push(m)
+    			return acc
     		}, [])
-    	.sort((a, b) => a.year === b.year ? a.index - b.index : a.year - b.year);
+    	.sort((a, b) => a.year === b.year ? a.index - b.index : a.year - b.year)
 
 	const monthSelect = buildSelect('monthFilter', 'Start date', monthYearObjects.map(m => m.name))
 	monthSelect.addEventListener('change', filterCourses)
