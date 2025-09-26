@@ -1,6 +1,8 @@
 import "./components/navigation"
 import "./utils/parallax"
 
+import "./utils/filter-cards"
+
 import { makeMap } from "./components/maps"
 import "./components/courses"
 import "./components/contact"
@@ -14,6 +16,7 @@ import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
 
 import "./utils/stripe"
+
 import { handleMessages } from "./utils/broadcast"
 
 

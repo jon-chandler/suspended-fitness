@@ -79,6 +79,7 @@ const nudgeContent = (el) => {
 	let nextEl = el.nextElementSibling
 
 	nextEl.style.marginTop = contentPadd
+	window.dispatchEvent(new Event('resize'))
 }
 
 // setTimeout(() => {

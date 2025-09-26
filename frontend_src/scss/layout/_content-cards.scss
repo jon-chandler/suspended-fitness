@@ -17,8 +17,7 @@
 		margin-top: -4em;
     	margin-left: -4em;
     	color: white;
-    	transition: $transition-m;
-
+    	
     	&--content {
     		padding: 2em 6em;
     		position: absolute;
@@ -70,6 +69,7 @@
 	align-self: baseline;
 	filter: drop-shadow(3px 3px 9px rgba(black, .1));
 	transition: transition-bez;
+	position: relative;
 
 	@include media-breakpoint-between(lg, xl) { 
 		padding: 1em;
@@ -167,6 +167,7 @@
 	a {
 		display: inline-block;
 		color: black;
+		font-size: 20px;
 		@extend .pseudo-ul;
 
 		&:hover:after {
