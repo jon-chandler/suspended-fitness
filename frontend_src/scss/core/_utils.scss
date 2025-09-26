@@ -54,6 +54,11 @@ input:-webkit-autofill:active {
     justify-content: center;
     align-items: center;
     animation: loadSpin 5.1s ease-in-out infinite;
+
+    &--sm {
+        background-size: 50%;
+        background-position: 50%;
+    }
 }
 
 @keyframes loadSpin {
