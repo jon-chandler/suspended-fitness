@@ -80,11 +80,10 @@ function filterCourses() {
     	const parsed = parseMonthYear(data.courseDates)
     	const courseMonthYear = parsed ? parsed.name : null
     	const monthMatch = !monthFilter || courseMonthYear === monthFilter
-
-	    card.style.display = (locationMatch && competencyMatch && monthMatch) ? '' : 'none'
-
+    	
 	    if(locationMatch && competencyMatch && monthMatch) {
 	    	count ++
+	    	card.style.display = 'block'
 	    } else {
 	    	card.style.display = 'none'
 	    }
@@ -93,9 +92,11 @@ function filterCourses() {
 
 		window.dispatchEvent(new Event('resize'))
 
-		let scrollP = (window.scrollY + containerEl.getBoundingClientRect().y) - 160
-		window.scrollTo(0, scrollP)
-		
+		setTimeout(() => {
+			let scrollP = (window.scrollY + containerEl.getBoundingClientRect().y) - 160
+			window.scrollTo(0, scrollP)
+		}, 200)
+
 	})
 }
 
