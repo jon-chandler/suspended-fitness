@@ -47,8 +47,11 @@ export function showNewNews(message, link = null) {
 	link = (link) ? `<a href='${link}' class='white'>Find out more</a>` : ''
 
 	let newsContent = `<div class="beacon--content">
-							<div class='mb-24'><span class='font--pink'>NEW</span> ${message}</div>
-							<div>${link}</div>
+							<div class='beacon--message'>
+								<span class='font--pink'>NEW
+								</span> ${message}
+									<div class="white">${link}</div>
+								</div>
 						</div>
 						`
 
@@ -63,4 +66,4 @@ export function showNewNews(message, link = null) {
 }
 
 
-//showNewNews('There is a new piece of content. Take a look', '/')
+//showNewNews('Total Beginners Course starting on Friday 19th in Brockwell Park', '/')

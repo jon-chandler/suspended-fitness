@@ -19,20 +19,40 @@
     	color: white;
 
     	&--content {
-    		@extend .haptik--feature-headline;
-    		line-height: 40px;
-    		padding: 2em 4em;
+    		padding: 2em 6em;
     		position: absolute;
     		background: black;
     		width: 100%;
     	}
 
-    	@include media-breakpoint-down(md) { 
-			margin-left: -1.5em;
+    	&--message {
+    		font-size: 32px;
+			line-height: 40px;
+			padding: .5em;
 
-			&--content {
+			a {
+				margin-top: 16px;
+			}
+    	}
+
+    	@include media-breakpoint-between(lg, xl) { 
+    		margin-top: -1em;
+    		margin-left: -1em;
+
+
+    		&--content {
 				padding: 1em;
 			}
+    	}
+
+    	@include media-breakpoint-down(lg) { 
+    		&--content {
+				padding: 1em;
+			}
+    	}
+
+    	@include media-breakpoint-down(md) { 
+			margin-left: -1.5em;
 		}
 	}
 }
@@ -48,6 +68,10 @@
 	align-self: baseline;
 	filter: drop-shadow(3px 3px 9px rgba(black, .1));
 	transition: transition-bez;
+
+	@include media-breakpoint-between(lg, xl) { 
+		padding: 1em;
+	}
 
 	@include media-breakpoint-down(lg) { 
 		margin-left: 0;
