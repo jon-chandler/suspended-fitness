@@ -44,10 +44,10 @@ export function showNewNews(message, link = null) {
 
 	shuffleCards('left')
 
-	link = (link) ? `<a href='${link}'>Find out more</a>` : ''
+	link = (link) ? `<a href='${link}' class='white'>Find out more</a>` : ''
 
 	let newsContent = `<div class="beacon--content">
-							<div><span class='font--pink'>NEW</span> ${message}</div>
+							<div class='mb-24'><span class='font--pink'>NEW</span> ${message}</div>
 							<div>${link}</div>
 						</div>
 						`
@@ -61,3 +61,6 @@ export function showNewNews(message, link = null) {
 
 	nextEl.style.marginTop = contentPadd
 }
+
+
+//showNewNews('There is a new piece of content. Take a look', '/')

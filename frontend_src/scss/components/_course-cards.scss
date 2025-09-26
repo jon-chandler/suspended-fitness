@@ -19,6 +19,13 @@
 
 	@include media-breakpoint-down(lg) { 
 		margin-left: unset !important;
+		border: 1px solid pink;
+	}
+
+	@include media-breakpoint-down(md) { 
+		margin-left: unset !important;
+		padding: 1em;
+		border: 1px solid orange;
 	}
 
 

@@ -26,6 +26,14 @@
     		background: black;
     		width: 100%;
     	}
+
+    	@include media-breakpoint-down(md) { 
+			margin-left: -1.5em;
+
+			&--content {
+				padding: 1em;
+			}
+		}
 	}
 }
 
