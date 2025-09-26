@@ -145,6 +145,13 @@ blockquote::after {
 	color: white;
 }
 
+.font {
+
+	&--pink {
+		color: $corePink;
+	}
+}
+
 
 .haptik {
 	font-family: 'Haptik', sans-serif; 

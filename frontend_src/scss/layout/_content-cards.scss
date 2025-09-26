@@ -12,6 +12,19 @@
 			padding-bottom: 500px;
 		}
 	}
+
+	.beacon {
+		margin-top: -4em;
+    	margin-left: -4em;
+    	color: white;
+
+    	&--content {
+    		padding: 2em 6em;
+    		position: absolute;
+    		background: black;
+    		width: 100%;
+    	}
+	}
 }
 
 .blurb {
