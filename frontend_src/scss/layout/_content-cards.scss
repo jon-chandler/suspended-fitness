@@ -19,7 +19,9 @@
     	color: white;
 
     	&--content {
-    		padding: 2em 6em;
+    		@extend .haptik--feature-headline;
+    		line-height: 40px;
+    		padding: 2em 4em;
     		position: absolute;
     		background: black;
     		width: 100%;
@@ -36,7 +38,7 @@
 	border: none;
 	padding: 4em;
 	align-self: baseline;
-	filter: drop-shadow(3px 3px 1px $nGrey25);
+	filter: drop-shadow(3px 3px 9px rgba(black, .1));
 	transition: transition-bez;
 
 	@include media-breakpoint-down(lg) { 

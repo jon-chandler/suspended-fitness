@@ -15,13 +15,18 @@ export function handleMessages() {
 
 		switch(message.event) {
 			case 'contentChange':
-				showAnnouncement('info', message.msg)
+				showNewNews(message.msg)
+			break;
+			case 'newsUpdate':
 				showNewNews(message.msg)
 			break;
 			case 'paymentReceived':
 				showAnnouncement('success', message.msg)
 			break;
-				defashowAnnouncement('warning', message.msg)
+			case 'showWarning':
+				showAnnouncement('warning', message.msg)
+			break; 
+				showNewNews(message.msg)
 			break; 
 		}
 
@@ -42,11 +47,10 @@ export function showNewNews(message, link = null) {
 	link = (link) ? `<a href='${link}'>Find out more</a>` : ''
 
 	let newsContent = `<div class="beacon--content">
-							<p><span class='font--pink'>NEW</span> ${message}</p>
-							${link}
+							<div><span class='font--pink'>NEW</span> ${message}</div>
+							<div>${link}</div>
 						</div>
 						`
-
 
 	newsEl.innerHTML = newsContent
 
@@ -56,5 +60,4 @@ export function showNewNews(message, link = null) {
 	let nextEl = newsEl.nextElementSibling
 
 	nextEl.style.marginTop = contentPadd
-
 }
