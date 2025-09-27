@@ -4,7 +4,27 @@ const filterCards = document.querySelectorAll('.course-card')
 const containerEl = document.getElementById('card-container')
 const mobileFilterBtn = document.querySelector('.course-filter--launch')
 
+const introDiv = document.querySelector('.intro')
+const footer = document.getElementsByTagName('footer')[0]
+
 let filterModal
+
+
+const setConstrainedElHeight = (el) => {
+	if(!introDiv) {
+		return
+	}
+
+	console.log(containerEl.getBoundingClientRect())
+
+	let boundingBox = containerEl.getBoundingClientRect().height + 50
+	let yPos = containerEl.getBoundingClientRect().top + 50
+	
+
+	el.style.height = `${boundingBox}px`
+	//el.style.marginTop = `${yPos}px`
+
+}
 
 const getUniqueValues = (key, transformFn) => {
 
@@ -168,7 +188,6 @@ const filterCourses = () => {
 
 	updateFilterOptionStates()
 
-
 	setTimeout(() => {
 		window.dispatchEvent(new Event('resize'))
 		let scrollP = (window.scrollY + containerEl.getBoundingClientRect().y) - 160
@@ -178,11 +197,8 @@ const filterCourses = () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-	const filtersDiv = document.getElementById('course-filters')
-
-	if(!filtersDiv) {
-		return
-	}
+	
+	
 
 	const monthYearObjects = getUniqueValues('courseDates', parseMonthYear)
     	.filter(Boolean)
@@ -220,9 +236,18 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.getElementById('competency-filter-modal').appendChild(monthSelect)
 
 	})
+
+	setTimeout(() => {
+		const constrainedEl = document.querySelector('.constrained-height')
+		setConstrainedElHeight(constrainedEl)
+	}, 30)
+
 })
 
 
-
+window.addEventListener('resize', () => {
+	const constrainedEl = document.querySelector('.constrained-height')
+	setConstrainedElHeight(constrainedEl)
+})
 
 

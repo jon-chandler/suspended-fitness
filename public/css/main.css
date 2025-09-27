@@ -14195,6 +14195,9 @@ footer {
   padding-bottom: 160px;
   isolation: isolate;
 }
+.card-container--column {
+  flex-direction: column;
+}
 .card-container--fill-bottom {
   padding-bottom: 650px;
 }
@@ -14763,7 +14766,7 @@ footer {
   display: flex;
 }
 
-.pole, #background-animation .parallax-area-04:before, #background-animation .parallax-area-05:before, #background-animation .parallax-area-03:before, #background-animation .parallax-area-02:before, #background-animation .parallax-area-01:before, #background-animation .empty-pole:before {
+.pole, #background-animation .parallax-area-04:before, #background-animation .parallax-area-05.offer-page:after, #background-animation .parallax-area-05:before, #background-animation .parallax-area-03.offer-page:after, #background-animation .parallax-area-03:before, #background-animation .parallax-area-02:before, #background-animation .parallax-area-01:before, #background-animation .empty-pole:before {
   content: "";
   width: 12px;
   height: var(--defHeight, 200vh);
@@ -14811,9 +14814,24 @@ footer {
 }
 #background-animation .parallax-elem--sticky-bottom {
   top: 55%;
+  bottom: 0;
 }
-#background-animation .parallax-elem--sticky-bottom img {
-  margin-top: -95%;
+#background-animation .parallax-elem--sticky-bottom:before {
+  bottom: 0;
+}
+#background-animation .parallax-elem.constrained-height {
+  overflow: hidden;
+  bottom: 0;
+  top: unset;
+  max-height: unset;
+}
+#background-animation .parallax-elem.constrained-height:before {
+  min-height: 600vh;
+  max-height: 600vh !important;
+  transform: translateY(30%);
+}
+#background-animation .parallax-elem.constrained-height img {
+  margin-top: 50%;
 }
 #background-animation .empty-pole {
   left: 10%;
@@ -14955,6 +14973,13 @@ footer {
   left: 63px;
   width: 10px;
 }
+#background-animation .parallax-area-03.offer-page:after {
+  width: 10px;
+  left: 63px;
+  top: 300%;
+  height: 500%;
+  z-index: -1;
+}
 @media (max-width: 1365px) {
   #background-animation .parallax-area-03 {
     opacity: 0;
@@ -14971,6 +14996,13 @@ footer {
 }
 #background-animation .parallax-area-05.offer-page:before {
   left: 17px;
+  max-height: 300vh;
+}
+#background-animation .parallax-area-05.offer-page:after {
+  left: 7%;
+  top: 300%;
+  height: 1000%;
+  z-index: -1;
 }
 #background-animation .parallax-area-05 img {
   margin-top: -20%;
@@ -15003,9 +15035,6 @@ footer {
 #background-animation .parallax-area-04.offer-page:before {
   left: 44px;
   width: 10px;
-}
-#background-animation .parallax-area-04.offer-page img {
-  margin-top: 90%;
 }
 @media (max-width: 1023.98px) {
   #background-animation .parallax-area-04 img {
@@ -15265,6 +15294,8 @@ footer {
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.35);
   transform: translateY(100px);
   position: relative;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .card.show {
   transform: translateY(0);

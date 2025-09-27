@@ -455,7 +455,19 @@ __webpack_require__.r(__webpack_exports__);
 var filterCards = document.querySelectorAll('.course-card');
 var containerEl = document.getElementById('card-container');
 var mobileFilterBtn = document.querySelector('.course-filter--launch');
+var introDiv = document.querySelector('.intro');
+var footer = document.getElementsByTagName('footer')[0];
 var filterModal;
+var setConstrainedElHeight = function setConstrainedElHeight(el) {
+  if (!introDiv) {
+    return;
+  }
+  console.log(containerEl.getBoundingClientRect());
+  var boundingBox = containerEl.getBoundingClientRect().height + 50;
+  var yPos = containerEl.getBoundingClientRect().top + 50;
+  el.style.height = "".concat(boundingBox, "px");
+  //el.style.marginTop = `${yPos}px`
+};
 var getUniqueValues = function getUniqueValues(key, transformFn) {
   var courseCards = document.querySelectorAll('.course-card');
   var values = new Set();
@@ -594,10 +606,6 @@ var filterCourses = function filterCourses() {
   }, 350);
 };
 document.addEventListener('DOMContentLoaded', function () {
-  var filtersDiv = document.getElementById('course-filters');
-  if (!filtersDiv) {
-    return;
-  }
   var monthYearObjects = getUniqueValues('courseDates', parseMonthYear).filter(Boolean).reduce(function (acc, m) {
     if (!acc.some(function (existing) {
       return existing.name === m.name;
@@ -626,6 +634,14 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('date-filter-modal').appendChild(competencySelect);
     document.getElementById('competency-filter-modal').appendChild(monthSelect);
   });
+  setTimeout(function () {
+    var constrainedEl = document.querySelector('.constrained-height');
+    setConstrainedElHeight(constrainedEl);
+  }, 30);
+});
+window.addEventListener('resize', function () {
+  var constrainedEl = document.querySelector('.constrained-height');
+  setConstrainedElHeight(constrainedEl);
 });
 
 /***/ }),

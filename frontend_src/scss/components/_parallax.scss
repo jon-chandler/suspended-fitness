@@ -29,7 +29,7 @@ $container-w: 1680px;
  	max-width: $container-w;
  	overflow: hidden;
  	pointer-events: none;
-
+ 	
  	& > * {
  		pointer-events: none;
  	}
@@ -60,12 +60,29 @@ $container-w: 1680px;
 
 		&--sticky-bottom {
 			top: 55%;
+			bottom: 0;
+
+			&:before {
+				bottom: 0;
+			}
+
+		}
+
+		&.constrained-height {
+			overflow: hidden;
+			bottom: 0;
+			top: unset;
+			max-height: unset;
+
+			&:before {
+				min-height: 600vh;
+				max-height: 600vh !important;
+				transform: translateY(30%);
+			}
 
 			img {
-	  			margin-top: -95%;
-	  		}
-
-
+				margin-top: 50%;
+			}
 		}
 	}
 
@@ -166,6 +183,15 @@ $container-w: 1680px;
 	  			left: 63px;
 	  			width: 10px;
 	  		}
+
+	  		&:after {
+	  			@extend .pole;
+	  			width: 10px;
+	  			left: 63px;
+	  			top: 300%;
+	  			height: 500%;
+	  			z-index: -1;
+	  		}
 	  	}
 
 	  	@media (max-width: $max-w-02) {
@@ -187,6 +213,15 @@ $container-w: 1680px;
 
 	  		&:before {
 	  			left: 17px;
+	  			max-height: 300vh;
+	  		}
+
+	  		&:after {
+	  			@extend .pole;
+	  			left: 7%;
+	  			top: 300%;
+	  			height: 1000%;
+	  			z-index: -1;
 	  		}
 	  	}
 
@@ -227,10 +262,6 @@ $container-w: 1680px;
 	  		&:before {
 	  			left: 44px;
 	  			width: 10px;
-	  		}
-
-	  		img {
-	  			margin-top: 90%;
 	  		}
 	  	}
 

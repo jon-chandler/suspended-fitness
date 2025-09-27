@@ -5,6 +5,10 @@
 	padding-bottom: 160px;
 	isolation: isolate;
 
+	&--column {
+		flex-direction: column;
+	}
+
 	&--fill-bottom {
 		padding-bottom: 650px;
 
