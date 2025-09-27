@@ -118,46 +118,64 @@ Array.from(monthSelect.options).forEach(option => {
     })
 }
 
+
 const filterCourses = () => {
-    const locationFilter = document.getElementById('locationFilter').value
-    const competencyFilter = document.getElementById('competencyFilter').value
-    const monthFilter = document.getElementById('monthFilter').value
-    const courseCount = document.getElementById('course-count')
+	const locationFilter = document.getElementById('locationFilter').value
+  	const competencyFilter = document.getElementById('competencyFilter').value
+  	const monthFilter = document.getElementById('monthFilter').value
+  	const courseCount = document.getElementById('course-count')
 
-    let count = 0
+  	let count = 0
 
-    document.querySelectorAll('.course-card').forEach(card => {
-        card.classList.remove('offset-md-2')
-        const data = JSON.parse(card.dataset.courseInfo)
+	document.querySelectorAll('.course-card').forEach(card => {
+    	card.classList.remove('offset-md-2')
+	    const data = JSON.parse(card.dataset.courseInfo)
 
-        const locationMatch = !locationFilter || data.courseLocation === locationFilter
-        const competencyMatch = !competencyFilter || data.courseCompetency === competencyFilter
+	    const locationMatch = !locationFilter || data.courseLocation === locationFilter
+	    const competencyMatch = !competencyFilter || data.courseCompetency === competencyFilter
 
-        const parsed = parseMonthYear(data.courseDates)
-        const courseMonthYear = parsed ? parsed.name : null
-        const monthMatch = !monthFilter || courseMonthYear === monthFilter
+	    const parsed = parseMonthYear(data.courseDates)
+	    const courseMonthYear = parsed ? parsed.name : null
+	    const monthMatch = !monthFilter || courseMonthYear === monthFilter
 
-	    if (locationMatch && competencyMatch && monthMatch) {
-	        count++
-	        card.style.display = 'block'
+	    const shouldShow = locationMatch && competencyMatch && monthMatch
+
+	    if (shouldShow) {
+	      	count++
+
+	      	if (card.classList.contains('hidden')) {
+				card.style.display = 'block'
+				requestAnimationFrame(() => card.classList.remove('hidden'))
+			}
+
 	    } else {
-	        card.style.display = 'none'
-	    }
+	      
+			if (!card.classList.contains('hidden')) {
+	        	card.classList.add('hidden')
+	        	setTimeout(() => {
+					if (card.classList.contains('hidden')) {
+						card.style.display = 'none'
+					}
+				}, 310)
+			}
+		}
 
-	    if (count % 2 === 0) card.classList.add('offset-md-2')
+    	if (count % 2 === 0) card.classList.add('offset-md-2');
   	})
 
-    let courseCountNum = count === 1 ? `${count} Course available` : `${count} Courses available`
-    courseCount.innerHTML = courseCountNum
+	let courseCountNum = count === 1 ? `${count} Course available` : `${count} Courses available`
+	courseCount.innerHTML = courseCountNum
 
-    updateFilterOptionStates()
+	updateFilterOptionStates()
 
-    window.dispatchEvent(new Event('resize'))
-    setTimeout(() => {
-        let scrollP = (window.scrollY + containerEl.getBoundingClientRect().y) - 160
-        window.scrollTo(0, scrollP)
-    }, 200)
+
+	setTimeout(() => {
+		window.dispatchEvent(new Event('resize'))
+		let scrollP = (window.scrollY + containerEl.getBoundingClientRect().y) - 160
+		window.scrollTo(0, scrollP)
+	}, 350)
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
 	const filtersDiv = document.getElementById('course-filters')

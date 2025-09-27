@@ -1,7 +1,7 @@
 .card {
 	padding: 4em;
 	border-radius: unset;
-	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+	transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.35);
 	transform: translateY(100px);
 	position: relative;
 
@@ -9,12 +9,10 @@
 		transform: translateY(0);
 	}
 
-	&.hide{
-		transition: translateX .8s, height .2s .5s;
-		transform: translateX(-9999px);
-		height: 0;
-		padding: 0;
-		opacity: .2;
+	&.hidden {
+	  opacity: 0;
+	  transform: translateY(10px);
+	  pointer-events: none;
 	}
 	
 	&:nth-child(even) {
