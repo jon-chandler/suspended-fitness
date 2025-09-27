@@ -6,7 +6,7 @@ const mobileFilterBtn = document.querySelector('.course-filter--launch')
 
 let filterModal
 
-function getUniqueValues(key, transformFn) {
+const getUniqueValues = (key, transformFn) => {
 
 	const courseCards = document.querySelectorAll('.course-card')
 	const values = new Set()
@@ -26,7 +26,7 @@ function getUniqueValues(key, transformFn) {
 }
 
 
-function buildSelect(id, label, options, title) {
+const buildSelect = (id, label, options, title) => {
 	const select = document.createElement('select')
 	select.id = id
 	select.className = 'select max-w'
@@ -46,7 +46,7 @@ function buildSelect(id, label, options, title) {
   	return select
 }
 
-function parseMonthYear(dateStr) {
+const parseMonthYear = (dateStr) => {
 
   	const match = dateStr.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/)
   	if (!match) return null
@@ -65,52 +65,98 @@ function parseMonthYear(dateStr) {
 	}
 }
 
-function filterCourses() {
+const updateFilterOptionStates = () => {
+    const locationSelect = document.getElementById('locationFilter')
+    const competencySelect = document.getElementById('competencyFilter')
+    const monthSelect = document.getElementById('monthFilter')
 
-	const locationFilter = document.getElementById('locationFilter').value
-	const competencyFilter = document.getElementById('competencyFilter').value
-	const monthFilter = document.getElementById('monthFilter').value
-	const courseCount = document.getElementById('course-count')
+    const selectedLocation = locationSelect.value
+    const selectedCompetency = competencySelect.value
+    const selectedMonth = monthSelect.value
 
-	let count = 0
-
-	document.querySelectorAll('.course-card').forEach(card => {
-
-		card.classList.remove('offset-md-2')
-
-		const data = JSON.parse(card.dataset.courseInfo)
-
-	    const locationMatch = !locationFilter || data.courseLocation === locationFilter
-	    const competencyMatch = !competencyFilter || data.courseCompetency === competencyFilter
+    const allCourses = Array.from(document.querySelectorAll('.course-card')).map(card => {
+    const data = JSON.parse(card.dataset.courseInfo)
+    return {
+        element: card,
+        data,
+        monthYear: parseMonthYear(data.courseDates)
+    }
+})
 
 
-    	const parsed = parseMonthYear(data.courseDates)
-    	const courseMonthYear = parsed ? parsed.name : null
-    	const monthMatch = !monthFilter || courseMonthYear === monthFilter
+const matches = (course, location, competency, month) => {
+    const locationMatch = !location || course.data.courseLocation === location
+    const competencyMatch = !competency || course.data.courseCompetency === competency
+    const monthMatch = !month || (course.monthYear && course.monthYear.name === month)
 
-	    if(locationMatch && competencyMatch && monthMatch) {
-	    	count ++
-	    	card.style.display = 'block'
+    return locationMatch && competencyMatch && monthMatch
+}
+
+Array.from(locationSelect.options).forEach(option => {
+    if (!option.value) return 
+        const wouldMatch = allCourses.some(c =>
+        matches(c, option.value, selectedCompetency, selectedMonth)
+    )
+    option.disabled = !wouldMatch
+})
+
+
+Array.from(competencySelect.options).forEach(option => {
+    if (!option.value) return
+        const wouldMatch = allCourses.some(c =>
+        matches(c, selectedLocation, option.value, selectedMonth)
+    )
+    option.disabled = !wouldMatch
+})
+
+Array.from(monthSelect.options).forEach(option => {
+    if (!option.value) return
+        const wouldMatch = allCourses.some(c =>
+        matches(c, selectedLocation, selectedCompetency, option.value)
+    )
+        option.disabled = !wouldMatch
+    })
+}
+
+const filterCourses = () => {
+    const locationFilter = document.getElementById('locationFilter').value
+    const competencyFilter = document.getElementById('competencyFilter').value
+    const monthFilter = document.getElementById('monthFilter').value
+    const courseCount = document.getElementById('course-count')
+
+    let count = 0
+
+    document.querySelectorAll('.course-card').forEach(card => {
+        card.classList.remove('offset-md-2')
+        const data = JSON.parse(card.dataset.courseInfo)
+
+        const locationMatch = !locationFilter || data.courseLocation === locationFilter
+        const competencyMatch = !competencyFilter || data.courseCompetency === competencyFilter
+
+        const parsed = parseMonthYear(data.courseDates)
+        const courseMonthYear = parsed ? parsed.name : null
+        const monthMatch = !monthFilter || courseMonthYear === monthFilter
+
+	    if (locationMatch && competencyMatch && monthMatch) {
+	        count++
+	        card.style.display = 'block'
 	    } else {
-	    	card.style.display = 'none'
+	        card.style.display = 'none'
 	    }
 
+	    if (count % 2 === 0) card.classList.add('offset-md-2')
+  	})
 
-	    (count % 2 == 0) ? card.classList.add('offset-md-2') : ''
+    let courseCountNum = count === 1 ? `${count} Course available` : `${count} Courses available`
+    courseCount.innerHTML = courseCountNum
 
-	    let courseCountNum = (count == 1) ? `${count} Course available` : `${count} Courses available`
+    updateFilterOptionStates()
 
-	    courseCount.innerHTML = courseCountNum
-
-		window.dispatchEvent(new Event('resize'))
-
-		setTimeout(() => {
-			let scrollP = (window.scrollY + containerEl.getBoundingClientRect().y) - 160
-			window.scrollTo(0, scrollP)
-		}, 200)
-
-	})
-
+    window.dispatchEvent(new Event('resize'))
+    setTimeout(() => {
+        let scrollP = (window.scrollY + containerEl.getBoundingClientRect().y) - 160
+        window.scrollTo(0, scrollP)
+    }, 200)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -146,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	filterModal = new bootstrap.Modal(document.getElementById('filter-modal'), {
 		keyboard: false
 	})
-
 
 	mobileFilterBtn.addEventListener('click', ()=> {
 
