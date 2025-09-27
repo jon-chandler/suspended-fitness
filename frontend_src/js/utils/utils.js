@@ -94,10 +94,10 @@ export function setConstrainedElHeight(container, el, heightMod = null) {
 document.addEventListener('DOMContentLoaded', () => {
 	setTimeout(() => {
 		setConstrainedElHeight(cardContainer, constrainedEl, 0)
-	}, 500)
+	}, 10)
 })
 
 document.addEventListener('resize', () => {
-	setConstrainedElHeight(cardContainer, constrainedEl, 50)
+	setConstrainedElHeight(cardContainer, constrainedEl, 0)
 })
 

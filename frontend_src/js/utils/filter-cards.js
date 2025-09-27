@@ -229,18 +229,30 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 	shuffleStack()
+	hackeyNudge()
 
 	setTimeout(() => {
 		const constrainedEl = document.querySelector('.constrained-height')
-		setConstrainedElHeight(containerEl, constrainedEl, 150)
-	}, 500)
+		setConstrainedElHeight(containerEl, constrainedEl, 50)
+	}, 70)
 
 	window.addEventListener('resize', () => {
 		const constrainedEl = document.querySelector('.constrained-height')
-		setConstrainedElHeight(containerEl, constrainedEl, 150)
+		setConstrainedElHeight(containerEl, constrainedEl, 50)
 	})
 
 })
+
+const hackeyNudge = () => {
+	let startWidth = containerEl.getBoundingClientRect().width
+
+	containerEl.style.opacity = 0
+	containerEl.style.width = `${startWidth/3}px`
+	setTimeout(() => {
+		containerEl.style.width = `${startWidth}px`
+		containerEl.style.opacity = 1
+	}, 150)
+}
 
 const shuffleStack = () => {
 	document.querySelectorAll('.course-card').forEach((card, i) => {
