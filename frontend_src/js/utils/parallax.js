@@ -150,6 +150,7 @@ const addObserver = (entries)=> {
 const setAnimationSize = () => {
 	let sz = (footer.getBoundingClientRect().top + window.scrollY).toFixed(1)
 	bgContainer.style.minHeight = `${sz}px`
+	bgContainer.style.height = `${sz}px`
 
 	targets.forEach((target) => {
 		target.style.setProperty('--defHeight', `${sz}px`)

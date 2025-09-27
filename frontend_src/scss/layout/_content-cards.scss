@@ -74,6 +74,7 @@
 	filter: drop-shadow(3px 3px 9px rgba(black, .1));
 	transition: transition-bez;
 	position: relative;
+	min-height: 400px;
 
 	@include media-breakpoint-between(lg, xl) { 
 		padding: 1em;

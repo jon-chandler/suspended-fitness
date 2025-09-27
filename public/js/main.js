@@ -451,23 +451,16 @@ var nudgeContent = function nudgeContent(el) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./js/utils/utils.js");
+
 
 var filterCards = document.querySelectorAll('.course-card');
 var containerEl = document.getElementById('card-container');
 var mobileFilterBtn = document.querySelector('.course-filter--launch');
+var isFilterPage = !!document.getElementById('course-filters');
 var introDiv = document.querySelector('.intro');
 var footer = document.getElementsByTagName('footer')[0];
 var filterModal;
-var setConstrainedElHeight = function setConstrainedElHeight(el) {
-  if (!introDiv) {
-    return;
-  }
-  console.log(containerEl.getBoundingClientRect());
-  var boundingBox = containerEl.getBoundingClientRect().height + 50;
-  var yPos = containerEl.getBoundingClientRect().top + 50;
-  el.style.height = "".concat(boundingBox, "px");
-  //el.style.marginTop = `${yPos}px`
-};
 var getUniqueValues = function getUniqueValues(key, transformFn) {
   var courseCards = document.querySelectorAll('.course-card');
   var values = new Set();
@@ -606,6 +599,9 @@ var filterCourses = function filterCourses() {
   }, 350);
 };
 document.addEventListener('DOMContentLoaded', function () {
+  if (!isFilterPage) {
+    return;
+  }
   var monthYearObjects = getUniqueValues('courseDates', parseMonthYear).filter(Boolean).reduce(function (acc, m) {
     if (!acc.some(function (existing) {
       return existing.name === m.name;
@@ -636,12 +632,12 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   setTimeout(function () {
     var constrainedEl = document.querySelector('.constrained-height');
-    setConstrainedElHeight(constrainedEl);
-  }, 30);
-});
-window.addEventListener('resize', function () {
-  var constrainedEl = document.querySelector('.constrained-height');
-  setConstrainedElHeight(constrainedEl);
+    (0,_utils__WEBPACK_IMPORTED_MODULE_1__.setConstrainedElHeight)(containerEl, constrainedEl, 150);
+  }, 500);
+  window.addEventListener('resize', function () {
+    var constrainedEl = document.querySelector('.constrained-height');
+    (0,_utils__WEBPACK_IMPORTED_MODULE_1__.setConstrainedElHeight)(containerEl, constrainedEl, 150);
+  });
 });
 
 /***/ }),
@@ -770,6 +766,7 @@ var addObserver = function addObserver(entries) {
 var setAnimationSize = function setAnimationSize() {
   var sz = (footer.getBoundingClientRect().top + window.scrollY).toFixed(1);
   bgContainer.style.minHeight = "".concat(sz, "px");
+  bgContainer.style.height = "".concat(sz, "px");
   targets.forEach(function (target) {
     target.style.setProperty('--defHeight', "".concat(sz, "px"));
   });
@@ -930,6 +927,7 @@ __webpack_async_result__();
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   scrollToPos: () => (/* binding */ scrollToPos),
+/* harmony export */   setConstrainedElHeight: () => (/* binding */ setConstrainedElHeight),
 /* harmony export */   showLoader: () => (/* binding */ showLoader),
 /* harmony export */   shuffleCards: () => (/* binding */ shuffleCards)
 /* harmony export */ });
@@ -937,8 +935,10 @@ var cardContainer = document.querySelector('.card-container');
 var cards = document.querySelectorAll('.content-card');
 var minWidth = 800;
 var body = document.getElementsByTagName('body')[0];
+var footer = document.getElementsByTagName('footer')[0];
 var contentLoader = document.querySelector('.modal__loader');
 var animateCardsOnload = document.querySelector('.animate-cards-on-load');
+var constrainedEl = document.querySelector('.constrained-height');
 var topCard = 'right';
 function shuffleCards(topCard) {
   if (!cards || window.innerWidth < minWidth) {
@@ -996,6 +996,22 @@ function scrollToPos(x, y) {
   }
   window.scrollTo(x, y);
 }
+function setConstrainedElHeight(container, el) {
+  var heightMod = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  if (!el) {
+    return;
+  }
+  var boundingBox = container.getBoundingClientRect().height + heightMod;
+  el.style.height = "".concat(boundingBox, "px");
+}
+document.addEventListener('DOMContentLoaded', function () {
+  setTimeout(function () {
+    setConstrainedElHeight(cardContainer, constrainedEl, 0);
+  }, 500);
+});
+document.addEventListener('resize', function () {
+  setConstrainedElHeight(cardContainer, constrainedEl, 50);
+});
 
 /***/ }),
 

@@ -1,30 +1,17 @@
 import * as bootstrap from 'bootstrap'
 
+import { setConstrainedElHeight } from './utils'
+
 const filterCards = document.querySelectorAll('.course-card')
 const containerEl = document.getElementById('card-container')
 const mobileFilterBtn = document.querySelector('.course-filter--launch')
+
+const isFilterPage = !!document.getElementById('course-filters')
 
 const introDiv = document.querySelector('.intro')
 const footer = document.getElementsByTagName('footer')[0]
 
 let filterModal
-
-
-const setConstrainedElHeight = (el) => {
-	if(!introDiv) {
-		return
-	}
-
-	console.log(containerEl.getBoundingClientRect())
-
-	let boundingBox = containerEl.getBoundingClientRect().height + 50
-	let yPos = containerEl.getBoundingClientRect().top + 50
-	
-
-	el.style.height = `${boundingBox}px`
-	//el.style.marginTop = `${yPos}px`
-
-}
 
 const getUniqueValues = (key, transformFn) => {
 
@@ -197,9 +184,10 @@ const filterCourses = () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+	if(!isFilterPage) {
+		return
+	}
 	
-	
-
 	const monthYearObjects = getUniqueValues('courseDates', parseMonthYear)
     	.filter(Boolean)
     	.reduce((acc, m) => {
@@ -237,17 +225,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	})
 
+
 	setTimeout(() => {
 		const constrainedEl = document.querySelector('.constrained-height')
-		setConstrainedElHeight(constrainedEl)
-	}, 30)
+		setConstrainedElHeight(containerEl, constrainedEl, 150)
+	}, 500)
+
+	window.addEventListener('resize', () => {
+		const constrainedEl = document.querySelector('.constrained-height')
+		setConstrainedElHeight(containerEl, constrainedEl, 150)
+	})
 
 })
 
-
-window.addEventListener('resize', () => {
-	const constrainedEl = document.querySelector('.constrained-height')
-	setConstrainedElHeight(constrainedEl)
-})
 
 

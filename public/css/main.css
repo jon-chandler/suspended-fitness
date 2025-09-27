@@ -14258,6 +14258,7 @@ footer {
   filter: drop-shadow(3px 3px 9px rgba(0, 0, 0, 0.1));
   transition: transition-bez;
   position: relative;
+  min-height: 400px;
 }
 @media (min-width: 1024px) and (max-width: 1199.98px) {
   .content-card {
@@ -14766,6 +14767,10 @@ footer {
   display: flex;
 }
 
+/* 
+	ALL BREAKPOINTS NEED DOING PROPERLY... 
+	THIS IS UTTER SHITE
+*/
 .pole, #background-animation .parallax-area-04:before, #background-animation .parallax-area-05.offer-page:after, #background-animation .parallax-area-05:before, #background-animation .parallax-area-03.offer-page:after, #background-animation .parallax-area-03:before, #background-animation .parallax-area-02:before, #background-animation .parallax-area-01:before, #background-animation .empty-pole:before {
   content: "";
   width: 12px;
@@ -14813,11 +14818,18 @@ footer {
   min-width: max-content;
 }
 #background-animation .parallax-elem--sticky-bottom {
-  top: 55%;
-  bottom: 0;
+  bottom: 0 !important;
 }
 #background-animation .parallax-elem--sticky-bottom:before {
   bottom: 0;
+}
+#background-animation .parallax-elem--sticky-bottom img {
+  margin-top: -100%;
+}
+@media (max-width: 1023.98px) {
+  #background-animation .parallax-elem--sticky-bottom img {
+    margin-top: 50% !important;
+  }
 }
 #background-animation .parallax-elem.constrained-height {
   overflow: hidden;
@@ -14829,9 +14841,6 @@ footer {
   min-height: 600vh;
   max-height: 600vh !important;
   transform: translateY(30%);
-}
-#background-animation .parallax-elem.constrained-height img {
-  margin-top: 50%;
 }
 #background-animation .empty-pole {
   left: 10%;
@@ -14976,7 +14985,7 @@ footer {
 #background-animation .parallax-area-03.offer-page:after {
   width: 10px;
   left: 63px;
-  top: 300%;
+  top: 325%;
   height: 500%;
   z-index: -1;
 }
@@ -15000,7 +15009,7 @@ footer {
 }
 #background-animation .parallax-area-05.offer-page:after {
   left: 7%;
-  top: 300%;
+  top: 350%;
   height: 1000%;
   z-index: -1;
 }
@@ -15015,6 +15024,11 @@ footer {
 }
 #background-animation .parallax-area-04 {
   left: 10%;
+  /*	  	@include media-breakpoint-down(lg) {
+  	  		img {
+  	  			margin-top: -50%;
+  	  		}
+  	  	}*/
 }
 #background-animation .parallax-area-04:before {
   left: 135px;
@@ -15023,11 +15037,14 @@ footer {
   transform: translateY(-20%);
 }
 #background-animation .parallax-area-04.v-long {
-  left: 35%;
+  left: 15%;
 }
 #background-animation .parallax-area-04.v-long:before {
   left: 41px;
   max-height: 500%;
+}
+#background-animation .parallax-area-04.v-long img {
+  margin-top: 70%;
 }
 #background-animation .parallax-area-04.offer-page {
   left: 32%;
@@ -15035,11 +15052,6 @@ footer {
 #background-animation .parallax-area-04.offer-page:before {
   left: 44px;
   width: 10px;
-}
-@media (max-width: 1023.98px) {
-  #background-animation .parallax-area-04 img {
-    margin-top: -50%;
-  }
 }
 @media (min-width: 425px) and (max-width: 767.98px) {
   #background-animation .parallax-area-04 {
@@ -15054,24 +15066,27 @@ footer {
 @media (max-width: 767.98px) {
   #background-animation .parallax-area-04 {
     transform: scale(0.7);
-    top: 62%;
+    width: 100%;
+    /*		  	&.v-long {
+    		  		&:before {
+    		  			//max-height: 350%;
+    	    			//transform: translateY(-50%);
+    	    			//top: 65%;
+    	  				//left: 5%;
+    		  		}
+    		  	}*/
   }
   #background-animation .parallax-area-04:before {
     max-height: 100%;
-    transform: translateY(-50%);
-  }
-  #background-animation .parallax-area-04.v-long:before {
-    max-height: 350%;
-    transform: translateY(-50%);
   }
 }
 @media (max-width: 424.98px) {
   #background-animation .parallax-area-04 {
-    left: -15%;
-  }
-  #background-animation .parallax-area-04.v-long {
-    top: 82%;
-    left: 5%;
+    left: -18%;
+    /*	  		&.v-long {
+    	  			top: 65%;
+    	  			left: 5%;
+    	  		}*/
   }
 }
 @media (orientation: landscape) and (max-width: 1365px) {

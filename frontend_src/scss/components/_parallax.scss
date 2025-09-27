@@ -6,6 +6,11 @@ $max-w-03: 1599px;
 $container-w: 1680px;
 
 
+  	/* 
+  		ALL BREAKPOINTS NEED DOING PROPERLY... 
+  		THIS IS UTTER SHITE
+  	*/
+
 .pole {
  	content: '';
 	width: 12px;
@@ -49,7 +54,6 @@ $container-w: 1680px;
 		position: absolute;
 		transition: opacity $transition-f;
 
-
 		&:last-of-type {
 			bottom: 0;
 		}
@@ -59,12 +63,22 @@ $container-w: 1680px;
 		}
 
 		&--sticky-bottom {
-			top: 55%;
-			bottom: 0;
+			bottom: 0 !important;
 
 			&:before {
 				bottom: 0;
 			}
+
+			img {
+				margin-top: -100%;
+			}
+
+			@include media-breakpoint-down(lg) {
+				img {
+					margin-top: 50% !important;
+				}
+			}
+
 
 		}
 
@@ -78,10 +92,6 @@ $container-w: 1680px;
 				min-height: 600vh;
 				max-height: 600vh !important;
 				transform: translateY(30%);
-			}
-
-			img {
-				margin-top: 50%;
 			}
 		}
 	}
@@ -188,7 +198,7 @@ $container-w: 1680px;
 	  			@extend .pole;
 	  			width: 10px;
 	  			left: 63px;
-	  			top: 300%;
+	  			top: 325%;
 	  			height: 500%;
 	  			z-index: -1;
 	  		}
@@ -219,7 +229,7 @@ $container-w: 1680px;
 	  		&:after {
 	  			@extend .pole;
 	  			left: 7%;
-	  			top: 300%;
+	  			top: 350%;
 	  			height: 1000%;
 	  			z-index: -1;
 	  		}
@@ -248,12 +258,16 @@ $container-w: 1680px;
 
 
 	  	&.v-long{
-	  		left: 35%;
+	  		left: 15%;
 
 	  		&:before{
 	  			left: 41px;
 	  			max-height: 500%;
 	  		}
+
+	  		img {
+				margin-top: 70%;
+			}
 	  	}
 
 	  	&.offer-page {
@@ -265,12 +279,11 @@ $container-w: 1680px;
 	  		}
 	  	}
 
-
-	  	@include media-breakpoint-down(lg) {
+/*	  	@include media-breakpoint-down(lg) {
 	  		img {
 	  			margin-top: -50%;
 	  		}
-	  	}
+	  	}*/
 
 	  	
 	  	@include media-breakpoint-between(sm, md) {
@@ -286,28 +299,32 @@ $container-w: 1680px;
 
 	  	@include media-breakpoint-down(md) {
 	  		transform: scale(.7);
-	  		top: 62%;
+	  		//top: 62% !important;
+	  		width: 100%;
+
 
 		  	&:before {
 		  		max-height: 100%;
-	    		transform: translateY(-50%);
+	    		//transform: translateY(-50%);
 		  	}
 
-		  	&.v-long {
+/*		  	&.v-long {
 		  		&:before {
-		  			max-height: 350%;
-	    			transform: translateY(-50%);
+		  			//max-height: 350%;
+	    			//transform: translateY(-50%);
+	    			//top: 65%;
+	  				//left: 5%;
 		  		}
-		  	}
+		  	}*/
 	  	}
 
 	  	@include media-breakpoint-down(sm) {
-	  		left: -15%;
+	  		left: -18%;
 
-	  		&.v-long {
-	  			top: 82%;
+/*	  		&.v-long {
+	  			top: 65%;
 	  			left: 5%;
-	  		}
+	  		}*/
 	  	}
 
 

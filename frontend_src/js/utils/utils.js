@@ -3,9 +3,13 @@ const cards = document.querySelectorAll('.content-card')
 const minWidth = 800
 
 const body = document.getElementsByTagName('body')[0]
+const footer = document.getElementsByTagName('footer')[0]
+
 const contentLoader = document.querySelector('.modal__loader')
 
 const animateCardsOnload = document.querySelector('.animate-cards-on-load')
+
+const constrainedEl = document.querySelector('.constrained-height')
 
 let topCard = 'right'
 
@@ -76,3 +80,24 @@ export function scrollToPos(x, y) {
 
 	window.scrollTo(x, y)
 }
+
+
+export function setConstrainedElHeight(container, el, heightMod = null) {
+	if(!el) {
+		return
+	}
+	
+	let boundingBox = container.getBoundingClientRect().height + heightMod
+	el.style.height = `${boundingBox}px`
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+	setTimeout(() => {
+		setConstrainedElHeight(cardContainer, constrainedEl, 0)
+	}, 500)
+})
+
+document.addEventListener('resize', () => {
+	setConstrainedElHeight(cardContainer, constrainedEl, 50)
+})
+
