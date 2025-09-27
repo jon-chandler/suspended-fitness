@@ -88,6 +88,16 @@
 		padding: 4em 1.5em;
 	}
 
+	@include media-breakpoint-between(sm, md) { 
+		padding: 1.5em;
+	}
+
+	@include media-breakpoint-down(sm) { 
+		padding: 1.5em;
+		background: red !important;
+	}
+
+
 	&.shuffle {
 		animation: shuffle-l $transition-m ease-in-out;
 	}

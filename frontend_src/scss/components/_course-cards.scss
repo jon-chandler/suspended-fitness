@@ -15,10 +15,11 @@
 	  transform: translateY(10px);
 	  pointer-events: none;
 	}
-	
+
 	&:nth-child(even) {
-		@extend .offset-md-2;
+		//@extend .offset-md-2;
 	}
+	
 
 	&:last-of-type {
 		margin-bottom: 280px !important;

@@ -135,7 +135,9 @@ const filterCourses = () => {
   	let count = 0
 
 	document.querySelectorAll('.course-card').forEach(card => {
-    	card.classList.remove('offset-md-2')
+
+		card.classList.remove('offset-md-2')
+
 	    const data = JSON.parse(card.dataset.courseInfo)
 
 	    const locationMatch = !locationFilter || data.courseLocation === locationFilter
@@ -150,13 +152,15 @@ const filterCourses = () => {
 	    if (shouldShow) {
 	      	count++
 
+	      	if (count % 2 != 0) card.classList.add('offset-md-2')
+
 	      	if (card.classList.contains('hidden')) {
 				card.style.display = 'block'
 				requestAnimationFrame(() => card.classList.remove('hidden'))
 			}
 
 	    } else {
-	      
+
 			if (!card.classList.contains('hidden')) {
 	        	card.classList.add('hidden')
 	        	setTimeout(() => {
@@ -167,7 +171,6 @@ const filterCourses = () => {
 			}
 		}
 
-    	if (count % 2 === 0) card.classList.add('offset-md-2');
   	})
 
 	let courseCountNum = count === 1 ? `${count} Course available` : `${count} Courses available`
@@ -225,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	})
 
+	shuffleStack()
 
 	setTimeout(() => {
 		const constrainedEl = document.querySelector('.constrained-height')
@@ -237,6 +241,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 })
+
+const shuffleStack = () => {
+	document.querySelectorAll('.course-card').forEach((card, i) => {
+		if (i % 2 === 0) card.classList.add('offset-md-2')
+	})
+}
 
 
 
