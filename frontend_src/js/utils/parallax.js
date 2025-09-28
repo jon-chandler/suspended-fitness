@@ -165,6 +165,5 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	parallax()
-	bgContainer.scrollTo(0, window.innerHeight)
 	setAnimationSize()
 })

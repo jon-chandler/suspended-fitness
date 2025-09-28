@@ -87,6 +87,38 @@ $container-w: 1680px;
 			bottom: 0;
 			top: unset;
 			max-height: unset;
+			display: flex;
+			align-items: flex-end;
+			transition: transition-s;
+			
+			.js-parallax-elem {
+				transform: translateY(80%);
+				position: relative;
+				bottom: 100vh;
+				top: unset;
+
+				img {
+					margin-top: 0 !important;
+				}
+			}
+
+			&--stumpy {
+				
+				.js-parallax-elem {
+					bottom: 190vh;
+				}
+			}
+
+			&--jumbo {
+
+				.js-parallax-elem {
+					bottom: 30vh;
+				}
+			}
+
+			&.overflow {
+				overflow: visible;
+			}
 
 			&:before {
 				min-height: 600vh;

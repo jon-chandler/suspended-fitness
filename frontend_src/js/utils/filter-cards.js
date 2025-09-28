@@ -5,11 +5,13 @@ import { setConstrainedElHeight } from './utils'
 const filterCards = document.querySelectorAll('.course-card')
 const containerEl = document.getElementById('card-container')
 const mobileFilterBtn = document.querySelector('.course-filter--launch')
+const bgContainer = document.getElementById('background-animation')
 
 const isFilterPage = !!document.getElementById('course-filters')
 
 const introDiv = document.querySelector('.intro')
 const footer = document.getElementsByTagName('footer')[0]
+const body = document.getElementsByTagName('body')[0]
 
 let filterModal
 
@@ -182,14 +184,19 @@ const filterCourses = () => {
 		window.dispatchEvent(new Event('resize'))
 		let scrollP = (window.scrollY + containerEl.getBoundingClientRect().y) - 160
 		window.scrollTo(0, scrollP)
+
+		hackeyNudge()
 	}, 350)
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
 	if(!isFilterPage) {
 		return
 	}
+
+	const constrainedEl = document.querySelector('.constrained-height')
 	
 	const monthYearObjects = getUniqueValues('courseDates', parseMonthYear)
     	.filter(Boolean)
@@ -228,21 +235,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	})
 
+	shuffleStack()
 
 	setTimeout(() => {
-		const constrainedEl = document.querySelector('.constrained-height')
 		setConstrainedElHeight(containerEl, constrainedEl, 50)
-	}, 70)
+	}, 500)
 
 	window.addEventListener('resize', () => {
-		const constrainedEl = document.querySelector('.constrained-height')
 		setConstrainedElHeight(containerEl, constrainedEl, 50)
 		hackeyNudge()
 	})
 
-	shuffleStack()
 })
-
 
 const hackeyNudge = () => {
 	window.scrollTo(0, window.scrollY)

@@ -11,6 +11,8 @@ const animateCardsOnload = document.querySelector('.animate-cards-on-load')
 
 const constrainedEl = document.querySelector('.constrained-height')
 
+const isFWhatWeOfferPage = !!document.querySelector('.offer-page')
+
 let topCard = 'right'
 
 export function shuffleCards(topCard) {
@@ -91,13 +93,14 @@ export function setConstrainedElHeight(container, el, heightMod = null) {
 	el.style.height = `${boundingBox}px`
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-	setTimeout(() => {
+if(!isFWhatWeOfferPage) {
+	document.addEventListener('DOMContentLoaded', () => {
+		setTimeout(() => {
+			setConstrainedElHeight(cardContainer, constrainedEl, 0)
+		}, 10)
+	})
+
+	document.addEventListener('resize', () => {
 		setConstrainedElHeight(cardContainer, constrainedEl, 0)
-	}, 10)
-})
-
-document.addEventListener('resize', () => {
-	//setConstrainedElHeight(cardContainer, constrainedEl, 0)
-})
-
+	})
+}

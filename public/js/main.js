@@ -482,9 +482,11 @@ __webpack_require__.r(__webpack_exports__);
 var filterCards = document.querySelectorAll('.course-card');
 var containerEl = document.getElementById('card-container');
 var mobileFilterBtn = document.querySelector('.course-filter--launch');
+var bgContainer = document.getElementById('background-animation');
 var isFilterPage = !!document.getElementById('course-filters');
 var introDiv = document.querySelector('.intro');
 var footer = document.getElementsByTagName('footer')[0];
+var body = document.getElementsByTagName('body')[0];
 var filterModal;
 var getUniqueValues = function getUniqueValues(key, transformFn) {
   var courseCards = document.querySelectorAll('.course-card');
@@ -621,12 +623,14 @@ var filterCourses = function filterCourses() {
     window.dispatchEvent(new Event('resize'));
     var scrollP = window.scrollY + containerEl.getBoundingClientRect().y - 160;
     window.scrollTo(0, scrollP);
+    hackeyNudge();
   }, 350);
 };
 document.addEventListener('DOMContentLoaded', function () {
   if (!isFilterPage) {
     return;
   }
+  var constrainedEl = document.querySelector('.constrained-height');
   var monthYearObjects = getUniqueValues('courseDates', parseMonthYear).filter(Boolean).reduce(function (acc, m) {
     if (!acc.some(function (existing) {
       return existing.name === m.name;
@@ -655,16 +659,14 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('date-filter-modal').appendChild(competencySelect);
     document.getElementById('competency-filter-modal').appendChild(monthSelect);
   });
+  shuffleStack();
   setTimeout(function () {
-    var constrainedEl = document.querySelector('.constrained-height');
     (0,_utils__WEBPACK_IMPORTED_MODULE_1__.setConstrainedElHeight)(containerEl, constrainedEl, 50);
-  }, 70);
+  }, 500);
   window.addEventListener('resize', function () {
-    var constrainedEl = document.querySelector('.constrained-height');
     (0,_utils__WEBPACK_IMPORTED_MODULE_1__.setConstrainedElHeight)(containerEl, constrainedEl, 50);
     hackeyNudge();
   });
-  shuffleStack();
 });
 var hackeyNudge = function hackeyNudge() {
   window.scrollTo(0, window.scrollY);
@@ -812,7 +814,6 @@ window.addEventListener('DOMContentLoaded', function () {
     return;
   }
   parallax();
-  bgContainer.scrollTo(0, window.innerHeight);
   setAnimationSize();
 });
 
@@ -974,6 +975,7 @@ var footer = document.getElementsByTagName('footer')[0];
 var contentLoader = document.querySelector('.modal__loader');
 var animateCardsOnload = document.querySelector('.animate-cards-on-load');
 var constrainedEl = document.querySelector('.constrained-height');
+var isFWhatWeOfferPage = !!document.querySelector('.offer-page');
 var topCard = 'right';
 function shuffleCards(topCard) {
   if (!cards || window.innerWidth < minWidth) {
@@ -1039,14 +1041,16 @@ function setConstrainedElHeight(container, el) {
   var boundingBox = container.getBoundingClientRect().height + heightMod;
   el.style.height = "".concat(boundingBox, "px");
 }
-document.addEventListener('DOMContentLoaded', function () {
-  setTimeout(function () {
+if (!isFWhatWeOfferPage) {
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(function () {
+      setConstrainedElHeight(cardContainer, constrainedEl, 0);
+    }, 10);
+  });
+  document.addEventListener('resize', function () {
     setConstrainedElHeight(cardContainer, constrainedEl, 0);
-  }, 10);
-});
-document.addEventListener('resize', function () {
-  //setConstrainedElHeight(cardContainer, constrainedEl, 0)
-});
+  });
+}
 
 /***/ }),
 
