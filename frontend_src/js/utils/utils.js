@@ -11,6 +11,7 @@ const constrainedEl = document.querySelector('.constrained-height')
 
 const isWhatWeOfferPage = !!document.querySelector('.offer-page')
 
+
 let topCard = 'right'
 
 export function shuffleCards(topCard) {
@@ -58,6 +59,9 @@ if(animateCardsOnload) {
 	observer.observe(cardContainer)
 }
 
+export function cubicEase(t){
+	{return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 }
+}
 
 export function showLoader(shouldShow) {
 	if(!contentLoader) {
@@ -102,3 +106,44 @@ if(!isWhatWeOfferPage) {
 		setConstrainedElHeight(cardContainer, constrainedEl, 0)
 	})
 }
+
+
+
+export function animtateRange(el, s, t, quick = null, suffix = null) {
+    if(!el) {
+        return
+    }
+
+    s = (parseInt(s)) ? s : 0
+
+    let duration = (quick) ? 500 : 1200
+    let start = 0
+    let value = 0
+    let begin = s
+    let target = t
+    let end
+
+    function startAnim(timestamp) {
+        start = timestamp
+        end = start + duration
+        draw(timestamp)
+    }
+
+    function draw(now) {
+        if (now >= start + duration) {
+            return
+        } 
+        let progress = (now - start) / duration
+        let val = cubicEase(progress)
+        let value = begin + (target - begin) * val
+        el.innerHTML = Math.round(value) + suffix
+                
+        requestAnimationFrame(draw)
+    }
+    
+    requestAnimationFrame(startAnim)
+}
+
+
+
+

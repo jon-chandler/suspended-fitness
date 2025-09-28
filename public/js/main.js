@@ -67,67 +67,63 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var contactForm = document.getElementById('contact-us');
   var formHolder = document.querySelector('.contact-form-holder');
-  var messageBox = document.createElement('div');
-  messageBox.id = 'form-response';
-  messageBox.style.marginTop = '1rem';
-  contactForm.appendChild(messageBox);
-  contactForm.addEventListener('submit', /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(e) {
-      var formData, body, response, result, _t;
-      return _regenerator().w(function (_context) {
-        while (1) switch (_context.p = _context.n) {
-          case 0:
-            e.preventDefault();
-            (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.showLoader)(true);
-            messageBox.textContent = "Submitting...";
-            messageBox.style.color = "gray";
-            _context.p = 1;
-            formData = new FormData(contactForm);
-            body = Object.fromEntries(formData.entries());
-            _context.n = 2;
-            return fetch(formURL, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(body)
-            });
-          case 2:
-            response = _context.v;
-            if (response.ok) {
-              _context.n = 3;
+  if (contactForm) {
+    contactForm.addEventListener('submit', /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(e) {
+        var formData, body, response, result, _t;
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.p = _context.n) {
+            case 0:
+              e.preventDefault();
+              (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.showLoader)(true);
+              _context.p = 1;
+              formData = new FormData(contactForm);
+              body = Object.fromEntries(formData.entries());
+              _context.n = 2;
+              return fetch(formURL, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+              });
+            case 2:
+              response = _context.v;
+              if (response.ok) {
+                _context.n = 3;
+                break;
+              }
+              throw new Error("Server error: ".concat(response.status));
+            case 3:
+              _context.n = 4;
+              return response.json();
+            case 4:
+              result = _context.v;
+              if (result.success) {
+                setResponse(formHolder, "MESSAGE SENT ".concat(result.userMessage), 'success');
+                contactForm.reset();
+                (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.shuffleCards)('right');
+              } else {
+                setResponse(formHolder, "FAIL: ".concat(result.errorMessage), 'error');
+              }
+              (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.showLoader)(false);
+              _context.n = 6;
               break;
-            }
-            throw new Error("Server error: ".concat(response.status));
-          case 3:
-            _context.n = 4;
-            return response.json();
-          case 4:
-            result = _context.v;
-            if (result.success) {
-              setResponse(formHolder, "MESSAGE SENT ".concat(result.userMessage), 'success');
-              contactForm.reset();
-              (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.shuffleCards)('right');
-            } else {
-              setResponse(formHolder, "FAIL: ".concat(result.errorMessage), 'error');
-            }
-            (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.showLoader)(false);
-            _context.n = 6;
-            break;
-          case 5:
-            _context.p = 5;
-            _t = _context.v;
-            setResponse(formHolder, "FAIL: ".concat(_t), 'error');
-            (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.showLoader)(false);
-          case 6:
-            return _context.a(2);
-        }
-      }, _callee, null, [[1, 5]]);
-    }));
-    return function (_x) {
-      return _ref.apply(this, arguments);
-    };
-  }());
+            case 5:
+              _context.p = 5;
+              _t = _context.v;
+              setResponse(formHolder, "FAIL: ".concat(_t), 'error');
+              (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.showLoader)(false);
+            case 6:
+              return _context.a(2);
+          }
+        }, _callee, null, [[1, 5]]);
+      }));
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
+  }
 });
 
 /***/ }),
@@ -638,6 +634,7 @@ var updateFilterOptionStates = function updateFilterOptionStates() {
     option.disabled = !wouldMatch;
   });
 };
+var prevCount = 0;
 var filterCourses = function filterCourses() {
   var locationFilter = document.getElementById('locationFilter').value;
   var competencyFilter = document.getElementById('competencyFilter').value;
@@ -673,8 +670,9 @@ var filterCourses = function filterCourses() {
       }
     }
   });
-  var courseCountNum = count === 1 ? "".concat(count, " Course available") : "".concat(count, " Courses available");
-  courseCount.innerHTML = courseCountNum;
+  var coursesAvailMsg = count === 1 ? " Course available" : " Courses available";
+  (0,_utils__WEBPACK_IMPORTED_MODULE_1__.animtateRange)(courseCount, prevCount, count, true, coursesAvailMsg);
+  prevCount = count ? count : 0;
   updateFilterOptionStates();
   setTimeout(function () {
     window.dispatchEvent(new Event('resize'));
@@ -1019,6 +1017,8 @@ __webpack_async_result__();
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   animtateRange: () => (/* binding */ animtateRange),
+/* harmony export */   cubicEase: () => (/* binding */ cubicEase),
 /* harmony export */   scrollToPos: () => (/* binding */ scrollToPos),
 /* harmony export */   setConstrainedElHeight: () => (/* binding */ setConstrainedElHeight),
 /* harmony export */   showLoader: () => (/* binding */ showLoader),
@@ -1072,6 +1072,11 @@ var observer = new IntersectionObserver(cardCheck, {
 if (animateCardsOnload) {
   observer.observe(cardContainer);
 }
+function cubicEase(t) {
+  {
+    return t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+  }
+}
 function showLoader(shouldShow) {
   if (!contentLoader) {
     return;
@@ -1107,6 +1112,36 @@ if (!isWhatWeOfferPage) {
   document.addEventListener('resize', function () {
     setConstrainedElHeight(cardContainer, constrainedEl, 0);
   });
+}
+function animtateRange(el, s, t) {
+  var quick = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+  var suffix = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+  if (!el) {
+    return;
+  }
+  s = parseInt(s) ? s : 0;
+  var duration = quick ? 500 : 1200;
+  var start = 0;
+  var value = 0;
+  var begin = s;
+  var target = t;
+  var end;
+  function startAnim(timestamp) {
+    start = timestamp;
+    end = start + duration;
+    draw(timestamp);
+  }
+  function draw(now) {
+    if (now >= start + duration) {
+      return;
+    }
+    var progress = (now - start) / duration;
+    var val = cubicEase(progress);
+    var value = begin + (target - begin) * val;
+    el.innerHTML = Math.round(value) + suffix;
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(startAnim);
 }
 
 /***/ }),

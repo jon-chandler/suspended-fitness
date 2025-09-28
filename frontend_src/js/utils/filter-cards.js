@@ -1,6 +1,6 @@
 import * as bootstrap from 'bootstrap'
 
-import { setConstrainedElHeight } from './utils'
+import { setConstrainedElHeight, animtateRange} from './utils'
 
 const filterCards = document.querySelectorAll('.course-card')
 const containerEl = document.getElementById('card-container')
@@ -127,6 +127,7 @@ Array.from(monthSelect.options).forEach(option => {
     })
 }
 
+let prevCount = 0
 
 const filterCourses = () => {
 	const locationFilter = document.getElementById('locationFilter').value
@@ -175,8 +176,10 @@ const filterCourses = () => {
 
   	})
 
-	let courseCountNum = count === 1 ? `${count} Course available` : `${count} Courses available`
-	courseCount.innerHTML = courseCountNum
+	let coursesAvailMsg = (count === 1) ? ` Course available` : ` Courses available`
+	animtateRange(courseCount, prevCount, count, true, coursesAvailMsg)
+
+	prevCount = (count) ? count : 0
 
 	updateFilterOptionStates()
 
@@ -184,7 +187,6 @@ const filterCourses = () => {
 		window.dispatchEvent(new Event('resize'))
 		let scrollP = (window.scrollY + containerEl.getBoundingClientRect().y) - 160
 		window.scrollTo(0, scrollP)
-
 		hackeyNudge()
 	}, 350)
 }

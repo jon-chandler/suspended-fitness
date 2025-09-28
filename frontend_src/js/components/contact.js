@@ -16,49 +16,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-us')
 	const formHolder = document.querySelector('.contact-form-holder')
 
-    const messageBox = document.createElement('div')
-    messageBox.id = 'form-response'
-    messageBox.style.marginTop = '1rem'
-    contactForm.appendChild(messageBox)
+	if(contactForm) {
 
-    contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault()
-    showLoader(true)
-	
-    messageBox.textContent = "Submitting..."
-    messageBox.style.color = "gray"
+		contactForm.addEventListener('submit', async (e) => {
+		e.preventDefault()
+		showLoader(true)
 
-        try {
-            const formData = new FormData(contactForm)
-            const body = Object.fromEntries(formData.entries())
+		    try {
+				const formData = new FormData(contactForm)
+				const body = Object.fromEntries(formData.entries())
+				
+				const response = await fetch(formURL, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(body),
+				})
 
-            const response = await fetch(formURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body),
-            })
+				if (!response.ok) {
+					throw new Error(`Server error: ${response.status}`)
+				}
 
-            if (!response.ok) {
-                throw new Error(`Server error: ${response.status}`)
-            }
+		        const result = await response.json()
 
-            const result = await response.json()
+				if (result.success) {
+					setResponse(formHolder, `MESSAGE SENT ${result.userMessage}`, 'success')
+					contactForm.reset()
+					shuffleCards('right')
+				} else {
+					setResponse(formHolder, `FAIL: ${result.errorMessage}`, 'error')
+				}
 
-            if (result.success) {
-            	setResponse(formHolder, `MESSAGE SENT ${result.userMessage}`, 'success')
-                contactForm.reset()
-                shuffleCards('right')
-            } else {
-            	setResponse(formHolder, `FAIL: ${result.errorMessage}`, 'error')
-            }
+				showLoader(false)
 
-            showLoader(false)
+			} catch (err) {
+				setResponse(formHolder, `FAIL: ${err}`, 'error') 
+				showLoader(false)       
+			}
+		})
 
-        } catch (err) {
-            setResponse(formHolder, `FAIL: ${err}`, 'error') 
-            showLoader(false)       
-        }
-    })
+	}
 })
