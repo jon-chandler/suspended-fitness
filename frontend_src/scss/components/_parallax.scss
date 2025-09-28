@@ -102,10 +102,48 @@ $container-w: 1680px;
 				}
 			}
 
+			@include media-breakpoint-down(md) {
+				left: 0 !important;
+				width: 150vw;
+				
+
+				.js-parallax-elem {
+					bottom: 225vh;
+					transform: scale(.7);
+				}
+
+				&.v-long {
+					left: unset !important;
+
+					.js-parallax-elem {
+						bottom: 100vh;
+					}
+
+						&.offer-page {
+							.js-parallax-elem {
+								bottom: 20vh;
+							}
+						}
+
+						&.booking-page {
+							.js-parallax-elem {
+								bottom: 0vh;
+							}
+						}
+				}
+			}
+
 			&--stumpy {
 				
 				.js-parallax-elem {
 					bottom: 190vh;
+				}
+
+				@include media-breakpoint-down(md) {
+
+					.js-parallax-elem {
+						bottom: 110vh;
+					}
 				}
 			}
 
@@ -126,6 +164,11 @@ $container-w: 1680px;
 				transform: translateY(30%);
 			}
 		}
+
+
+
+
+
 	}
 
 
@@ -318,16 +361,16 @@ $container-w: 1680px;
 	  	}*/
 
 	  	
-	  	@include media-breakpoint-between(sm, md) {
-	  		transform: scale(.8);
-	  		min-height: 300px;
-	  		top: 67%;
+/*		  	@include media-breakpoint-between(sm, md) {
+		  		transform: scale(.8);
+		  		min-height: 300px;
+		  		top: 67%;
 
-	  		img {
-	  			margin-top: -50%;
-	  		}
-	  	}
-
+		  		img {
+		  			margin-top: -50%;
+		  		}
+		  	}
+*
 
 	  	@include media-breakpoint-down(md) {
 	  		transform: scale(.7);
@@ -339,26 +382,27 @@ $container-w: 1680px;
 		  		max-height: 100%;
 	    		//transform: translateY(-50%);
 		  	}
-
-/*		  	&.v-long {
+	  	&.v-long {
 		  		&:before {
 		  			//max-height: 350%;
 	    			//transform: translateY(-50%);
 	    			//top: 65%;
 	  				//left: 5%;
 		  		}
-		  	}*/
+		  	
 	  	}
 
+	  	/*
 	  	@include media-breakpoint-down(sm) {
 	  		left: -18%;
 
-/*	  		&.v-long {
+	  		&.v-long {
 	  			top: 65%;
 	  			left: 5%;
-	  		}*/
+	  		}
 	  	}
 
+	*/
 
 	  	@media (orientation: landscape) AND  (max-width: $max-w-02) {
 	  		margin-top: 10%;

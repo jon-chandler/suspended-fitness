@@ -14859,8 +14859,35 @@ footer {
 #background-animation .parallax-elem.constrained-height .js-parallax-elem img {
   margin-top: 0 !important;
 }
+@media (max-width: 767.98px) {
+  #background-animation .parallax-elem.constrained-height {
+    left: 0 !important;
+    width: 150vw;
+  }
+  #background-animation .parallax-elem.constrained-height .js-parallax-elem {
+    bottom: 225vh;
+    transform: scale(0.7);
+  }
+  #background-animation .parallax-elem.constrained-height.v-long {
+    left: unset !important;
+  }
+  #background-animation .parallax-elem.constrained-height.v-long .js-parallax-elem {
+    bottom: 100vh;
+  }
+  #background-animation .parallax-elem.constrained-height.v-long.offer-page .js-parallax-elem {
+    bottom: 20vh;
+  }
+  #background-animation .parallax-elem.constrained-height.v-long.booking-page .js-parallax-elem {
+    bottom: 0vh;
+  }
+}
 #background-animation .parallax-elem.constrained-height--stumpy .js-parallax-elem {
   bottom: 190vh;
+}
+@media (max-width: 767.98px) {
+  #background-animation .parallax-elem.constrained-height--stumpy .js-parallax-elem {
+    bottom: 110vh;
+  }
 }
 #background-animation .parallax-elem.constrained-height--jumbo .js-parallax-elem {
   bottom: 30vh;
@@ -15060,6 +15087,48 @@ footer {
   	  			margin-top: -50%;
   	  		}
   	  	}*/
+  /*		  	@include media-breakpoint-between(sm, md) {
+  		  		transform: scale(.8);
+  		  		min-height: 300px;
+  		  		top: 67%;
+
+  		  		img {
+  		  			margin-top: -50%;
+  		  		}
+  		  	}
+  *
+
+  	  	@include media-breakpoint-down(md) {
+  	  		transform: scale(.7);
+  	  		//top: 62% !important;
+  	  		width: 100%;
+
+
+  		  	&:before {
+  		  		max-height: 100%;
+  	    		//transform: translateY(-50%);
+  		  	}
+  	  	&.v-long {
+  		  		&:before {
+  		  			//max-height: 350%;
+  	    			//transform: translateY(-50%);
+  	    			//top: 65%;
+  	  				//left: 5%;
+  		  		}
+
+  	  	}
+
+  	  	/*
+  	  	@include media-breakpoint-down(sm) {
+  	  		left: -18%;
+
+  	  		&.v-long {
+  	  			top: 65%;
+  	  			left: 5%;
+  	  		}
+  	  	}
+
+  	*/
 }
 #background-animation .parallax-area-04:before {
   left: 135px;
@@ -15083,42 +15152,6 @@ footer {
 #background-animation .parallax-area-04.offer-page:before {
   left: 44px;
   width: 10px;
-}
-@media (min-width: 425px) and (max-width: 767.98px) {
-  #background-animation .parallax-area-04 {
-    transform: scale(0.8);
-    min-height: 300px;
-    top: 67%;
-  }
-  #background-animation .parallax-area-04 img {
-    margin-top: -50%;
-  }
-}
-@media (max-width: 767.98px) {
-  #background-animation .parallax-area-04 {
-    transform: scale(0.7);
-    width: 100%;
-    /*		  	&.v-long {
-    		  		&:before {
-    		  			//max-height: 350%;
-    	    			//transform: translateY(-50%);
-    	    			//top: 65%;
-    	  				//left: 5%;
-    		  		}
-    		  	}*/
-  }
-  #background-animation .parallax-area-04:before {
-    max-height: 100%;
-  }
-}
-@media (max-width: 424.98px) {
-  #background-animation .parallax-area-04 {
-    left: -18%;
-    /*	  		&.v-long {
-    	  			top: 65%;
-    	  			left: 5%;
-    	  		}*/
-  }
 }
 @media (orientation: landscape) and (max-width: 1365px) {
   #background-animation .parallax-area-04 {

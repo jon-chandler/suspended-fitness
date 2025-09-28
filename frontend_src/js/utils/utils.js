@@ -6,12 +6,10 @@ const body = document.getElementsByTagName('body')[0]
 const footer = document.getElementsByTagName('footer')[0]
 
 const contentLoader = document.querySelector('.modal__loader')
-
 const animateCardsOnload = document.querySelector('.animate-cards-on-load')
-
 const constrainedEl = document.querySelector('.constrained-height')
 
-const isFWhatWeOfferPage = !!document.querySelector('.offer-page')
+const isWhatWeOfferPage = !!document.querySelector('.offer-page')
 
 let topCard = 'right'
 
@@ -93,7 +91,7 @@ export function setConstrainedElHeight(container, el, heightMod = null) {
 	el.style.height = `${boundingBox}px`
 }
 
-if(!isFWhatWeOfferPage) {
+if(!isWhatWeOfferPage) {
 	document.addEventListener('DOMContentLoaded', () => {
 		setTimeout(() => {
 			setConstrainedElHeight(cardContainer, constrainedEl, 0)

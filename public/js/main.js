@@ -975,7 +975,7 @@ var footer = document.getElementsByTagName('footer')[0];
 var contentLoader = document.querySelector('.modal__loader');
 var animateCardsOnload = document.querySelector('.animate-cards-on-load');
 var constrainedEl = document.querySelector('.constrained-height');
-var isFWhatWeOfferPage = !!document.querySelector('.offer-page');
+var isWhatWeOfferPage = !!document.querySelector('.offer-page');
 var topCard = 'right';
 function shuffleCards(topCard) {
   if (!cards || window.innerWidth < minWidth) {
@@ -1041,7 +1041,7 @@ function setConstrainedElHeight(container, el) {
   var boundingBox = container.getBoundingClientRect().height + heightMod;
   el.style.height = "".concat(boundingBox, "px");
 }
-if (!isFWhatWeOfferPage) {
+if (!isWhatWeOfferPage) {
   document.addEventListener('DOMContentLoaded', function () {
     setTimeout(function () {
       setConstrainedElHeight(cardContainer, constrainedEl, 0);
