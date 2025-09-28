@@ -373,13 +373,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_contact__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/contact */ "./js/components/contact.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/utils */ "./js/utils/utils.js");
 /* harmony import */ var _components_announcer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/announcer */ "./js/components/announcer.js");
-/* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.mjs");
-/* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
-/* harmony import */ var _utils_stripe__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./utils/stripe */ "./js/utils/stripe.js");
-/* harmony import */ var _utils_broadcast__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils/broadcast */ "./js/utils/broadcast.js");
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_stripe__WEBPACK_IMPORTED_MODULE_10__]);
+/* harmony import */ var _utils_push_notifcation__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/push-notifcation */ "./js/utils/push-notifcation.js");
+/* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.mjs");
+/* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
+/* harmony import */ var _utils_stripe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils/stripe */ "./js/utils/stripe.js");
+/* harmony import */ var _utils_broadcast__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./utils/broadcast */ "./js/utils/broadcast.js");
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_stripe__WEBPACK_IMPORTED_MODULE_11__]);
 var __webpack_async_dependencies_result__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
-_utils_stripe__WEBPACK_IMPORTED_MODULE_10__ = __webpack_async_dependencies_result__[0];
+_utils_stripe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_async_dependencies_result__[0];
+
 
 
 
@@ -396,8 +398,8 @@ var DEVMODE = false;
 var isLocal = location.hostname === 'localhost' ? 1 : 0;
 var backendDomain = isLocal ? 'http://localhost' : 'http://192.168.0.113';
 var susChannel = new BroadcastChannel('susChannel');
-(0,_utils_broadcast__WEBPACK_IMPORTED_MODULE_11__.handleMessages)();
-var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_8__["default"]('.testimonial-carousel', {
+(0,_utils_broadcast__WEBPACK_IMPORTED_MODULE_12__.handleMessages)();
+var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_9__["default"]('.testimonial-carousel', {
   spaceBetween: 300,
   centeredSlides: true,
   speed: 800,
@@ -441,6 +443,7 @@ if (locationMap) {
   var lng = -0.1087879;
   (0,_components_maps__WEBPACK_IMPORTED_MODULE_3__.makeMap)(lat, lng);
 }
+(0,_utils_push_notifcation__WEBPACK_IMPORTED_MODULE_8__.createNotificationService)();
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
 
@@ -835,8 +838,8 @@ var parallaxFunc = function parallaxFunc() {
   //Ahem... Artificial limit
   if (setVal > 800 && screen.width < minWidth) {
     setVal = 200;
-  } else if (setVal > 940) {
-    setVal = 940;
+  } else if (setVal > 999) {
+    setVal = 999;
   }
   settings[index].child.style.transform = 'translateY(' + setVal + 'px)';
 };
@@ -871,6 +874,117 @@ window.addEventListener('DOMContentLoaded', function () {
   parallax();
   setAnimationSize();
 });
+
+/***/ }),
+
+/***/ "./js/utils/push-notifcation.js":
+/*!**************************************!*\
+  !*** ./js/utils/push-notifcation.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createNotificationService: () => (/* binding */ createNotificationService)
+/* harmony export */ });
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+var VAPID = {
+  "subject": "mailto: <connect@jonc.work>",
+  "publicKey": "BDN3S4upXA2aqjMH-hA-8xAtML0DDNG0zPqteCDwO2XTXEjciA72NoUhHVswpBcrH8bPeKaBFumiiw8jNMcQZ3U",
+  "privateKey": "dMptQeanlcYxoDATvWQqix-v7m67MQ5Zn_xQY6molbU"
+};
+function createNotificationService() {
+  function initPushNotifications() {
+    return _initPushNotifications.apply(this, arguments);
+  } // Helper to convert VAPID key
+  function _initPushNotifications() {
+    _initPushNotifications = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var registration, permission, subscription, _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            if ('serviceWorker' in navigator) {
+              _context.n = 1;
+              break;
+            }
+            console.warn('Service workers are not supported by this browser.');
+            return _context.a(2);
+          case 1:
+            if ('PushManager' in window) {
+              _context.n = 2;
+              break;
+            }
+            console.warn('Push notifications are not supported by this browser.');
+            return _context.a(2);
+          case 2:
+            _context.p = 2;
+            _context.n = 3;
+            return navigator.serviceWorker.register('/service-worker.js');
+          case 3:
+            registration = _context.v;
+            console.log('Service Worker registered:', registration);
+            _context.n = 4;
+            return Notification.requestPermission();
+          case 4:
+            permission = _context.v;
+            if (!(permission !== 'granted')) {
+              _context.n = 5;
+              break;
+            }
+            console.warn('Permission for notifications was denied.');
+            return _context.a(2);
+          case 5:
+            _context.n = 6;
+            return registration.pushManager.subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: urlBase64ToUint8Array('BDN3S4upXA2aqjMH-hA-8xAtML0DDNG0zPqteCDwO2XTXEjciA72NoUhHVswpBcrH8bPeKaBFumiiw8jNMcQZ3U')
+            });
+          case 6:
+            subscription = _context.v;
+            console.log('Push subscription:', subscription);
+            _context.n = 7;
+            return fetch('/save-subscription', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(subscription)
+            });
+          case 7:
+            console.log('Subscription sent to server!');
+            _context.n = 9;
+            break;
+          case 8:
+            _context.p = 8;
+            _t = _context.v;
+            console.error('Error setting up push notifications:', _t);
+          case 9:
+            return _context.a(2);
+        }
+      }, _callee, null, [[2, 8]]);
+    }));
+    return _initPushNotifications.apply(this, arguments);
+  }
+  function urlBase64ToUint8Array(base64String) {
+    var padding = '='.repeat((4 - base64String.length % 4) % 4);
+    var base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+    var rawData = atob(base64);
+    return Uint8Array.from(_toConsumableArray(rawData).map(function (_char) {
+      return _char.charCodeAt(0);
+    }));
+  }
+  initPushNotifications();
+}
 
 /***/ }),
 

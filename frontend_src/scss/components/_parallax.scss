@@ -103,8 +103,9 @@ $container-w: 1680px;
 			}
 
 			@include media-breakpoint-down(md) {
-				left: 0 !important;
 				width: 150vw;
+				left: -20% !important;
+       			transform: scale(.75);
 				
 
 				.js-parallax-elem {
@@ -114,6 +115,18 @@ $container-w: 1680px;
 
 				&.v-long {
 					left: unset !important;
+					overflow: unset;
+
+					&:before {
+						min-height: 300vh;
+					}
+
+					&.parallax-elem--sticky-bottom {
+
+						.js-parallax-elem {
+							bottom: -15vh;
+						}
+					}
 
 					.js-parallax-elem {
 						bottom: 100vh;
@@ -126,8 +139,14 @@ $container-w: 1680px;
 						}
 
 						&.booking-page {
+							overflow: unset;
+
+							&:before {
+								min-height: 300vh;
+							}
+
 							.js-parallax-elem {
-								bottom: 0vh;
+								bottom: 0;
 							}
 						}
 				}
@@ -139,10 +158,10 @@ $container-w: 1680px;
 					bottom: 190vh;
 				}
 
-				@include media-breakpoint-down(md) {
+				@include media-breakpoint-down(sm) {
 
 					.js-parallax-elem {
-						bottom: 110vh;
+						bottom: 180vh;
 					}
 				}
 			}

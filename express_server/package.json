@@ -1,0 +1,17 @@
+{
+  "name": "suspendedfitness_server",
+  "version": "1.0.0",
+  "description": "Express server for push notifications",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Jon Chandler",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "web-push": "^3.6.7"
+  }
+}

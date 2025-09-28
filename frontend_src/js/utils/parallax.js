@@ -120,8 +120,8 @@ const parallaxFunc = function() {
 	//Ahem... Artificial limit
 	if(setVal > 800 && screen.width < minWidth) {
 		setVal = 200
-	} else if (setVal > 940) {
-		setVal = 940
+	} else if (setVal > 999) {
+		setVal = 999
 	}
 
 	settings[index].child.style.transform = 'translateY('+ (setVal) +'px)'
