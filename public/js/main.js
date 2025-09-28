@@ -394,7 +394,7 @@ _utils_stripe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_async_dependencies_resul
 
 
 
-var DEVMODE = false;
+var DEVMODE = true;
 var isLocal = location.hostname === 'localhost' ? 1 : 0;
 var backendDomain = isLocal ? 'http://localhost' : 'http://192.168.0.113';
 var susChannel = new BroadcastChannel('susChannel');
@@ -516,10 +516,6 @@ var nudgeContent = function nudgeContent(el) {
   nextEl.style.marginTop = contentPadd;
   window.dispatchEvent(new Event('resize'));
 };
-
-// setTimeout(() => {
-// 	showNewNews('Total Beginners Course starting on Friday 19th in Brockwell Park', '/')
-// }, 1500)
 
 /***/ }),
 
@@ -906,10 +902,10 @@ var VAPID = {
 function createNotificationService() {
   function initPushNotifications() {
     return _initPushNotifications.apply(this, arguments);
-  } // Helper to convert VAPID key
+  }
   function _initPushNotifications() {
     _initPushNotifications = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-      var registration, permission, subscription, _t;
+      var registration, permission, subscription, payload, _t;
       return _regenerator().w(function (_context) {
         while (1) switch (_context.p = _context.n) {
           case 0:
@@ -953,7 +949,7 @@ function createNotificationService() {
             subscription = _context.v;
             console.log('Push subscription:', subscription);
             _context.n = 7;
-            return fetch('/save-subscription', {
+            return fetch("http://localhost:8000/save-subscription", {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -961,17 +957,38 @@ function createNotificationService() {
               body: JSON.stringify(subscription)
             });
           case 7:
-            console.log('Subscription sent to server!');
-            _context.n = 9;
-            break;
+            payload = JSON.stringify({
+              title: "New course dates",
+              body: "Some new courses! YAY",
+              icon: "/icons/pn-course.png",
+              badge: "/icons/pn-badge.png",
+              url: "http://suspendedfitness.com/offer.html?cID=123"
+            });
+            _context.n = 8;
+            return fetch("http://localhost:8000/send-push", {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: payload
+            });
           case 8:
-            _context.p = 8;
+            self.addEventListener('push', function (event) {
+              alert();
+              console.log('------------- ', event);
+              var data = event.data.json();
+              console.log(data);
+            });
+            _context.n = 10;
+            break;
+          case 9:
+            _context.p = 9;
             _t = _context.v;
             console.error('Error setting up push notifications:', _t);
-          case 9:
+          case 10:
             return _context.a(2);
         }
-      }, _callee, null, [[2, 8]]);
+      }, _callee, null, [[2, 9]]);
     }));
     return _initPushNotifications.apply(this, arguments);
   }

@@ -81,7 +81,3 @@ const nudgeContent = (el) => {
 	nextEl.style.marginTop = contentPadd
 	window.dispatchEvent(new Event('resize'))
 }
-
-// setTimeout(() => {
-// 	showNewNews('Total Beginners Course starting on Friday 19th in Brockwell Park', '/')
-// }, 1500)

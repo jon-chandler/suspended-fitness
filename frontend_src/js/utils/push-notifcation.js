@@ -33,19 +33,39 @@ export function createNotificationService() {
 
 		console.log('Push subscription:', subscription)
 
-		await fetch('/save-subscription', {
+		await fetch("http://localhost:8000/save-subscription", {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(subscription)
 		})
 
-		console.log('Subscription sent to server!')
+		const payload = JSON.stringify({
+			title: "New course dates",
+			body: "Some new courses! YAY",
+			icon: "/icons/pn-course.png",
+			badge: "/icons/pn-badge.png",
+			url: "http://suspendedfitness.com/offer.html?cID=123",
+		})
+
+		await fetch("http://localhost:8000/send-push", {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: payload
+		})
+
+		self.addEventListener('push', (event) => {
+			alert()
+			console.log('------------- ', event)
+			const data = event.data.json()
+
+			console.log(data)
+		})
+
 	} catch (err) {
 			console.error('Error setting up push notifications:', err)
 		}
 	}
 
-	// Helper to convert VAPID key
 	function urlBase64ToUint8Array(base64String) {
 		const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
 		const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/')
