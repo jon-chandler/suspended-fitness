@@ -394,7 +394,7 @@ _utils_stripe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_async_dependencies_resul
 
 
 
-var DEVMODE = true;
+var DEVMODE = false;
 var isLocal = location.hostname === 'localhost' ? 1 : 0;
 var backendDomain = isLocal ? 'http://localhost' : 'http://192.168.0.113';
 var susChannel = new BroadcastChannel('susChannel');

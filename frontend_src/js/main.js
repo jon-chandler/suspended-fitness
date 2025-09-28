@@ -21,7 +21,7 @@ import "./utils/stripe"
 import { handleMessages } from "./utils/broadcast"
 
 
-const DEVMODE = true
+const DEVMODE = false
 const isLocal = (location.hostname === 'localhost') ? 1 : 0
 const backendDomain = (isLocal) ? 'http://localhost' : 'http://192.168.0.113'
 
