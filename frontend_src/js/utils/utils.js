@@ -98,6 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.addEventListener('resize', () => {
-	setConstrainedElHeight(cardContainer, constrainedEl, 0)
+	//setConstrainedElHeight(cardContainer, constrainedEl, 0)
 })
 

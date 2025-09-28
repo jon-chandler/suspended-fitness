@@ -54,6 +54,7 @@ Array.from(infoBtns).forEach((btn, i) => {
 			makeMap(data.courseLat, data.courseLng)
 			bindBtns()
 			clearTimeout(contentTimer)
+			history.replaceState(null, '', `?cID=${data.courseId}`)
 		}, 1000)
 		
 	})
@@ -183,6 +184,37 @@ const popInfoModal = (data) => {
 	return template
 }
 
+const getCourseFromId = (courseId) => {
+	const courseCard = Array.from(document.querySelectorAll('.course-card'))
+		.find(card => {
+			const data = JSON.parse(card.dataset.courseInfo)
+			return String(data.courseId) === String(courseId)
+		})
+
+	return courseCard ? JSON.parse(courseCard.dataset.courseInfo) : null
+}
+
+const checkForCourseIdParam = () => {
+	const params = new URLSearchParams(window.location.search)
+	const cID = params.get('cID')
+
+	if (cID) {
+		const data = getCourseFromId(cID)
+
+		if (data) {
+			modalBody.innerHTML = popInfoModal(data)
+			makeMap(data.courseLat, data.courseLng)
+
+			courseModal.show()
+			history.replaceState(null, '', `?cID=${cID}`)
+		}
+	}
+}
+
+document.addEventListener('DOMContentLoaded', _ => {
+	checkForCourseIdParam()
+	bindBtns()
+})
 
 
 bindBtns()

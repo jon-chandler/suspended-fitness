@@ -16,11 +16,6 @@
 	  pointer-events: none;
 	}
 
-	&:nth-child(even) {
-		//@extend .offset-md-2;
-	}
-	
-
 	&:last-of-type {
 		margin-bottom: 280px !important;
 	}
@@ -80,10 +75,15 @@
     	
     	> button {
     		margin-right: 2em;
+
+    		&:first-of-type {
+    			margin-bottom: 1em;
+    		}
     	}
 
     	@include media-breakpoint-down(md) {
     		justify-content: space-around;
+    		flex-direction: column;
 
     		> button {
     			margin: 0;
@@ -97,6 +97,10 @@
     		color: $charcoal;
     		@extend .haptik--small;
     	}
+    }
+
+    .card-body { 
+    	padding: .5em .2em;
     }
 }
 

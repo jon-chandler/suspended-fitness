@@ -228,8 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	})
 
-	shuffleStack()
-	hackeyNudge()
 
 	setTimeout(() => {
 		const constrainedEl = document.querySelector('.constrained-height')
@@ -239,19 +237,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.addEventListener('resize', () => {
 		const constrainedEl = document.querySelector('.constrained-height')
 		setConstrainedElHeight(containerEl, constrainedEl, 50)
+		hackeyNudge()
 	})
 
+	shuffleStack()
 })
 
-const hackeyNudge = () => {
-	let startWidth = containerEl.getBoundingClientRect().width
 
-	containerEl.style.opacity = 0
-	containerEl.style.width = `${startWidth/3}px`
-	setTimeout(() => {
-		containerEl.style.width = `${startWidth}px`
-		containerEl.style.opacity = 1
-	}, 150)
+const hackeyNudge = () => {
+	window.scrollTo(0, window.scrollY)
 }
 
 const shuffleStack = () => {

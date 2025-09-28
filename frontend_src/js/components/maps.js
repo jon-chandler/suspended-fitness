@@ -9,7 +9,7 @@ export function makeMap(lat, lng) {
 	const locationMap = document.getElementById('location-map')
 	const launchGoogle = document.getElementById('map-launch')
 
-	const mapLink = `https://maps.google.com/?q=${lat},${lng}`
+	const mapLink = `https://google.com/maps/dir/Current+Location/${lat},${lng}`
 
 	const loader = new Loader({
 		apiKey: 'AIzaSyCSQTqTijoj0_tBVlrvU4WIJ2-WIYRpSKM',

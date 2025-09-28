@@ -67,7 +67,7 @@
    .dynamic-modal-body {
         padding: 1em 4em 4em 4em;
 
-        @include media-breakpoint-down(md) { 
+        @include media-breakpoint-down(lg) { 
             padding: 1em;
         }
    }
