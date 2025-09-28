@@ -6,7 +6,7 @@ self.addEventListener('push', (event) => {
 
     const title = payload.title || 'Suspended Fitness notification'
     const options = {
-        body: payload.body || '',
+        body: payload.body || 'NEW COURSES!',
         icon: payload.icon || 'images/pn-icon.png',
         badge: payload.badge || 'images/pn-badge.png',
         data: payload.url || '/offer.html'

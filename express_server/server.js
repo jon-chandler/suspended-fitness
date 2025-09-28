@@ -55,10 +55,10 @@ app.post("/send-push", async (req, res) => {
   }
 
   const payload = JSON.stringify({
-    title: req.body?.title || "Test Notification",
-    body: req.body?.body || "This is a test push from the server",
-    icon: req.body?.icon || "/icon.png",
-    url: req.body?.url || "/"
+    title: req.body?.title || "Suspended Fitness",
+    body: req.body?.body || "New course dates available",
+    icon: req.body?.icon || "/images/pn-badge.png",
+    url: req.body?.url || "/offer.html?cID=456"
   });
 
   const results = [];

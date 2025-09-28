@@ -41,9 +41,9 @@ export function createNotificationService() {
 
 		const payload = JSON.stringify({
 			title: "New course dates",
-			body: "Some new courses! YAY",
-			icon: "/icons/pn-course.png",
-			badge: "/icons/pn-badge.png",
+			body: "Some new courses! WHOOP",
+			icon: "/images/pn-badge.png",
+			badge: "/images/pn-badge.png",
 			url: "http://suspendedfitness.com/offer.html?cID=123",
 		})
 
@@ -53,14 +53,7 @@ export function createNotificationService() {
 			body: payload
 		})
 
-		self.addEventListener('push', (event) => {
-			alert()
-			console.log('------------- ', event)
-			const data = event.data.json()
-
-			console.log(data)
-		})
-
+		
 	} catch (err) {
 			console.error('Error setting up push notifications:', err)
 		}

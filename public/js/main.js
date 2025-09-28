@@ -959,9 +959,9 @@ function createNotificationService() {
           case 7:
             payload = JSON.stringify({
               title: "New course dates",
-              body: "Some new courses! YAY",
-              icon: "/icons/pn-course.png",
-              badge: "/icons/pn-badge.png",
+              body: "Some new courses! WHOOP",
+              icon: "/images/pn-badge.png",
+              badge: "/images/pn-badge.png",
               url: "http://suspendedfitness.com/offer.html?cID=123"
             });
             _context.n = 8;
@@ -973,12 +973,6 @@ function createNotificationService() {
               body: payload
             });
           case 8:
-            self.addEventListener('push', function (event) {
-              alert();
-              console.log('------------- ', event);
-              var data = event.data.json();
-              console.log(data);
-            });
             _context.n = 10;
             break;
           case 9:
