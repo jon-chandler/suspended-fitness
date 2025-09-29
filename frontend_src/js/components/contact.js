@@ -8,46 +8,39 @@ const setResponse = (el, msg, type) => {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
+const paramsString = window.location.search
+const searchParams = new URLSearchParams(paramsString)
+let courseID = searchParams.get('courseId') // Give Beccie some context regarding the question.
 
-	const paramsString = window.location.search
-	const searchParams = new URLSearchParams(paramsString)
-	let courseID = searchParams.get('courseId') // Give Beccie some context regarding the question.
+const contactForm = document.getElementById('contact-us')
+const formHolder = document.querySelector('.contact-form-holder')
 
-    const contactForm = document.getElementById('contact-us')
-	const formHolder = document.querySelector('.contact-form-holder')
+if(contactForm) {
 
-	if(contactForm) {
-		const fields = [
-				{ id: 'user-name', type: 'text' },
-				{ id: 'user-email', type: 'email' },
-				{ id: 'user-phone', type: 'tel' },
-				{ id: 'user-msg', type: 'text'}
-		]
+	const fields = [
+			{ id: 'user-name', type: 'text' },
+			{ id: 'user-email', type: 'email' },
+			{ id: 'user-phone', type: 'tel' },
+			{ id: 'user-msg', type: 'text'}
+	]
 
-		contactForm.addEventListener('submit', (e)=> {
-			alert('f')
-			e.preventDefault()
-	
-			if(validateForm(contactForm, fields)) {
+	contactForm.addEventListener('submit', (e)=> {
+		e.preventDefault()
 
-				try {
-					const formData = new FormData(contactForm)
-					const body = Object.fromEntries(formData.entries())
+		if(validateForm(contactForm, fields)) {
 
-					console.log(body)
-					
-					const response = fetch(formURL, {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						body: JSON.stringify(body),
-					})
+			try {
+				const formData = new FormData(contactForm)
+				const body = Object.fromEntries(formData.entries())
 
-					if (!response.ok) {
-						throw new Error(`Server error: ${response.status}`)
-					}
+				const response = fetch(formURL, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(body),
+				})
+				.then(response => {
 
 			        const result = response.json()
 
@@ -59,21 +52,23 @@ document.addEventListener('DOMContentLoaded', () => {
 						setResponse(formHolder, `FAIL: ${result.errorMessage}`, 'error')
 					}
 
-					showLoader(false)
+				})
+				.catch((error) => {
 
-				} catch (err) {
-					setResponse(formHolder, `FAIL: ${err}`, 'error') 
-					showLoader(false)       
-				}
+					setResponse(formHolder, `FAIL: ${error}`, 'error')
 
-			} else {
+				})
 
-				console.log('fail')
+				showLoader(false)
 
+			} catch (err) {
+				setResponse(formHolder, `FAIL: ${err}`, 'error') 
+				showLoader(false)       
 			}
 
-		})
-	}
-	
+		}
 
-})
+	})
+
+}
+	

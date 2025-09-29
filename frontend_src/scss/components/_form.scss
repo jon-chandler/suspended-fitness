@@ -13,16 +13,16 @@
 	}
 
 	.error {
-		border: 2px solid $coreBlue !important;
+		border: 1px solid $errorRed !important;
 		animation: shake 0.8s ease-in-out;
 
 		&:after {
-			outline: 2px solid $coreBlue !important;
+			outline: 1px solid $errorRed !important;
 		}
 	}
 
 	.error-label {
-		color: $coreBlue !important;
+		color: $errorRed !important;
 	}
 
 	@keyframes shake {

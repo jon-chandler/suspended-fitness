@@ -37,6 +37,7 @@ export function validateForm (_form, fields) {
         }
 
         if (!fieldValid) {
+            
             isValid = false
             if (!firstInvalidField) firstInvalidField = input
 
@@ -86,6 +87,7 @@ export function validateForm (_form, fields) {
         }
 
         return true
+
     }
 
 	fields.forEach(({ id, type }) => {
