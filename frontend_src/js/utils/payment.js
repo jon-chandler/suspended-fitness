@@ -7,9 +7,12 @@ const stripe = await loadStripe(pKey);
 
 const userForm = document.getElementById('user-details')
 const formSuccessInfo = document.getElementById('post-form-content')
+const paymentForm = document.getElementById('payment-form')
+const formLoaderInfo = document.getElementById('pre-form-content')
 
 const susChannel = new BroadcastChannel('susChannel')
 
+const minWidth = 800
 
 export async function initializeStripe() {
 	let checkout
@@ -17,6 +20,7 @@ export async function initializeStripe() {
 	let data = new URLSearchParams([...new FormData(userForm).entries()])
 
 	const handleComplete = () => {
+		showLoader(false)
 		shuffleCards('left')
 		susChannel.postMessage({'event': 'paymentReceived', 'msg' : 'Yee-haw!'})
 		setTimeout(() => {
@@ -59,6 +63,37 @@ if(userForm) {
 
     userForm.addEventListener('submit', (e)=> {
 		e.preventDefault()
-    	validateForm(userForm, fields)
+		
+    	if(validateForm(userForm, fields)) {
+    		toggleLoaderInfo(userForm, true)
+            shuffleCards('right')
+            initializeStripe()
+			if(window.innerWidth < minWidth) {
+				paymentForm.scrollIntoView({ behavior: 'smooth', block: 'end' })
+			}
+
+    	}
     })
 }
+
+const resize_ob = new ResizeObserver(() => {
+    window.dispatchEvent(new Event('resize'))
+})
+
+if(paymentForm) {
+    resize_ob.observe(paymentForm)
+}
+
+const toggleLoaderInfo = (_form, vis) => {
+    if(vis == true) {
+        _form.classList.add('read-only')
+        formLoaderInfo.classList.add('hide-it')
+    } else {
+        _form.classList.remove('read-only')
+        formLoaderInfo.classList.remove('hide-it') 
+    }
+    window.dispatchEvent(new Event('resize'))
+}
+
+
+

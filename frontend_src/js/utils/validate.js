@@ -2,11 +2,6 @@ import { shuffleCards, showLoader, scrollToPos } from './utils'
 import { initializeStripe } from './payment'
 
 
-const formLoaderInfo = document.getElementById('pre-form-content')
-const paymentForm = document.getElementById('payment-form')
-
-const minWidth = 800
-
 export function validateForm (_form, fields) {
 
     let isValid = true
@@ -95,36 +90,10 @@ export function validateForm (_form, fields) {
 
     	showLoader(true)
 		
-        if(paymentForm) {
-            toggleLoaderInfo(_form, true)
-            shuffleCards('right')
-            initializeStripe()
-			if(window.innerWidth < minWidth) {
-				paymentForm.scrollIntoView({ behavior: 'smooth', block: 'end' })
-			}
-        }
-
         return true
 
     }
 
 }
 
-const toggleLoaderInfo = (_form, vis) => {
-    if(vis == true) {
-        _form.classList.add('read-only')
-        formLoaderInfo.classList.add('hide-it')
-    } else {
-        _form.classList.remove('read-only')
-        formLoaderInfo.classList.remove('hide-it') 
-    }
-    window.dispatchEvent(new Event('resize'))
-}
 
-const resize_ob = new ResizeObserver(() => {
-    window.dispatchEvent(new Event('resize'))
-})
-
-if(paymentForm) {
-    resize_ob.observe(paymentForm)
-}
