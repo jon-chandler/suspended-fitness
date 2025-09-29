@@ -22,10 +22,10 @@ const formHolder = document.querySelector('.contact-form-holder')
 if(contactForm) {
 
 	const fields = [
-			{ id: 'user-name', type: 'text' },
-			{ id: 'user-email', type: 'email' },
-			{ id: 'user-phone', type: 'tel' },
-			{ id: 'user-msg', type: 'text'}
+		{ id: 'user-name', type: 'text', message: 'Name is required' },
+		{ id: 'user-email', type: 'email', message: 'Please enter a valid email address' },
+		{ id: 'user-phone', type: 'tel', message: 'Please enter a valid phone number' },
+		{ id: 'user-msg', type: 'text', message: 'What would you like to speak about?'}
 	]
 
 	contactForm.addEventListener('submit', (e)=> {

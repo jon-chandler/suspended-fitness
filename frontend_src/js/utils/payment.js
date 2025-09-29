@@ -51,10 +51,10 @@ export async function initializeStripe() {
 if(userForm) {
 
     const fields = [
-        { id: 'course', type: 'select' },
-        { id: 'user-name', type: 'text' },
-        { id: 'user-email', type: 'email' },
-        { id: 'terms', type: 'checkbox' }
+		{ id: 'course', type: 'select', message: 'Please select a course' },
+		{ id: 'user-name', type: 'text', message: 'Name is required' },
+		{ id: 'user-email', type: 'email', message: 'Please enter a valid email address' },
+		{ id: 'terms', type: 'checkbox', message: 'You must agree before continuing' }
     ]
 
     userForm.addEventListener('submit', (e)=> {

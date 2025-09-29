@@ -14,7 +14,7 @@
 
 	.error {
 		border: 1px solid $errorRed !important;
-		animation: shake 0.8s ease-in-out;
+		animation: shake $transition-m ease-in-out;
 
 		&:after {
 			outline: 1px solid $errorRed !important;
@@ -24,6 +24,7 @@
 	.error-label {
 		color: $errorRed !important;
 	}
+
 
 	@keyframes shake {
 		0% { 
@@ -46,6 +47,7 @@
 	label {
 		@extend .med;
 		width: 100%;
+		margin-top: 16px;
 
 		&.in-line {
 			width: auto;
@@ -61,7 +63,7 @@
 		border: 1px solid $brownLight;
 		border-radius: 8px;
 		padding: 24px;
-		margin: 8px 0 24px 0;
+    	margin: 8px 0 4px 0;
 		background: transparent;
 		transition: $transition-m;
 		font-size: 18px;
@@ -120,7 +122,7 @@
 	    display: block;
 	    border: 1px solid $brownLight;
 	    border-radius: 8px;
-	    margin: 8px 0 24px 0;
+    	margin: 8px 0 4px 0;
 	    padding: 24px 52px 24px 24px;  
 	    width: 100%;
 	    oveflow: hidden;
@@ -158,8 +160,10 @@
 
 	.input-inline {
 		display: flex;
+		align-items: flex-end;
   		position: relative;
   		user-select: none;
+  		margin-top: 32px;
 	}
 
 }
