@@ -1,4 +1,5 @@
 import { shuffleCards, showLoader, scrollToPos } from '../utils/utils'
+import { validateForm } from '../utils/validate'
 
 const formURL = 'http://api.com/'
 
@@ -17,44 +18,62 @@ document.addEventListener('DOMContentLoaded', () => {
 	const formHolder = document.querySelector('.contact-form-holder')
 
 	if(contactForm) {
+		const fields = [
+				{ id: 'user-name', type: 'text' },
+				{ id: 'user-email', type: 'email' },
+				{ id: 'user-phone', type: 'tel' },
+				{ id: 'user-msg', type: 'text'}
+		]
 
-		contactForm.addEventListener('submit', async (e) => {
-		e.preventDefault()
-		showLoader(true)
+		contactForm.addEventListener('submit', (e)=> {
+			alert('f')
+			e.preventDefault()
+	
+			if(validateForm(contactForm, fields)) {
 
-		    try {
-				const formData = new FormData(contactForm)
-				const body = Object.fromEntries(formData.entries())
-				
-				const response = await fetch(formURL, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(body),
-				})
+				try {
+					const formData = new FormData(contactForm)
+					const body = Object.fromEntries(formData.entries())
 
-				if (!response.ok) {
-					throw new Error(`Server error: ${response.status}`)
+					console.log(body)
+					
+					const response = fetch(formURL, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify(body),
+					})
+
+					if (!response.ok) {
+						throw new Error(`Server error: ${response.status}`)
+					}
+
+			        const result = response.json()
+
+					if (result.success) {
+						setResponse(formHolder, `MESSAGE SENT ${result.userMessage}`, 'success')
+						contactForm.reset()
+						shuffleCards('right')
+					} else {
+						setResponse(formHolder, `FAIL: ${result.errorMessage}`, 'error')
+					}
+
+					showLoader(false)
+
+				} catch (err) {
+					setResponse(formHolder, `FAIL: ${err}`, 'error') 
+					showLoader(false)       
 				}
 
-		        const result = await response.json()
+			} else {
 
-				if (result.success) {
-					setResponse(formHolder, `MESSAGE SENT ${result.userMessage}`, 'success')
-					contactForm.reset()
-					shuffleCards('right')
-				} else {
-					setResponse(formHolder, `FAIL: ${result.errorMessage}`, 'error')
-				}
+				console.log('fail')
 
-				showLoader(false)
-
-			} catch (err) {
-				setResponse(formHolder, `FAIL: ${err}`, 'error') 
-				showLoader(false)       
 			}
-		})
 
+		})
 	}
+	
+
 })

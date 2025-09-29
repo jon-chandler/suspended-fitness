@@ -24,6 +24,7 @@ import { handleMessages } from "./utils/broadcast"
 
 
 const DEVMODE = false
+window.DEVMODE = DEVMODE
 
 
 const isLocal = (location.hostname === 'localhost') ? 1 : 0
