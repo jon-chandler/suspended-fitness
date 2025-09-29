@@ -65,6 +65,7 @@ var setResponse = function setResponse(el, msg, type) {
     behavior: 'smooth',
     block: 'center'
   });
+  window.dispatchEvent(new Event('resize'));
 };
 var paramsString = window.location.search;
 var searchParams = new URLSearchParams(paramsString);
@@ -1325,7 +1326,8 @@ function validateForm(_form, fields) {
   };
   fields.forEach(function (_ref) {
     var id = _ref.id,
-      type = _ref.type;
+      type = _ref.type,
+      message = _ref.message;
     var input = document.getElementById(id);
     if (!input) return;
     var label = _form.querySelector("label[for='".concat(id, "']"));
@@ -1335,7 +1337,10 @@ function validateForm(_form, fields) {
       if (!firstInvalidField) firstInvalidField = input;
       setTimeout(function () {
         input.classList.add('error');
-        if (label) label.classList.add('error-label');
+        if (label) {
+          label.classList.add('error-label');
+          label.setAttribute('title', message);
+        }
         input.offsetWidth;
       }, delay);
       delay += 100;
@@ -1348,7 +1353,8 @@ function validateForm(_form, fields) {
   // check before re-submit
   fields.forEach(function (_ref2) {
     var id = _ref2.id,
-      type = _ref2.type;
+      type = _ref2.type,
+      message = _ref2.message;
     var input = document.getElementById(id);
     if (!input) return;
     var label = _form.querySelector("label[for=\"".concat(id, "\"]"));

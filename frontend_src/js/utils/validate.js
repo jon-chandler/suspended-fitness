@@ -31,7 +31,7 @@ export function validateForm (_form, fields) {
         }
     }   
 
-    fields.forEach(({ id, type }) => {
+    fields.forEach(({id, type, message}) => {
         const input = document.getElementById(id)
         if (!input) return
         const label = _form.querySelector(`label[for='${id}']`)
@@ -43,7 +43,10 @@ export function validateForm (_form, fields) {
 
             setTimeout(() => {
                 input.classList.add('error')
-                if (label) label.classList.add('error-label')
+                if (label) {
+                    label.classList.add('error-label')
+                    label.setAttribute('title', message)
+                }
                 input.offsetWidth
             }, delay)
 
@@ -55,7 +58,7 @@ export function validateForm (_form, fields) {
     })
 
     // check before re-submit
-    fields.forEach(({ id, type }) => {
+    fields.forEach(({id, type, message}) => {
         const input = document.getElementById(id)
         if (!input) return
         const label = _form.querySelector(`label[for="${id}"]`)
@@ -85,7 +88,7 @@ export function validateForm (_form, fields) {
         if ('vibrate' in navigator) {
             navigator.vibrate([500, 200, 700])
         }
-        
+
         return false
 
     } else {

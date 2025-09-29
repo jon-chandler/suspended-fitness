@@ -9,6 +9,7 @@ const setResponse = (el, msg, type) => {
 		behavior: 'smooth',
 		block: 'center'
 	})
+	window.dispatchEvent(new Event('resize'))
 }
 
 
@@ -67,7 +68,7 @@ if(contactForm) {
 
 			} catch (err) {
 				setResponse(formHolder, `FAIL: ${err}`, 'error') 
-				showLoader(false)       
+				showLoader(false)
 			}
 
 		} else {
