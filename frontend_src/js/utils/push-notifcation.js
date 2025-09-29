@@ -39,21 +39,6 @@ export function createNotificationService() {
 			body: JSON.stringify(subscription)
 		})
 
-		const payload = JSON.stringify({
-			title: "New course dates",
-			body: "Some new courses! WHOOP",
-			icon: "/images/pn-badge.png",
-			badge: "/images/pn-badge.png",
-			url: "http://suspendedfitness.com/offer.html?cID=123",
-		})
-
-		await fetch("http://localhost:8000/send-push", {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: payload
-		})
-
-		
 	} catch (err) {
 			console.error('Error setting up push notifications:', err)
 		}

@@ -459,6 +459,7 @@ __webpack_async_result__();
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   handleMessages: () => (/* binding */ handleMessages),
+/* harmony export */   sendPushNotification: () => (/* binding */ sendPushNotification),
 /* harmony export */   showNewNews: () => (/* binding */ showNewNews)
 /* harmony export */ });
 /* harmony import */ var _components_announcer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/announcer */ "./js/components/announcer.js");
@@ -476,6 +477,7 @@ function handleMessages() {
       case 'contentChange':
         showNewNews(message.msg);
         (0,_components_announcer__WEBPACK_IMPORTED_MODULE_0__.showAnnouncement)('info', message.msg);
+        sendPushNotification('SFIT PUSH', message.msg, '/offer.html?cID=456');
         break;
       case 'newsUpdate':
         showNewNews(message.msg);
@@ -485,6 +487,9 @@ function handleMessages() {
         break;
       case 'showWarning':
         (0,_components_announcer__WEBPACK_IMPORTED_MODULE_0__.showAnnouncement)('warning', message.msg);
+        break;
+      case 'showPushNotification':
+        sendPushNotification('SUSPENDED FITNESS PN', message.msg, message.link);
         break;
         showNewNews(message.msg);
         break;
@@ -507,6 +512,23 @@ function showNewNews(message) {
     newsEl.innerHTML = newsContent;
     nudgeContent(newsEl);
   }, 1000);
+}
+function sendPushNotification(title, msg) {
+  var link = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  var payload = JSON.stringify({
+    title: title,
+    body: msg,
+    icon: "/images/pn-icon.png",
+    badge: "/images/pn-badge.png",
+    url: link
+  });
+  fetch("http://localhost:8000/send-push", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: payload
+  });
 }
 var nudgeContent = function nudgeContent(el) {
   var beacon = document.querySelector('.beacon--content');
@@ -905,7 +927,7 @@ function createNotificationService() {
   }
   function _initPushNotifications() {
     _initPushNotifications = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-      var registration, permission, subscription, payload, _t;
+      var registration, permission, subscription, _t;
       return _regenerator().w(function (_context) {
         while (1) switch (_context.p = _context.n) {
           case 0:
@@ -957,32 +979,16 @@ function createNotificationService() {
               body: JSON.stringify(subscription)
             });
           case 7:
-            payload = JSON.stringify({
-              title: "New course dates",
-              body: "Some new courses! WHOOP",
-              icon: "/images/pn-badge.png",
-              badge: "/images/pn-badge.png",
-              url: "http://suspendedfitness.com/offer.html?cID=123"
-            });
-            _context.n = 8;
-            return fetch("http://localhost:8000/send-push", {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: payload
-            });
-          case 8:
-            _context.n = 10;
+            _context.n = 9;
             break;
-          case 9:
-            _context.p = 9;
+          case 8:
+            _context.p = 8;
             _t = _context.v;
             console.error('Error setting up push notifications:', _t);
-          case 10:
+          case 9:
             return _context.a(2);
         }
-      }, _callee, null, [[2, 9]]);
+      }, _callee, null, [[2, 8]]);
     }));
     return _initPushNotifications.apply(this, arguments);
   }

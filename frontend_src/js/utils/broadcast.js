@@ -17,6 +17,7 @@ export function handleMessages() {
 			case 'contentChange':
 				showNewNews(message.msg)
 				showAnnouncement('info', message.msg)
+				sendPushNotification('SFIT PUSH', message.msg, '/offer.html?cID=456')
 			break;
 			case 'newsUpdate':
 				showNewNews(message.msg)
@@ -27,6 +28,9 @@ export function handleMessages() {
 			case 'showWarning':
 				showAnnouncement('warning', message.msg)
 			break; 
+			case 'showPushNotification':
+				sendPushNotification('SUSPENDED FITNESS PN', message.msg, message.link)
+			break;
 				showNewNews(message.msg)
 			break; 
 		}
@@ -71,6 +75,24 @@ export function showNewNews(message, link = null) {
 
 	}, 1000)
 }
+
+export function sendPushNotification(title, msg, link = null) {
+
+	const payload = JSON.stringify({
+		title: title,
+		body: msg,
+		icon: "/images/pn-icon.png",
+		badge: "/images/pn-badge.png",
+		url: link
+	})
+
+	fetch("http://localhost:8000/send-push", {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: payload
+	})
+}
+
 
 const nudgeContent = (el) => {
 	let beacon = document.querySelector('.beacon--content')
