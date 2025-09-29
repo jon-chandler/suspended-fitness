@@ -24,6 +24,8 @@ import { handleMessages } from "./utils/broadcast"
 
 
 const DEVMODE = false
+
+
 const isLocal = (location.hostname === 'localhost') ? 1 : 0
 const backendDomain = (isLocal) ? 'http://localhost' : 'http://192.168.0.113'
 
@@ -47,6 +49,7 @@ const swiper = new Swiper('.testimonial-carousel', {
 })
 
 window.addEventListener('load', () => {
+
 	setTimeout(() => {
 		showLoader(false)
 	}, 200)
@@ -66,8 +69,6 @@ window.addEventListener('load', () => {
 	}
 
 })
-
-
 
 const saveContentBtn = document.querySelectorAll('.open-print-dialog')
 Array.from(saveContentBtn).forEach(btn => { 
