@@ -5,6 +5,10 @@ const formURL = 'http://api.com/'
 
 const setResponse = (el, msg, type) => {
 	el.innerHTML = msg
+	el.scrollIntoView({
+		behavior: 'smooth',
+		block: 'center'
+	})
 }
 
 
@@ -66,6 +70,10 @@ if(contactForm) {
 				showLoader(false)       
 			}
 
+		} else {
+			if ('vibrate' in navigator) {
+				navigator.vibrate([500, 200, 700])
+			}
 		}
 
 	})

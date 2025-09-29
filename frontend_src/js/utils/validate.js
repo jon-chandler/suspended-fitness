@@ -9,35 +9,35 @@ const minWidth = 800
 
 export function validateForm (_form, fields) {
 
-	let isValid = true
+    let isValid = true
     let firstInvalidField = null
     let delay = 0
 
-    fields.forEach(({ id, type }) => {
-        const input = document.getElementById(id)
-        const label = _form.querySelector(`label[for='${id}']`)
-        let fieldValid = true
-
+    const isFieldValid = (input, type) => {
+        const value = input.value.trim()
         switch (type) {
             case 'select':
-                fieldValid = input.value.trim() !== '-' && input.value.trim() !== ''
-            break;
+                return value !== '-' && value !== ''
             case 'text':
-                fieldValid = input.value.trim().length > 0
-            break;
+                return value.length > 0
             case 'email':
-                fieldValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())
-            break;
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
             case 'tel':
-                 fieldValid = /^\+?[0-9\s\-()]{7,15}$/.test(input.value.trim())
-            break;
+                return /^\+?[0-9\s\-()]{7,15}$/.test(value)
             case 'checkbox':
-                fieldValid = input.checked
-            break;
+                return input.checked
+            default:
+                return true
         }
+    }   
+
+    fields.forEach(({ id, type }) => {
+        const input = document.getElementById(id)
+        if (!input) return
+        const label = _form.querySelector(`label[for='${id}']`)
+        const fieldValid = isFieldValid(input, type)
 
         if (!fieldValid) {
-            
             isValid = false
             if (!firstInvalidField) firstInvalidField = input
 
@@ -48,18 +48,29 @@ export function validateForm (_form, fields) {
             }, delay)
 
             delay += 100
-
-            if ('vibrate' in navigator) {
-            	navigator.vibrate([500, 200, 700])
-            }
-
         } else {
-            
             input.classList.remove('error')
             if (label) label.classList.remove('error-label')
-
         }
     })
+
+    // check before re-submit
+    fields.forEach(({ id, type }) => {
+        const input = document.getElementById(id)
+        if (!input) return
+        const label = _form.querySelector(`label[for="${id}"]`)
+
+        const handler = () => {
+          if (isFieldValid(input, type)) {
+            input.classList.remove("error")
+            if (label) label.classList.remove("error-label")
+          }
+        }
+
+        input.addEventListener("input", handler)
+        input.addEventListener("change", handler)
+    })
+
 
     if (!isValid) {
 
@@ -71,6 +82,10 @@ export function validateForm (_form, fields) {
             firstInvalidField.focus({ preventScroll: true })
         }
 
+        if ('vibrate' in navigator) {
+            navigator.vibrate([500, 200, 700])
+        }
+        
         return false
 
     } else {
@@ -89,37 +104,6 @@ export function validateForm (_form, fields) {
         return true
 
     }
-
-	fields.forEach(({ id, type }) => {
-        const input = document.getElementById(id)
-        const label = _form.querySelector(`label[for='${id}']`)
-
-        const handler = () => {
-            let fieldValid = true
-            switch (type) {
-                case 'select':
-                    fieldValid = input.value.trim() !== '-' && input.value.trim() !== ''
-                break
-                case 'text':
-                    fieldValid = input.value.trim().length > 0
-                break
-                case 'email':
-                    fieldValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())
-                break
-                case 'checkbox':
-                    fieldValid = input.checked
-                break
-            }
-        
-            if (fieldValid) {
-                input.classList.remove('error')
-                    if (label) label.classList.remove('error-label')
-                }
-            }
-
-        input.addEventListener('input', handler)
-        input.addEventListener('change', handler)
-    })
 
 }
 
