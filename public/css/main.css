@@ -14632,13 +14632,37 @@ footer {
   padding-top: 32px;
 }
 .susfit #user-details.read-only, .susfit #user-details.disabled, .susfit #contact-us.read-only, .susfit #contact-us.disabled, .susform #user-details.read-only, .susform #user-details.disabled, .susform #contact-us.read-only, .susform #contact-us.disabled {
-  opacity: 0.5;
+  opacity: 0.4;
 }
 .susfit #user-details.read-only *, .susfit #user-details.disabled *, .susfit #contact-us.read-only *, .susfit #contact-us.disabled *, .susform #user-details.read-only *, .susform #user-details.disabled *, .susform #contact-us.read-only *, .susform #contact-us.disabled * {
   pointer-events: none;
 }
-.susfit .pink, .susform .pink {
-  background: pink;
+.susfit .error, .susform .error {
+  border: 2px solid #004fff !important;
+  animation: shake 0.8s ease-in-out;
+}
+.susfit .error:after, .susform .error:after {
+  outline: 2px solid #004fff !important;
+}
+.susfit .error-label, .susform .error-label {
+  color: #004fff !important;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-20px);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  75% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 .susfit label, .susform label {
   width: 100%;
@@ -14711,8 +14735,12 @@ footer {
   border: 1px solid #B6B6B6;
   border-radius: 8px;
   margin: 8px 0 24px 0;
-  padding: 24px;
+  padding: 24px 52px 24px 24px;
   width: 100%;
+  oveflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .susfit .select--disabled, .susform .select--disabled {
   opacity: 0.25;

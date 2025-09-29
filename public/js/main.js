@@ -376,11 +376,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_push_notifcation__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/push-notifcation */ "./js/utils/push-notifcation.js");
 /* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.mjs");
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
-/* harmony import */ var _utils_stripe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils/stripe */ "./js/utils/stripe.js");
+/* harmony import */ var _utils_payment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils/payment */ "./js/utils/payment.js");
 /* harmony import */ var _utils_broadcast__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./utils/broadcast */ "./js/utils/broadcast.js");
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_stripe__WEBPACK_IMPORTED_MODULE_11__]);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_payment__WEBPACK_IMPORTED_MODULE_11__]);
 var __webpack_async_dependencies_result__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
-_utils_stripe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_async_dependencies_result__[0];
+_utils_payment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_async_dependencies_result__[0];
 
 
 
@@ -389,6 +389,9 @@ _utils_stripe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_async_dependencies_resul
 
 
 
+
+
+//import "./utils/validate"
 
 
 
@@ -895,6 +898,236 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
+/***/ "./js/utils/payment.js":
+/*!*****************************!*\
+  !*** ./js/utils/payment.js ***!
+  \*****************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _stripe_stripe_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @stripe/stripe-js */ "./node_modules/@stripe/stripe-js/lib/index.mjs");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./js/utils/utils.js");
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+
+
+var pKey = 'pk_test_51S8QxnEad35pCFHl7T75TJYFhaaS1LJCcvFkhpd6thynfJcdbiotB0qf7P2P2tfJo0YqXQYYYtTDF5GPnylglvcC00CDb6lDHp';
+var stripe = await (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_0__.loadStripe)(pKey);
+var userForm = document.getElementById('user-details');
+var formLoaderInfo = document.getElementById('pre-form-content');
+var formSuccessInfo = document.getElementById('post-form-content');
+var paymentForm = document.getElementById('payment-form');
+var minWidth = 800;
+var susChannel = new BroadcastChannel('susChannel');
+function initializeStripe(_x) {
+  return _initializeStripe.apply(this, arguments);
+}
+function _initializeStripe() {
+  _initializeStripe = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(e) {
+    var checkout, chkOut, data, handleComplete, fetchClientSecret;
+    return _regenerator().w(function (_context2) {
+      while (1) switch (_context2.n) {
+        case 0:
+          data = new URLSearchParams(_toConsumableArray(new FormData(e.target).entries()));
+          handleComplete = function handleComplete() {
+            (0,_utils__WEBPACK_IMPORTED_MODULE_1__.shuffleCards)('left');
+            susChannel.postMessage({
+              'event': 'paymentReceived',
+              'msg': 'Yee-haw!'
+            });
+            setTimeout(function () {
+              formSuccessInfo.classList.remove('hide-it');
+              chkOut.destroy();
+              //toggleLoaderInfo(false)
+              window.location = '/confirmation.html';
+            }, 2000);
+          };
+          fetchClientSecret = /*#__PURE__*/function () {
+            var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+              var response, _yield$response$json, clientSecret;
+              return _regenerator().w(function (_context) {
+                while (1) switch (_context.n) {
+                  case 0:
+                    _context.n = 1;
+                    return fetch('http://192.168.0.113/session.php', {
+                      method: "POST",
+                      body: data
+                    });
+                  case 1:
+                    response = _context.v;
+                    _context.n = 2;
+                    return response.json();
+                  case 2:
+                    _yield$response$json = _context.v;
+                    clientSecret = _yield$response$json.clientSecret;
+                    return _context.a(2, clientSecret);
+                }
+              }, _callee);
+            }));
+            return function fetchClientSecret() {
+              return _ref3.apply(this, arguments);
+            };
+          }();
+          _context2.n = 1;
+          return stripe.initEmbeddedCheckout({
+            fetchClientSecret: fetchClientSecret,
+            onComplete: handleComplete
+          }).then(function (checkout) {
+            checkout.mount('#payment-form');
+            chkOut = checkout;
+          });
+        case 1:
+          checkout = _context2.v;
+          (0,_utils__WEBPACK_IMPORTED_MODULE_1__.showLoader)(false);
+          window.dispatchEvent(new Event('resize'));
+        case 2:
+          return _context2.a(2);
+      }
+    }, _callee2);
+  }));
+  return _initializeStripe.apply(this, arguments);
+}
+if (userForm) {
+  var fields = [{
+    id: 'course',
+    type: 'select'
+  }, {
+    id: 'user-name',
+    type: 'text'
+  }, {
+    id: 'user-email',
+    type: 'email'
+  }, {
+    id: 'terms',
+    type: 'checkbox'
+  }];
+  userForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var isValid = true;
+    var firstInvalidField = null;
+    var delay = 0;
+    fields.forEach(function (_ref) {
+      var id = _ref.id,
+        type = _ref.type;
+      var input = document.getElementById(id);
+      var label = userForm.querySelector("label[for='".concat(id, "']"));
+      var fieldValid = true;
+      switch (type) {
+        case 'select':
+          fieldValid = input.value.trim() !== '-' && input.value.trim() !== '';
+          break;
+        case 'text':
+          fieldValid = input.value.trim().length > 0;
+          break;
+        case 'email':
+          fieldValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+          break;
+        case 'checkbox':
+          fieldValid = input.checked;
+          break;
+      }
+      if (!fieldValid) {
+        isValid = false;
+        if (!firstInvalidField) firstInvalidField = input;
+        setTimeout(function () {
+          input.classList.add('error');
+          if (label) label.classList.add('error-label');
+          input.offsetWidth;
+        }, delay);
+        delay += 100;
+        if ('vibrate' in navigator) {
+          navigator.vibrate([500, 200, 700]);
+        }
+      } else {
+        input.classList.remove('error');
+        if (label) label.classList.remove('error-label');
+      }
+    });
+    if (!isValid) {
+      e.preventDefault();
+      if (firstInvalidField) {
+        firstInvalidField.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+        firstInvalidField.focus({
+          preventScroll: true
+        });
+      }
+    } else {
+      (0,_utils__WEBPACK_IMPORTED_MODULE_1__.showLoader)(true);
+      (0,_utils__WEBPACK_IMPORTED_MODULE_1__.shuffleCards)('right');
+      initializeStripe(e);
+      toggleLoaderInfo(true);
+      if (window.innerWidth < minWidth) {
+        paymentForm.scrollIntoView({
+          behavior: 'smooth',
+          block: 'end'
+        });
+      }
+    }
+  });
+  fields.forEach(function (_ref2) {
+    var id = _ref2.id,
+      type = _ref2.type;
+    var input = document.getElementById(id);
+    var label = userForm.querySelector("label[for='".concat(id, "']"));
+    var handler = function handler() {
+      var fieldValid = true;
+      switch (type) {
+        case 'select':
+          fieldValid = input.value.trim() !== '-' && input.value.trim() !== '';
+          break;
+        case 'text':
+          fieldValid = input.value.trim().length > 0;
+          break;
+        case 'email':
+          fieldValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+          break;
+        case 'checkbox':
+          fieldValid = input.checked;
+          break;
+      }
+      if (fieldValid) {
+        input.classList.remove('error');
+        if (label) label.classList.remove('error-label');
+      }
+    };
+    input.addEventListener('input', handler);
+    input.addEventListener('change', handler);
+  });
+}
+var toggleLoaderInfo = function toggleLoaderInfo(vis) {
+  if (vis == true) {
+    userForm.classList.add('read-only');
+    formLoaderInfo.classList.add('hide-it');
+  } else {
+    userForm.classList.remove('read-only');
+    formLoaderInfo.classList.remove('hide-it');
+  }
+  window.dispatchEvent(new Event('resize'));
+};
+var resize_ob = new ResizeObserver(function () {
+  window.dispatchEvent(new Event('resize'));
+});
+if (paymentForm) {
+  resize_ob.observe(paymentForm);
+}
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } }, 1);
+
+/***/ }),
+
 /***/ "./js/utils/push-notifcation.js":
 /*!**************************************!*\
   !*** ./js/utils/push-notifcation.js ***!
@@ -969,7 +1202,7 @@ function createNotificationService() {
             });
           case 6:
             subscription = _context.v;
-            console.log('Push subscription:', subscription);
+            console.info('Push subscription:', subscription);
             _context.n = 7;
             return fetch("http://localhost:8000/save-subscription", {
               method: 'POST',
@@ -984,7 +1217,7 @@ function createNotificationService() {
           case 8:
             _context.p = 8;
             _t = _context.v;
-            console.error('Error setting up push notifications:', _t);
+            console.warn('Error setting up push notifications:', _t);
           case 9:
             return _context.a(2);
         }
@@ -1002,140 +1235,6 @@ function createNotificationService() {
   }
   initPushNotifications();
 }
-
-/***/ }),
-
-/***/ "./js/utils/stripe.js":
-/*!****************************!*\
-  !*** ./js/utils/stripe.js ***!
-  \****************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _stripe_stripe_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @stripe/stripe-js */ "./node_modules/@stripe/stripe-js/lib/index.mjs");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./js/utils/utils.js");
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-
-
-var pKey = 'pk_test_51S8QxnEad35pCFHl7T75TJYFhaaS1LJCcvFkhpd6thynfJcdbiotB0qf7P2P2tfJo0YqXQYYYtTDF5GPnylglvcC00CDb6lDHp';
-var stripe = await (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_0__.loadStripe)(pKey);
-var userForm = document.getElementById('user-details');
-var formLoaderInfo = document.getElementById('pre-form-content');
-var formSuccessInfo = document.getElementById('post-form-content');
-var paymentForm = document.getElementById('payment-form');
-var minWidth = 800;
-var susChannel = new BroadcastChannel('susChannel');
-function initializeStripe(_x) {
-  return _initializeStripe.apply(this, arguments);
-}
-function _initializeStripe() {
-  _initializeStripe = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(e) {
-    var checkout, chkOut, data, handleComplete, fetchClientSecret;
-    return _regenerator().w(function (_context2) {
-      while (1) switch (_context2.n) {
-        case 0:
-          data = new URLSearchParams(_toConsumableArray(new FormData(e.target).entries()));
-          handleComplete = function handleComplete() {
-            (0,_utils__WEBPACK_IMPORTED_MODULE_1__.shuffleCards)('left');
-            susChannel.postMessage({
-              'event': 'paymentReceived',
-              'msg': 'Yee-haw!'
-            });
-            setTimeout(function () {
-              formSuccessInfo.classList.remove('hide-it');
-              chkOut.destroy();
-              //toggleLoaderInfo(false)
-              window.location = '/confirmation.html';
-            }, 2000);
-          };
-          fetchClientSecret = /*#__PURE__*/function () {
-            var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-              var response, _yield$response$json, clientSecret;
-              return _regenerator().w(function (_context) {
-                while (1) switch (_context.n) {
-                  case 0:
-                    _context.n = 1;
-                    return fetch('http://192.168.0.113/session.php', {
-                      method: "POST",
-                      body: data
-                    });
-                  case 1:
-                    response = _context.v;
-                    _context.n = 2;
-                    return response.json();
-                  case 2:
-                    _yield$response$json = _context.v;
-                    clientSecret = _yield$response$json.clientSecret;
-                    return _context.a(2, clientSecret);
-                }
-              }, _callee);
-            }));
-            return function fetchClientSecret() {
-              return _ref.apply(this, arguments);
-            };
-          }();
-          _context2.n = 1;
-          return stripe.initEmbeddedCheckout({
-            fetchClientSecret: fetchClientSecret,
-            onComplete: handleComplete
-          }).then(function (checkout) {
-            checkout.mount('#payment-form');
-            chkOut = checkout;
-          });
-        case 1:
-          checkout = _context2.v;
-          (0,_utils__WEBPACK_IMPORTED_MODULE_1__.showLoader)(false);
-          window.dispatchEvent(new Event('resize'));
-        case 2:
-          return _context2.a(2);
-      }
-    }, _callee2);
-  }));
-  return _initializeStripe.apply(this, arguments);
-}
-if (userForm) {
-  userForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    (0,_utils__WEBPACK_IMPORTED_MODULE_1__.showLoader)(true);
-    (0,_utils__WEBPACK_IMPORTED_MODULE_1__.shuffleCards)('right');
-    initializeStripe(e);
-    toggleLoaderInfo(true);
-    if (window.innerWidth < minWidth) {
-      var elBounds = paymentForm.getBoundingClientRect();
-      var yScroll = elBounds.top + elBounds.height / 2;
-      (0,_utils__WEBPACK_IMPORTED_MODULE_1__.scrollToPos)(0, yScroll);
-    }
-  });
-}
-var toggleLoaderInfo = function toggleLoaderInfo(vis) {
-  if (vis == true) {
-    userForm.classList.add('read-only');
-    formLoaderInfo.classList.add('hide-it');
-  } else {
-    userForm.classList.remove('read-only');
-    formLoaderInfo.classList.remove('hide-it');
-  }
-  window.dispatchEvent(new Event('resize'));
-};
-var resize_ob = new ResizeObserver(function () {
-  window.dispatchEvent(new Event('resize'));
-});
-if (paymentForm) {
-  resize_ob.observe(paymentForm);
-}
-__webpack_async_result__();
-} catch(e) { __webpack_async_result__(e); } }, 1);
 
 /***/ }),
 

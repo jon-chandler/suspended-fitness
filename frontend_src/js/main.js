@@ -12,11 +12,13 @@ import {shuffleCards, broadcaster, showLoader} from "./utils/utils"
 import { showAnnouncement, hideAnnouncement} from "./components/announcer"
 import { createNotificationService } from "./utils/push-notifcation"
 
+//import "./utils/validate"
+
 import Swiper from 'swiper/bundle'
 
 import 'swiper/css/bundle'
 
-import "./utils/stripe"
+import "./utils/payment"
 
 import { handleMessages } from "./utils/broadcast"
 

@@ -5,15 +5,42 @@
 		padding-top: 32px;
 
 		&.read-only, &.disabled {
-			opacity: .5;
+			opacity: .4;
 			* {
 				pointer-events: none;
 			}
 		}
 	}
 
-	.pink {
-		background: pink;
+	.error {
+		border: 2px solid $coreBlue !important;
+		animation: shake 0.8s ease-in-out;
+
+		&:after {
+			outline: 2px solid $coreBlue !important;
+		}
+	}
+
+	.error-label {
+		color: $coreBlue !important;
+	}
+
+	@keyframes shake {
+		0% { 
+			transform: translateX(0); 
+		}
+		25% { 
+			transform: translateX(-20px); 
+		}
+		50% { 
+			transform: translateX(20px); 
+		}
+		75% { 
+			transform: translateX(-20px); 
+		}
+		100% { 
+			transform: translateX(0); 
+		}
 	}
 
 	label {
@@ -94,8 +121,12 @@
 	    border: 1px solid $brownLight;
 	    border-radius: 8px;
 	    margin: 8px 0 24px 0;
-	    padding: 24px;  
-	    width: 100%; 
+	    padding: 24px 52px 24px 24px;  
+	    width: 100%;
+	    oveflow: hidden;
+	    display: inline-block;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
 
 	    &--disabled { 
 	        opacity: 0.25;

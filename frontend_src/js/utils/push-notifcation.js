@@ -31,7 +31,7 @@ export function createNotificationService() {
 			applicationServerKey: urlBase64ToUint8Array('BDN3S4upXA2aqjMH-hA-8xAtML0DDNG0zPqteCDwO2XTXEjciA72NoUhHVswpBcrH8bPeKaBFumiiw8jNMcQZ3U')
 		})
 
-		console.log('Push subscription:', subscription)
+		console.info('Push subscription:', subscription)
 
 		await fetch("http://localhost:8000/save-subscription", {
 			method: 'POST',
@@ -40,7 +40,7 @@ export function createNotificationService() {
 		})
 
 	} catch (err) {
-			console.error('Error setting up push notifications:', err)
+			console.warn('Error setting up push notifications:', err)
 		}
 	}
 
