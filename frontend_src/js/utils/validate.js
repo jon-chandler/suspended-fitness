@@ -80,9 +80,7 @@ export function validateForm (_form, fields) {
             firstInvalidField.focus({ preventScroll: true })
         }
 
-        if ('vibrate' in navigator) {
-            navigator.vibrate([500, 200, 700])
-        }
+        if ('vibrate' in navigator) navigator.vibrate([500, 200, 700])
 
         return false
 

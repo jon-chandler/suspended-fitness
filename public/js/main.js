@@ -1404,9 +1404,7 @@ function validateForm(_form, fields) {
         preventScroll: true
       });
     }
-    if ('vibrate' in navigator) {
-      navigator.vibrate([500, 200, 700]);
-    }
+    if ('vibrate' in navigator) navigator.vibrate([500, 200, 700]);
     return false;
   } else {
     (0,_utils__WEBPACK_IMPORTED_MODULE_0__.showLoader)(true);
