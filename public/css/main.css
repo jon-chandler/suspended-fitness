@@ -14639,7 +14639,7 @@ footer {
 }
 .susfit .error, .susform .error {
   border: 1px solid #FF0000 !important;
-  animation: shake 0.6s ease-in-out;
+  animation: shake 0.6s 0.3s ease-in-out;
 }
 .susfit .error:after, .susform .error:after {
   outline: 1px solid #FF0000 !important;
@@ -14651,14 +14651,32 @@ footer {
   0% {
     transform: translateX(0);
   }
-  25% {
-    transform: translateX(-20px);
+  10% {
+    transform: translateX(-18px);
+  }
+  20% {
+    transform: translateX(18px);
+  }
+  30% {
+    transform: translateX(-15px);
+  }
+  40% {
+    transform: translateX(15px);
   }
   50% {
-    transform: translateX(20px);
+    transform: translateX(-12px);
   }
-  75% {
-    transform: translateX(-20px);
+  60% {
+    transform: translateX(12px);
+  }
+  70% {
+    transform: translateX(-8px);
+  }
+  80% {
+    transform: translateX(8px);
+  }
+  90% {
+    transform: translateX(-4px);
   }
   100% {
     transform: translateX(0);
